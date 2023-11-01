@@ -98,12 +98,21 @@
                     </div>
                 </div>
 
-                <div class="form-group btn-container">
+                <div class="row">
+                    <div class="form-group mb-6">
                     <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN
                         IN
                     </button>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="form-group mb-6">
                     <a href="{{route('register')}}" class="btn btn-primary btn-block"><i class="fa fa-registered"
-                                                                                         aria-hidden="true"></i>SIGN UP</a>
+                                                                                    aria-hidden="true"></i>SIGN UP</a>
                 </div>
             </form>
         </div>
