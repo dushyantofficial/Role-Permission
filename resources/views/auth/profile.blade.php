@@ -29,7 +29,7 @@
             background-color: rgba(100, 100, 100, 0.9);
             color: #fff;
             position: absolute;
-            top: -39px;
+            top: -30px;
             bottom: 0;
             left: -23px;
         }

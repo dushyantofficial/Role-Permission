@@ -363,7 +363,7 @@
 
     <script>
         $(document).ready(function (e) {
-            $('.payment').click(function () {
+            $(document).on('click', '.payment', function () {
                 var amount = $(this).data('amount'); // Use 'data-amount' directly
                 var successMessage = 'Payment of ₹' + amount + ' is already paid.';
                 Swal.fire({

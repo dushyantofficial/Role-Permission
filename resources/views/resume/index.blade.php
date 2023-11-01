@@ -9,6 +9,9 @@
         .modal{
             top: 54px !important;
         }
+        .model_fix_size{
+            max-width: 60% !important;
+        }
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -19,6 +22,9 @@
             }
             .course{
                 margin-bottom: 5px;
+            }
+            .model_fix_size{
+                max-width: 50% !important;
             }
         }
     </style>
@@ -105,13 +111,13 @@
                                         <div class="modal fade" id="myModal{{$resume->id}}" data-bs-backdrop="static"
                                              data-bs-keyboard="false" tabindex="-1"
                                              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" style="max-width: 60%;">
+                                            <div class="modal-dialog modal-lg model_fix_size">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Preview Resume</h5>
 {{--                                                        <button class="btn-danger">Pdf Download</button>--}}
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close">X
+                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body preview">
@@ -162,8 +168,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">X
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
@@ -295,7 +301,9 @@
         ">
                             All fields are mandatory(*)
                         </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form id="add_form" action="{{route('resumes.store')}}" method="post"
@@ -404,7 +412,9 @@
         ">
                         All fields are mandatory(*)
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add_skill" action="{{route('professional_skills.store')}}" method="post"
@@ -488,7 +498,9 @@
         ">
                         All fields are mandatory(*)
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add_work_experiences_form" action="{{route('work_experiences.store')}}" method="post"
@@ -589,7 +601,9 @@
         ">
                         All fields are mandatory(*)
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add_form_educations" action="{{route('educations.store')}}" method="post"
@@ -721,7 +735,9 @@
         ">
                         All fields are mandatory(*)
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add_form_project" action="{{route('projects.store')}}" method="post"
@@ -843,7 +859,9 @@
         ">
                         All fields are mandatory(*)
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add_form_course" action="{{route('course.store')}}" method="post"

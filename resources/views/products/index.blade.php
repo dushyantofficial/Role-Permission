@@ -8,6 +8,9 @@
         .modal{
             top: 54px !important;
         }
+        .model_fix_size{
+            max-width: 60% !important;
+        }
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -16,6 +19,9 @@
 
             .modal {
                 width: 192% !important;
+            }
+            .model_fix_size{
+                max-width: 50% !important;
             }
         }
     </style>
@@ -68,7 +74,7 @@
                                     <td>
                                         <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-toggle="modal" data-target=".bd-example-modal-lg">Front-End-Look</button>
                                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
+                                            <div class="modal-dialog modal-lg model_fix_size">
                                                 <div class="modal-content">
                                                     <!-- Modal content goes here -->
                                                     <div class="modal-header">

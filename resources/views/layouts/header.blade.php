@@ -7,6 +7,9 @@
               .goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07Ob *, .VIpgJd-ZVi9od-vH1Gmf *, .VIpgJd-ZVi9od-l9xktf * {
                   font-size: 7pt !important;
               }
+              .app-header__logo {
+                  font-size: 18px !important;
+              }
           }
       </style>
       <form id="backup_form" action="{{route('backup-run')}}" method="GET">
