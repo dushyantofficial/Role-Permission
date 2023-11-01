@@ -127,5 +127,8 @@ Route::post('update-row-order', [App\Http\Controllers\ProductController::class, 
 Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index'])->name('razorpay-payment');
 Route::post('razorpay-payment-store', [App\Http\Controllers\RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 Route::get('/online_pay', [App\Http\Controllers\PaymentController::class, 'online_pay'])->name('online-pay');
-Route::get('/payment_history', [App\Http\Controllers\PaymentController::class, 'payment_history'])->name('payment-history');
+Route::get('/refund/{paymentId}', [App\Http\Controllers\PaymentController::class, 'refundPayment'])->name('refund-payment');
+Route::get('/history_payment', [App\Http\Controllers\PaymentController::class, 'payment_history'])->name('payment-history');
 Route::get('/payment_history_delete', [App\Http\Controllers\PaymentController::class, 'payment_history_delete'])->name('payment-history-delete');
+Route::get('/refund_payment_history', [App\Http\Controllers\PaymentController::class, 'refund_payment_history'])->name('refund-payment-history');
+Route::get('/refund_payment_history_delete', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_delete'])->name('refund-payment-history-delete');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2023 at 01:04 PM
+-- Generation Time: Nov 01, 2023 at 12:47 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -244,7 +244,7 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `resume_id`, `course_name`, `institution_name`, `start_date`, `end_date`, `description`, `check`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 'sdffsd', 'sdfsd', '2023-01', '2023-09', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', '0', 'active', '2023-09-24 00:37:45', '2023-10-30 00:01:54', NULL);
+(1, 3, 'sdffsd', 'sdfsd', '2023-01', '2023-09', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', '0', 'active', '2023-09-24 00:37:45', '2023-10-31 23:17:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -330,7 +330,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2023_09_16_101912_create_projects_table', 8),
 (14, '2023_09_23_064124_create_courses_table', 9),
 (16, '2023_10_30_054200_create_payments_table', 10),
-(17, '2023_10_31_105030_create_payment_histories_table', 11);
+(17, '2023_10_31_105030_create_payment_histories_table', 11),
+(18, '2023_11_01_104119_create_payment_refunds_table', 12);
 
 -- --------------------------------------------------------
 
@@ -361,12 +362,14 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 19),
 (2, 'App\\Models\\User', 6),
 (2, 'App\\Models\\User', 11),
 (2, 'App\\Models\\User', 12),
 (2, 'App\\Models\\User', 13),
 (2, 'App\\Models\\User', 14),
 (2, 'App\\Models\\User', 15),
+(2, 'App\\Models\\User', 20),
 (3, 'App\\Models\\User', 5);
 
 -- --------------------------------------------------------
@@ -386,7 +389,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('dushyant@gmail.com', '$2y$10$knE9/SBarHyDyWRyz9bx5euZ0.3PHrxpA/DQJA8TwCDqZMpcUtc7i', '2023-10-05 04:56:51');
+('dushyant@gmail.com', '$2y$10$uiOeV0sWcxcQJ/mh/kwCNO6rvx10Q6K.TbDbK5Mr6QLK.4ygolkSm', '2023-11-01 04:25:07');
 
 -- --------------------------------------------------------
 
@@ -412,14 +415,17 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `user_id`, `amount`, `transaction_id`, `payment_status`, `status`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 5, 250, 'pay_Mulvv9VBotqUz8', 'captured', 'completed', '1698746156', '2023-10-31 03:47:10', '2023-10-31 04:26:06', NULL),
-(2, 5, 1520, 'pay_MumIdpHeuMBusI', 'captured', 'completed', '1698747446', '2023-10-31 03:47:29', '2023-10-31 04:47:42', NULL),
-(4, 10, 185, 'pay_MunE2rBF6VfHPL', 'captured', 'completed', '1698750707', '2023-10-31 04:50:16', '2023-10-31 05:41:57', NULL),
-(5, 14, 1, 'pay_MunL6UVTYFhbCA', 'captured', 'completed', '1698751108', '2023-10-31 05:47:01', '2023-10-31 05:48:38', NULL),
-(6, 10, 152, 'pay_MunMGep41aDExr', 'captured', 'completed', '1698751174', '2023-10-31 05:49:13', '2023-10-31 05:49:44', NULL),
-(7, 15, 150, 'pay_MunNjBdzyVjDjd', 'captured', 'completed', '1698751257', '2023-10-31 05:50:47', '2023-10-31 05:51:07', NULL),
-(8, 5, 150, 'pay_MunPb7R0Kd6I2M', 'captured', 'completed', '1698751363', '2023-10-31 05:52:35', '2023-10-31 05:52:53', NULL),
-(9, 5, 12, 'pay_MunQySNuYZSdMF', 'captured', 'completed', '1698751441', '2023-10-31 05:53:52', '2023-10-31 05:54:11', NULL);
+(1, 5, 250, 'pay_MvBwYVljQIlGSy', 'captured', 'refunded', '1698837754', '2023-10-31 03:47:10', '2023-11-01 05:53:08', NULL),
+(4, 10, 185, 'pay_MunE2rBF6VfHPL', 'captured', 'refunded', '1698750707', '2023-10-31 04:50:16', '2023-11-01 05:09:08', NULL),
+(6, 10, 152, 'pay_MunMGep41aDExr', 'captured', 'refunded', '1698751174', '2023-10-31 05:49:13', '2023-11-01 05:09:19', NULL),
+(7, 15, 150, 'pay_MunNjBdzyVjDjd', 'captured', 'refunded', '1698751257', '2023-10-31 05:50:47', '2023-11-01 05:09:30', NULL),
+(10, 15, 1520, 'pay_MvBs3ymCT7OO9s', 'captured', 'paid', '1698837498', '2023-10-31 23:07:27', '2023-11-01 05:48:29', NULL),
+(11, 17, 151, 'pay_Mv5ZMFZGLT5PjN', 'captured', 'refunded', '1698815306', '2023-10-31 23:37:41', '2023-11-01 06:06:34', NULL),
+(12, 14, 15, 'pay_Mv5eD9hoReJIPR', 'captured', 'paid', '1698815582', '2023-10-31 23:42:49', '2023-10-31 23:43:13', NULL),
+(13, 9, 1, 'pay_Mv5i0CBFkQ2ZZg', 'captured', 'refunded', '1698815797', '2023-10-31 23:45:59', '2023-11-01 06:09:56', NULL),
+(14, 5, 150, 'pay_Mv6IzESSiTnlhX', 'captured', 'paid', '1698817898', '2023-11-01 00:21:15', '2023-11-01 00:21:50', NULL),
+(15, 6, 142, 'pay_Mv7IIQkSSppbhm', 'captured', 'paid', '1698821380', '2023-11-01 01:18:58', '2023-11-01 01:19:56', NULL),
+(16, 6, 1000, 'pay_MvA8fu9BmZb8n9', 'captured', 'refunded', '1698831399', '2023-11-01 04:05:50', '2023-11-01 06:03:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -469,7 +475,53 @@ CREATE TABLE `payment_histories` (
 --
 
 INSERT INTO `payment_histories` (`id`, `user_id`, `payment_id`, `amount`, `transaction_id`, `entity`, `currency`, `status`, `order_id`, `invoice_id`, `international`, `method`, `amount_refunded`, `refund_status`, `captured`, `description`, `card_id`, `bank`, `wallet`, `vpa`, `email`, `contact`, `notes`, `fee`, `tax`, `error_code`, `error_description`, `error_source`, `error_step`, `error_reason`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 6, 6, 152, 'pay_MunMGep41aDExr', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'paresh@gmail.com', '+919409523654', '[]', '358', '54', NULL, NULL, NULL, NULL, NULL, '1698751174', '2023-10-31 05:49:44', '2023-10-31 05:49:44', NULL);
+(1, 6, 6, 152, 'pay_MunMGep41aDExr', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'paresh@gmail.com', '+919409523654', '[]', '358', '54', NULL, NULL, NULL, NULL, NULL, '1698751174', '2023-10-31 05:49:44', '2023-10-31 05:49:44', NULL),
+(5, 15, 10, 1520, 'pay_Mv5A9kHM0Gcbjp', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'hello33@gmail.com', '+919452639555', '[]', '3588', '548', NULL, NULL, NULL, NULL, NULL, '1698813875', '2023-10-31 23:14:47', '2023-10-31 23:14:47', NULL),
+(6, 17, 11, 151, 'pay_Mv5ZMFZGLT5PjN', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'KKBK', NULL, NULL, 'dushyantyyhhh@gmail.com', '+919452639555', '[]', '356', '54', NULL, NULL, NULL, NULL, NULL, '1698815306', '2023-10-31 23:38:38', '2023-10-31 23:38:38', NULL),
+(7, 14, 12, 15, 'pay_Mv5eD9hoReJIPR', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'KKBK', NULL, NULL, 'dfgfd@gmail.com', '+919452639555', '[]', '36', '6', NULL, NULL, NULL, NULL, NULL, '1698815582', '2023-10-31 23:43:13', '2023-10-31 23:43:13', NULL),
+(8, 9, 13, 1, 'pay_Mv5i0CBFkQ2ZZg', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'ICIC', NULL, NULL, 'rajesh33@gmail.com', '+919452639555', '[]', '2', '0', NULL, NULL, NULL, NULL, NULL, '1698815797', '2023-10-31 23:46:49', '2023-10-31 23:46:49', NULL),
+(9, 5, 14, 150, 'pay_Mv6IzESSiTnlhX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'dushyant@gmail.com', '+919452639555', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698817898', '2023-11-01 00:21:50', '2023-11-01 00:21:50', NULL),
+(10, 6, 15, 142, 'pay_Mv7IIQkSSppbhm', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'rajesh@gmail.com', '+919865323212', '[]', '336', '52', NULL, NULL, NULL, NULL, NULL, '1698821380', '2023-11-01 01:19:56', '2023-11-01 01:19:56', NULL),
+(11, 6, 16, 1000, 'pay_MvA8fu9BmZb8n9', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'freecharge', NULL, 'rajesh@gmail.com', '+919409552885', '[]', '2360', '360', NULL, NULL, NULL, NULL, NULL, '1698831399', '2023-11-01 04:06:51', '2023-11-01 04:06:51', NULL),
+(12, 15, 10, 1520, 'pay_MvBs3ymCT7OO9s', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'airtelmoney', NULL, 'hello33@gmail.com', '+919412563955', '[]', '3588', '548', NULL, NULL, NULL, NULL, NULL, '1698837498', '2023-11-01 05:48:29', '2023-11-01 05:48:29', NULL),
+(13, 5, 1, 250, 'pay_MvBtSkPnLyYQqG', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'airtelmoney', NULL, 'dushyant@gmail.com', '+919412563955', '[]', '590', '90', NULL, NULL, NULL, NULL, NULL, '1698837578', '2023-11-01 05:49:49', '2023-11-01 05:49:49', NULL),
+(14, 5, 1, 250, 'pay_MvBwYVljQIlGSy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'dushyant@gmail.com', '+919412563955', '[]', '590', '90', NULL, NULL, NULL, NULL, NULL, '1698837754', '2023-11-01 05:52:44', '2023-11-01 05:52:44', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_refunds`
+--
+
+CREATE TABLE `payment_refunds` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `refund_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `payment_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double NOT NULL,
+  `entity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `receipt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `speed_processed` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `speed_requested` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_refunds`
+--
+
+INSERT INTO `payment_refunds` (`id`, `refund_id`, `user_id`, `payment_id`, `amount`, `entity`, `currency`, `notes`, `receipt`, `batch_id`, `status`, `speed_processed`, `speed_requested`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'rfnd_MvBpzps9zfuMQK', 10, 'pay_Mv5A9kHM0Gcbjp', 1520, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698837381', '2023-11-01 05:46:21', '2023-11-01 05:46:21', NULL),
+(4, 'rfnd_MvC8ZFVGMvham2', 16, 'pay_MvA8fu9BmZb8n9', 1000, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838436', '2023-11-01 06:03:56', '2023-11-01 06:03:56', NULL),
+(5, 'rfnd_MvCBLs3Tkx8ez7', 17, 'pay_Mv5ZMFZGLT5PjN', 151, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838594', '2023-11-01 06:06:34', '2023-11-01 06:06:34', NULL),
+(6, 'rfnd_MvCEuPKVzcZ351', 9, 'pay_Mv5i0CBFkQ2ZZg', 1, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838796', '2023-11-01 06:09:56', '2023-11-01 06:09:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -833,7 +885,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'Dushyant Chhatraliya', 'MDhZGJ0znVhcFZKiCsi98pXzvR1h5ZhISsbPVDIK.jpg', 'dushyant@gmail.com', 'active', NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-10-28 00:21:33'),
+(5, 'Dushyant Chhatraliya', 'WHC6tcqvvHMpj83c9ubIXcUcFAH6HqtjQl1cdHMI.jpg', 'dushyant@gmail.com', 'active', NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-11-01 03:36:31'),
 (6, 'Rajesh', NULL, 'rajesh@gmail.com', 'active', NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-09-29 02:42:24'),
 (9, 'rajesh', NULL, 'rajesh33@gmail.com', 'active', NULL, '$2y$10$Be.2i3687zBtcNYLU..tseimghoxuhd.Dh3CBSSP/UO99xAh4p6QS', NULL, '2023-10-02 02:33:28', '2023-10-05 03:47:58'),
 (10, 'Paresh', NULL, 'paresh@gmail.com', 'active', NULL, '$2y$10$qyCCLpoiS5tvm5l3gWRuB.JjSYtDdBlSi1laoznGZnGoUEyEloBFq', NULL, '2023-10-02 02:41:23', '2023-10-09 03:32:54'),
@@ -844,7 +896,9 @@ INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `email_veri
 (15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29', '2023-10-18 00:31:28'),
 (16, 'Darshan', 'trZ6KJiiabjJAesq3ceUC0EnnbWn1CJBw1H3H7O8.png', 'darshan@gmail.com', 'Block', NULL, '$2y$10$ratUbcl80AzsxtI/tMTF2OTSFcb4tmI2E2a.ig7JNrbVw7WZ8TiQS', NULL, '2023-10-05 05:30:13', '2023-10-09 03:32:54'),
 (17, 'Fuuf', NULL, 'dushyantyyhhh@gmail.com', 'active', NULL, '$2y$10$Y0LmVFT1hiI.wgLQ.Of.kuO2RB6dfKr439uHv2g35B6kxWAvEPENW', NULL, '2023-10-05 06:26:35', '2023-10-05 06:26:35'),
-(18, 'Hello', 'MA5rgFhJ5jww85sFW6k8w6HFc88KZJpCvtzSyNCY.png', 'hello34@gmail.com', 'active', NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22');
+(18, 'Hello', 'MA5rgFhJ5jww85sFW6k8w6HFc88KZJpCvtzSyNCY.png', 'hello34@gmail.com', 'active', NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22'),
+(19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57', '2023-11-01 04:11:57'),
+(20, 'Vishal', 'sNF4RGfNPvlNoLB0oRgDNNfNqmBGM3NC5VQsY6x3.jpg', 'vishal@gmail.com', 'active', NULL, '$2y$10$YfRRAPto6oTD2RIvdiriNe3UI5M2LNjOd98Di7tUvRqUjpQnDgt52', NULL, '2023-11-01 04:17:34', '2023-11-01 04:17:34');
 
 -- --------------------------------------------------------
 
@@ -872,8 +926,8 @@ CREATE TABLE `work_experiences` (
 --
 
 INSERT INTO `work_experiences` (`id`, `resume_id`, `destination`, `company_name`, `start_date`, `end_date`, `description`, `check`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 3, 'Laravel-Developer', 'Webilok', '2021-05', '2023-10', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', 1, 'active', '2023-09-23 22:08:32', '2023-10-05 06:51:26', NULL),
-(6, 3, 'Laravel-Developer', 'The Great Idea Tech', '2022-05', 'Present', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', 1, 'De-Active', '2023-09-23 22:08:34', '2023-10-05 06:50:53', NULL),
+(5, 3, 'Laravel-Developer', 'Webilok', '2021-05', '2023-11', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', 1, 'active', '2023-09-23 22:08:32', '2023-11-01 02:28:56', NULL),
+(6, 3, 'Laravel-Developer', 'The Great Idea Tech', '2022-05', 'Present', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', 1, 'De-Active', '2023-09-23 22:08:34', '2023-11-01 02:29:07', NULL),
 (18, 6, 'Web-Developer', 'dfg', '2023-01', '2023-09', 'fdgdgdg', 1, 'De-Active', '2023-09-27 04:11:01', '2023-10-03 05:58:58', NULL);
 
 --
@@ -972,6 +1026,13 @@ ALTER TABLE `payment_histories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `payment_histories_user_id_foreign` (`user_id`),
   ADD KEY `payment_histories_payment_id_foreign` (`payment_id`);
+
+--
+-- Indexes for table `payment_refunds`
+--
+ALTER TABLE `payment_refunds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `permissions`
@@ -1110,19 +1171,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `payment_histories`
 --
 ALTER TABLE `payment_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `payment_refunds`
+--
+ALTER TABLE `payment_refunds`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1182,7 +1249,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `work_experiences`
@@ -1236,6 +1303,12 @@ ALTER TABLE `payments`
 ALTER TABLE `payment_histories`
   ADD CONSTRAINT `payment_histories_payment_id_foreign` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `payment_histories_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `payment_refunds`
+--
+ALTER TABLE `payment_refunds`
+  ADD CONSTRAINT `payment_refunds_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `professional_skills`

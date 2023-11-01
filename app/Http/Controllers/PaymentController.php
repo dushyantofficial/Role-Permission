@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\PaymentHistory;
 use App\Models\User;
+use App\Models\PaymentRefund;
 use Illuminate\Http\Request;
+use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
@@ -64,6 +66,35 @@ class PaymentController extends Controller
         return view('payment.razorpayView',compact('payment_details'));
     }
 
+    public function refundPayment($paymentId)
+    {
+        // Fetch the payment details from your database
+        $payment = Payment::find($paymentId); // Replace 'Payment' with your model
+
+        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+
+        try {
+            $refund = $api->refund->create([
+                'payment_id' => $payment->transaction_id,
+                'amount' => $payment->amount * 100, // Amount in paise
+            ]);
+            $refund['refund_id'] = $refund['id'];
+            $refund['user_id'] = $payment->user_id;
+            $refund['payment_date'] = $refund['created_at'];
+            $refund['amount'] = $payment->amount;
+            // Update your database to mark the payment as refunded
+            $payment->update(['status' => 'refunded']);
+
+            PaymentRefund::create($refund->toArray());
+            // Handle notifications and logging
+            // ...
+
+            return redirect()->back()->with('success', "Payment of ₹$payment->amount has been refunded successfully.");
+        } catch (\Razorpay\Api\Errors\Error $e) {
+            return redirect()->back()->with('danger', 'Error occurred while processing the refund: ' . $e->getMessage());
+        }
+    }
+
     public function payment_history()
     {
         $payment_historys = PaymentHistory::all();
@@ -77,4 +108,20 @@ class PaymentController extends Controller
         return response()->json(['message' => 'Payment History deleted successfully']);
 
     }
+
+    public function refund_payment_history()
+    {
+        $refund_payments_historys = PaymentRefund::all();
+        return view('payment.refund_payment_history', compact('refund_payments_historys'));
+    }
+
+    public function refund_payment_history_delete(Request $request)
+    {
+        $refund_payments_historys = PaymentRefund::find($request->id);
+        $refund_payments_historys->delete();
+        return response()->json(['message' => 'Refund Payment History deleted successfully']);
+
+    }
+
+
 }

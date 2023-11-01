@@ -146,6 +146,8 @@
                                     </td>
                                     <td>  @if($payment->status == 'paid')
                                             <label class="badge badge-success">Paid</label>
+                                        @elseif($payment->status == 'refunded')
+                                            <label class="badge badge-info">Refund</label>
                                         @else
                                             <label class="badge badge-danger">Pending</label>
                                         @endif
@@ -182,8 +184,13 @@
                                                 </script>
                                             </form>
                                         @else
-                                            <input type="button" data-amount="{{$payment->amount}}"  value="Payment is paid"
-                                                   class="razorpay-payment-button payment">
+                                            <input type="button" data-amount="{{$payment->amount}}"
+                                                   value="Payment is paid"
+                                                   class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine payment">
+                                            <br>
+                                            <a href="{{route('refund-payment',$payment->id)}}"
+                                               class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">Payment
+                                                Refund</a>
                                         @endif
                                     </td>
                                     <td>
