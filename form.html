@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Acwa Power</title>
+    <link rel="shortcut icon" href="public/favicon.ico" type="image/svg" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+
+    <link rel="stylesheet" href="public/CSS/style.css" />
+</head>
+
+<body>
+<form method="post" id="frm" enctype="multipart/form-data">
+<!-- Submitter Form  Start -->
+<section class="logo" style="
+        padding-top: 30px;
+        padding-bottom: 30px;     ">
+    <a href="index.html" style="display: flex; justify-content: center; width: 22%;"><img class="logo-img formlogo" src="public/ACWA_Power_logo.png" alt="Acwa Power" /></a>
+
+</section>
+<section class="sectiontitle">
+    <div>
+        <div class="submitter" style="
+          font-family: 'Open Sans';
+          font-size: 20px;
+          font-weight: 700;
+          color: #015b96;
+          line-height: 38.13px;
+        ">
+            Submitter Details
+        </div>
+        <div class="submitter" style="
+          font-family: 'Open Sans';
+          font-size: 16px;
+          font-weight: 700;
+          color: #e60101;
+          line-height: 29.96px;
+          padding-bottom: 15px;
+        ">
+            All fields are mandatory(*)
+        </div>
+    </div>
+    <div class="required-field">
+        <div class="form-section">
+
+
+                <input class="required-field " type="text" id="c_id" name="c_id" maxlength="110" value="" oninput="validateInput(this)" style="display: none" />
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="name" class="placholder">Name *</label>
+                        <input class="required-field " type="text" id="name" name="name" maxlength="110" oninput="validateInput(this)" required/>
+                    </div>
+                    K<div class="form-row">
+                        <label class="placholder" for="contact">Contact Number *</label>
+                        <input class="required-field " type="tel" id="phone" name="phone" oninput="validateNumeric(event)" style="width:79%; height:100%; margin-left: 4.4rem;" required />
+<!--                         <input type="tel" id="phone" name="phone" style="width:79%; height:100%; margin-left: 4.4rem;">-->
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="placholder" for="email">Email *</label>
+                        <input class="required-field " type="email" id="email" name="email" required />
+                        <div id="emailError" class="error-message" style="display: none;">Invalid email address</div>
+
+                    </div>
+                    <span class="error" id="emailError"></span>
+                    <div class="form-row">
+                        <label class="placholder" for="occupation">Company /University *</label>
+                        <input class="required-field " type="text" id="occupation" name="occupation" required maxlength="110" oninput="validateInput(this)" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="placholder" for="country">Occupation *</label>
+                        <input class="required-field " type="text" id="country" name="country" required maxlength="110" oninput="validateInput(this)" />
+                    </div>
+                    <div class="form-row">
+                        <label class="placholder" for="university">Country *</label>
+                        <input class="required-field " type="text" id="university" required name="university" maxlength="110" oninput="validateInput(this)" />
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    <div>
+        <div class="idea" style="
+          font-family: 'Open Sans';
+          font-size: 22px;
+          font-weight: 700;
+          color: #015b96;
+          line-height: 38.13px;
+          padding-bottom: 15px;
+        ">
+            Idea Details
+        </div>
+        <!-- <div class="submitter" style="
+      font-family: 'Open Sans';
+      font-size: 16px;
+      font-weight: 700;
+      color: #e60101;
+      line-height: 29.96px;
+      padding-bottom: 15px;
+    ">
+            All fields are mandatory(*)
+        </div> -->
+    </div>
+    <div class="form-section">
+
+            <div class="form-group" id="idea_details_text">
+            </div>
+
+            <div class="media" style="display: flex; justify-content: space-evenly;" id="idea_details_radio">
+                <!--                <div class="checkbox-mobile">-->
+                <!--                    <div class="categorycheck">Category*</div>-->
+                <!--                    <div class="pcategory">-->
+                <!--                        <input class="required-checkbox" type="radio" id="product" name="group1[]" onchange="toggleCheckboxes1('product')" >-->
+                <!--                        <label for="product">Product</label>-->
+                <!--                    </div>-->
+
+                <!--                </div>-->
+            </div>
+            <div class="backbutton" style="padding-inline: 30px;">
+                <div class="submit-btn">
+                    <button type="button" onclick="goback2()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+
+                        Back
+                    </button>
+                </div>
+                <div class="submit-btn">
+                    <button type="button" onclick="proceedToIdeaDetails()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+                        Proceed to Evaluation Criteria Description <img class="icon-logo" src="public/icon.png"
+                                                                        alt="Acwa Power" style="align-items: center;"/>
+                    </button>
+                </div>
+            </div>
+
+    </div>
+    </div>
+</section>
+<!-- Submitter form end  Start -->
+
+<!-- Evaluation Criteria Description Start -->
+<section class="form-section-ecd" style="display: none;">
+    <div class="evaluation"
+         style="font-family: 'Open Sans'; font-size: 24px; font-weight: 800; color: #015b96; line-height: 38.13px; text-align: center; text-decoration: underline;">
+        Evaluation Criteria Description
+    </div>
+    <div class="form-sectioneva">
+
+
+            <div class="evalution" style="
+          font-family: 'Open Sans';
+          font-size: 20px;
+          font-weight: 700;
+          color: #015b96;
+          line-height: 38.13px;
+        ">
+                <div id="criteria-description">
+                </div>
+            </div>
+            <!--            <div>Innovation:</div>-->
+            <!--            <div style="font-family: 'Open Sans';-->
+            <!--                                font-size: 18px;-->
+            <!--                                font-weight: 600;-->
+            <!--                                color: #000000;-->
+            <!--                                line-height: 35.41px;">-->
+            <!--                The level of novelty and ingenuity in the proposed solution.-->
+            <!--            </div>-->
+            <!--            <div class="container" style="position: relative;">-->
+
+            <!--                <textarea id="word-limit-1" placeholder="Enter your text here" onkeyup="textAreaAdjust(this)"-->
+            <!--                          oninput="updateWordCount(this)" style="overflow:hidden"></textarea>-->
+            <!--                <p style="position: absolute; bottom: 0px; right: 6px; margin: 0; font-size: 12px; font-weight: 500;">-->
+            <!--                    Words left: <span class="wordsLeft">500</span></p>-->
+
+            <!--            </div>-->
+            <div class="backbutton">
+                <div class="submit-btn">
+                    <button type="button" onclick="goback()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+
+                        Back
+                    </button>
+                </div>
+                <div class="submit-btn">
+                    <button type="button" id="nextButton" onclick="proceedToEvaluationDetails()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+                        Proceed to Additional Evaluation Criteria <img class="icon-logo" src="public/icon.png"
+                                                                       alt="Acwa Power" style="align-items: center;"/>
+                    </button>
+                </div>
+            </div>
+
+
+    </div>
+</section>
+<!-- Evaluation Criteria Description End -->
+
+<!--   Additional Evaluation Criteria Start -->
+<section class="form-section-aec " style="display: none;">
+    <div class="evaluation"
+         style="font-family: 'Open Sans'; font-size: 24px; font-weight: 800; color: #015b96; line-height: 38.13px; text-align: center; text-decoration: underline;">
+        Additional Evaluation Criteria
+    </div>
+
+
+    <div class="form-sectioneva">
+
+
+            <div class="evalution" style="
+        font-family: 'Open Sans';
+        font-size: 20px;
+        font-weight: 700;
+        color: #015b96;
+        line-height: 38.13px;
+      ">
+
+                <div id="evaluation-criteria">
+                </div>
+
+                <!--                <div>Ease of implementation:</div>-->
+                <!--                <div style="font-family: 'Open Sans';-->
+                <!--                              font-size: 18px;-->
+                <!--                              font-weight: 600;-->
+                <!--                              color: #000000;-->
+                <!--                              line-height: 35.41px;">-->
+                <!--                    How easily can the idea be implemented ?-->
+                <!--                </div>-->
+                <!--                <div class="container" style="position: relative;">-->
+                <!--                    <textarea id="word-limit-8" placeholder="Enter your text here" onkeyup="textAreaAdjust(this)"-->
+                <!--                              oninput="updateWordCount(this)" style="overflow:hidden"></textarea>-->
+                <!--                    <p style="position: absolute; bottom: 0px; right: 6px; margin: 0; font-size: 12px; font-weight: 500;">-->
+                <!--                        Words left: <span class="wordsLeft">500</span></p>-->
+
+                <!--                </div>-->
+
+                <div style="color:#5C5B5B; font-weight: 800;">Optional:</div>
+                <div style="font-family: 'Open Sans';
+                              font-size: 18px;
+                              font-weight: 400;
+                              color: #5C5B5B;
+                              line-height: 38.13px;">
+                    1. Support the idea with the document or video (Video to not exceed more than 60 seconds. Please
+                    mention your full name and contact information at the beginning of the video. The size to not exceed
+                    8 MB)
+                </div>
+                <div id="fileList" style="text-align: center; padding-top: 20px; padding-bottom: 40px;">
+<!--                    <ul id="uploadedFiles" style="list-style: none;"></ul>-->
+<!--                    <label for="fileInput" class="uploadfile" style="-->
+<!--                                text-align: center;-->
+<!--                                color: #015B96;-->
+<!--                                font-family: 'Open Sans';-->
+<!--                                font-size: 20px;-->
+<!--                                font-weight: 800;-->
+<!--                                line-height: 38.13px;-->
+<!--                                width: 20%;-->
+<!--                                border-radius: 8px;-->
+<!--                                background-color: #dde8f0;;-->
+<!--                                border: 1px solid #015B96;-->
+<!--                                padding: 8px 60px;-->
+<!--                                cursor: pointer;-->
+<!--                                display:flex;-->
+<!--                                justify-content: center;-->
+<!--                                align-items: center;-->
+<!--                                gap:8px">-->
+<!--                        Upload-->
+<!--                        <i class="fas fa-file-upload"></i>-->
+<!--                    </label>-->
+<!--                    <input type="file" id="fileInput" name="attachment[]" style="display: none;" multiple>-->
+
+                </div>
+                <input type="file" id="fileInput1" name="attachment[]" multiple required>
+                <div style="color:#015B96; font-weight: 600;">
+                    <input type="checkbox" id="consentCheckbox" onchange="hideConsentMessage()">
+                    <label for="consentCheckbox">Consent:</label>
+                </div>
+                <div style="font-family: 'Open Sans';
+                              font-size: 14px;
+                              font-style: italic;
+                              font-weight: 400;
+                              color: #5C5B5B;
+                              line-height: 29.96px;
+                              padding-bottom: 20px;
+                              ">
+
+                    By making a submission, you understand and agree that you are not claiming any patent, trademark,
+                    copyright, or other right in the submission. You represent that everything you submit is your own o
+                    riginal work, that you have all necessary rights to disclose
+                    it to us, and that you are not violating the rights of any third party. You agree to indemnify and
+                    hold us harmless from any claims, demands, damages, liabilities and costs (including legal fees)
+                    asserted by any third party relating
+                    in any way to your breach of a representation. If we enter into a development agreement and/or
+                    exclusivity arrangement, we will have a shared foreground Intellectual Property.
+                </div>
+                <div id="consentMessage" style="display: none; color: red; font-weight: 600; padding-bottom: 20px;">
+                    Please check the consent to submit the form.
+                </div>
+                <div class="backbutton">
+                    <div class="submit-btn submitback">
+                        <button type="button" onclick="goback1()"
+                                style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; ">
+                            Back
+                        </button>
+                    </div>
+                    <div class="submit-btn"  style="padding-bottom: 40px;">
+                        <button type="submit"  onclick="return submitForm()" style="border-radius: 8px; font-size: 22px;">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+</section>
+<!--   Additional Evaluation Criteria end -->
+
+</form>
+
+<!--   Submit Button Logic Here  Start-->
+<script>
+    function hideConsentMessage() {
+        const consentMessage = document.getElementById("consentMessage");
+        consentMessage.style.display = "none";
+    }
+
+    function submitForm() {
+        const consentCheckbox = document.getElementById("consentCheckbox");
+        const consentMessage = document.getElementById("consentMessage");
+
+        if (consentCheckbox.checked) {
+            // Perform your data submission logic here
+
+            // Show SweetAlert confirmation
+
+        } else {
+            // Display message to check the consent
+            consentMessage.style.display = "block";
+            return false
+        }
+return true
+    }
+</script>
+<!--   Submit Button Logic Here End -->
+
+<script>
+    var input = document.querySelector("#phone");
+    var select = document.querySelector("#country");
+
+    // Initialize intlTelInput
+    var iti = window.intlTelInput(input, {
+        separateDialCode: true,
+        initialCountry: "auto",
+    });
+
+    // Populate the country dropdown
+    var countries = window.intlTelInputGlobals.getCountryData();
+    for (var i = 0; i < countries.length; i++) {
+        var country = countries[i];
+        var option = document.createElement("option");
+        option.value = country.iso2;
+        option.textContent = country.name + " (+" + country.dialCode + ")";
+        select.appendChild(option);
+    }
+
+    // Update intlTelInput when dropdown selection changes
+    select.addEventListener("change", function() {
+        iti.setCountry(this.value);
+    });
+</script>
+<!--  Email Validation Start -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    emailInput.addEventListener("input", function() {
+        if (!emailPattern.test(emailInput.value)) {
+            emailInput.classList.add("error");
+        } else {
+            emailInput.classList.remove("error");
+        }
+    });
+
+    emailInput.addEventListener("blur", function() {
+        if (!emailPattern.test(emailInput.value)) {
+            Toastify({
+                text: "Please enter a valid email address.",
+                duration: 5000,
+                backgroundColor: "#e60101",
+            }).showToast();
+        }
+    });
+</script>
+
+<!--  Email Validation End -->
+
+<!--  File Upload Validation Start -->
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadedFilesContainer = document.getElementById('uploadedFiles');
+
+    fileInput.addEventListener('change', handleFileUpload);
+
+    function handleFileUpload(event) {
+        const files = event.target.files;
+
+        for (const file of files) {
+            if (isValidFile(file)) {
+                const fileItem = document.createElement('li');
+                fileItem.className = 'row';
+                fileItem.style = 'display: flex; align-items:center; gap:8px; border:1px solid #015B96; padding:5px; border-radius:8px; font-weight:0; font-size:15px; color: #5C5B5B; margin-bottom: 5px;';
+
+                const fileIcon = document.createElement('i');
+                fileIcon.className = 'fas fa-file-alt';
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'content';
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.className = 'details';
+
+                const fileName = document.createElement('span');
+                fileName.className = 'name';
+                fileName.textContent = file.name + ' • Uploading';
+
+                const percentSpan = document.createElement('span');
+                percentSpan.className = 'percent';
+                percentSpan.textContent = '0%';
+
+                const progressBarDiv = document.createElement('div');
+                progressBarDiv.className = 'progress-bar';
+
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress';
+                progressBar.style.width = '0%';
+
+                progressBarDiv.appendChild(progressBar);
+
+                detailsDiv.appendChild(fileName);
+                detailsDiv.appendChild(percentSpan);
+
+                contentDiv.appendChild(detailsDiv);
+                contentDiv.appendChild(progressBarDiv);
+
+                fileItem.appendChild(fileIcon);
+                fileItem.appendChild(contentDiv);
+
+                uploadedFilesContainer.appendChild(fileItem);
+
+                // Your provided functionality
+                const fileTotal = Math.floor(file.size / 1000);
+                let fileSize;
+                (fileTotal < 1024) ? fileSize = fileTotal + " KB": fileSize = (file.size / (1024 * 1024)).toFixed(2) + " MB";
+
+                uploadFile(file, fileItem, fileSize);
+            }
+        }
+
+        fileInput.value = ''; // Clear the file input to allow uploading the same files again
+    }
+
+    function uploadFile(file, fileItem, fileSize) {
+
+        let loaded = 0;
+        const total = file.size;
+        const progressInterval = setInterval(() => {
+            loaded += Math.floor(total / 100);
+            const percent = Math.floor((loaded / total) * 100);
+            const progressBar = fileItem.querySelector('.progress');
+            progressBar.style.width = percent + '%';
+
+            const percentText = fileItem.querySelector('.percent');
+            percentText.textContent = percent + '%';
+
+            if (loaded >= total) {
+                clearInterval(progressInterval);
+
+                const checkIcon = document.createElement('i');
+                checkIcon.className = 'fas fa-check';
+
+                const deleteIcon = document.createElement('i');
+                deleteIcon.className = 'fas fa-times-circle delete-icon';
+                deleteIcon.style = 'color:red;';
+                deleteIcon.addEventListener('click', () => removeUploadedFile(fileItem));
+
+                // Update the status to "Uploaded"
+                fileItem.innerHTML = `
+                        <i class="fas fa-file-alt"></i>
+                        <div class="content upload">
+                            <div class="details">
+                                <span class="name">${file.name} • Uploaded</span>
+                                <span class="size">${fileSize}</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-check" style="color:green;" ></i>
+                    `;
+
+                fileItem.appendChild(deleteIcon);
+            }
+        }, 100);
+    }
+
+    function removeUploadedFile(fileItem) {
+        uploadedFilesContainer.removeChild(fileItem);
+    }
+
+    function isValidFile(file) {
+        const validExtensions = ['jpg', 'jpeg', 'png', 'pdf', 'mp3', 'mp4', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'csv', 'txt', 'rtf', 'cad', 'psd', 'cdr', 'vsd'];
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        const fileSizeInMB = file.size / (1024 * 1024); // Convert bytes to MB
+
+        if (!validExtensions.includes(fileExtension)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid File',
+                text: `The file "${file.name}" is not allowed. “Only file types ['jpg', 'jpeg', 'png', 'pdf', 'mp3', 'mp4', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'csv', 'txt', 'rtf', 'cad', 'psd', 'cdr', 'vsd'] are allowed.“`,
+                confirmButtonText: 'OK'
+            });
+            return false;
+        } else if (fileSizeInMB > 8) {
+            Swal.fire({
+                icon: 'error',
+                title: 'File Size Exceeded',
+                text: `The file "${file.name}" exceeds the maximum allowed size of 8 MB. Please upload a smaller file.`,
+                confirmButtonText: 'OK'
+            });
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+<!--  File Upload Validation End -->
+
+<!--  Phone Number Validation Start -->
+<script>
+    function validateNumeric(event) {
+        const inputElement = event.target;
+        const value = inputElement.value;
+        const numericRegex = /^[0-9+]+$/;
+
+        if (!numericRegex.test(value)) {
+            // If the entered value contains non-numeric characters, remove them
+            const cleanedValue = value.replace(/[^0-9+]/g, '');
+            inputElement.value = cleanedValue;
+        }
+    }
+</script>
+<!--  Phone Number Validation Start -->
+
+
+<!--  Textarea  Validation Start -->
+<script>
+    function textAreaAdjust(element) {
+        element.style.height = "1px";
+        element.style.height = (25 + element.scrollHeight) + "px";
+    }
+    const maxWords = 500;
+
+    function updateWordCount(textarea) {
+        const wordsRemaining = maxWords - countWords(textarea.value);
+        const wordsLeftElement = textarea.nextElementSibling.querySelector('.wordsLeft'); // Corrected this line
+
+        var inputValue = textarea.value;
+
+        if (/\<script.*\>/i.test(inputValue) || /\<.*\>/i.test(inputValue)) {
+            Toastify({
+                text: 'Invalid input: HTML or script tags are not allowed.',
+                duration: 5000,
+                backgroundColor: "#e60101",
+            }).showToast();
+            textarea.value = ''; // Clear the textarea
+            return false;
+        }
+
+        if (wordsRemaining < 0) {
+            const exceededWords = -wordsRemaining;
+            const words = textarea.value.trim().split(/\s+/).slice(0, maxWords);
+            textarea.value = words.join(' ');
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Word Limit Exceeded',
+                text: `Word limit exceeded by ${exceededWords} words. Please remove ${exceededWords} words to continue.`,
+            });
+        }
+
+        wordsLeftElement.textContent = `${wordsRemaining}/${maxWords}`;
+        textarea.scrollTop = textarea.scrollHeight;
+    }
+
+
+    function countWords(text) {
+        return text.trim().split(/\s+/).length;
+    }
+
+    const textareas = document.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('input', () => updateWordCount(textarea));
+    });
+</script>
+<!--  Textarea  Validation End -->
+
+<!--  Back Button Start -->
+<script>
+    function goback() {
+        const submitterSection = document.querySelector('.sectiontitle');
+        const ideaDetailsSection = document.querySelector('.form-section-ecd');
+        submitterSection.style.display = 'block';
+        ideaDetailsSection.style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function goback1() {
+        const ecdDetailsSection = document.querySelector('.form-section-ecd');
+        const aecDetailsSection = document.querySelector('.form-section-aec');
+        ecdDetailsSection.style.display = 'block';
+        aecDetailsSection.style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function goback2() {
+        history.back();
+        window.scrollTo(0, 0);
+    }
+</script>
+<!--  Back Button End -->
+
+<!--  Proceeded Button Start -->
+<script>
+    function proceedToEvaluationDetails() {
+        var requiredFields = document.querySelectorAll('.required-field1');
+
+        var isValid = true;
+
+        for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].value === '') {
+                isValid = false;
+                displayErrorPopup('Please fill in all required fields.');
+                break;
+            }
+        }
+        if (isValid) {
+            document.querySelector('.form-section-ecd').style.display = 'none';
+            document.querySelector('.form-section-aec').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+    }
+
+    function displayErrorPopup(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: message,
+        });
+    }
+</script>
+<!--  Proceeded Button End -->
+
+<!--  Input  Button Validation Start -->
+<script>
+    function validateInput(inputElement) {
+        const validPattern = /^[A-Za-z0-9\s\-]+$/;
+        const maxChars = 100;
+        const inputValue = inputElement.value;
+
+        if (!validPattern.test(inputValue)) {
+            if (!emailPattern.test(emailInput.value)) {
+                Toastify({
+                    text: 'Please enter valid characters (letters, spaces, and hyphens).',
+                    duration: 5000,
+                    backgroundColor: "#e60101",
+                }).showToast();
+            }
+            inputElement.value = inputValue.replace(/[^A-Za-z0-9\s\-]+/g, '');
+        } else if (inputValue.length > maxChars) {
+            Toastify({
+                text: `Maximum ${maxChars} characters allowed.`,
+                duration: 5000,
+                backgroundColor: "#e60101",
+            }).showToast();
+            inputElement.value = inputValue.slice(0, maxChars);
+        }
+    }
+
+    function proceedToIdeaDetails() {
+        var requiredFields = document.querySelectorAll('.required-field');
+        const emailInput = document.getElementById("email");
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const groups = document.querySelectorAll('input[type="radio"]:checked');
+        const groupCount = 4; // Adjust this value based on the number of groups
+        const checkbox = document.querySelectorAll('input[type="checkbox"]:checked');
+
+        var isValid = true;
+
+        // for (var i = 0; i < requiredFields.length; i++) {
+        //     if (requiredFields[i].value === '') {
+        //         isValid = false;
+        //         displayErrorPopup('Please fill in all required fields.');
+        //         return;
+        //     }
+        // }
+
+        if (!emailPattern.test(emailInput.value)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Email',
+                text: 'Please enter a valid email address (abc@example.com)',
+            });
+            return;
+        }
+        // if (groups.length !== groupCount) { // Each group has two radio buttons
+        //     isValid = false;
+        //     console.log("groupslength", groups.length);
+        //     displayErrorPopup("Please make a selection in all radio button groups.");
+        //     return;
+        // }
+        // if (checkbox.length < 1) {
+        //     isValid = false;
+        //     console.log("checkboxlength", checkbox.length);
+        //     displayErrorPopup("Please make a selection in checkbox group.");
+        //     return;
+        // }
+
+        if (isValid) {
+            document.querySelector('.sectiontitle').style.display = 'none';
+            document.querySelector('.form-section-ecd').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function displayErrorPopup(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: message,
+        });
+    }
+</script>
+<!--  Input  Button Validation End -->
+
+<!--  Checkbox  Button Validation Start -->
+<script>
+    function toggleCheckboxes1(selectedCheckbox) {
+        const checkboxes = document.querySelectorAll('[name^="group1"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.id !== selectedCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+
+    function toggleCheckboxes2(selectedCheckbox) {
+        const checkboxes = document.querySelectorAll('[name^="group2"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.id !== selectedCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+
+    function toggleCheckboxes3(selectedCheckbox) {
+        const checkboxes = document.querySelectorAll('input[name="Type"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.id !== selectedCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+
+    function toggleCheckboxes4(selectedCheckbox) {
+        const otherInput = document.getElementById("otherInput2");
+        const otherCheckbox = document.getElementById("other");
+        const checkboxes = document.querySelectorAll('input[name="objective"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.id !== selectedCheckbox) {
+                checkbox.checked = false;
+            }
+            if (checkbox.id === 'other') {
+                otherInput.disabled = !otherCheckbox.checked;
+            }
+        });
+    }
+
+    function toggleInputBox() {
+        const otherInput = document.getElementById("otherInput");
+        const othersCheckbox = document.getElementById("others");
+        otherInput.disabled = !othersCheckbox.checked;
+    }
+
+
+    document.getElementById("others").addEventListener("change", toggleInputBox);
+    document.getElementById("other").addEventListener("change", toggleInputBox2);
+</script>
+<!--  Checkbox  Button Validation End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the URLSearchParams object
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Get the value of the 'id' parameter from the URL
+        const id = urlParams.get('id');
+
+        var idea_details_text = document.getElementById('idea_details_text');
+        var idea_details_radio = document.getElementById('idea_details_radio');
+        var idea_details_dropdown = document.getElementById('idea_details_dropdown');
+        var criteria_description = document.getElementById('criteria-description');
+        var evaluation_criteria = document.getElementById('evaluation-criteria');
+        $.ajax({
+            url: 'https://acwanet.local/api/campaign_idea_details1',
+            data: {id: id}, // Pass the extracted id parameter to the API
+            dataType: 'json',
+            method: 'GET',
+            success: function (response) {
+                var answers = response;
+                answers.forEach(function (answer) {
+                    if (answer.type == 'idea_details') {
+                        if (answer.input_type == 'text' || answer.input_type == 'date' || answer.input_type == 'number') {
+                            var idea_details_textContent = `
+                    <div class="form-row">
+                        <label for="name" class="placholder">${answer.question}*</label>
+                        <input class="required-field " type="${answer.input_type}" id="qs_${answer.id}" name="qs_${answer.id}" maxlength="110"
+                               oninput="validateInput(this)" />
+                    </div>
+                    `;
+                            idea_details_text.innerHTML += idea_details_textContent;
+                        } else if (answer.input_type == 'radio' || answer.input_type == 'checkbox') {
+                            var jsonString = answer.input_value;
+                            var decodedArray = JSON.parse(jsonString);
+                            var questionNameDisplayed = false;
+                            decodedArray.forEach((value, index) => {
+                                var idea_details_radioContent = '';
+                                console.log(value)
+                                // Check if it's the first iteration and the question name hasn't been displayed yet
+                                if (index === 0 && !questionNameDisplayed) {
+                                    idea_details_radioContent += `
+<div style="width: 100%">
+ <div class="categorycheck">${answer.question}*</div>
+
+                `;
+                                    questionNameDisplayed = false; // Set the flag to indicate that the question name has been displayed
+                                }
+
+                                idea_details_radioContent += `
+                <div class="" style="width: 98.5%;">
+
+                    <div class="pcategory">
+                        <input class="required-checkbox" value="${value}" type="${answer.input_type}" id="rad_${index}" name="rad_${answer.id}" >
+                        <label for="product">${value}</label>
+                    </div>
+                </div>
+</div>
+            `;
+
+                                // Append 'idea_details_radioContent' to the radio container
+                                idea_details_radio.innerHTML += idea_details_radioContent;
+                            });
+//                             decodedArray.forEach((value, index) => {
+//                                 var idea_details_radioContent = `
+// <div class="checkbox-mobile">
+//                     <div class="categorycheck">${answer.question}*</div>
+//                     <div class="pcategory">
+//                         <input class="required-checkbox" value="${value}" type="${answer.input_type}" id="rad_${answer.id}" name="rad_${answer.id}" >
+//                         <label for="product">${value}</label>
+//                     </div>
+//                     </div>
+//                     `;
+//                                 idea_details_radio.innerHTML += idea_details_radioContent;
+//                             });
+
+                        }
+                    } else if (answer.type == 'criteria_description' || answer.type == 'evaluation_criteria') {
+                        var answerContent = `
+                    <div id="${answer.label_name}">
+                    <div>${answer.label_name}:</div>
+                    </div>
+                     <div style="font-family: 'Open Sans';
+                                font-size: 18px;
+                                font-weight: 600;
+                                color: #000000;
+                                line-height: 35.41px;">
+                 ${answer.question}
+            </div>
+             <div class="container" style="position: relative;">
+
+                            <textarea id="qs_${answer.id}" name="qs_${answer.id}" placeholder="Enter your text here" onkeyup="textAreaAdjust(this)"
+                                      oninput="updateWordCount(this)" style="overflow:hidden"></textarea>
+                            <p style="position: absolute; bottom: 0px; right: 6px; margin: 0; font-size: 12px; font-weight: 500;">
+                                Words left: <span class="wordsLeft">500</span></p>
+
+                        </div>
+
+</div>
+                `;
+                        if (answer.type == 'criteria_description') {
+                            criteria_description.innerHTML += answerContent;
+                        } else {
+                            evaluation_criteria.innerHTML += answerContent;
+                        }
+
+                    }
+                    // if (answer.type == 'criteria_description') {
+                    // criteria_description.innerHTML += answerContent;
+                    // } else {
+                    // evaluation_criteria.innerHTML += answerContent;
+                    // }
+                });
+            }
+        });
+    });
+
+    // Assuming you have a "Save" button with the id "save-button"
+    // $('#save-button').click(function () {
+    //     const formData = []; // Create an array to store field data
+    //
+    //     // Loop through the input fields with IDs and names in the pattern "qs_X"
+    //     $('input[id^="qs_"]').each(function () {
+    //         const fieldId = $(this).attr('id');
+    //         const fieldValue = $(this).val();
+    //         const fieldNumber = fieldId.split('_')[1];
+    //
+    //         // Push field data to the formData array
+    //         formData.push({
+    //             id: fieldId, // Store the dynamically generated ID
+    //             number: fieldNumber, // Store the field number
+    //             value: fieldValue,
+    //         });
+    //     });
+    //
+    //     // Make an AJAX POST request
+    //     $.ajax({
+    //         url: '/api/save-data', // Replace with your API endpoint
+    //         method: 'POST',
+    //         data: { formData }, // Send the formData array to the backend
+    //         success: function (response) {
+    //             // Handle success, e.g., show a success message
+    //             alert(response.message);
+    //         },
+    //         error: function (error) {
+    //             // Handle errors, e.g., display an error message
+    //             alert('An error occurred while saving data.');
+    //             console.error(error);
+    //         }
+    //     });
+    // });
+    // Get the id parameter from the URL
+
+    // Set the value of the input field with id="c_id"
+
+
+</script>
+<script>
+    $(document).on('submit','#frm',function (e){
+        var urlParams = new URLSearchParams(window.location.search);
+        var id = urlParams.get('id');
+
+// Set the value of the input field with id="c_id"
+        document.getElementById('c_id').value = id;
+        e.preventDefault();
+        // var formData=$('#frm').serialize();
+        var formData = new FormData(document.getElementById('frm'));
+        // var totalfiles = document.getElementById('fileInput1').files.length;
+        // for (var index = 0; index < totalfiles; index++) {
+        //     formData.append("attachment[]", document.getElementById('fileInput1').files[index]);
+        // }
+        // console.log(formData);
+        // console.log(new FormData(document.getElementById('frm')));
+        // // return false;
+        $.ajax({
+            url: 'https://acwanet.local/api/save_campaign_idea',
+            type:'POST',
+            processData: false,   // Prevent jQuery from processing data
+            contentType: false,   // Prevent jQuery from setting contentType
+            dataType: 'JSON',
+            data:formData,
+            success:function (){
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Form submitted successfully!',
+                    text: 'Thank you for your submission.',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Reset the form data and consent
+                        var form = document.getElementById("frm");
+
+                        form.reset();
+                        const consentCheckbox = document.getElementById("consentCheckbox");
+                        consentCheckbox.checked = false;
+
+                        // Optional: Scroll back to the top of the page
+                        window.scrollTo(0, 0);
+                    }
+                });
+            }
+        })
+    })
+</script>
+</body>
+
+</html>

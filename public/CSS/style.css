@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: Open Sans;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    padding: 10px;
+}
+
+.container1 {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.constentdesc {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+logo-img {
+    max-width: 100%;
+}
+
+.icon-logo {
+    max-width: 100%;
+}
+
+.constent {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.submitter {
+    width: 100%;
+    padding-left: 28px;
+    padding-right: 20px;
+}
+
+.evalution {
+    width: 100%;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.idea {
+    width: 100%;
+    padding-left: 28px;
+    padding-right: 20px;
+}
+
+.evaluation {
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.title {
+    color: rgba(1, 91, 150, 1);
+    text-align: center;
+    padding-top: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    padding-bottom: 20px;
+}
+
+.campaign-box {
+    background: #a2b4c0;
+    width: 98%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 40px;
+    overflow-y: hidden;
+}
+
+.campaign-info {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    line-height: 29.96px;
+    /* padding: 0 30px; */
+}
+
+.proceed-text {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 32.68px;
+    color: #000000;
+}
+
+.button {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.rounded-full {
+    color: #ffffff;
+    background-color: #015b96;
+    border: 3px solid #23559e;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+
+/* Style for the form section */
+
+.form-section {
+    max-width: 97%;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    background: #dde8f0;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.form-sectioneva {
+    max-width: 97%;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    background: #dde8f0;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.form-section h2 {
+    text-align: center;
+}
+
+
+/* Style for the form row (two fields per row) */
+
+.form-row {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.placholder {
+    min-width: 180px;
+    width: 25%;
+    color: #015b96;
+    font-family: Open Sans;
+    font-size: 17px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 35.41px;
+    white-space: nowrap;
+}
+
+.categorycheck {
+    color: #015b96;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 800;
+    /* padding-left: 53px; */
+    padding-bottom: 20px;
+}
+
+.objectivecheck {
+    color: #015b96;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 800;
+    padding-left: 53px;
+    padding-bottom: 20px;
+}
+
+.ocategory {
+    color: #000000;
+    font-family: Open Sans;
+    font-size: 16px;
+    padding-left: 53px;
+    padding-bottom: 10px;
+}
+
+.pcategory {
+    color: #000000;
+    font-family: Open Sans;
+    font-size: 16px;
+    /* padding-left: 53px; */
+    padding-bottom: 10px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    background-color: #dde8f0;
+    width: 58%;
+    padding: 8px;
+    border: 1px solid #015b96;
+    border-radius: 8px;
+    max-height: 2.5rem;
+}
+
+input:focus {
+    background-color: #fff !important;
+    outline: 1px solid #015b96;
+}
+
+.checkbox-mobile {
+    width: 20%;
+}
+
+
+/* Style for the submit button */
+
+.submit-btn {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+.submit-btn button {
+    padding: 10px 20px;
+    background-color: #015b96;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn button:hover {
+    background-color: #015b96;
+}
+
+#fileList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-none {
+    display: none;
+}
+
+.OtherInputclass {
+    width: 97%;
+}
+
+.OtherInputclass1 {
+    width: 20%;
+}
+
+.container {
+    width: 100%;
+    max-height: 100vh;
+    padding-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 3rem;
+    font-size: 16px;
+    font-family: Open Sans;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #015B96;
+    border-radius: 8px;
+    resize: none;
+}
+
+textarea:focus {
+    outline: 1px solid #015B96;
+}
+
+.backbutton {
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submitback {
+    display: block;
+}
+
+
+/* General styles For Upload Buttton */
+
+.uploaded-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+.remove-icon {
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+}
+
+
+/* General styles For Mobile Responsive */
+
+@media only screen and (max-width: 600px) {
+    .form-row {
+        flex-basis: 100%;
+    }
+    .campaign-info {
+        padding: 0 0;
+    }
+}
+
+.media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+/* Styles for each category container */
+
+div[style*="width: 100%"] {
+    width: 100%;
+    padding: 10px;
+}
+
+
+/* Styles for the checkbox labels */
+
+label {
+    margin-left: 5px;
+}
+
+
+/* Media query for mobile view */
+
+@media only screen and (max-width: 600px) {
+    /* Reset the flexbox for mobile */
+    .media {
+        flex-direction: column;
+        align-items: center;
+    }
+    .checkbox-mobile {
+        width: 100%;
+    }
+    .form-group input {
+        width: 46%;
+    }
+    .placholder {
+        width: 48%;
+    }
+    .uploadfile {
+        width: 50% !important;
+    }
+    .backbutton {
+        display: block;
+        justify-content: center;
+    }
+    .submit-btn {
+        padding-bottom: 0px;
+    }
+    .submit-btn button {
+        width: 90%;
+    }
+    .submitback {
+        display: flex;
+    }
+    /* Set width to 100% for each category container in mobile view */
+    div[style*="width: 100%"] {
+        width: 100%;
+        padding: 10px 0;
+    }
+    /* Center align category labels in mobile view */
+    .categorycheck {
+        padding-left: 3rem;
+        /* margin-top: 2rem; */
+    }
+    /* Adjust input and label styles in mobile view */
+    .pcategory {
+        display: flex;
+        align-items: center;
+        padding-left: 3rem;
+    }
+    .pcategory input[type="checkbox"] {
+        flex: 1;
+    }
+    .pcategory label {
+        flex: 12;
+    }
+    /* Adjust input box for "Other, please specify" in mobile view */
+    .OtherInputclass {
+        width: 50%;
+        margin-left: 3rem;
+        margin-top: 10px;
+    }
+    .OtherInputclass1 {
+        width: 60%;
+        margin-top: 10px;
+    }
+    /* Styles for "Type of Idea" and "Stage of Idea" sections in mobile view */
+    .stage-idea,
+    .type-idea {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .stage-idea input[type="checkbox"],
+    .stage-idea label,
+    .type-idea input[type="checkbox"],
+    .type-idea label {
+        width: 50%;
+        /* Adjust the width as needed for spacing */
+    }
+}
