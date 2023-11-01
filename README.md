@@ -24,12 +24,19 @@
   - composer require mews/captcha (math captcha)
   - composer require razorpay/razorpay (Razorpay Payment Gateway Integration)
 
-  - **Install Xampp Path Set** (role-permissions-blog\config\database.php) // Project & Sql zip donwload
+  - **Install Xampp Path Set** (path :- **role-permissions-blog\config\database.php**) // Project & Sql zip donwload
    - 'dump' => [
                 'dump_binary_path' => 'C:/Xampp/mysql/bin',
                 'use_single_transaction' ,
                 'timeout' => 60 * 5,
             ]
+
+-**Add match captcha validation** (path :- **role-permissions-blog\vendor\laravel\ui\auth-backend\AuthenticatesUsers.php**)
+ $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'captcha' => 'required|captcha',
+        ]);
 
 
 ## About Laravel
