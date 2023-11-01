@@ -21,6 +21,18 @@
             border-radius: 50%;
             height: 100%;
         }
+        .user .profile .info {
+            padding: 53px 59px;
+            text-align: center;
+            background-color: #fff;
+            white-space: nowrap;
+            background-color: rgba(100, 100, 100, 0.9);
+            color: #fff;
+            position: absolute;
+            top: -39px;
+            bottom: 0;
+            left: -23px;
+        }
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

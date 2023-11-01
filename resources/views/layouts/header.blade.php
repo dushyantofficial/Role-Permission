@@ -21,7 +21,7 @@
     &nbsp;
       <ul class="app-nav">
           <li class="app-search">
-              <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine">Cache Clear</a>
+              <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache Clear</a>
               </a>&nbsp;
 
           </li>
