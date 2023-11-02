@@ -188,9 +188,13 @@
                                                    value="Payment is paid"
                                                    class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine payment">
                                             <br>
-                                            <a href="{{route('refund-payment',$payment->id)}}"
-                                               class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">Payment
-                                                Refund</a>
+
+
+                                            <button
+                                                class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
+                                                data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">
+                                                Payment Refund
+                                            </button>
                                         @endif
                                     </td>
                                     <td>
@@ -525,6 +529,65 @@
                                         location.reload(); // Reload the page
                                     }
                                 });
+                            },
+                            error: function (error) {
+                                // Handle the error response (e.g., show an error message)
+                                Swal.fire('Error', 'An error occurred while deleting the record.', 'error');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    {{--  Refund Payment With Ajax  --}}
+    <script>
+        $(document).ready(function () {
+            // Add click event listener to the delete button
+            $(document).on('click', '.refund-payment', function () {
+                var id = $(this).data('payment-id');
+                var amount = $(this).data('amount'); // Use 'data-amount' directly
+                var successMessage = 'Want to pay ₹' + amount;
+                // Show a SweetAlert confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: successMessage,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, payment refund it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Send an AJAX request to delete the resource record
+                        $.ajax({
+                            type: 'GET',
+                            url: '{{ route('refund-payment') }}',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                id: id,
+                            },
+                            success: function (response) {
+                                // Handle the success response (e.g., reload the page or remove the deleted item from the DOM)
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Refunded!',
+                                        text: response.success,
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            location.reload(); // Reload the page
+                                        }
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Not Refunded!',
+                                        text: response.error,
+                                    });
+                                }
                             },
                             error: function (error) {
                                 // Handle the error response (e.g., show an error message)

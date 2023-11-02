@@ -66,10 +66,10 @@ class PaymentController extends Controller
         return view('payment.razorpayView',compact('payment_details'));
     }
 
-    public function refundPayment($paymentId)
+    public function refundPayment(Request $request)
     {
         // Fetch the payment details from your database
-        $payment = Payment::find($paymentId); // Replace 'Payment' with your model
+        $payment = Payment::find($request->id); // Replace 'Payment' with your model
 
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
 
@@ -88,10 +88,9 @@ class PaymentController extends Controller
             PaymentRefund::create($refund->toArray());
             // Handle notifications and logging
             // ...
-
-            return redirect()->back()->with('success', "Payment of ₹$payment->amount has been refunded successfully.");
+            return response()->json(['success' => "Payment of ₹$payment->amount has been refunded successfully."]);
         } catch (\Razorpay\Api\Errors\Error $e) {
-            return redirect()->back()->with('danger', 'Error occurred while processing the refund: ' . $e->getMessage());
+            return response()->json(['error' => 'Error occurred while processing the refund: ' . $e->getMessage()]);
         }
     }
 
