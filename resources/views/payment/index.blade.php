@@ -69,7 +69,9 @@
         .modal {
             top: 54px !important;
         }
-
+        .razorpay-payment-button{
+            margin-top: 15px !important;
+        }
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -182,16 +184,13 @@
                                                         data-prefill.email="{{$payment->user_name->email}}"
                                                         data-theme.color="#ff7529">
                                                 </script>
-                                            </form>
+                                                 </form>
                                         @else
                                             <input type="button" data-amount="{{$payment->amount}}"
                                                    value="Payment is paid"
                                                    class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine payment">
-                                            <br>
-
-
                                             <button
-                                                class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
+                                               style="margin-top: 5px !important;" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
                                                 data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">
                                                 Payment Refund
                                             </button>
@@ -371,7 +370,13 @@
     </p>
 @endsection
 @push('page_scripts')
+    <script>
+            var paymentButtons = document.querySelectorAll('.razorpay-payment-button');
 
+            paymentButtons.forEach(function (paymentButton) {
+                paymentButton.classList.add('btn', 'btn-sm', 'btn-shadow', 'btn-outline-primary', 'btn-hover-shine');
+            });
+    </script>
     <script>
         $(document).ready(function (e) {
             $(document).on('click', '.payment', function () {

@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\PaymentHistory;
-use App\Models\User;
 use App\Models\PaymentRefund;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
     public function index()
     {
+        $pending = 'pending';
+        $refund = 'refunded';
+        $paid = 'paid';
+
         $users = User::where('status', 'active')->get();
-        $payments = Payment::all();
+        $payments = Payment::
+        orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))->get();
         return view('payment.index', compact('users', 'payments'));
     }
 
