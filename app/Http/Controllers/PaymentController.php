@@ -20,7 +20,8 @@ class PaymentController extends Controller
 
         $users = User::where('status', 'active')->get();
         $payments = Payment::
-        orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))->get();
+        orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))
+            ->orderBy('created_at','desc')->get();
         return view('payment.index', compact('users', 'payments'));
     }
 
