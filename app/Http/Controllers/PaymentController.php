@@ -6,22 +6,49 @@ use App\Models\Payment;
 use App\Models\PaymentHistory;
 use App\Models\PaymentRefund;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+        $status = $request->input('status');
+
         $pending = 'pending';
         $refund = 'refunded';
         $paid = 'paid';
 
+        $query = Payment::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+        // Check if a status is provided and add a status filter
+        if (!empty($status)) {
+            $query->where('status', $status);
+        }
+
+        // Get the filtered records
+        $payments = $query->orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))
+            ->orderBy('created_at', 'desc')->get();
         $users = User::where('status', 'active')->get();
-        $payments = Payment::
-        orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))
-            ->orderBy('created_at','desc')->get();
         return view('payment.index', compact('users', 'payments'));
     }
 
@@ -101,10 +128,40 @@ class PaymentController extends Controller
         }
     }
 
-    public function payment_history()
+    public function payment_history(Request $request)
     {
-        $payment_historys = PaymentHistory::all();
-        return view('payment.payment_history', compact('payment_historys'));
+
+
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+        $method = $request->input('payment_method');
+
+        $query = PaymentHistory::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+        // Check if a status is provided and add a status filter
+        if (!empty($method)) {
+            $query->where('method', $method);
+        }
+
+        // Get the filtered records
+        $payment_historys = $query->get();
+        $users = User::where('status', 'active')->get();
+        $payment_methods = PaymentHistory::select('method')->distinct()->get();
+
+        return view('payment.payment_history', compact('users', 'payment_historys', 'payment_methods'));
     }
 
     public function payment_history_delete(Request $request)
@@ -115,10 +172,32 @@ class PaymentController extends Controller
 
     }
 
-    public function refund_payment_history()
+    public function refund_payment_history(Request $request)
     {
-        $refund_payments_historys = PaymentRefund::all();
-        return view('payment.refund_payment_history', compact('refund_payments_historys'));
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+
+        $query = PaymentRefund::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+
+        // Get the filtered records
+        $refund_payments_historys = $query->get();
+        $users = User::where('status', 'active')->get();
+
+        return view('payment.refund_payment_history', compact('users', 'refund_payments_historys'));
     }
 
     public function refund_payment_history_delete(Request $request)

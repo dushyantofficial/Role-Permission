@@ -89,15 +89,62 @@
             </div>
 
         </div>
-
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
-
+            </span>
                 <!-- Modal -->
             </div>
             <div class="col-md-12">
                 <div class="tile">
+                    <form method="GET" action="" class="form-inline">
+                        <div class="row">
+                            <div class="col-1 mt-4 ml-2">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar filter"></i>&nbsp;
+                                <span id="dates"></span> <b class="caret"></b>
+                            </div>
+                            <div class="form-group col-4">
+                                <div>
+                                    <input id="reportrange" name="date" value=""
+                                           class="pull-left form-control daterange"
+                                           style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;"
+                                           placeholder="Select Date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ml-2">
+                            <select class="form-control" name="user_id" id="">
+                                <option value="">---Select User Name---</option>
+                                @foreach($users as $user)
+                                    <option
+                                        value="{{$user->id}}" {{request('user_id') == $user->id  ? 'selected' : ''}} >{{$user->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="ml-3">
+                            <select class="form-control" name="payment_method" id=""
+                                    style="background: #fff; cursor: pointer; padding: 0px 1px; border: 1px solid #ccc;">
+                                <option value="">---Select Method---</option>
+                                @foreach($payment_methods as $payment_method)
+                                    <option
+                                        value="{{$payment_method->method}}" {{request('payment_method') == $payment_method->method  ? 'selected' : ''}}>
+                                        {{ucfirst($payment_method->method)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button href="#" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine ml-3"
+                                id="filter">Filter
+                        </button>
+                        <a href="{{route('payment-history')}}"
+                           class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine ml-3">Reset</a>
+                        <div class="ml-3">
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
+                                    onclick="ExportToExcel('xlsx')">Excel File
+                            </button>
+
+                        </div>
+                    </form>
                     <div class="tile-body sortableTable__container table-responsive" id="my_report">
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
@@ -184,7 +231,13 @@
             </div>
         </div>
 
-
+        @if(request('date'))
+            @php
+                $date = list($startDate, $endDate) = explode(' - ', request('date'));
+            @endphp
+            <input type="hidden" name="" id="start_date" value="{{$date[0]}}">
+            <input type="hidden" name="" id="end_date" value="{{$date[1]}}">
+        @endif
     </main>
 
     <p class="text-center text-primary"><small>Developer Name :- <b style="color: red">Dushyant Chhatraliya</b></small>
@@ -242,5 +295,74 @@
         });
     </script>
 
+    {{--  Date Picker  --}}
+    <script type="text/javascript">
+
+        $(function () {
+            var start_date = $("#start_date").val();
+            var end_date = $("#end_date").val();
+
+            if (start_date && end_date) {
+                // Split the date range into start and end dates
+                var start = start_date;
+                var end = end_date;
+
+                function cb(start, end) {
+                    var formattedStart = start.format('MMMM D, YYYY');
+                    var formattedEnd = end.format('MMMM D, YYYY');
+                    var formattedDateRange = formattedStart + ' - ' + formattedEnd;
+
+                    $('#reportrange span').html(formattedDateRange);
+                    $('.filter').trigger('change');
+                }
+
+            } else {
+                var start = moment().subtract(29, 'days');
+                var end = moment();
+
+                function cb(start, end) {
+                    // alert('call');
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                    $('.filter').trigger('change');
+                }
+            }
+
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            // cb(start, end);
+
+        });
+    </script>
+
+    {{--  Excel Download  --}}
+    @php
+        $user = request()->user_id;
+        if (isset($user)){
+        $user_report = \App\Models\User::findOrfail($user);
+        }
+    @endphp
+    <script>
+        function ExportToExcel(type, fn, dl) {
+            var elt = document.getElementById('my_report')
+            var wb = XLSX.utils.table_to_book(elt, {sheet: "sheet1"});
+            return dl ?
+                XLSX.write(wb, {bookType: type, bookSST: true, type: 'base64'}) :
+                XLSX.writeFile(wb, fn || ('<?php if (isset($user_report)) {
+                    echo $user_report->name;
+                } ?>_Reports.' + (type || 'xlsx')));
+        }
+    </script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @endpush
