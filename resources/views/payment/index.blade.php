@@ -235,9 +235,8 @@
                                                    value="Payment is paid"
                                                    class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine payment">
                                             <button
-                                               style="margin-top: 5px !important;" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
-                                                data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">
-                                                Payment Refund
+                                               style="margin-top: 5px" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
+                                                data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">Payment Refund
                                             </button>
                                         @endif
                                     </td>
@@ -276,8 +275,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">X
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
@@ -368,7 +367,9 @@
         ">
                             All fields are mandatory(*)
                         </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form id="add_form" action="{{route('payment.store')}}" method="post"

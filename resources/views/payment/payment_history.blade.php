@@ -184,7 +184,7 @@
                                     </td>
                                     <td>{{ $payment->entity }}</td>
                                     <td>
-                                        <label class="badge badge-success">{{$payment->method}}</label>
+                                        <label class="badge badge-success">{{ucfirst($payment->method)}}</label>
                                     </td>
                                     <td>{{ $payment->description }}</td>
                                     <td>
