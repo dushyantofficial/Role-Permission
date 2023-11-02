@@ -132,3 +132,8 @@ Route::get('/history_payment', [App\Http\Controllers\PaymentController::class, '
 Route::get('/payment_history_delete', [App\Http\Controllers\PaymentController::class, 'payment_history_delete'])->name('payment-history-delete');
 Route::get('/refund_payment_history', [App\Http\Controllers\PaymentController::class, 'refund_payment_history'])->name('refund-payment-history');
 Route::get('/refund_payment_history_delete', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_delete'])->name('refund-payment-history-delete');
+
+//Payment Pdf
+Route::get('/payment_pdf', [App\Http\Controllers\PaymentController::class, 'payment_pdf'])->name('payment-pdf');
+Route::get('/payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'payment_history_pdf'])->name('payment-history-pdf');
+

@@ -133,17 +133,26 @@
                             <select class="form-control" name="status" id=""
                                     style="background: #fff; cursor: pointer; padding: 0px 1px; border: 1px solid #ccc;">
                                 <option value="">---Select Status---</option>
-                                <option value="pending" {{request()->status == 'pending'  ? 'selected' : ''}}>Pending</option>
-                                <option value="refunded" {{request()->status == 'refunded'  ? 'selected' : ''}}>Refunded</option>
+                                <option value="pending" {{request()->status == 'pending'  ? 'selected' : ''}}>Pending
+                                </option>
+                                <option value="refunded" {{request()->status == 'refunded'  ? 'selected' : ''}}>
+                                    Refunded
+                                </option>
                                 <option value="paid" {{request()->status == 'paid'  ? 'selected' : ''}}>Paid</option>
                             </select>
                         </div>
 
-                        <button href="#" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine ml-3" id="filter">Filter</button>
-                        <a href="{{route('payment.index')}}" class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine ml-3">Reset</a>
+                        <button href="#" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine ml-3"
+                                id="filter">Filter
+                        </button>
+                        <a href="{{route('payment.index')}}"
+                           class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine ml-3">Reset</a>
                         <div class="ml-3">
-{{--                            <button type="button" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" onclick="pdfreport()">Pdf File</button>&nbsp;&nbsp;--}}
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine" onclick="ExportToExcel('xlsx')">Excel File
+                            <a class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine"
+                               href="{{route('payment-pdf')}}?date={{request('date')}}&user_id={{request('user_id')}}&status={{request('status')}}">Pdf
+                                File</a>
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
+                                    onclick="ExportToExcel('xlsx')">Excel File
                             </button>
 
                         </div>

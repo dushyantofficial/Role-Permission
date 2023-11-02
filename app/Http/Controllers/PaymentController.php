@@ -6,6 +6,7 @@ use App\Models\Payment;
 use App\Models\PaymentHistory;
 use App\Models\PaymentRefund;
 use App\Models\User;
+use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -206,6 +207,86 @@ class PaymentController extends Controller
         $refund_payments_historys->delete();
         return response()->json(['message' => 'Refund Payment History deleted successfully']);
 
+    }
+
+
+    //Payment Pdf
+    public function payment_pdf(Request $request)
+    {
+
+
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+        $status = $request->input('status');
+
+        $pending = 'pending';
+        $refund = 'refunded';
+        $paid = 'paid';
+
+        $query = Payment::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+        // Check if a status is provided and add a status filter
+        if (!empty($status)) {
+            $query->where('status', $status);
+        }
+
+        // Get the filtered records
+        $payments = $query->orderByRaw(DB::raw("FIELD(status, '$pending', '$refund', '$paid')"))
+            ->orderBy('created_at', 'desc')->get();
+        $pdf = Pdf::loadView('payment.payment_pdf', ['payments' => $payments]);
+        return $pdf->download("payment.pdf");
+      //  $users = User::where('status', 'active')->get();
+        //return view('payment.index', compact('users', 'payments'));
+    }
+
+    //Payment History Pdf
+    public function payment_history_pdf(Request $request)
+    {
+
+
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+        $method = $request->input('payment_method');
+
+        $query = PaymentHistory::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+        // Check if a status is provided and add a status filter
+        if (!empty($method)) {
+            $query->where('method', $method);
+        }
+
+        // Get the filtered records
+        $payment_historys = $query->get();
+
+        $pdf = Pdf::loadView('payment.payment_history_pdf', ['payment_historys' => $payment_historys]);
+        return $pdf->download("payment_history.pdf");
+        //return view('payment.payment_history', compact('users', 'payment_historys', 'payment_methods'));
     }
 
 
