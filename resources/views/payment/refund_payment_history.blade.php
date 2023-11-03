@@ -130,6 +130,9 @@
                         <a href="{{route('refund-payment-history')}}"
                            class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine ml-3">Reset</a>
                         <div class="ml-3">
+                            <a class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine"
+                               href="{{route('refund-payment-history-pdf')}}?date={{request('date')}}&user_id={{request('user_id')}}">Pdf
+                                File</a>
                             <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
                                     onclick="ExportToExcel('xlsx')">Excel File
                             </button>

@@ -289,5 +289,34 @@ class PaymentController extends Controller
         //return view('payment.payment_history', compact('users', 'payment_historys', 'payment_methods'));
     }
 
+    //Refund Payment History Pdf
+    public function refund_payment_history_pdf(Request $request)
+    {
+        $date = $request->input('date');
+        $user_id = $request->input('user_id');
+
+        $query = PaymentRefund::query();
+
+        // Check if a date is provided and add a date filter
+        if (!empty($date)) {
+            $dateParts = explode(' - ', $date);
+            $startDate = Carbon::parse($dateParts[0])->startOfDay();
+            $endDate = Carbon::parse($dateParts[1])->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        // Check if a user_id is provided and add a user_id filter
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+
+
+        // Get the filtered records
+        $refund_payments_historys = $query->get();
+        $pdf = Pdf::loadView('payment.refund_payment_history_pdf', ['refund_payments_historys' => $refund_payments_historys]);
+        return $pdf->download("refund_payment_history.pdf");
+      //  return view('payment.refund_payment_history', compact('users', 'refund_payments_historys'));
+    }
+
 
 }
