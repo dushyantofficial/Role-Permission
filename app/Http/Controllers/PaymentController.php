@@ -6,10 +6,10 @@ use App\Models\Payment;
 use App\Models\PaymentHistory;
 use App\Models\PaymentRefund;
 use App\Models\User;
-use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 use Razorpay\Api\Api;
 
 class PaymentController extends Controller
@@ -315,8 +315,18 @@ class PaymentController extends Controller
         $refund_payments_historys = $query->get();
         $pdf = Pdf::loadView('payment.refund_payment_history_pdf', ['refund_payments_historys' => $refund_payments_historys]);
         return $pdf->download("refund_payment_history.pdf");
-      //  return view('payment.refund_payment_history', compact('users', 'refund_payments_historys'));
+        //  return view('payment.refund_payment_history', compact('users', 'refund_payments_historys'));
     }
 
+
+    public function toggleTheme(Request $request)
+    {
+        $currentTheme = $request->session()->get('theme', 'light');
+        $newTheme = ($currentTheme == 'light') ? 'dark' : 'light';
+
+        $request->session()->put('theme', $newTheme);
+
+        return response()->json(['theme' => $newTheme]);
+    }
 
 }

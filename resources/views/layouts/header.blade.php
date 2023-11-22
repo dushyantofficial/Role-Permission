@@ -26,7 +26,7 @@
           <li class="app-search">
               <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache Clear</a>
               </a>&nbsp;
-
+{{--              <button id="toggleThemeBtn" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">Theme</button>--}}
           </li>
           @include('Admin.languages')&nbsp;
           <!--Notification Menu-->
@@ -34,7 +34,7 @@
           <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
                                   aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                  <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg fa-fw fa-lock"></i>Change Password</a></li>
                   <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg fa-fw fa-lock"></i>Change Password</a></li>
                   <li>
                       <a class="dropdown-item" href="{{ route('logout') }}"
