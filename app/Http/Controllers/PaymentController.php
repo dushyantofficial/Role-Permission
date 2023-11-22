@@ -325,7 +325,9 @@ class PaymentController extends Controller
         $newTheme = ($currentTheme == 'light') ? 'dark' : 'light';
 
         $request->session()->put('theme', $newTheme);
-
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $input['theme_color'] = $newTheme;
+        $user->update($input);
         return response()->json(['theme' => $newTheme]);
     }
 

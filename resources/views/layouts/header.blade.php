@@ -1,4 +1,6 @@
-  <header class="app-header"><a class="app-header__logo" href="{{route('home')}}">Role Permission </a>
+
+<header class="app-header {{user_theme_get()}}">
+    <a class="app-header__logo {{user_theme_get()}}" href="{{route('home')}}" style="color: white">Role Permission </a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
                                       aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
@@ -26,7 +28,10 @@
           <li class="app-search">
               <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache Clear</a>
               </a>&nbsp;
-{{--              <button id="toggleThemeBtn" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">Theme</button>--}}
+              <button id="toggleThemeBtn" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
+                  <i class="fa fa-sun-o"></i>
+                  <i class="fa fa-moon-o"></i>
+              </button>
           </li>
           @include('Admin.languages')&nbsp;
           <!--Notification Menu-->

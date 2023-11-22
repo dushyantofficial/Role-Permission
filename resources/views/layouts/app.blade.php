@@ -39,8 +39,12 @@
     /*.dark-theme{*/
     /*    background: black;*/
     /*}*/
+    .dark{
+        color: black; /* RGB value for a shade of orange */
+        background-color: #312525; /* RGB value for a shade of blue */
+    }
 </style>
-<body class="app sidebar-mini {{ session('theme', 'light') }}-theme">
+<body class="app sidebar-mini {{ user_theme_get() }}">
 <!-- Navbar-->
 @include('layouts.header')
 <!-- Sidebar menu-->

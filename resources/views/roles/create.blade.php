@@ -19,7 +19,7 @@
             margin-top: -49px !important;
         }
     </style>
-    <main class="app-content">
+    <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
             <div>
                 <h1><i class="fa fa-edit"></i>Create New Role</h1>

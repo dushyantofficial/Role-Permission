@@ -3,7 +3,7 @@
 @section('content')
 
     @include('Admin.flash-message')
-    <main class="app-content">
+    <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
             <div>
                 <h1><i class="fa fa-dashboard"></i> Dashboard</h1>

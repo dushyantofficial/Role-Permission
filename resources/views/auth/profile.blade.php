@@ -36,7 +36,7 @@
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <main class="app-content">
+    <main class="app-content {{user_theme_get()}}">
         @php
             $user = \Illuminate\Support\Facades\Auth::user();
         @endphp

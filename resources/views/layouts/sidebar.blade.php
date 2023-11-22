@@ -2,7 +2,7 @@
 @php
     $user = \Illuminate\Support\Facades\Auth::user();
 @endphp
-<aside class="app-sidebar">
+<aside class="app-sidebar {{$user->theme_color}}">
     <ul class="app-menu">
         <li><a class="app-menu__item {{ Request::is('home*') ? 'active' : '' }}" href="{{route('home')}}"><i
                     class="app-menu__icon fa fa-dashboard"></i><span
@@ -57,3 +57,4 @@
 
     </ul>
 </aside>
+

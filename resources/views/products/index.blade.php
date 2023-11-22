@@ -27,7 +27,7 @@
     </style>
     @include('Admin.flash-message')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <main class="app-content">
+    <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
 
             <div>
