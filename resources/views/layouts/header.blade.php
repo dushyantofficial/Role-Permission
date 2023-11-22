@@ -34,8 +34,8 @@
           <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
                                   aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg fa-fw fa-lock"></i>Change Password</a></li>
-                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg fa-fw fa-lock"></i>Change Password</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg  fa-lock"></i>Change Password</a></li>
                   <li>
                       <a class="dropdown-item" href="{{ route('logout') }}"
                           onclick="event.preventDefault();
