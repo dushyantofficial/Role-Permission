@@ -71,6 +71,8 @@
                                                 data-toggle="tab">Profile</a></li>
                         <li class="nav-item"><a class="nav-link " href="#user-settings" id="password"
                                                 data-toggle="tab">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link " href="#theme-color" id="theme_color"
+                                                data-toggle="tab">Change Theme Color</a></li>
                     </ul>
                 </div>
             </div>
@@ -210,6 +212,51 @@
                             </form>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="theme-color">
+                        <div class="tile user-settings">
+                            <h4 class="line-head">Theme Color Update</h4>
+                            <form action="{{route('change-theme')}}" id="theme_form" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6 mb-6">
+                                        <label>Font Color</label>
+
+                                        <div class="input-group mb-3">
+                                            <input class="colorpicker form-control @error('font_color') is-invalid @enderror"
+                                                   id="font_color" name="font_color" value="{{$user->theme_color}}" type="text"
+                                                   placeholder="">
+                                            @error('font_color')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-6">
+                                        <label>Theme Color</label>
+                                        <div class="input-group mb-3">
+                                            <input class="colorpicker form-control @error('background_color') is-invalid @enderror"
+                                                   id="background_color" name="background_color" value="{{$user->background_color}}" type="text"
+                                                   placeholder="">
+                                            @error('background_color')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row mb-10">
+                                    <div class="col-md-12">
+                                        <button
+                                            class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-theme-color"
+                                            type="button"><i
+                                                class="fa fa-fw fa-lg fa-check-circle"></i> Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,6 +264,12 @@
 
 @endsection
 @push('page_scripts')
+
+{{--  Color Picker  --}}
+<script>
+    $('.colorpicker').colorpicker();
+</script>
+
     @php
         $doc = request('document');
     @endphp
@@ -437,4 +490,57 @@
             });
         });
     </script>
+
+{{--  Change Theme Color api  --}}
+<script>
+    $(document).ready(function () {
+        $('.update-theme-color').click(function (e) {
+            e.preventDefault();
+            // Get the CSRF token value from the meta tag
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            // Add the CSRF token to the headers of the AJAX request
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            });
+
+            var formData = new FormData($('#theme_form')[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: $('#theme_form').attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Update!',
+                        text: 'Theme Updated SuccessFully.',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload(); // Reload the page
+                        }
+                    });
+                },
+                error: function (xhr) {
+                    var errors = xhr.responseJSON.errors;
+                    var errorMessages = [];
+
+                    for (var field in errors) {
+                        errorMessages.push(errors[field][0]);
+                    }
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        html: errorMessages.join('<br>') + '<br>',
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endpush

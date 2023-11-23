@@ -25,6 +25,8 @@ class User extends Authenticatable
         'profile_pic',
         'status',
         'theme_color',
+        'background_color',
+        'font_color',
     ];
 
     /**

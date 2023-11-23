@@ -139,4 +139,5 @@ Route::get('/payment_history_pdf', [App\Http\Controllers\PaymentController::clas
 Route::get('/refund_payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_pdf'])->name('refund-payment-history-pdf');
 
 Route::get('/toggle-theme', [App\Http\Controllers\PaymentController::class, 'toggleTheme'])->name('toggle-theme');
+Route::post('/change-theme', [App\Http\Controllers\PaymentController::class, 'change_theme'])->name('change-theme');
 

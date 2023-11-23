@@ -12,37 +12,44 @@
     <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <meta property="og:description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
     <title>Role Permission</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- Main CSS-->
+    <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/main.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/bootstrap4-toggle.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/daterangepicker.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/bootstrap-colorpicker.min.css')}}">
 
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/font-awesome.min.css')}}">--}}
-    <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @include('layouts.datatables_css')
     @yield('third_party_stylesheets')
 
     @stack('page_css')
 </head>
 <style>
-    /*.light-theme{*/
-    /*    background: white;*/
-    /*}*/
-    /*.dark-theme{*/
-    /*    background: black;*/
-    /*}*/
-    .dark{
+    @if(isset(user_background_get()->background_color) && isset(user_background_get()->font_color))
+    @if(user_theme_get() == 'dark' )
+
+    .dark {
+        color: {{user_background_get()->font_color}}; /* RGB value for a shade of orange */
+        background-color: {{user_background_get()->background_color}}; /* RGB value for a shade of blue */
+    }
+
+    @else
+    .dark {
         color: black; /* RGB value for a shade of orange */
         background-color: #312525; /* RGB value for a shade of blue */
     }
+    @endif
+    @endif
 </style>
 <body class="app sidebar-mini {{ user_theme_get() }}">
 <!-- Navbar-->
@@ -71,6 +78,7 @@
 <script type="text/javascript" src="{{asset('admin/js/sweetalert.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/jquery-ui.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/fullcalendar.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/js/plugins/bootstrap-colorpicker.min.js')}}"></script>
 
 <!-- Google analytics script-->
 <script type="text/javascript">

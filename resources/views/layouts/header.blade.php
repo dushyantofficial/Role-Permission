@@ -10,7 +10,7 @@
                   font-size: 7pt !important;
               }
               .app-header__logo {
-                  font-size: 18px !important;
+                  font-size: 8px !important;
               }
           }
       </style>
@@ -23,15 +23,15 @@
           <div id="lazyLoader" style="display: none;color: red">Loading...</div>
           <div id="downloadTimer" style="display: none">0 seconds</div>
       </form>
+    <button id="toggleThemeBtn" style="margin: 9px !important;" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
+        <i class="fa fa-sun-o"></i>
+        <i class="fa fa-moon-o"></i>
+    </button>
     &nbsp;
       <ul class="app-nav">
           <li class="app-search">
               <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache Clear</a>
               </a>&nbsp;
-              <button id="toggleThemeBtn" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
-                  <i class="fa fa-sun-o"></i>
-                  <i class="fa fa-moon-o"></i>
-              </button>
           </li>
           @include('Admin.languages')&nbsp;
           <!--Notification Menu-->

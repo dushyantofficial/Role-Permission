@@ -8,6 +8,7 @@ use App\Models\PaymentRefund;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Razorpay\Api\Api;
@@ -327,8 +328,26 @@ class PaymentController extends Controller
         $request->session()->put('theme', $newTheme);
         $user = \Illuminate\Support\Facades\Auth::user();
         $input['theme_color'] = $newTheme;
+      //  $input['background_color'] = '#2a2a2a';
+        //$input['font_color'] = '#ffffff';
+        if ($newTheme == 'dark' && $user->font_color == null && $user->background_color == null){
+            $input['background_color'] = '#312525';
+            $input['font_color'] = '#2a2a2a';
+        }
         $user->update($input);
         return response()->json(['theme' => $newTheme]);
+    }
+
+    public function change_theme(Request $request){
+        $request->validate([
+           'background_color' => 'required',
+           'font_color' => 'required'
+        ]);
+        $user = Auth::user();
+        $input = $request->all();
+        $input['theme_color'] = 'dark';
+        $user->update($input);
+        return response()->json(['success' => $input]);
     }
 
 }
