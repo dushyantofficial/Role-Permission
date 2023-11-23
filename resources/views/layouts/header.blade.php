@@ -24,13 +24,17 @@
           <div id="downloadTimer" style="display: none">0 seconds</div>
       </form>
     <button id="toggleThemeBtn" style="margin: 9px !important;" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
-        <i class="fa fa-sun-o"></i>
+        @if(user_background_get()->theme_color == 'light')
         <i class="fa fa-moon-o"></i>
+        @else
+        <i class="fa fa-sun-o"></i>
+        @endif
     </button>
     &nbsp;
       <ul class="app-nav">
           <li class="app-search">
-              <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache Clear</a>
+              <a href="{{url('clear_cache')}}" class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine">Cache
+                  Clear</a>
               </a>&nbsp;
           </li>
           @include('Admin.languages')&nbsp;
@@ -39,11 +43,15 @@
           <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
                                   aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                  <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i class="fa fa-lg  fa-lock"></i>Change Password</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user fa-lg"></i> Profile</a>
+                  </li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}?document=theme_color"><i
+                              class="fa fa-copyright fa-lg"></i>Theme Color</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}?document=password"><i
+                              class="fa fa-lg  fa-lock"></i>Change Password</a></li>
                   <li>
                       <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
+                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
                               class="fa fa-sign-out fa-lg"></i> Logout</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

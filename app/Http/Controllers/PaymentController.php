@@ -322,20 +322,18 @@ class PaymentController extends Controller
 
     public function toggleTheme(Request $request)
     {
-        $currentTheme = $request->session()->get('theme', 'light');
-        $newTheme = ($currentTheme == 'light') ? 'dark' : 'light';
-
-        $request->session()->put('theme', $newTheme);
         $user = \Illuminate\Support\Facades\Auth::user();
-        $input['theme_color'] = $newTheme;
-      //  $input['background_color'] = '#2a2a2a';
-        //$input['font_color'] = '#ffffff';
-        if ($newTheme == 'dark' && $user->font_color == null && $user->background_color == null){
+        if ($user->theme_color == 'light'){
+            $input['theme_color'] = 'dark';
+        }else{
+            $input['theme_color'] = 'light';
+        }
+        if ($input['theme_color'] == 'dark' && $user->font_color == null && $user->background_color == null){
             $input['background_color'] = '#312525';
             $input['font_color'] = '#2a2a2a';
         }
         $user->update($input);
-        return response()->json(['theme' => $newTheme]);
+        return response()->json(['theme' => $input]);
     }
 
     public function change_theme(Request $request){

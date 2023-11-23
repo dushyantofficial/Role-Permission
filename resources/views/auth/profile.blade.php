@@ -69,10 +69,10 @@
                     <ul class="nav flex-column nav-tabs user-tabs">
                         <li class="nav-item"><a class="nav-link active" href="#user-timeline"
                                                 data-toggle="tab">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link " href="#user-settings" id="password"
-                                                data-toggle="tab">Change Password</a></li>
                         <li class="nav-item"><a class="nav-link " href="#theme-color" id="theme_color"
                                                 data-toggle="tab">Change Theme Color</a></li>
+                        <li class="nav-item"><a class="nav-link " href="#user-settings" id="password"
+                                                data-toggle="tab">Change Password</a></li>
                     </ul>
                 </div>
             </div>
@@ -278,6 +278,8 @@
             var password = '<?php echo $doc; ?>';
             if (password == 'password') {
                 $('#password').trigger('click');
+            }else if (password == 'theme_color'){
+                $('#theme_color').trigger('click');
             }
         });
     </script>
