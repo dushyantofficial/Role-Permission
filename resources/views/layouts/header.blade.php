@@ -23,6 +23,7 @@
           <div id="lazyLoader" style="display: none;color: red">Loading...</div>
           <div id="downloadTimer" style="display: none">0 seconds</div>
       </form>
+    <form action="#">
     <button id="toggleThemeBtn" style="margin: 9px !important;" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
         @if(user_background_get()->theme_color == 'light')
         <i class="fa fa-moon-o"></i>
@@ -30,6 +31,7 @@
         <i class="fa fa-sun-o"></i>
         @endif
     </button>
+    </form>
     &nbsp;
       <ul class="app-nav">
           <li class="app-search">

@@ -9,7 +9,15 @@
                 fetch('toggle-theme')
                     .then(response => response.json())
                     .then(data => {
-                        window.location.reload()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Theme Update!',
+                            text: 'Your theme change successfully.',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload(); // Reload the page
+                            }
+                        });
                     });
             });
         }
