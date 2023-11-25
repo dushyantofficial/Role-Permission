@@ -35,12 +35,12 @@
     @stack('page_css')
 </head>
 <style>
-    @if(isset(user_background_get()->background_color) && isset(user_background_get()->font_color))
-    @if(user_theme_get() == 'dark' )
+    @if(isset(auth_user_get()->background_color) && isset(auth_user_get()->font_color))
+    @if(auth_user_get() == 'dark' )
 
     .dark {
-        color: {{user_background_get()->font_color}}; /* RGB value for a shade of orange */
-        background-color: {{user_background_get()->background_color}}; /* RGB value for a shade of blue */
+        color: {{auth_user_get()->font_color}}; /* RGB value for a shade of orange */
+        background-color: {{auth_user_get()->background_color}}; /* RGB value for a shade of blue */
     }
 
     @else

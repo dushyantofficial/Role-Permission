@@ -25,7 +25,7 @@
       </form>
     <form action="#">
     <button id="toggleThemeBtn" style="margin: 9px !important;" class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine toggleThemeBtn">
-        @if(user_background_get()->theme_color == 'light')
+        @if(auth_user_get()->theme_color == 'light')
         <i class="fa fa-moon-o"></i>
         @else
         <i class="fa fa-sun-o"></i>

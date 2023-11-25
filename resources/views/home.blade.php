@@ -18,8 +18,16 @@
             <div class="col-md-6 col-lg-3">
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
                     <div class="info">
-                        <h4>Users</h4>
-                        <p><b>5</b></p>
+                        <h4>Active Users<i class="fa fa-check-circle lg text-success" aria-hidden="true"></i></h4>
+                        <p><b>{{auth_user_get()->where('status','active')->count()}}</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small danger coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+                    <div class="info">
+                        <h4>Block Users<i class="fa fa-check-circle  text-danger" aria-hidden="true"></i></h4>
+                        <p><b>{{auth_user_get()->where('status','Block')->count()}}</b></p>
                     </div>
                 </div>
             </div>
@@ -81,17 +89,32 @@
                         <li>Custom form elements like toggle buttons, auto-complete, tags and date-picker</li>
                         <li>A inbuilt toast library for providing meaningful response messages to user's actions</li>
                     </ul>
-                    <p>Vali is a free and responsive admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.</p>
-                    <p>Vali is is light-weight, expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> about customizing the theme colors and functionality.</p>
-                    <p class="mt-4 mb-4"><a class="btn btn-primary mr-2 mb-2" href="http://pratikborsadiya.in/blog/vali-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
+                    <p>Vali is a free and responsive admin theme built with Bootstrap 4, SASS and PUG.js. It's fully
+                        customizable and modular.</p>
+                    <p>Vali is is light-weight, expendable and good looking theme. The theme has all the features
+                        required in a dashboard theme but this features are built like plug and play module. Take a look
+                        at the <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a>
+                        about customizing the theme colors and functionality.</p>
+                    <p class="mt-4 mb-4">
+                    <center>
+                        <a class="btn btn-success mr-2 mb-2"
+                           href="https://github.com/pratikborsadiya/vali-admin/archive/master.zip" target="_blank"><i
+                                class="fa fa-download"></i>Download</a>
+                    </center>
+                    </p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="tile">
                     <h3 class="tile-title">Compatibility with frameworks</h3>
-                    <p>This theme is not built for a specific framework or technology like Angular or React etc. But due to it's modular nature it's very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.</p>
-                    <p>Go to <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> for more details about integrating this theme with various frameworks.</p>
-                    <p>The source code is available on GitHub. If anything is missing or weird please report it as an issue on <a href="https://github.com/pratikborsadiya/vali-admin" target="_blank">GitHub</a>. If you want to contribute to this theme pull requests are always welcome.</p>
+                    <p>This theme is not built for a specific framework or technology like Angular or React etc. But due
+                        to it's modular nature it's very easy to incorporate it into any front-end or back-end framework
+                        like Angular, React or Laravel.</p>
+                    <p>Go to <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> for
+                        more details about integrating this theme with various frameworks.</p>
+                    <p>The source code is available on GitHub. If anything is missing or weird please report it as an
+                        issue on <a href="https://github.com/pratikborsadiya/vali-admin" target="_blank">GitHub</a>. If
+                        you want to contribute to this theme pull requests are always welcome.</p>
                 </div>
             </div>
         </div>

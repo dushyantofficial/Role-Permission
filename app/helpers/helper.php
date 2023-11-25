@@ -10,7 +10,7 @@ function user_theme_get()
     $theme = \Illuminate\Support\Facades\Auth::user()->theme_color;
     return $theme;
 }
-function user_background_get()
+function auth_user_get()
 {
     $background = \Illuminate\Support\Facades\Auth::user();
     return $background;
