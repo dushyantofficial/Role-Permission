@@ -70,7 +70,6 @@ class RegisterController extends Controller
 
         $request =  request();
         $data['status'] = 'active';
-        $data['status'] = 'active';
         $data['password'] = Hash::make($data['password']);
         if ($request->hasFile("profile_pic")) {
             $img = $request->file("profile_pic");
