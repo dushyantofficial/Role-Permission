@@ -22,10 +22,20 @@ Route::get('/', function () {
 Route::get('clear_cache', function () {
 
     \Artisan::call('optimize:clear');
-    return redirect()->back()->with("success","Cache is cleared");
+    return redirect()->back()->with("success", "Cache is cleared");
 
 
 });
+
+Route::get('qr-code-g', function () {
+
+    \SimpleSoftwareIO\QrCode\Facades\QrCode::size(500)
+        ->format('png')
+        ->generate('192.168.1.11/role-permissions-blog/public/login', asset('images/qrcode.png'));
+
+    return view('qrCode');
+});
+
 \Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

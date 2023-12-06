@@ -13,6 +13,10 @@
                   font-size: 8px !important;
               }
           }
+          .active {
+              background-color: #007bff;
+              color: #fff;
+          }
       </style>
       <form id="backup_form" action="{{route('backup-run')}}" method="GET">
           @csrf
@@ -31,6 +35,12 @@
         <i class="fa fa-sun-o"></i>
         @endif
     </button>
+        <button class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine zoom-button" id="zoomIn">Zoom In</button>
+        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine zoom-button" id="zoomOut">Zoom Out</button>
+        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine zoom-button" id="resetZoom">Default Zoom</button>
+{{--        <li><a href="#" id="btn-decrease">A-</a></li>--}}
+{{--        <li><a href="#" id="btn-orig">A</a></li>--}}
+{{--        <li><a href="#" id="btn-increase">A+</a></li>--}}
     </form>
     &nbsp;
       <ul class="app-nav">
@@ -193,5 +203,58 @@
                   });
               });
           });
+      </script>
+
+{{-- Zoom & Zoom out  --}}
+      <script>
+          $(document).ready(function () {
+              // Set initial zoom level
+              let currentZoom = parseInt(localStorage.getItem('currentZoom')) || 100;
+
+              // Retrieve the active button ID from localStorage
+              let activeButtonId = localStorage.getItem('activeButtonId') || 'resetZoom';
+
+              // Function to update zoom level
+              function updateZoom() {
+                  document.body.style.zoom = currentZoom + '%';
+                  localStorage.setItem('currentZoom', currentZoom);
+              }
+
+              // Function to highlight the active button
+              function highlightActiveButton(activeButtonId) {
+                  $('.zoom-button').removeClass('active');
+                  $('#' + activeButtonId).addClass('active');
+              }
+
+              // Event listener for the zoom-in button
+              $('#zoomIn').on('click', function () {
+                  currentZoom += 10;
+                  updateZoom();
+                  highlightActiveButton('zoomIn');
+                  localStorage.setItem('activeButtonId', 'zoomIn'); // Store active button ID
+              });
+
+              // Event listener for the zoom-out button
+              $('#zoomOut').on('click', function () {
+                  currentZoom -= 10;
+                  updateZoom();
+                  highlightActiveButton('zoomOut');
+                  localStorage.setItem('activeButtonId', 'zoomOut'); // Store active button ID
+              });
+
+              // Event listener for the reset button
+              $('#resetZoom').on('click', function (event) {
+                  event.preventDefault();
+                  currentZoom = 100;
+                  updateZoom();
+                  highlightActiveButton('resetZoom');
+                  localStorage.setItem('activeButtonId', 'resetZoom'); // Store active button ID
+              });
+
+              // Apply the initial zoom level and highlight the active button
+              updateZoom();
+              highlightActiveButton(activeButtonId);
+          });
+
       </script>
   @endpush
