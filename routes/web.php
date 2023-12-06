@@ -27,14 +27,14 @@ Route::get('clear_cache', function () {
 
 });
 
-Route::get('qr-code-g', function () {
-
-    \SimpleSoftwareIO\QrCode\Facades\QrCode::size(500)
-        ->format('png')
-        ->generate('192.168.1.11/role-permissions-blog/public/login', asset('images/qrcode.png'));
-
-    return view('qrCode');
-});
+//Route::get('qr-code-g', function () {
+//
+//    \SimpleSoftwareIO\QrCode\Facades\QrCode::size(500)
+//        ->format('png')
+//        ->generate('192.168.1.11/role-permissions-blog/public/login', asset('images/qrcode.png'));
+//
+//    return view('qrCode');
+//});
 
 \Illuminate\Support\Facades\Auth::routes();
 
