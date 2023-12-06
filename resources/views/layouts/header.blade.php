@@ -35,9 +35,10 @@
         <i class="fa fa-sun-o"></i>
         @endif
     </button>
-        <button class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine zoom-button" id="zoomIn">Zoom In</button>
-        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine zoom-button" id="zoomOut">Zoom Out</button>
-        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine zoom-button" id="resetZoom">Default Zoom</button>
+        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine zoom-button" id="zoomOut"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine zoom-button" id="resetZoom"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine zoom-button" id="zoomIn"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+
 {{--        <li><a href="#" id="btn-decrease">A-</a></li>--}}
 {{--        <li><a href="#" id="btn-orig">A</a></li>--}}
 {{--        <li><a href="#" id="btn-increase">A+</a></li>--}}
