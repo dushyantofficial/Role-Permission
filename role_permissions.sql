@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2023 at 07:01 AM
+-- Generation Time: Dec 12, 2023 at 05:59 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -279,7 +279,7 @@ INSERT INTO `education` (`id`, `resume_id`, `degree_name`, `college_name`, `univ
 (2, 2, 'fgfh', 'fghg', 'fgh', '', '2023-02', '2023-09', 'fgh', NULL, 0, 'active', '2023-09-18 01:48:47', '2023-09-23 10:01:36', '2023-09-23 10:01:36'),
 (3, 2, 'fgfh', 'fghg', 'fgh', '', '2023-02', '2023-06', 'fgh', NULL, 0, 'De-Active', '2023-09-18 01:48:57', '2023-09-18 01:55:04', '2023-09-18 01:55:04'),
 (4, 4, 'Hello', 'BCA', 'GTU', 'b', '2023-01', 'Present', 'Deesa', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.', 1, 'active', '2023-09-18 05:46:49', '2023-09-29 05:44:10', NULL),
-(5, 3, 'Hello', 'ewrwe', 'GTU', 'b', '2023-01', 'Present', 'werrwe', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\n                                overall value proposition.', 1, 'De-Active', '2023-09-23 23:51:11', '2023-09-29 05:44:09', NULL),
+(5, 3, 'Hello', 'ewrwe', 'GTU', 'b', '2023-01', 'Present', 'werrwe', 'Leverage agile frameworks to provide a robust synopsis for high level overviews.\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\n                                overall value proposition.', 1, 'De-Active', '2023-09-23 23:51:11', '2023-12-01 06:43:00', NULL),
 (6, 4, 'ert', 'rtgre', 'ert', 'b', '2023-02', 'Present', 'ertt', 'erttr', 1, 'active', '2023-09-27 04:12:47', '2023-09-27 04:12:47', NULL);
 
 -- --------------------------------------------------------
@@ -425,7 +425,7 @@ INSERT INTO `payments` (`id`, `user_id`, `amount`, `transaction_id`, `payment_st
 (14, 5, 150, 'pay_Mv6IzESSiTnlhX', 'captured', 'refunded', '1698817898', '2023-11-01 00:21:15', '2023-11-02 00:04:49', NULL),
 (15, 6, 142, 'pay_Mv7IIQkSSppbhm', 'captured', 'refunded', '1698821380', '2023-11-01 01:18:58', '2023-11-02 00:56:17', NULL),
 (16, 6, 1000, 'pay_MvA8fu9BmZb8n9', 'captured', 'refunded', '1698831399', '2023-11-01 04:05:50', '2023-11-01 06:03:56', NULL),
-(17, 6, 150, 'pay_MvUt7V7403J6Vs', 'captured', 'refunded', '1698904469', '2023-11-02 00:22:52', '2023-11-02 00:50:16', NULL),
+(17, 9, 1598, 'pay_NB1pFkgVaWN4f0', 'captured', 'paid', '1702295564', '2023-11-02 00:22:52', '2023-12-11 06:22:56', NULL),
 (18, 9, 1056, NULL, NULL, 'pending', NULL, '2023-11-02 00:56:39', '2023-11-02 00:56:39', NULL),
 (19, 20, 150, NULL, NULL, 'pending', NULL, '2023-11-02 01:15:41', '2023-11-02 01:15:41', NULL);
 
@@ -492,7 +492,8 @@ INSERT INTO `payment_histories` (`id`, `user_id`, `payment_id`, `amount`, `trans
 (18, 10, 6, 152, 'pay_MvUeFYHmv4ymZX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'paresh@gmail.com', '+919410259922', '[]', '358', '54', NULL, NULL, NULL, NULL, NULL, '1698903624', '2023-11-02 00:10:37', '2023-11-02 00:10:37', NULL),
 (19, 10, 4, 185, 'pay_MvUfzTx3bIotuD', 'payment', 'INR', 'captured', NULL, NULL, '0', 'upi', '0', NULL, '1', 'Rozerpay', NULL, NULL, NULL, '9405295121@paytm', 'paresh@gmail.com', '+919410259922', '[]', '436', '66', NULL, NULL, NULL, NULL, NULL, '1698903723', '2023-11-02 00:12:13', '2023-11-02 00:12:13', NULL),
 (20, 6, 17, 150, 'pay_MvUt7V7403J6Vs', 'payment', 'INR', 'captured', NULL, NULL, '0', 'upi', '0', NULL, '1', 'Rozerpay', NULL, NULL, NULL, '940952358@paytm', 'rajesh@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698904469', '2023-11-02 00:24:39', '2023-11-02 00:24:39', NULL),
-(21, 15, 7, 150, 'pay_MvUwgs4qHHjAzy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'hello33@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL);
+(21, 15, 7, 150, 'pay_MvUwgs4qHHjAzy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'hello33@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL),
+(22, 9, 17, 1598, 'pay_NB1pFkgVaWN4f0', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'rajesh33@gmail.com', '+919411326565', '[]', '3772', '576', NULL, NULL, NULL, NULL, NULL, '1702295564', '2023-12-11 06:22:56', '2023-12-11 06:22:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -607,8 +608,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `detail`, `sequence`, `created_at`, `updated_at`) VALUES
-(2, 'Test-Demo', 'Hello11', 1, '2023-07-12 00:44:36', '2023-11-23 23:10:47'),
-(4, 'Chhatraliya', 'ertr', 2, '2023-09-15 22:40:23', '2023-11-23 23:10:47');
+(2, 'Test-Demo', 'Hello11', 1, '2023-07-12 00:44:36', '2023-12-11 23:15:53'),
+(4, 'Chhatraliya', 'ertr', 2, '2023-09-15 22:40:23', '2023-12-11 23:15:53');
 
 -- --------------------------------------------------------
 
@@ -655,7 +656,9 @@ INSERT INTO `professional_skills` (`id`, `resume_id`, `professional_skills`, `pr
 (20, 3, 'Python', 50, 'bg-dark', 'active', '2023-09-24 23:30:30', '2023-09-27 00:46:13', NULL),
 (21, 7, 'Boostrap', 79, 'bg-success', 'active', '2023-09-27 04:09:29', '2023-10-28 00:00:56', '2023-10-28 00:00:56'),
 (22, 9, 'C++', 98, 'bg-success', 'active', '2023-09-29 23:27:20', '2023-09-29 23:27:20', NULL),
-(23, 4, 'HTML', 53, 'bg-success', 'active', '2023-10-16 07:15:35', '2023-10-16 07:15:35', NULL);
+(23, 4, 'HTML', 53, 'bg-success', 'active', '2023-10-16 07:15:35', '2023-10-16 07:15:35', NULL),
+(24, 6, 'Boostrap', 98, 'bg-info', 'active', '2023-12-11 04:15:13', '2023-12-11 04:15:13', NULL),
+(25, 9, 'C++', 100, 'bg-warning', 'active', '2023-12-11 04:16:13', '2023-12-11 04:16:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -785,13 +788,13 @@ CREATE TABLE `resumes` (
 INSERT INTO `resumes` (`id`, `name`, `destination`, `about_me`, `dob`, `age`, `email`, `phone`, `address`, `sequence`, `profile_pic`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Dushyant Chhatraliya', '787', 'Hello123', '2023-09-05', '0', 'fgh78hf@gmail.com', '74857488', 'lorwada', NULL, 'CngEaksVHEPn5fti7vyyS6F699O3cV3WIPZeQWAZ.png', '2023-09-16 22:17:26', '2023-09-17 00:08:06', '2023-09-17 00:08:06'),
 (2, 'Dushyant Chhatraliya98', 'Laravel-Developer', 'fghhfg8989', '2023-09-08', '0', 'fghhgf2@gmail.com', '748574889056767756765', 'lorwada898', NULL, 'nvPyZSiq42rrecrm4llFlb64CJugXrN6xD7NgIv9.png', '2023-09-16 22:18:02', '2023-09-23 09:54:00', '2023-09-23 09:54:00'),
-(3, 'Dushyant Chhatraliya', 'Laravel-Developer', 'Hello! I’m dushyant. I am passionate about UI/UX design and Web Design. I am a skilled Front-end Developer and master of Graphic Design tools such as Photoshop and Sketch.', '1998-08-11', '25', 'dushyant@gmail.com', '7485748890', '140, City Center, New York, U.S.A', 4, 'iKXinpmuANOstEHM59fbxJLef0v0wUKwxJ9Pm60z.jpg', '2023-09-16 22:20:07', '2023-11-22 01:00:06', NULL),
-(4, 'Dushyant Chhatraliya', 'Laravel-Developer', 'fghhfg', '2021-09-08', '2', 'fghh2@gmail.com', '7485748890', 'lorwada', 2, 'dPmNatkD6NCxqrfeD23JooscF3mE08yKEc8tEpPJ.jpg', '2023-09-16 22:20:27', '2023-11-22 01:00:06', NULL),
+(3, 'Dushyant Chhatraliya', 'Laravel-Developer', 'Hello! I’m dushyant. I am passionate about UI/UX design and Web Design. I am a skilled Front-end Developer and master of Graphic Design tools such as Photoshop and Sketch.', '1998-08-11', '25', 'dushyant@gmail.com', '7485748890', '140, City Center, New York, U.S.A', 1, 'iKXinpmuANOstEHM59fbxJLef0v0wUKwxJ9Pm60z.jpg', '2023-09-16 22:20:07', '2023-12-05 06:52:03', NULL),
+(4, 'Dushyant Chhatraliya', 'Laravel-Developer', 'fghhfg', '2021-09-08', '2', 'fghh2@gmail.com', '7485748890', 'lorwada', 4, 'dPmNatkD6NCxqrfeD23JooscF3mE08yKEc8tEpPJ.jpg', '2023-09-16 22:20:27', '2023-12-05 06:52:03', NULL),
 (5, 'Dushyant Chhatraliya', 'fghghf', 'fghhfg', '2023-09-08', '0', 'f@gmail.com', '7485748890', 'lorwada', NULL, 'miPK7oMvJDsl5qulyJAt9cP6B45dmj2xjTNsmSfw.png', '2023-09-16 22:22:43', '2023-09-17 00:14:52', '2023-09-17 00:14:52'),
-(6, 'Dushyant Chhatraliya', 'Web-Developer', 'fghhfg', '2023-09-08', '0', 'fw@gmail.com', '7485748890', 'lorwada', 1, 'h69HMKv6ZIJZGaEt7JVe2YGglumCNNQQdE6zpsjy.png', '2023-09-16 22:24:29', '2023-11-22 01:00:06', NULL),
+(6, 'Dushyant Chhatraliya', 'Web-Developer', 'fghhfg', '2023-09-08', '0', 'fw@gmail.com', '7485748890', 'lorwada', 3, 'h69HMKv6ZIJZGaEt7JVe2YGglumCNNQQdE6zpsjy.png', '2023-09-16 22:24:29', '2023-12-05 06:52:03', NULL),
 (7, 'dushyant', 'BackEnd-Developer', 'vbnb', '2023-09-15', '0', 'dushyantchhatraliysa@gmail.com', '7485748890', 'at post lorwada', 5, 'Dnvq6FzTBX1O8FKA0o87aAHntTrx4Tqvsr3KzYzx.jpg', '2023-09-16 22:28:43', '2023-10-04 06:00:04', '2023-10-04 06:00:04'),
 (8, 'ghj', 'App-Developer', 'ghj', '2023-09-13', '0', 'du@gmail.com', '7485748890', 'at post lorwada', NULL, 'qSlCt74OA5Xp2TlDHllErcAnLuwqf7XGPlcJxLHa.png', '2023-09-16 22:30:54', '2023-09-25 00:02:38', '2023-09-25 00:02:38'),
-(9, 'dushyant', 'Web-Developer', 'fdgfd', '2023-09-05', '0', 'admin@gmail.com', '7485748890', 'lorwada', 3, '1nH3mcBLK7iUrU3lN0ejAmkEtN24hprZLdiOTTEA.jpg', '2023-09-16 22:52:47', '2023-11-22 01:00:06', NULL),
+(9, 'dushyant', 'Web-Developer', 'fdgfd', '2022-12-31', '1', 'admin@gmail.com', '7485748890', 'lorwada', 2, '1nH3mcBLK7iUrU3lN0ejAmkEtN24hprZLdiOTTEA.jpg', '2023-09-16 22:52:47', '2023-12-11 04:18:34', NULL),
 (10, 'Dushyant Chhatraliya', 'fdgfd', 'dfg', '2023-09-14', '0', 'dushyantchhatraliyua@gmail.com', '7485748890', 'lorwada', NULL, '3CbeNYvKaL3ob39VdiUzkSYfQgI6uU8Wt0ZWp6QB.jpg', '2023-09-17 00:05:55', '2023-09-27 04:16:56', '2023-09-27 04:16:56'),
 (11, 'Dushyant Chhatraliya', 'fdgfd', 'dfg', '2023-09-14', '0', 'dushyantchhatralolkiya@gmail.com', '7485748890', 'lorwada', NULL, 'tvUdJal1Rw6ftSMehaMdU4LKKkwfBDSBIW3oVFLF.jpg', '2023-09-17 00:07:07', '2023-09-24 07:39:34', '2023-09-24 07:39:34'),
 (12, 'Dushyant Chhatraliya', 'fdgfdg', 'fdgfdgfdgfd', '2023-09-12', '0', 'dushyantchhdfgatraliya@gmail.com', '7485748890', 'lorwada', NULL, 'Rr5tKK3xA3030aZ8QMju1KEIMSjNStnwXIkE8QgQ.jpg', '2023-09-17 00:07:50', '2023-09-24 07:40:17', '2023-09-24 07:40:17'),
@@ -822,7 +825,11 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (3, 'Super-Admin', 'web', '2023-07-10 07:06:15', '2023-07-10 07:06:15'),
 (4, 'Customer', 'web', '2023-07-13 02:31:03', '2023-07-13 02:31:03'),
 (5, 'Seller', 'web', '2023-07-13 02:42:06', '2023-07-13 06:18:18'),
-(8, 'Test1223', 'web', '2023-10-05 03:50:01', '2023-10-05 03:51:37');
+(8, 'Test1223', 'web', '2023-10-05 03:50:01', '2023-10-05 03:51:37'),
+(9, 'Darshan', 'web', '2023-12-07 01:27:21', '2023-12-07 01:27:21'),
+(10, 'fghf', 'web', '2023-12-07 01:27:36', '2023-12-07 01:27:36'),
+(11, 'User1', 'web', '2023-12-07 06:41:06', '2023-12-07 06:41:52'),
+(12, 'rwtre', 'web', '2023-12-07 06:55:24', '2023-12-07 06:55:24');
 
 -- --------------------------------------------------------
 
@@ -844,16 +851,23 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
+(1, 9),
+(1, 12),
 (2, 1),
 (2, 2),
 (2, 3),
 (2, 4),
 (2, 8),
+(2, 12),
 (3, 1),
 (3, 2),
 (3, 3),
+(3, 9),
+(3, 11),
+(3, 12),
 (4, 1),
 (4, 3),
+(4, 10),
 (5, 1),
 (5, 2),
 (5, 3),
@@ -873,7 +887,8 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (9, 3),
 (10, 3),
 (12, 1),
-(12, 3);
+(12, 3),
+(15, 11);
 
 -- --------------------------------------------------------
 
@@ -902,8 +917,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'Dushyant Chhatraliya', 'WHC6tcqvvHMpj83c9ubIXcUcFAH6HqtjQl1cdHMI.jpg', 'dushyant@gmail.com', 'active', 'light', '#23bfea', '#000000', NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-11-24 23:54:41'),
-(6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-11-23 05:33:55'),
+(5, 'Dushyant Chhatraliya', 'WHC6tcqvvHMpj83c9ubIXcUcFAH6HqtjQl1cdHMI.jpg', 'dushyant@gmail.com', 'active', 'dark', 'rgba(6,14,47,0.82)', '#000000', NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-12-11 23:27:28'),
+(6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-12-11 23:17:48'),
 (9, 'rajesh', NULL, 'rajesh33@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$Be.2i3687zBtcNYLU..tseimghoxuhd.Dh3CBSSP/UO99xAh4p6QS', NULL, '2023-10-02 02:33:28', '2023-10-05 03:47:58'),
 (10, 'Paresh', NULL, 'paresh@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$qyCCLpoiS5tvm5l3gWRuB.JjSYtDdBlSi1laoznGZnGoUEyEloBFq', NULL, '2023-10-02 02:41:23', '2023-10-09 03:32:54'),
 (11, 'dfgfdg', NULL, 'dushyant232@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$Ij0rvPffyAxly21470lDO.i7w/KiL7iVyEVC3tNf0G2aff41DqRm2', NULL, '2023-10-05 02:08:46', '2023-10-05 02:08:46'),
@@ -916,8 +931,8 @@ INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_colo
 (18, 'Hello', 'MA5rgFhJ5jww85sFW6k8w6HFc88KZJpCvtzSyNCY.png', 'hello34@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22'),
 (19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57', '2023-11-01 04:11:57'),
 (20, 'Vishal', 'sNF4RGfNPvlNoLB0oRgDNNfNqmBGM3NC5VQsY6x3.jpg', 'vishal@gmail.com', 'active', NULL, NULL, NULL, NULL, '$2y$10$YfRRAPto6oTD2RIvdiriNe3UI5M2LNjOd98Di7tUvRqUjpQnDgt52', NULL, '2023-11-01 04:17:34', '2023-11-01 04:17:34'),
-(21, 'Prof. Marty Corwin', NULL, 'devin76@example.com', 'active', NULL, NULL, NULL, '2023-11-25 00:15:07', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gRkvJ6d1Ze', '2023-11-25 00:15:07', '2023-11-25 00:15:07'),
-(22, 'Laurianne McKenzie II', NULL, 'kihn.mylene@example.net', 'active', 'light', '#312525', '#2a2a2a', '2023-11-25 00:21:36', '$2y$10$tj5ZpZdWdM/E.KATf4Q4deEAsG1nF5VuRpn9u6MwA41bhaAthff0m', 'bVvLTAbaz9PUfrdLyfzZeucikxngWwuz4EIrFt4UqPdbGG0x0WDZWiBK8KAT', '2023-11-25 00:21:36', '2023-11-25 00:24:12');
+(21, 'Prof. Marty Corwin', NULL, 'devin76@example.com', 'active', NULL, NULL, NULL, '2023-11-25 00:15:07', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gRkvJ6d1Ze', '2023-11-25 00:15:07', '2023-12-11 23:18:01'),
+(22, 'Laurianne McKenzie II', NULL, 'kihn.mylene@example.net', 'Block', 'light', '#312525', '#2a2a2a', '2023-11-25 00:21:36', '$2y$10$tj5ZpZdWdM/E.KATf4Q4deEAsG1nF5VuRpn9u6MwA41bhaAthff0m', 'bVvLTAbaz9PUfrdLyfzZeucikxngWwuz4EIrFt4UqPdbGG0x0WDZWiBK8KAT', '2023-11-25 00:21:36', '2023-12-11 23:17:55');
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1217,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `payment_histories`
 --
 ALTER TABLE `payment_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `payment_refunds`
@@ -1214,7 +1229,7 @@ ALTER TABLE `payment_refunds`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1232,7 +1247,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `professional_skills`
 --
 ALTER TABLE `professional_skills`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -1262,7 +1277,7 @@ ALTER TABLE `resumes`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
