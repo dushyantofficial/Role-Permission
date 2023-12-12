@@ -22,7 +22,7 @@ class ResumeController extends Controller
 
     public function create()
     {
-
+        return view('resume.create');
     }
 
     public function store(Request $request)
