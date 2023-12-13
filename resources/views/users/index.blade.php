@@ -112,6 +112,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
+                                <th>User Chatting</th>
                                 @can('user-block')
                                 <th>Status</th>
                                 @endcan
@@ -131,16 +132,20 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                    @can('user-block')
                                     <td>
-                                        <label class="switch">
-                                            <input type="checkbox" class="statuss"
-                                                   data-id="{{$user->id}}"
-                                                   id="statusToggle" {{ $user->status === 'active' ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-{{--                                        <input data-id="{{$user->id}}" class="toggle-class statuss" type="checkbox"--}}
-{{--                                               onclick="on();"--}}
+                                        <a href="{{route('user-chat',$user->id)}}"
+                                           class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">Chatting</a>
+                                    </td>
+                                    @can('user-block')
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" class="statuss"
+                                                       data-id="{{$user->id}}"
+                                                       id="statusToggle" {{ $user->status === 'active' ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            {{--                                        <input data-id="{{$user->id}}" class="toggle-class statuss" type="checkbox"--}}
+                                            {{--                                               onclick="on();"--}}
 {{--                                               data-onstyle="success" data-offstyle="danger" data-toggle="toggle"--}}
 {{--                                               data-on="Active"--}}
 {{--                                               data-off="Block" {{ $user->status=='active' ? 'checked' : '' }}>--}}

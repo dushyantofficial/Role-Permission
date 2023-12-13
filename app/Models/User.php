@@ -27,6 +27,7 @@ class User extends Authenticatable
         'theme_color',
         'background_color',
         'font_color',
+        'user_status',
     ];
 
     /**

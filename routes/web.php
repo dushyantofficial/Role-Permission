@@ -151,3 +151,7 @@ Route::get('/refund_payment_history_pdf', [App\Http\Controllers\PaymentControlle
 Route::get('/toggle-theme', [App\Http\Controllers\PaymentController::class, 'toggleTheme'])->name('toggle-theme');
 Route::post('/change-theme', [App\Http\Controllers\PaymentController::class, 'change_theme'])->name('change-theme');
 
+//User Chat
+Route::get('/users/user-chat/{userid}', [App\Http\Controllers\UserController::class, 'user_chat'])->name('user-chat');
+Route::post('/users/user-chat-send/', [App\Http\Controllers\UserController::class, 'user_chat_send'])->name('user-chat-send');
+
