@@ -29,7 +29,7 @@
             }
 
             .div1 {
-                width: 490px;
+                width: 873px;
                 height: 800px;
                 display: inline-block;
                 font-size: 15px;
@@ -225,7 +225,7 @@
 
             #chat .me .triangle {
                 border-color: transparent transparent #6fbced transparent;
-                margin-left: 375px;
+                margin-left: 760px;
             }
 
             .div1 footer {
@@ -442,7 +442,7 @@
                         <input type="file" multiple name="document[]" id="document">
                         <input type="hidden" name="receiver_id" value="{{ $receiver_record->id }}">
                         <button type="button" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
-                                style="display: none;">
+                                style="display: none;margin-left: 475px;">
                             <span id="loader" style="display: none;"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
                             Send
                         </button>
