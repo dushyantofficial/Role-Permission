@@ -10,7 +10,6 @@ use App\Models\Question;
 use App\Models\User;
 use App\Models\UserChat;
 use App\Rule\CurrentPassword;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
@@ -466,16 +465,17 @@ class UserController extends Controller
     }
 
 
-    public function user_chat($userId)
+    public function user_chat(Request $request)
     {
+        $userId = $request->id;
         $receiver_record = User::find($userId);
         if (isset($receiver_record)) {
-            $user_chats = UserChat::where(function($query) use ($userId) {
+            $user_chats = UserChat::where(function ($query) use ($userId) {
                 $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
                     ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
             })->orderBy('created_at')->get();
-            $all_users = User::where('id', '!=', Auth::id())->orderBy('user_status','desc')->get();
-            return view('Admin.chat.user_chat', compact('all_users', 'receiver_record','user_chats'));
+            $all_users = User::where('id', '!=', Auth::id())->orderBy('user_status', 'desc')->get();
+            return view('Admin.chat.user_chat', compact('all_users', 'receiver_record', 'user_chats'));
         } else {
             return back();
         }
@@ -483,14 +483,11 @@ class UserController extends Controller
 
     public function user_chat_send(Request $request)
     {
-//        $this->validate($request, [
-//            'document' => 'required'
-//        ]);
-        $now = Carbon::now();
+
         $input = $request->all();
         $input['sender_id'] = Auth::user()->id;
         $input['date'] = date('Y-m-d');
-        $input['time'] = date('H:i A');
+        $input['time'] = date('h:i A');
         if ($request->hasFile("document")) {
             foreach ($request->file('document') as $image) {
                 if ($image->isValid()) {

@@ -133,7 +133,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{route('user-chat',$user->id)}}"
+                                        <a href="{{route('user-chat')}}?id={{$user->id}}"
                                            class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">Chatting</a>
                                     </td>
                                     @can('user-block')
