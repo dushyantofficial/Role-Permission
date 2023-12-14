@@ -365,10 +365,10 @@
                 <ul id="chat">
                     @foreach($user_chats as $index => $user_chat)
                         @php
-                            use Carbon\Carbon;$time = $user_chat->time;
+                            $time = $user_chat->time;
                             $date = $user_chat->date;
                             $dateTime = $date.' '.$time;
-                            $dateToCheck = Carbon::parse($dateTime)
+                            $dateToCheck = \Carbon\Carbon::parse($dateTime);
                         @endphp
                         @if($user_chat->sender_id == \Illuminate\Support\Facades\Auth::id())
                             <li class="me">
@@ -391,7 +391,7 @@
                                     <div class="images-container">
                                         @foreach ($user_chat->document as $documentIndex => $document)
                                             @php
-                                                $file_extension = pathinfo($document, PATHINFO_EXTENSION)
+                                                $file_extension = pathinfo($document, PATHINFO_EXTENSION);
                                             @endphp
                                             @if($file_extension == 'csv' || $file_extension == 'xlsx')
                                                 <a href="{{ asset('storage/admin/document/' . $document) }}"
@@ -472,7 +472,7 @@
                                     <div class="images-container">
                                         @foreach ($user_chat->document as $documentIndex => $document)
                                             @php
-                                                $file_extension = pathinfo($document, PATHINFO_EXTENSION)
+                                                $file_extension = pathinfo($document, PATHINFO_EXTENSION);
                                             @endphp
                                             @if($file_extension == 'csv' || $file_extension == 'xlsx')
                                                 <a href="{{ asset('storage/admin/document/' . $document) }}"
