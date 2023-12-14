@@ -35,18 +35,14 @@
         <i class="fa fa-sun-o"></i>
         @endif
     </button>
-    </form>
-    <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine zoom-button"
-            style="margin: 9px !important;" id="zoomOut"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
-    <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine zoom-button" style="margin: 9px !important;"
-            id="resetZoom"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-    <button class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine zoom-button" style="margin: 9px !important;"
-            id="zoomIn"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine zoom-button" id="zoomOut"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine zoom-button" id="resetZoom"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine zoom-button" id="zoomIn"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
 
-    {{--        <li><a href="#" id="btn-decrease">A-</a></li>--}}
+{{--        <li><a href="#" id="btn-decrease">A-</a></li>--}}
 {{--        <li><a href="#" id="btn-orig">A</a></li>--}}
 {{--        <li><a href="#" id="btn-increase">A+</a></li>--}}
-
+    </form>
     &nbsp;
       <ul class="app-nav">
           <li class="app-search">
