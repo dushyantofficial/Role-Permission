@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 12:47 PM
+-- Generation Time: Dec 14, 2023 at 01:23 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -907,6 +907,7 @@ CREATE TABLE `users` (
   `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `font_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `chatting_replay` datetime DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -918,23 +919,23 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`, `user_status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png', 'dushyant@gmail.com', 'active', 'light', 'rgba(6,14,47,0.82)', '#000000', 'online', NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-12-13 05:19:37'),
-(6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-12-11 23:17:48'),
-(9, 'rajesh', NULL, 'rajesh33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$Be.2i3687zBtcNYLU..tseimghoxuhd.Dh3CBSSP/UO99xAh4p6QS', NULL, '2023-10-02 02:33:28', '2023-10-05 03:47:58'),
-(10, 'Paresh', NULL, 'paresh@gmail.com', 'active', NULL, NULL, NULL, 'offline', NULL, '$2y$10$qyCCLpoiS5tvm5l3gWRuB.JjSYtDdBlSi1laoznGZnGoUEyEloBFq', NULL, '2023-10-02 02:41:23', '2023-12-13 05:12:13'),
-(11, 'dfgfdg', NULL, 'dushyant232@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$Ij0rvPffyAxly21470lDO.i7w/KiL7iVyEVC3tNf0G2aff41DqRm2', NULL, '2023-10-05 02:08:46', '2023-10-05 02:08:46'),
-(12, 'dfgdf', NULL, 'dfggf@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, '$2y$10$ikxZ5by0jzPWNxobaKP7DuvI2YlGRdEWtYJ0k41d97PVjgvZtNXNy', NULL, '2023-10-05 02:12:47', '2023-10-09 03:33:00'),
-(13, 'sdfsd', NULL, 'sdfsd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$DPYfV4awoG8Gx.GDmtPyv.2G3ImM.zB7Q.rqo1WpZ/0Mf7sGHvSsO', NULL, '2023-10-05 02:13:56', '2023-10-06 05:53:16'),
-(14, 'dfgdfg', NULL, 'dfgfd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$EvOrOrhSmY1XK2KrVwkSCeAKUTxkZr9pi4sUDCRGjIunblPv.XP2m', NULL, '2023-10-05 02:14:42', '2023-10-05 02:14:42'),
-(15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29', '2023-10-18 00:31:28'),
-(16, 'Darshan', NULL, 'darshan@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, '$2y$10$ratUbcl80AzsxtI/tMTF2OTSFcb4tmI2E2a.ig7JNrbVw7WZ8TiQS', NULL, '2023-10-05 05:30:13', '2023-10-09 03:32:54'),
-(17, 'Fuuf', NULL, 'dushyantyyhhh@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$Y0LmVFT1hiI.wgLQ.Of.kuO2RB6dfKr439uHv2g35B6kxWAvEPENW', NULL, '2023-10-05 06:26:35', '2023-10-05 06:26:35'),
-(18, 'Hello', NULL, 'hello34@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22'),
-(19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57', '2023-11-01 04:11:57'),
-(20, 'Vishal', 'sNF4RGfNPvlNoLB0oRgDNNfNqmBGM3NC5VQsY6x3.jpg', 'vishal@gmail.com', 'active', NULL, NULL, NULL, 'online', NULL, '$2y$10$YfRRAPto6oTD2RIvdiriNe3UI5M2LNjOd98Di7tUvRqUjpQnDgt52', NULL, '2023-11-01 04:17:34', '2023-11-01 04:17:34'),
-(21, 'Prof. Marty Corwin', NULL, 'devin76@example.com', 'active', NULL, NULL, NULL, NULL, '2023-11-25 00:15:07', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gRkvJ6d1Ze', '2023-11-25 00:15:07', '2023-12-11 23:18:01'),
-(22, 'Laurianne McKenzie II', NULL, 'kihn.mylene@example.net', 'Block', 'light', '#312525', '#2a2a2a', NULL, '2023-11-25 00:21:36', '$2y$10$tj5ZpZdWdM/E.KATf4Q4deEAsG1nF5VuRpn9u6MwA41bhaAthff0m', 'bVvLTAbaz9PUfrdLyfzZeucikxngWwuz4EIrFt4UqPdbGG0x0WDZWiBK8KAT', '2023-11-25 00:21:36', '2023-12-11 23:17:55');
+INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`, `user_status`, `chatting_replay`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png', 'dushyant@gmail.com', 'active', 'light', 'rgba(6,14,47,0.82)', '#000000', 'online', NULL, NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-12-14 11:31:18'),
+(6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '2023-12-14 17:52:45', NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-12-14 12:22:45'),
+(9, 'rajesh', NULL, 'rajesh33@gmail.com', 'active', NULL, NULL, NULL, NULL, '2023-12-14 17:52:57', NULL, '$2y$10$Be.2i3687zBtcNYLU..tseimghoxuhd.Dh3CBSSP/UO99xAh4p6QS', NULL, '2023-10-02 02:33:28', '2023-12-14 12:22:57'),
+(10, 'Paresh', NULL, 'paresh@gmail.com', 'active', NULL, NULL, NULL, 'offline', NULL, NULL, '$2y$10$qyCCLpoiS5tvm5l3gWRuB.JjSYtDdBlSi1laoznGZnGoUEyEloBFq', NULL, '2023-10-02 02:41:23', '2023-12-13 05:12:13'),
+(11, 'dfgfdg', NULL, 'dushyant232@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$Ij0rvPffyAxly21470lDO.i7w/KiL7iVyEVC3tNf0G2aff41DqRm2', NULL, '2023-10-05 02:08:46', '2023-10-05 02:08:46'),
+(12, 'dfgdf', NULL, 'dfggf@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$ikxZ5by0jzPWNxobaKP7DuvI2YlGRdEWtYJ0k41d97PVjgvZtNXNy', NULL, '2023-10-05 02:12:47', '2023-10-09 03:33:00'),
+(13, 'sdfsd', NULL, 'sdfsd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$DPYfV4awoG8Gx.GDmtPyv.2G3ImM.zB7Q.rqo1WpZ/0Mf7sGHvSsO', NULL, '2023-10-05 02:13:56', '2023-10-06 05:53:16'),
+(14, 'dfgdfg', NULL, 'dfgfd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$EvOrOrhSmY1XK2KrVwkSCeAKUTxkZr9pi4sUDCRGjIunblPv.XP2m', NULL, '2023-10-05 02:14:42', '2023-10-05 02:14:42'),
+(15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29', '2023-10-18 00:31:28'),
+(16, 'Darshan', NULL, 'darshan@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$ratUbcl80AzsxtI/tMTF2OTSFcb4tmI2E2a.ig7JNrbVw7WZ8TiQS', NULL, '2023-10-05 05:30:13', '2023-10-09 03:32:54'),
+(17, 'Fuuf', NULL, 'dushyantyyhhh@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$Y0LmVFT1hiI.wgLQ.Of.kuO2RB6dfKr439uHv2g35B6kxWAvEPENW', NULL, '2023-10-05 06:26:35', '2023-10-05 06:26:35'),
+(18, 'Hello', NULL, 'hello34@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22'),
+(19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57', '2023-11-01 04:11:57'),
+(20, 'Vishal', 'sNF4RGfNPvlNoLB0oRgDNNfNqmBGM3NC5VQsY6x3.jpg', 'vishal@gmail.com', 'active', NULL, NULL, NULL, 'online', '2023-12-14 17:52:29', NULL, '$2y$10$YfRRAPto6oTD2RIvdiriNe3UI5M2LNjOd98Di7tUvRqUjpQnDgt52', NULL, '2023-11-01 04:17:34', '2023-12-14 12:22:29'),
+(21, 'Prof. Marty Corwin', NULL, 'devin76@example.com', 'active', NULL, NULL, NULL, NULL, NULL, '2023-11-25 00:15:07', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gRkvJ6d1Ze', '2023-11-25 00:15:07', '2023-12-11 23:18:01'),
+(22, 'Laurianne McKenzie II', NULL, 'kihn.mylene@example.net', 'Block', 'light', '#312525', '#2a2a2a', NULL, NULL, '2023-11-25 00:21:36', '$2y$10$tj5ZpZdWdM/E.KATf4Q4deEAsG1nF5VuRpn9u6MwA41bhaAthff0m', 'bVvLTAbaz9PUfrdLyfzZeucikxngWwuz4EIrFt4UqPdbGG0x0WDZWiBK8KAT', '2023-11-25 00:21:36', '2023-12-11 23:17:55');
 
 -- --------------------------------------------------------
 
@@ -972,7 +973,19 @@ INSERT INTO `user_chats` (`id`, `sender_id`, `receiver_id`, `message`, `document
 (10, 10, 5, 'i am paresh', NULL, '10:42 AM', '2023-12-13', NULL, '2023-12-13 05:12:04', '2023-12-13 05:12:04'),
 (11, 5, 10, 'ok', NULL, '10:42 AM', '2023-12-13', NULL, '2023-12-13 05:12:58', '2023-12-13 05:12:58'),
 (12, 5, 10, 'frw', '[\"GocsSYp3caHHCkHLy2r5QgJv6CWiPaoIsI7O4juS.png\"]', '10:43 AM', '2023-12-13', NULL, '2023-12-13 05:13:26', '2023-12-13 05:13:26'),
-(13, 5, 10, 'sfsdfssdf', '[\"UbG1g7No7TkYByEDWEFuTLQUqcuX5upfoR8BHGIt.zip\",\"A0mzLq7LXIixUjaqc2p7KXzNjJyAlRqFf7EAiKBv.jpg\",\"tEXQZDCW5YS6LwAiKbgDXtlsKfIq34njhnComuRJ.xlsx\"]', '11:33 AM', '2023-12-13', NULL, '2023-12-13 06:03:39', '2023-12-13 06:03:39');
+(13, 5, 10, 'sfsdfssdf', '[\"UbG1g7No7TkYByEDWEFuTLQUqcuX5upfoR8BHGIt.zip\",\"A0mzLq7LXIixUjaqc2p7KXzNjJyAlRqFf7EAiKBv.jpg\",\"tEXQZDCW5YS6LwAiKbgDXtlsKfIq34njhnComuRJ.xlsx\"]', '11:33 AM', '2023-12-13', NULL, '2023-12-13 06:03:39', '2023-12-13 06:03:39'),
+(14, 5, 10, 'kjj', '[\"beUNvGjYRjTdymlRmiuqXxSrsIj06UlLAlzKNOYh.pdf\"]', '12:20 PM', '2023-12-13', NULL, '2023-12-13 06:50:34', '2023-12-13 06:50:34'),
+(15, 5, 10, 'sjhsdfghgdfngb\r\nlkjsdfkgljfdgklfd\r\noigdfpoguifdo', NULL, '12:41 PM', '2023-12-13', NULL, '2023-12-13 07:11:53', '2023-12-13 07:11:53'),
+(16, 5, 22, NULL, '[\"naVgqIYBekUhu0vr495hy9XYOtKQ5tjyscUstl2D.jpg\"]', '04:37 AM', '2023-12-14', NULL, '2023-12-13 23:07:26', '2023-12-13 23:07:26'),
+(17, 5, 22, 'dfgfdgd', NULL, '11:03 AM', '2023-12-14', NULL, '2023-12-14 05:33:06', '2023-12-14 05:33:06'),
+(18, 5, 22, 'xzas', '[\"L5np4t8YBMNTreoMgzTW8Y7qgyHKXSUTeCkHP2m1.webp\"]', '11:06 AM', '2023-12-14', NULL, '2023-12-14 05:36:29', '2023-12-14 05:36:29'),
+(19, 5, 13, 'asdasd', NULL, '12:05 PM', '2023-12-14', NULL, '2023-12-14 06:35:35', '2023-12-14 06:35:35'),
+(20, 5, 22, 'Hello', '[\"b1WumgYZdEP2yO1ZTgEGQcAz354lV9CsxoiY75z2.jpg\",\"cKNhToFy3fEqwLk4JgP6tA0zNSeDAB28QluHKoP2.mp4\",\"ZeRUmocFIh5ICs08SBptZNMEioteX3igoZUO227A.pdf\"]', '02:25 PM', '2023-12-14', NULL, '2023-12-14 08:56:00', '2023-12-14 08:56:00'),
+(21, 5, 21, 'sfsfsdf', '[\"9WTikPssk9PCx5poAJv0YWSgkY9SJ9NtFDCdUwKP.jpg\"]', '04:11 PM', '2023-12-14', NULL, '2023-12-14 10:41:06', '2023-12-14 10:41:06'),
+(22, 5, 18, 'Hello', NULL, '04:46 PM', '2023-12-14', NULL, '2023-12-14 11:16:54', '2023-12-14 11:16:54'),
+(23, 5, 20, 'sdfsdfdsf', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:29', '2023-12-14 12:22:29'),
+(24, 5, 6, 'sdfsfdsf', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:45', '2023-12-14 12:22:45'),
+(25, 5, 9, 'sdfdsfs', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:57', '2023-12-14 12:22:57');
 
 -- --------------------------------------------------------
 
@@ -1337,7 +1350,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_chats`
 --
 ALTER TABLE `user_chats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `work_experiences`

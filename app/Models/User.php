@@ -28,6 +28,7 @@ class User extends Authenticatable
         'background_color',
         'font_color',
         'user_status',
+        'chatting_replay',
     ];
 
     /**

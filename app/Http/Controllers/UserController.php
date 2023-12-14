@@ -10,6 +10,7 @@ use App\Models\Question;
 use App\Models\User;
 use App\Models\UserChat;
 use App\Rule\CurrentPassword;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
@@ -474,7 +475,8 @@ class UserController extends Controller
                 $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
                     ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
             })->orderBy('created_at')->get();
-            $all_users = User::where('id', '!=', Auth::id())->orderBy('user_status', 'desc')->get();
+
+            $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
             return view('Admin.chat.user_chat', compact('all_users', 'receiver_record', 'user_chats'));
         } else {
             return back();
@@ -484,6 +486,7 @@ class UserController extends Controller
     public function user_chat_send(Request $request)
     {
 
+        $user_update = User::find($request->receiver_id);
         $input = $request->all();
         $input['sender_id'] = Auth::user()->id;
         $input['date'] = date('Y-m-d');
@@ -498,6 +501,8 @@ class UserController extends Controller
             }
         }
         UserChat::create($input);
+        $usersupdate['chatting_replay'] = Carbon::now();
+        $user_update->update($usersupdate);
         return back();
     }
 }

@@ -313,6 +313,31 @@
                     <input type="text" placeholder="search">
                 </header>
                 <ul>
+                    <li class="app-menu__item {{ request('id') == $receiver_record->id ? 'active' : '' }}">
+                        <a href="{{route('user-chat')}}?id={{$receiver_record->id}}">
+                            @if($receiver_record->profile_pic != null)
+                                <img src="{{asset('storage/images/'.$receiver_record->profile_pic)}}" alt=""
+                                     width="55px">
+                            @else
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_04.jpg"
+                                     alt="">
+                            @endif
+                            <div>
+                                <h2>{{$receiver_record->name}}</h2>
+                                @if($receiver_record->user_status == 'online')
+                                    <h3>
+                                        <span class="status green"></span>
+                                        <strong>online</strong>
+                                    </h3>
+                                @else
+                                    <h3>
+                                        <span class="status orange"></span>
+                                        <strong>offline</strong>
+                                    </h3>
+                                @endif
+                            </div>
+                        </a>
+                    </li>
                     @foreach($all_users as $all_user)
                         <li class="app-menu__item {{ request('id') == $all_user->id ? 'active' : '' }}">
                             <a href="{{route('user-chat')}}?id={{$all_user->id}}">
