@@ -485,7 +485,6 @@ class UserController extends Controller
 
     public function user_chat_send(Request $request)
     {
-
         $user_update = User::find($request->receiver_id);
         $input = $request->all();
         $input['sender_id'] = Auth::user()->id;

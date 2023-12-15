@@ -570,7 +570,6 @@
                                 <input type="file" name="document[]" class="custom-file-input" multiple id="document" style="width: 500px;">
                                 <label class="custom-file-label" for="customFile">Upload Document</label>
                             </div>
-                            <span class="text-danger"></span>
                         </div>
                         <input class="form-control" type="hidden" name="receiver_id" value="{{ $receiver_record->id }}">
                         <button type="button" id="sendsubmitBtn"
@@ -722,9 +721,39 @@
             $('#sendsubmitBtn').click(function (e) {
                 e.preventDefault();
 
+                //File upload validation
+                var maxSize = 50 * 1024 * 1024; // 50 MB
+                var fileSize = $('#document')[0].files[0].size;
+
+                if (fileSize > maxSize) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'File size exceeds the maximum limit of 50 MB.',
+                    });
+                    return false;
+                }
+
+                // File format validation (client-side)
+                var allowedFormats = ['jpeg','bmp','png','jpg','zip','doc','mp4','webp','xlsx','csv','pdf'];
+                var fileName = $('#document')[0].files[0].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+
+                if (allowedFormats.indexOf(fileExtension) === -1) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Invalid file format. Allowed formats are PNG, JPG, JPEG, ZIP, PDF, MP4, CSV, XLSX, MBP, DOC, WEBP,.',
+                    });
+                    return false;
+                }
+
+
                 // Show loading spinner inside the button
                 $('#loader').show();
                 $('#sendsubmitBtn').attr('disabled', true); // Disable the button during loading
+
+
 
                 var formData = new FormData($('#add_data')[0]);
 
