@@ -568,7 +568,7 @@
                         <textarea name="message" id="message" placeholder="Type your message"></textarea>
                         <div class="form-group" style="width: 251px;">
                             <div class="custom-file">
-                                <input type="file" name="document[]" class="custom-file-input" multiple id="document" style="width: 500px;">
+                                <input type="file" name="document[]" class="custom-file-input" multiple id="document" style="width: 500px;cursor: pointer;">
                                 <label class="custom-file-label" for="customFile">Upload Document</label>
                             </div>
                         </div>
@@ -716,6 +716,7 @@
             });
         });
     </script>
+
 {{--  Message send with ajax  --}}
     <script>
         $(document).ready(function () {
