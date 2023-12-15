@@ -443,7 +443,7 @@
                                             @else
                                                 <img src="{{ asset('storage/admin/document/' . $document) }}"
                                                      alt="Image" width="50px"
-                                                     data-toggle="modal"
+                                                  style="cursor: zoom-out;"   data-toggle="modal"
                                                      data-target="#imageModal{{ $index }}_{{ $documentIndex }}">
                                             @endif
                                             <!-- Modal -->
@@ -525,7 +525,7 @@
                                             @else
                                                 <img src="{{ asset('storage/admin/document/' . $document) }}"
                                                      alt="Image" width="50px"
-                                                     data-toggle="modal"
+                                                    style="cursor: zoom-out;" data-toggle="modal"
                                                      data-target="#imageModal{{ $index }}_{{ $documentIndex }}">
                                             @endif
                                         <!-- Modal -->
@@ -535,10 +535,11 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-body">
-                                                            <img
-                                                                src="{{ asset('storage/admin/document/' . $document) }}"
-                                                                class="img-fluid" alt="Image">
-
+                                                            <center>
+                                                                <img
+                                                                    src="{{ asset('storage/admin/document/' . $document) }}"
+                                                                    class="img-fluid" alt="Image">
+                                                            </center>
                                                             <!-- Download Button -->
                                                             <div class="mt-2 text-center">
                                                                 <a href="{{ asset('storage/admin/document/' . $document) }}"
