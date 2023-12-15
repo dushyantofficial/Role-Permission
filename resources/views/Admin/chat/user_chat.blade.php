@@ -310,9 +310,9 @@
         <div id="container">
             <div class="aside">
                 <header>
-                    <input type="text" placeholder="search">
+                    <input type="text" id="search_field" placeholder="search">
                 </header>
-                <ul>
+                <ul id="demonames">
                     <li class="app-menu__item {{ request('id') == $receiver_record->id ? 'active' : '' }}">
                         <a href="{{route('user-chat')}}?id={{$receiver_record->id}}">
                             @if($receiver_record->profile_pic != null)
@@ -323,7 +323,7 @@
                                      alt="">
                             @endif
                             <div>
-                                <h2>{{$receiver_record->name}}</h2>
+                                <h2 class="demoname">{{$receiver_record->name}}</h2>
                                 @if($receiver_record->user_status == 'online')
                                     <h3>
                                         <span class="status green"></span>
@@ -348,7 +348,7 @@
                                          alt="">
                                 @endif
                                 <div>
-                                    <h2>{{$all_user->name}}</h2>
+                                    <h2 class="demoname">{{$all_user->name}}</h2>
                                     @if($all_user->user_status == 'online')
                                         <h3>
                                             <span class="status green"></span>
@@ -453,10 +453,11 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-body">
+                                                            <center>
                                                             <img
                                                                 src="{{ asset('storage/admin/document/' . $document) }}"
                                                                 class="img-fluid" alt="Image">
-
+                                                            </center>
                                                             <!-- Download Button -->
                                                             <div class="mt-2 text-center">
                                                                 <a href="{{ asset('storage/admin/document/' . $document) }}"
@@ -564,11 +565,17 @@
                     <form id="add_data" action="{{ route('user-chat-send') }}" enctype="multipart/form-data">
                         @csrf
                         <textarea name="message" id="message" placeholder="Type your message"></textarea>
-                        <input type="file" multiple name="document[]" id="document">
-                        <input type="hidden" name="receiver_id" value="{{ $receiver_record->id }}">
+                        <div class="form-group" style="width: 251px;">
+                            <div class="custom-file">
+                                <input type="file" name="document[]" class="custom-file-input" multiple id="document" style="width: 500px;">
+                                <label class="custom-file-label" for="customFile">Upload Document</label>
+                            </div>
+                            <span class="text-danger"></span>
+                        </div>
+                        <input class="form-control" type="hidden" name="receiver_id" value="{{ $receiver_record->id }}">
                         <button type="button" id="sendsubmitBtn"
                                 class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
-                                style="display: none;float: inline-end;">
+                                style="display: none;float: inline-end;margin-top: -6%;">
                             <span id="loader" style="display: none;"><i
                                     class="fa fa-spinner fa-spin"></i> Loading...</span>
                             Send
@@ -648,6 +655,39 @@
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true
+        });
+    </script>
+
+{{--  Search name  --}}
+    <script>
+        // SEARCH FUNCTION
+        var btsearch = {
+            init: function(search_field, searchable_elements, searchable_text_class) {
+                $(search_field).keyup(function(e){
+                    e.preventDefault();
+                    var query = $(this).val().toLowerCase();
+                    if(query){
+                        // loop through all elements to find match
+                        $.each($(searchable_elements), function(){
+                            var title = $(this).find(searchable_text_class).text().toLowerCase();
+                            if(title.indexOf(query) == -1){
+                                $(this).hide();
+                            } else {
+                                $(this).show();
+                            }
+                        });
+                    } else {
+                        // empty query so show everything
+                        $(searchable_elements).show();
+                    }
+                });
+            }
+        }
+
+        // INIT
+        $(function(){
+            // USAGE: btsearch.init(('search field element', 'searchable children elements', 'searchable text class');
+            btsearch.init('#search_field', '#demonames li', '.demoname');
         });
     </script>
 

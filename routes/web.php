@@ -126,32 +126,32 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/resume-test', [App\Http\Controllers\ResumeController::class, 'resume_test'])->name('resume-test');
     Route::post('/updateProfilePicture', [App\Http\Controllers\UserController::class, 'updateProfilePicture'])->name('updateProfilePicture');
 
+    Route::get('send-mail', [App\Http\Controllers\UserController::class, 'send_mail'])->name('send-mail');
+    Route::post('update-row-order', [App\Http\Controllers\ProductController::class, 'updateColumnOrder'])->name('update-row-order');
+
+//Payment
+    Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index'])->name('razorpay-payment');
+    Route::post('razorpay-payment-store', [App\Http\Controllers\RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
+    Route::get('/online_pay', [App\Http\Controllers\PaymentController::class, 'online_pay'])->name('online-pay');
+    Route::get('/refund_payment', [App\Http\Controllers\PaymentController::class, 'refundPayment'])->name('refund-payment');
+    Route::get('/history_payment', [App\Http\Controllers\PaymentController::class, 'payment_history'])->name('payment-history');
+    Route::get('/payment_history_delete', [App\Http\Controllers\PaymentController::class, 'payment_history_delete'])->name('payment-history-delete');
+    Route::get('/refund_payment_history', [App\Http\Controllers\PaymentController::class, 'refund_payment_history'])->name('refund-payment-history');
+    Route::get('/refund_payment_history_delete', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_delete'])->name('refund-payment-history-delete');
+
+//Payment Pdf
+    Route::get('/payment_pdf', [App\Http\Controllers\PaymentController::class, 'payment_pdf'])->name('payment-pdf');
+    Route::get('/payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'payment_history_pdf'])->name('payment-history-pdf');
+    Route::get('/refund_payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_pdf'])->name('refund-payment-history-pdf');
+
+    Route::get('/toggle-theme', [App\Http\Controllers\PaymentController::class, 'toggleTheme'])->name('toggle-theme');
+    Route::post('/change-theme', [App\Http\Controllers\PaymentController::class, 'change_theme'])->name('change-theme');
+
+//User Chat
+    Route::get('/users-chat', [App\Http\Controllers\UserController::class, 'user_chat'])->name('user-chat');
+    Route::post('/users/user-chat-send/', [App\Http\Controllers\UserController::class, 'user_chat_send'])->name('user-chat-send');
 
 });
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha'])->name('reload-captcha');
 
-Route::get('send-mail', [App\Http\Controllers\UserController::class, 'send_mail'])->name('send-mail');
-Route::post('update-row-order', [App\Http\Controllers\ProductController::class, 'updateColumnOrder'])->name('update-row-order');
-
-//Payment
-Route::get('razorpay-payment', [App\Http\Controllers\RazorpayPaymentController::class, 'index'])->name('razorpay-payment');
-Route::post('razorpay-payment-store', [App\Http\Controllers\RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
-Route::get('/online_pay', [App\Http\Controllers\PaymentController::class, 'online_pay'])->name('online-pay');
-Route::get('/refund_payment', [App\Http\Controllers\PaymentController::class, 'refundPayment'])->name('refund-payment');
-Route::get('/history_payment', [App\Http\Controllers\PaymentController::class, 'payment_history'])->name('payment-history');
-Route::get('/payment_history_delete', [App\Http\Controllers\PaymentController::class, 'payment_history_delete'])->name('payment-history-delete');
-Route::get('/refund_payment_history', [App\Http\Controllers\PaymentController::class, 'refund_payment_history'])->name('refund-payment-history');
-Route::get('/refund_payment_history_delete', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_delete'])->name('refund-payment-history-delete');
-
-//Payment Pdf
-Route::get('/payment_pdf', [App\Http\Controllers\PaymentController::class, 'payment_pdf'])->name('payment-pdf');
-Route::get('/payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'payment_history_pdf'])->name('payment-history-pdf');
-Route::get('/refund_payment_history_pdf', [App\Http\Controllers\PaymentController::class, 'refund_payment_history_pdf'])->name('refund-payment-history-pdf');
-
-Route::get('/toggle-theme', [App\Http\Controllers\PaymentController::class, 'toggleTheme'])->name('toggle-theme');
-Route::post('/change-theme', [App\Http\Controllers\PaymentController::class, 'change_theme'])->name('change-theme');
-
-//User Chat
-Route::get('/users-chat', [App\Http\Controllers\UserController::class, 'user_chat'])->name('user-chat');
-Route::post('/users/user-chat-send/', [App\Http\Controllers\UserController::class, 'user_chat_send'])->name('user-chat-send');
 
