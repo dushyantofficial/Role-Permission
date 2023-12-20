@@ -151,6 +151,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users-chat', [App\Http\Controllers\UserController::class, 'user_chat'])->name('user-chat');
     Route::post('/users/user-chat-send/', [App\Http\Controllers\UserController::class, 'user_chat_send'])->name('user-chat-send');
 
+    Route::get('/users-chat-demo', [App\Http\Controllers\UserController::class, 'user_chat_demo'])->name('user-chat-demo');
+
 });
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha'])->name('reload-captcha');
 

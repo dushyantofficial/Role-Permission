@@ -502,7 +502,66 @@ class UserController extends Controller
         UserChat::create($input);
         $usersupdate['chatting_replay'] = Carbon::now();
         $user_update->update($usersupdate);
-        return back();
+
+        $userId = $request->receiver_id;
+        $receiver_record = User::find($userId);
+        $user_chats = UserChat::where(function ($query) use ($userId) {
+            $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+        })->orderBy('created_at')->get();
+
+        $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+
+        $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
+
+        return response()->json(['renderedContent' => $renderedContent]);
     }
+
+
+
+    public function user_chat_demo(Request $request)
+    {
+        $userId = $request->id;
+        $receiver_record = User::find($userId);
+
+        if (isset($receiver_record)) {
+            $user_chats = UserChat::where(function ($query) use ($userId) {
+                $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                    ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+            })->orderBy('created_at')->get();
+
+            $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+
+            // Return JSON response for Ajax request
+            if ($request->ajax()) {
+                return response()->json(['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record]);
+            }
+
+            return view('Admin.chat.user_chat_demo', compact('user_chats', 'receiver_record', 'all_users'));
+        } else {
+            if ($request->ajax()) {
+                return response()->json(['error' => 'User not found.']);
+            }
+
+            return back();
+        }
+    }
+
+//    public function user_chat_demo(Request $request)
+//    {
+//        $userId = $request->id;
+//        $receiver_record = User::find($userId);
+//        if (isset($receiver_record)) {
+//            $user_chats = UserChat::where(function ($query) use ($userId) {
+//                $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+//                    ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+//            })->orderBy('created_at')->get();
+//
+//            $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+//            return view('Admin.chat.user_chat_demo', compact('all_users', 'receiver_record', 'user_chats'));
+//        } else {
+//            return back();
+//        }
+//    }
 }
 

@@ -19,7 +19,8 @@
             max-width: 100%;
             width: 100%;
             border-radius: 50%;
-            height: 100%;
+            height: 79%;
+            margin: 17% 0%;
         }
         .user .profile .info {
             padding: 53px 59px;
@@ -47,13 +48,13 @@
                     <div class="info">
                             <div class="avatar avatar-md mb-3 position-relative" id="profilePic">
                                 @if($user->profile_pic == '')
-                                    <img class="user-img" src="{{asset('admin/images/dummy_img.png')}}" alt="user">
+                                    <img class="user-img" src="{{asset('admin/images/dummy_img.png')}}" alt="user" width="105px" height="100px">
                                 @else
-                                    <img class="user-img" src="{{asset('storage/images/'.$user->profile_pic)}}">
+                                    <img class="user-img" src="{{asset('storage/images/'.$user->profile_pic)}}" width="105px" height="100px">
 
                                 @endif
                                 <div class="camera-icon" id="cameraIcon">
-                                    <i class="fa fa-pencil" style="margin: 18px !important;"></i>
+                                    <i class="fa fa-pencil" style="margin: 40px !important;"></i>
                                 </div>
                                 <input type="file" name="profile_pic" id="profile-picture-input" style="display: none;">
                             </div>
