@@ -477,6 +477,9 @@ class UserController extends Controller
             })->orderBy('created_at')->get();
 
             $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+            if ($request->ajax()) {
+                return response()->json(['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record]);
+            }
             return view('Admin.chat.user_chat', compact('all_users', 'receiver_record', 'user_chats'));
         } else {
             return back();

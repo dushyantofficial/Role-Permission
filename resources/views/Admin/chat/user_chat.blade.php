@@ -635,7 +635,7 @@
         function loadChatData() {
             var userId = {{ $receiver_record->id }}; // Assuming you can get the user ID from your view
             $.ajax({
-                url: '{{ route("user-chat-demo") }}?id=' + userId,
+                url: '{{ route("user-chat") }}?id=' + userId,
                 method: 'GET',
                 success: function (data) {
                     // Handle the received data
@@ -649,7 +649,6 @@
                         // Update the chat messages
 
                         $('#chat').html(renderedContent);
-                        //loadChatData();
                         // Update the new chat messages
                     }
                 },
@@ -658,6 +657,7 @@
                 }
             });
         }
+
         // Call the function when the page loads
         $(document).ready(function () {
             // Load chat data initially
