@@ -8,11 +8,9 @@
     @if($user_chat->sender_id == \Illuminate\Support\Facades\Auth::id())
         <li class="me">
             <div class="entete">
-                <center>
-                    <h3>{{$dateTime}}, <b style="color: black">{{$dateToCheck->diffForHumans()}}</b>
+                    <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
                     </h3>
-                </center>
-                <h2>{{$user_chat->sender_name->name}}</h2>
+                <h2 style="color: green">{{$user_chat->sender_name->name}}</h2>
                 <span class="status blue"></span>
             </div>
             @if ($user_chat->message != null)
@@ -91,11 +89,9 @@
         <li class="you">
             <div class="entete">
                 <span class="status green"></span>
-                <h2>{{$user_chat->sender_name->name}}</h2>
-                <center>
-                    <h3>{{$dateTime}}, <b style="color: black">{{$dateToCheck->diffForHumans()}}</b>
+                <h2 style="color: red">{{$user_chat->sender_name->name}}</h2>
+                    <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
                     </h3>
-                </center>
             </div>
             @if ($user_chat->message != null)
                 <div class="triangle"></div>
