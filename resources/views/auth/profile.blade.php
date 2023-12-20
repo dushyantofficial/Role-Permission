@@ -54,7 +54,7 @@
 
                                 @endif
                                 <div class="camera-icon" id="cameraIcon">
-                                    <i class="fa fa-pencil" style="margin: 40px !important;"></i>
+                                    <i class="fa fa-pencil" style="margin: 35px !important;"></i>
                                 </div>
                                 <input type="file" name="profile_pic" id="profile-picture-input" style="display: none;">
                             </div>
