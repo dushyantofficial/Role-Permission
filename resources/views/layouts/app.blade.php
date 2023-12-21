@@ -79,21 +79,18 @@
 <script type="text/javascript" src="{{asset('admin/js/plugins/fullcalendar.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/bootstrap-colorpicker.min.js')}}"></script>
 
+@php
+
+    $labels = user_bar_chart()->keys();
+        $data = user_bar_chart()->values();
+@endphp
 <!-- Google analytics script-->
 <script type="text/javascript">
+    var labels = {{ Js::from($labels) }};
+    var users = {{ Js::from($data) }};
     var data = {
-        labels: ["January", "February", "March", "April", "May"],
+        labels: labels,
         datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56]
-            },
             {
                 label: "My Second dataset",
                 fillColor: "rgba(151,187,205,0.2)",
@@ -102,22 +99,22 @@
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86]
+                data: users
             }
         ]
     };
     var pdata = [
         {
-            value: 300,
+            value: <?php echo auth_user_get()->where('status', 'active')->count() ?>,
             color: "#46BFBD",
             highlight: "#5AD3D1",
-            label: "Complete"
+            label: "Active User"
         },
         {
-            value: 50,
-            color:"#F7464A",
+            value: <?php echo auth_user_get()->where('status', 'Block')->count() ?>,
+            color: "#F7464A",
             highlight: "#FF5A5E",
-            label: "In-Progress"
+            label: "Block User"
         }
     ]
 

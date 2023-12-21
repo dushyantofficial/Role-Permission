@@ -25,7 +25,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::where('id', '!=', Auth::id())->orderBy('id', 'DESC')->get();
+        $users = User::where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
         $roles = Role::all();
         return view('users.index', compact('users', 'roles'));
     }
