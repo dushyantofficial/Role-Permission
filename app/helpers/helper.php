@@ -29,3 +29,65 @@ function user_bar_chart()
     return $users;
 }
 
+function googleLineChart()
+{
+    $visitors = \App\Models\User::select("created_at", "status")->get();
+
+    // Initialize arrays to store data
+    $activeData = [];
+    $blockData = [];
+
+// Loop through the visitors and categorize by status
+    foreach ($visitors as $key => $value) {
+        $date = $value->created_at->format('Y-m-d');
+
+        if ($value->status == 'active') {
+            $activeData[$date] = ($activeData[$date] ?? 0) + 1;
+        } elseif ($value->status == 'Block') {
+            $blockData[$date] = ($blockData[$date] ?? 0) + 1;
+        }
+    }
+
+// Prepare data for the chart
+    $result[] = ['Dates', 'Active', 'Block'];
+    foreach ($activeData as $date => $activeCount) {
+        $result[] = [$date, $activeCount, $blockData[$date] ?? 0];
+    }
+
+    return $result;
+}
+
+function userRole()
+{
+    $visitors = \App\Models\User::select("created_at", "role")->get();
+
+    // Initialize arrays to store data
+    $adminData = [];
+    $userData = [];
+
+// Loop through the visitors and categorize by status
+    foreach ($visitors as $key => $value) {
+
+        $date = $value->created_at->format('Y-m-d');
+        if(!empty($value->getRoleNames())){
+            foreach($value->getRoleNames() as $v){
+
+            }
+        }
+        if ($value->role == 'admin') {
+            $adminData[$date] = ($adminData[$date] ?? 0) + 1;
+        } elseif ($value->status == 'Block') {
+            $userData[$date] = ($userData[$date] ?? 0) + 1;
+        }
+    }
+
+// Prepare data for the chart
+    $result[] = ['Dates', 'Admin', 'User'];
+    foreach ($adminData as $date => $activeCount) {
+       dd($activeCount->getRoleNames());
+        $result[] = [$date, $activeCount, $userData[$date] ?? 0];
+    }
+
+    return $result;
+}
+
