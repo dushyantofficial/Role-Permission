@@ -80,12 +80,12 @@
                         <div class="" id="barchart_material"></div>
                 </div>
             </div>
-{{--            <div class="col-md-6">--}}
-{{--                <div class="tile">--}}
-{{--                    <h3 class="tile-title">User Role</h3>--}}
-{{--                    <div class="" id="barchart_material"></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="col-md-6">
+                <div class="tile">
+                    <h3 class="tile-title">User Role</h3>
+                    <div class="" id="userRole"></div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">

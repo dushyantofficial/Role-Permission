@@ -145,6 +145,25 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 </script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable({{ Js::from(userRole()) }});
+
+        var options = {
+            chart: {
+                title: 'User Roles Distribution',
+            },
+            legend: { position: 'top' },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('userRole'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
 
 <script type="text/javascript">
     if(document.location.hostname == 'pratikborsadiya.in') {

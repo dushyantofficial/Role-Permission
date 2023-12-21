@@ -59,34 +59,28 @@ function googleLineChart()
 
 function userRole()
 {
-    $visitors = \App\Models\User::select("created_at", "role")->get();
+    $visitors = \App\Models\User::with('roles')->get();
 
     // Initialize arrays to store data
-    $adminData = [];
-    $userData = [];
+    $roleData = [];
 
-// Loop through the visitors and categorize by status
+    // Loop through the visitors and categorize by role
     foreach ($visitors as $key => $value) {
+        $roles = $value->roles->pluck('name')->toArray();
 
-        $date = $value->created_at->format('Y-m-d');
-        if(!empty($value->getRoleNames())){
-            foreach($value->getRoleNames() as $v){
-
-            }
-        }
-        if ($value->role == 'admin') {
-            $adminData[$date] = ($adminData[$date] ?? 0) + 1;
-        } elseif ($value->status == 'Block') {
-            $userData[$date] = ($userData[$date] ?? 0) + 1;
+        foreach ($roles as $role) {
+            $roleData[$role] = ($roleData[$role] ?? 0) + 1;
         }
     }
 
-// Prepare data for the chart
-    $result[] = ['Dates', 'Admin', 'User'];
-    foreach ($adminData as $date => $activeCount) {
-       dd($activeCount->getRoleNames());
-        $result[] = [$date, $activeCount, $userData[$date] ?? 0];
+    // Prepare data for the chart
+    $result[] = array_merge(['Roles'], array_keys($roleData));
+
+    $rowData = [];
+    foreach ($result[0] as $role) {
+        $rowData[] = $roleData[$role] ?? 0;
     }
+    $result[] = $rowData;
 
     return $result;
 }
