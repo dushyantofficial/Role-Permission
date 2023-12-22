@@ -18,8 +18,8 @@
                 <div class="message">
                     {{$user_chat->message}}
                 </div>
+                <br>
             @endif
-            <br>
             @if ($user_chat->document != null)
                 <div class="images-container">
                     @foreach ($user_chat->document as $documentIndex => $document)
@@ -89,9 +89,9 @@
         <li class="you">
             <div class="entete">
                 <span class="status green"></span>
-                <h2 style="color: red">{{$user_chat->sender_name->name}}</h2>
-                    <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
-                    </h3>
+                <h2 style="color: red">{{$user_chat->receiver_name->name}}</h2>
+                <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
+                </h3>
             </div>
             @if ($user_chat->message != null)
                 <div class="triangle"></div>

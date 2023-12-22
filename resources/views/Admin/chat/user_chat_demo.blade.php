@@ -588,8 +588,7 @@
 
                 var formData = new FormData($('#add_data')[0]);
                 var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};
-
-// Update the chat messages
+                // Update the chat messages
                 $('#chat').html(renderedContent);
                 $.ajax({
                     type: 'POST',
@@ -631,11 +630,12 @@
         });
     </script>
 
+    {{--  Render view file with ajax  --}}
     <script>
         function loadChatData() {
             var userId = {{ $receiver_record->id }}; // Assuming you can get the user ID from your view
             $.ajax({
-                url: '{{ route("user-chat-demo") }}?id=' + userId,
+                url: '{{ route("user-chat") }}?id=' + userId,
                 method: 'GET',
                 success: function (data) {
                     // Handle the received data
@@ -649,7 +649,6 @@
                         // Update the chat messages
 
                         $('#chat').html(renderedContent);
-                        //loadChatData();
                         // Update the new chat messages
                     }
                 },
@@ -658,10 +657,17 @@
                 }
             });
         }
+
         // Call the function when the page loads
         $(document).ready(function () {
+            // Load chat data initially
             loadChatData();
-        });
 
+            // Reload chat data every 1 second
+            // setInterval(function () {
+            //     loadChatData();
+            // }, 5000);
+        });
     </script>
 @endpush
+

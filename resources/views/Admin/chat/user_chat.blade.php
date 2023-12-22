@@ -383,12 +383,15 @@
                         <h2>Chat with {{$receiver_record->name}}</h2>
                         <h3>already {{$user_chats->count()}} messages</h3>
                     </div>
-                    <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
-                            data-bs-target="#show_profile" style="float: inline-end;">View Profile
-                    </button>
+                        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
+                                data-bs-target="#show_profile" style="float: inline-end;">View Profile
+                        </button>
                 </header>
                 <ul id="chat">
-
+                    <li class="me" id="me">
+                    </li>
+                    <li class="you" id="you">
+                    </li>
                 </ul>
                 <footer>
                     <form id="add_data" action="{{ route('user-chat-send') }}" enctype="multipart/form-data">
@@ -587,9 +590,10 @@
 
 
                 var formData = new FormData($('#add_data')[0]);
-                var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};
-                // Update the chat messages
-                $('#chat').html(renderedContent);
+                //  var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};
+
+// Update the chat messages
+                //     $('#chat').html(renderedContent);
                 $.ajax({
                     type: 'POST',
                     url: $('#add_data').attr('action'),
@@ -598,13 +602,14 @@
                     contentType: false,
                     success: function (data) {
                         // Update the chat messages with the new data
-                        var newRenderedContent = data.renderedContent; // Assuming your controller returns this
-                        $('#chat').html(newRenderedContent);
+                        // var newRenderedContent = data.renderedContent; // Assuming your controller returns this
+                        //   $('#chat').html(newRenderedContent);
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
                         // Clear the textarea and file input values
                         $('#message').val('');
                         $('#document').val('');
                         $('#sendsubmitBtn').hide();
+                        loadChatData()
                     },
                     error: function (xhr) {
                         var errors = xhr.responseJSON.errors;
@@ -630,10 +635,11 @@
         });
     </script>
 
-    {{--  Render view file with ajax  --}}
     <script>
+
         function loadChatData() {
             var userId = {{ $receiver_record->id }}; // Assuming you can get the user ID from your view
+            var authId = {{\Illuminate\Support\Facades\Auth::user()->id}};
             $.ajax({
                 url: '{{ route("user-chat") }}?id=' + userId,
                 method: 'GET',
@@ -642,14 +648,170 @@
                     if (data.error) {
                         console.error('Error: ' + data.error);
                     } else {
+                        {{--var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};--}}
+                        var dataList = '';
 
-                        // Use JSON.stringify to properly escape and format the PHP-rendered content
-                        var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};
+                        data.user_chats.forEach(function (userChat, index) {
+                            if (userChat.sender_id == authId) {
+                                dataList += `
+<li class="me" id="me">
+                <div class="entete">
+                    <h3>${userChat.date}, ${userChat.time}</h3>
+                    <span class="status blue"></span>
+                </div>
+                ${userChat.message != null ? `
+                    <div class="triangle"></div>
+                    <div class="message">
+                        ${userChat.message}
+                    </div>
+                    <br>
+                ` : ''}
 
-                        // Update the chat messages
+                ${userChat.document != null ? `
+                    <div class="images-container">
+    ${userChat.document.map((document, documentIndex) => {
+                                    const file_extension = document.split('.').pop().toLowerCase();
+                                    let fileElement;
 
-                        $('#chat').html(renderedContent);
-                        // Update the new chat messages
+                                    if (['csv', 'xlsx'].includes(file_extension)) {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-excel-o" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'mp4') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-video-camera" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'pdf') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-pdf-o" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'zip') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-archive-o" aria-hidden="true"></i></a>`;
+                                    } else if (['doc', 'docx'].includes(file_extension)) {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file" aria-hidden="true"></i></a>`;
+                                    } else {
+                                        fileElement = `<img src="storage/admin/document/${document}" alt="Image" width="50px" style="cursor: zoom-out;" data-toggle="modal" data-target="#imageModal${index}_${documentIndex}">`;
+                                    }
+
+                                    // Add line break after every fourth file
+                                    if ((documentIndex + 1) % 4 === 0 && documentIndex + 1 < userChat.document.length) {
+                                        fileElement += '<br>';
+                                    }
+
+                                    return fileElement;
+                                }).join('')}
+</div>
+                ` : ''}
+
+                ${userChat.document != null ? `
+                    <!-- Modal -->
+                   ${userChat.document.map((document, documentIndex) => `
+    <div class="modal fade" id="imageModal${index}_${documentIndex}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Close button -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <img src="storage/admin/document/${document}" class="img-fluid" alt="Image">
+                    </center>
+                    <!-- Download Button -->
+                    <div class="mt-2 text-center">
+                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-primary">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`).join('')}
+
+                ` : ''}
+        </li>`;
+                            } else {
+                                dataList += `
+<li class="you" id="you">
+                           <div class="entete">
+<span class="status green"></span>
+                    <h3>${userChat.date}, ${userChat.time}</h3>
+                </div>
+                ${userChat.message != null ? `
+                    <div class="triangle"></div>
+                    <div class="message">
+                        ${userChat.message}
+                    </div>
+                    <br>
+                ` : ''}
+
+                ${userChat.document != null ? `
+                    <div class="images-container">
+    ${userChat.document.map((document, documentIndex) => {
+                                    const file_extension = document.split('.').pop().toLowerCase();
+                                    let fileElement;
+
+                                    if (['csv', 'xlsx'].includes(file_extension)) {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-excel-o" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'mp4') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-video-camera" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'pdf') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-pdf-o" aria-hidden="true"></i></a>`;
+                                    } else if (file_extension === 'zip') {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file-archive-o" aria-hidden="true"></i></a>`;
+                                    } else if (['doc', 'docx'].includes(file_extension)) {
+                                        fileElement = `<a href="storage/admin/document/${document}" target="_blank"><i style="font-size: xxx-large" class="fa fa-file" aria-hidden="true"></i></a>`;
+                                    } else {
+                                        fileElement = `<img src="storage/admin/document/${document}" alt="Image" width="50px" style="cursor: zoom-out;" data-toggle="modal" data-target="#imageModal${index}_${documentIndex}">`;
+                                    }
+
+                                    // Add line break after every fourth file
+                                    if ((documentIndex + 1) % 4 === 0 && documentIndex + 1 < userChat.document.length) {
+                                        fileElement += '<br>';
+                                    }
+
+                                    return fileElement;
+                                }).join('')}
+</div>
+                ` : ''}
+
+                ${userChat.document != null ? `
+                    <!-- Modal -->
+                  ${userChat.document.map((document, documentIndex) => `
+    <div class="modal fade" id="imageModal${index}_${documentIndex}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Close button -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <img src="storage/admin/document/${document}" class="img-fluid" alt="Image">
+                    </center>
+                    <!-- Download Button -->
+                    <div class="mt-2 text-center">
+                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-primary">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`).join('')}
+
+                ` : ''}
+        </li>`;
+                            }
+                        });
+
+                        // Append HTML to the elements
+                        newDataLoaded = true;
+                        //$('#chat').append(dataList);
+                        document.getElementById('chat').innerHTML += dataList;
+                        if (newDataLoaded) {
+                            $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                        }
                     }
                 },
                 error: function (error) {
@@ -658,15 +820,17 @@
             });
         }
 
-        // Call the function when the page loads
         $(document).ready(function () {
-            // Load chat data initially
             loadChatData();
+            // Set a flag to track if new data is loaded
+            var newDataLoaded = false;
 
-            // Reload chat data every 1 second
-            // setInterval(function () {
-            //     loadChatData();
-            // }, 5000);
+            // Reload chat data every 2 seconds
+            setInterval(function () {
+                // Set flag to false before reloading data
+                newDataLoaded = false;
+                loadChatData();
+            }, 2000);
         });
     </script>
 @endpush
