@@ -90,8 +90,8 @@
             <div class="entete">
                 <span class="status green"></span>
                 <h2 style="color: red">{{$user_chat->receiver_name->name}}</h2>
-                <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
-                </h3>
+                    <h3>{{$dateTime}},{{$dateToCheck->diffForHumans()}}
+                    </h3>
             </div>
             @if ($user_chat->message != null)
                 <div class="triangle"></div>

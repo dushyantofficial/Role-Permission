@@ -670,4 +670,3 @@
         });
     </script>
 @endpush
-

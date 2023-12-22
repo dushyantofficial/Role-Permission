@@ -506,18 +506,18 @@ class UserController extends Controller
         $usersupdate['chatting_replay'] = Carbon::now();
         $user_update->update($usersupdate);
 
-//        $userId = $request->receiver_id;
-//        $receiver_record = User::find($userId);
-//        $user_chats = UserChat::where(function ($query) use ($userId) {
-//            $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
-//                ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
-//        })->orderBy('created_at')->get();
-//
-//        $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
-//
-//        $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
+        $userId = $request->receiver_id;
+        $receiver_record = User::find($userId);
+        $user_chats = UserChat::where(function ($query) use ($userId) {
+            $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+        })->orderBy('created_at')->get();
 
-        return response('success');
+        $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+
+        $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
+
+        return response()->json(['renderedContent' => $renderedContent]);
     }
 
 

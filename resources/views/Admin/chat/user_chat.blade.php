@@ -383,9 +383,9 @@
                         <h2>Chat with {{$receiver_record->name}}</h2>
                         <h3>already {{$user_chats->count()}} messages</h3>
                     </div>
-                        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
-                                data-bs-target="#show_profile" style="float: inline-end;">View Profile
-                        </button>
+                    <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
+                            data-bs-target="#show_profile" style="float: inline-end;">View Profile
+                    </button>
                 </header>
                 <ul id="chat">
                     <li class="me" id="me">
