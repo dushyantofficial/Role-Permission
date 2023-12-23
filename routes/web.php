@@ -147,11 +147,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/toggle-theme', [App\Http\Controllers\PaymentController::class, 'toggleTheme'])->name('toggle-theme');
     Route::post('/change-theme', [App\Http\Controllers\PaymentController::class, 'change_theme'])->name('change-theme');
 
-//User Chat
-    Route::get('/users-chat', [App\Http\Controllers\UserController::class, 'user_chat'])->name('user-chat');
-    Route::post('/users/user-chat-send/', [App\Http\Controllers\UserController::class, 'user_chat_send'])->name('user-chat-send');
+    //User Chat
+    Route::get('/users-chat', [App\Http\Controllers\UserChatController::class, 'user_chat'])->name('user-chat');
+    Route::post('/users/user-chat-send/', [App\Http\Controllers\UserChatController::class, 'user_chat_send'])->name('user-chat-send');
 
-    Route::get('/users-chat-demo', [App\Http\Controllers\UserController::class, 'user_chat_demo'])->name('user-chat-demo');
+    Route::get('/users-chat-demo', [App\Http\Controllers\UserChatController::class, 'user_chat_demo'])->name('user-chat-demo');
 
 });
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha'])->name('reload-captcha');

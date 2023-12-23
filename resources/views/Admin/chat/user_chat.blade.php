@@ -590,10 +590,6 @@
 
 
                 var formData = new FormData($('#add_data')[0]);
-                //  var renderedContent = {!! json_encode(view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render()) !!};
-
-// Update the chat messages
-                //     $('#chat').html(renderedContent);
                 $.ajax({
                     type: 'POST',
                     url: $('#add_data').attr('action'),
@@ -602,14 +598,12 @@
                     contentType: false,
                     success: function (data) {
                         // Update the chat messages with the new data
-                        // var newRenderedContent = data.renderedContent; // Assuming your controller returns this
-                        //   $('#chat').html(newRenderedContent);
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
                         // Clear the textarea and file input values
                         $('#message').val('');
                         $('#document').val('');
                         $('#sendsubmitBtn').hide();
-                        loadChatData()
+                         loadChatData()
                     },
                     error: function (xhr) {
                         var errors = xhr.responseJSON.errors;
@@ -807,11 +801,16 @@
 
                         // Append HTML to the elements
                         newDataLoaded = true;
-                        //$('#chat').append(dataList);
-                        document.getElementById('chat').innerHTML += dataList;
+                        $('#chat').append(dataList);
+                        //  document.getElementById('chat').innerHTML += dataList;
                         if (newDataLoaded) {
                             $('#chat').scrollTop($('#chat')[0].scrollHeight);
                         }
+
+                       // loadChatData();
+
+                        // Reload chat data every 5 seconds
+                        // Note: You don't need to compare to true explicitly
                     }
                 },
                 error: function (error) {
@@ -819,18 +818,26 @@
                 }
             });
         }
-
         $(document).ready(function () {
+            var userChatCount = @json($user_chat_count);
             loadChatData();
-            // Set a flag to track if new data is loaded
-            var newDataLoaded = false;
 
-            // Reload chat data every 2 seconds
-            setInterval(function () {
-                // Set flag to false before reloading data
-                newDataLoaded = false;
-                loadChatData();
-            }, 2000);
+            // Reload chat data every 5 seconds
+            // Note: You don't need to compare to true explicitly
+            if (userChatCount != null) {
+                setInterval(function () {
+                    // Clear the content of the #chat element
+                    $('#chat').empty();
+                    // Load chat data only if userChatCount is true
+                    loadChatData();
+                }, 5000);
+            }
         });
     </script>
+    <script>
+
+
+
+    </script>
+
 @endpush
