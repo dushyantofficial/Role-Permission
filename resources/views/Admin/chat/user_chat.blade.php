@@ -427,7 +427,7 @@
                         <h5 class="modal-title">View Profile</h5>
                     </div>
                     @php
-                        $user = $receiver_record;
+                        $user = $receiver_record
                     @endphp
                     <div class="modal-body">
                         <div class="profile-container">
@@ -808,7 +808,6 @@
                         }
 
                        // loadChatData();
-
                         // Reload chat data every 5 seconds
                         // Note: You don't need to compare to true explicitly
                     }
@@ -821,22 +820,19 @@
         $(document).ready(function () {
             var userChatCount = @json($user_chat_count);
             loadChatData();
-
-            // Reload chat data every 5 seconds
-            // Note: You don't need to compare to true explicitly
-            if (userChatCount != null) {
+            console.log(userChatCount)
+            if (userChatCount == 1) {
                 setInterval(function () {
                     // Clear the content of the #chat element
                     $('#chat').empty();
-                    // Load chat data only if userChatCount is true
-                    loadChatData();
+
+                    // Load chat data only if userChatCount is 1
+                    if (userChatCount == 1) {
+                        loadChatData();
+                    }
                 }, 5000);
             }
         });
-    </script>
-    <script>
-
-
 
     </script>
 

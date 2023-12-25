@@ -27,15 +27,14 @@ class UserChatController extends Controller
                 ->where(function ($query) {
                     $query->whereTime('time', '>=', now()->toTimeString())
                         ->orWhere(function ($query) {
-                            $query->whereRaw('TIME(DATE_ADD(time, INTERVAL 10 SECOND)) >= ?', [now()->toTimeString()]);
+                            $query->whereRaw('TIME(DATE_ADD(time, INTERVAL 55 SECOND)) >= ?', [now()->toTimeString()]);
                         });
                 })
                 ->latest('created_at')
-                ->first();
-           // dd($user_chat_count == true);
+                ->count();
             if ($request->ajax()) {
                 return response()->json(['user_chats' => $user_chats, 'all_users' => $all_users,
-                    'receiver_record' => $receiver_record]);
+                    'receiver_record' => $receiver_record, 'user_chat_count' => $user_chat_count]);
             }
             return view('Admin.chat.user_chat', compact('all_users', 'receiver_record', 'user_chats', 'user_chat_count'));
         } else {

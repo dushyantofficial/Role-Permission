@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 01:23 PM
+-- Generation Time: Dec 25, 2023 at 12:32 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -362,16 +362,17 @@ CREATE TABLE `model_has_roles` (
 -- Dumping data for table `model_has_roles`
 --
 
-INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 19),
-(2, 'App\\Models\\User', 6),
-(2, 'App\\Models\\User', 11),
-(2, 'App\\Models\\User', 12),
-(2, 'App\\Models\\User', 13),
-(2, 'App\\Models\\User', 14),
-(2, 'App\\Models\\User', 15),
-(2, 'App\\Models\\User', 20),
-(3, 'App\\Models\\User', 5);
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`)
+VALUES (1, 'App\\Models\\User', 19),
+       (2, 'App\\Models\\User', 6),
+       (2, 'App\\Models\\User', 11),
+       (2, 'App\\Models\\User', 12),
+       (2, 'App\\Models\\User', 13),
+       (2, 'App\\Models\\User', 14),
+       (2, 'App\\Models\\User', 15),
+       (2, 'App\\Models\\User', 20),
+       (2, 'App\\Models\\User', 23),
+       (3, 'App\\Models\\User', 5);
 
 -- --------------------------------------------------------
 
@@ -416,18 +417,12 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `user_id`, `amount`, `transaction_id`, `payment_status`, `status`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 10, 185, 'pay_MvUfzTx3bIotuD', 'captured', 'paid', '1698903723', '2023-10-31 04:50:16', '2023-11-02 00:12:13', NULL),
-(6, 10, 152, 'pay_MvUeFYHmv4ymZX', 'captured', 'paid', '1698903624', '2023-10-31 05:49:13', '2023-11-02 00:10:37', NULL),
 (7, 15, 150, 'pay_MvUwgs4qHHjAzy', 'captured', 'paid', '1698904672', '2023-10-31 05:50:47', '2023-11-02 00:28:07', NULL),
 (10, 15, 1520, 'pay_MvUcWbmv2rGn5G', 'captured', 'paid', '1698903526', '2023-10-31 23:07:27', '2023-11-02 00:08:56', NULL),
-(11, 17, 151, 'pay_Mv5ZMFZGLT5PjN', 'captured', 'refunded', '1698815306', '2023-10-31 23:37:41', '2023-11-01 06:06:34', NULL),
 (12, 14, 15, 'pay_Mv5eD9hoReJIPR', 'captured', 'refunded', '1698815582', '2023-10-31 23:42:49', '2023-11-01 23:46:43', NULL),
-(13, 9, 1, 'pay_MvCP0R0NEOxZqe', 'captured', 'refunded', '1698839369', '2023-10-31 23:45:59', '2023-11-01 06:19:51', NULL),
 (14, 5, 150, 'pay_Mv6IzESSiTnlhX', 'captured', 'refunded', '1698817898', '2023-11-01 00:21:15', '2023-11-02 00:04:49', NULL),
 (15, 6, 142, 'pay_Mv7IIQkSSppbhm', 'captured', 'refunded', '1698821380', '2023-11-01 01:18:58', '2023-11-02 00:56:17', NULL),
 (16, 6, 1000, 'pay_MvA8fu9BmZb8n9', 'captured', 'refunded', '1698831399', '2023-11-01 04:05:50', '2023-11-01 06:03:56', NULL),
-(17, 9, 1598, 'pay_NB1pFkgVaWN4f0', 'captured', 'paid', '1702295564', '2023-11-02 00:22:52', '2023-12-11 06:22:56', NULL),
-(18, 9, 1056, NULL, NULL, 'pending', NULL, '2023-11-02 00:56:39', '2023-11-02 00:56:39', NULL),
 (19, 20, 150, NULL, NULL, 'pending', NULL, '2023-11-02 01:15:41', '2023-11-02 01:15:41', NULL);
 
 -- --------------------------------------------------------
@@ -477,24 +472,36 @@ CREATE TABLE `payment_histories` (
 -- Dumping data for table `payment_histories`
 --
 
-INSERT INTO `payment_histories` (`id`, `user_id`, `payment_id`, `amount`, `transaction_id`, `entity`, `currency`, `status`, `order_id`, `invoice_id`, `international`, `method`, `amount_refunded`, `refund_status`, `captured`, `description`, `card_id`, `bank`, `wallet`, `vpa`, `email`, `contact`, `notes`, `fee`, `tax`, `error_code`, `error_description`, `error_source`, `error_step`, `error_reason`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 6, 6, 152, 'pay_MunMGep41aDExr', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'paresh@gmail.com', '+919409523654', '[]', '358', '54', NULL, NULL, NULL, NULL, NULL, '1698751174', '2023-10-31 05:49:44', '2023-10-31 05:49:44', NULL),
-(5, 15, 10, 1520, 'pay_Mv5A9kHM0Gcbjp', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'hello33@gmail.com', '+919452639555', '[]', '3588', '548', NULL, NULL, NULL, NULL, NULL, '1698813875', '2023-10-31 23:14:47', '2023-10-31 23:14:47', NULL),
-(6, 17, 11, 151, 'pay_Mv5ZMFZGLT5PjN', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'KKBK', NULL, NULL, 'dushyantyyhhh@gmail.com', '+919452639555', '[]', '356', '54', NULL, NULL, NULL, NULL, NULL, '1698815306', '2023-10-31 23:38:38', '2023-10-31 23:38:38', NULL),
-(7, 14, 12, 15, 'pay_Mv5eD9hoReJIPR', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'KKBK', NULL, NULL, 'dfgfd@gmail.com', '+919452639555', '[]', '36', '6', NULL, NULL, NULL, NULL, NULL, '1698815582', '2023-10-31 23:43:13', '2023-10-31 23:43:13', NULL),
-(8, 9, 13, 1, 'pay_Mv5i0CBFkQ2ZZg', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL, '1', 'Rozerpay', NULL, 'ICIC', NULL, NULL, 'rajesh33@gmail.com', '+919452639555', '[]', '2', '0', NULL, NULL, NULL, NULL, NULL, '1698815797', '2023-10-31 23:46:49', '2023-10-31 23:46:49', NULL),
-(9, 5, 14, 150, 'pay_Mv6IzESSiTnlhX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'dushyant@gmail.com', '+919452639555', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698817898', '2023-11-01 00:21:50', '2023-11-01 00:21:50', NULL),
-(10, 6, 15, 142, 'pay_Mv7IIQkSSppbhm', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'rajesh@gmail.com', '+919865323212', '[]', '336', '52', NULL, NULL, NULL, NULL, NULL, '1698821380', '2023-11-01 01:19:56', '2023-11-01 01:19:56', NULL),
-(11, 6, 16, 1000, 'pay_MvA8fu9BmZb8n9', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'freecharge', NULL, 'rajesh@gmail.com', '+919409552885', '[]', '2360', '360', NULL, NULL, NULL, NULL, NULL, '1698831399', '2023-11-01 04:06:51', '2023-11-01 04:06:51', NULL),
-(12, 15, 10, 1520, 'pay_MvBs3ymCT7OO9s', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'airtelmoney', NULL, 'hello33@gmail.com', '+919412563955', '[]', '3588', '548', NULL, NULL, NULL, NULL, NULL, '1698837498', '2023-11-01 05:48:29', '2023-11-01 05:48:29', NULL),
-(15, 9, 13, 1, 'pay_MvCP0R0NEOxZqe', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'rajesh33@gmail.com', '+919412563955', '[]', '2', '0', NULL, NULL, NULL, NULL, NULL, '1698839369', '2023-11-01 06:19:42', '2023-11-01 06:19:42', NULL),
-(16, 10, 4, 185, 'pay_MvUc1mMRTYKuEX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'freecharge', NULL, 'paresh@gmail.com', '+919410259922', '[]', '436', '66', NULL, NULL, NULL, NULL, NULL, '1698903498', '2023-11-02 00:08:31', '2023-11-02 00:08:31', NULL),
-(17, 15, 10, 1520, 'pay_MvUcWbmv2rGn5G', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'hello33@gmail.com', '+919410259922', '[]', '3588', '548', NULL, NULL, NULL, NULL, NULL, '1698903526', '2023-11-02 00:08:56', '2023-11-02 00:08:56', NULL),
-(18, 10, 6, 152, 'pay_MvUeFYHmv4ymZX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'paresh@gmail.com', '+919410259922', '[]', '358', '54', NULL, NULL, NULL, NULL, NULL, '1698903624', '2023-11-02 00:10:37', '2023-11-02 00:10:37', NULL),
-(19, 10, 4, 185, 'pay_MvUfzTx3bIotuD', 'payment', 'INR', 'captured', NULL, NULL, '0', 'upi', '0', NULL, '1', 'Rozerpay', NULL, NULL, NULL, '9405295121@paytm', 'paresh@gmail.com', '+919410259922', '[]', '436', '66', NULL, NULL, NULL, NULL, NULL, '1698903723', '2023-11-02 00:12:13', '2023-11-02 00:12:13', NULL),
-(20, 6, 17, 150, 'pay_MvUt7V7403J6Vs', 'payment', 'INR', 'captured', NULL, NULL, '0', 'upi', '0', NULL, '1', 'Rozerpay', NULL, NULL, NULL, '940952358@paytm', 'rajesh@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698904469', '2023-11-02 00:24:39', '2023-11-02 00:24:39', NULL),
-(21, 15, 7, 150, 'pay_MvUwgs4qHHjAzy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'hello33@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL, NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL),
-(22, 9, 17, 1598, 'pay_NB1pFkgVaWN4f0', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'rajesh33@gmail.com', '+919411326565', '[]', '3772', '576', NULL, NULL, NULL, NULL, NULL, '1702295564', '2023-12-11 06:22:56', '2023-12-11 06:22:56', NULL);
+INSERT INTO `payment_histories` (`id`, `user_id`, `payment_id`, `amount`, `transaction_id`, `entity`, `currency`,
+                                 `status`, `order_id`, `invoice_id`, `international`, `method`, `amount_refunded`,
+                                 `refund_status`, `captured`, `description`, `card_id`, `bank`, `wallet`, `vpa`,
+                                 `email`, `contact`, `notes`, `fee`, `tax`, `error_code`, `error_description`,
+                                 `error_source`, `error_step`, `error_reason`, `payment_date`, `created_at`,
+                                 `updated_at`, `deleted_at`)
+VALUES (5, 15, 10, 1520, 'pay_Mv5A9kHM0Gcbjp', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL,
+        '1', 'Rozerpay', NULL, NULL, 'kkbk', NULL, 'hello33@gmail.com', '+919452639555', '[]', '3588', '548', NULL,
+        NULL, NULL, NULL, NULL, '1698813875', '2023-10-31 23:14:47', '2023-10-31 23:14:47', NULL),
+       (7, 14, 12, 15, 'pay_Mv5eD9hoReJIPR', 'payment', 'INR', 'captured', NULL, NULL, '0', 'netbanking', '0', NULL,
+        '1', 'Rozerpay', NULL, 'KKBK', NULL, NULL, 'dfgfd@gmail.com', '+919452639555', '[]', '36', '6', NULL, NULL,
+        NULL, NULL, NULL, '1698815582', '2023-10-31 23:43:13', '2023-10-31 23:43:13', NULL),
+       (9, 5, 14, 150, 'pay_Mv6IzESSiTnlhX', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'kkbk', NULL, 'dushyant@gmail.com', '+919452639555', '[]', '354', '54', NULL, NULL,
+        NULL, NULL, NULL, '1698817898', '2023-11-01 00:21:50', '2023-11-01 00:21:50', NULL),
+       (10, 6, 15, 142, 'pay_Mv7IIQkSSppbhm', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'rajesh@gmail.com', '+919865323212', '[]', '336', '52', NULL, NULL,
+        NULL, NULL, NULL, '1698821380', '2023-11-01 01:19:56', '2023-11-01 01:19:56', NULL),
+       (11, 6, 16, 1000, 'pay_MvA8fu9BmZb8n9', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'freecharge', NULL, 'rajesh@gmail.com', '+919409552885', '[]', '2360', '360', NULL,
+        NULL, NULL, NULL, NULL, '1698831399', '2023-11-01 04:06:51', '2023-11-01 04:06:51', NULL),
+       (12, 15, 10, 1520, 'pay_MvBs3ymCT7OO9s', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'airtelmoney', NULL, 'hello33@gmail.com', '+919412563955', '[]', '3588', '548', NULL,
+        NULL, NULL, NULL, NULL, '1698837498', '2023-11-01 05:48:29', '2023-11-01 05:48:29', NULL),
+       (17, 15, 10, 1520, 'pay_MvUcWbmv2rGn5G', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'jiomoney', NULL, 'hello33@gmail.com', '+919410259922', '[]', '3588', '548', NULL, NULL,
+        NULL, NULL, NULL, '1698903526', '2023-11-02 00:08:56', '2023-11-02 00:08:56', NULL),
+       (21, 15, 7, 150, 'pay_MvUwgs4qHHjAzy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'hello33@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL,
+        NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -502,9 +509,10 @@ INSERT INTO `payment_histories` (`id`, `user_id`, `payment_id`, `amount`, `trans
 -- Table structure for table `payment_refunds`
 --
 
-CREATE TABLE `payment_refunds` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `refund_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `payment_refunds`
+(
+    `id`            bigint(20) UNSIGNED NOT NULL,
+    `refund_id`     varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `payment_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double NOT NULL,
@@ -527,15 +535,9 @@ CREATE TABLE `payment_refunds` (
 --
 
 INSERT INTO `payment_refunds` (`id`, `refund_id`, `user_id`, `payment_id`, `amount`, `entity`, `currency`, `notes`, `receipt`, `batch_id`, `status`, `speed_processed`, `speed_requested`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rfnd_MvBpzps9zfuMQK', 10, 'pay_Mv5A9kHM0Gcbjp', 1520, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698837381', '2023-11-01 05:46:21', '2023-11-01 05:46:21', NULL),
-(4, 'rfnd_MvC8ZFVGMvham2', 16, 'pay_MvA8fu9BmZb8n9', 1000, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838436', '2023-11-01 06:03:56', '2023-11-01 06:03:56', NULL),
-(5, 'rfnd_MvCBLs3Tkx8ez7', 17, 'pay_Mv5ZMFZGLT5PjN', 151, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838594', '2023-11-01 06:06:34', '2023-11-01 06:06:34', NULL),
-(6, 'rfnd_MvCEuPKVzcZ351', 9, 'pay_Mv5i0CBFkQ2ZZg', 1, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698838796', '2023-11-01 06:09:56', '2023-11-01 06:09:56', NULL),
-(7, 'rfnd_MvCPNJiUZuXucI', 9, 'pay_MvCP0R0NEOxZqe', 1, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698839390', '2023-11-01 06:19:51', '2023-11-01 06:19:51', NULL),
 (8, 'rfnd_MvUDGdWCvLRNd8', 15, 'pay_MvBs3ymCT7OO9s', 1520, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698902092', '2023-11-01 23:44:52', '2023-11-01 23:44:52', NULL),
 (9, 'rfnd_MvUFDjSVBYeVsW', 14, 'pay_Mv5eD9hoReJIPR', 15, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698902203', '2023-11-01 23:46:43', '2023-11-01 23:46:43', NULL),
 (10, 'rfnd_MvUYKupcvXMg6p', 5, 'pay_Mv6IzESSiTnlhX', 150, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698903288', '2023-11-02 00:04:49', '2023-11-02 00:04:49', NULL),
-(11, 'rfnd_MvUcrU5OdvUpUw', 10, 'pay_MvUc1mMRTYKuEX', 185, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698903545', '2023-11-02 00:09:06', '2023-11-02 00:09:06', NULL),
 (12, 'rfnd_MvVKMRo8Zj7pt1', 6, 'pay_MvUt7V7403J6Vs', 150, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698906016', '2023-11-02 00:50:16', '2023-11-02 00:50:16', NULL),
 (13, 'rfnd_MvVQhhnP3GU1nw', 6, 'pay_Mv7IIQkSSppbhm', 142, 'refund', 'INR', NULL, NULL, '', 'processed', 'normal', 'normal', '1698906376', '2023-11-02 00:56:17', '2023-11-02 00:56:17', NULL);
 
@@ -919,23 +921,41 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`, `user_status`, `chatting_replay`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png', 'dushyant@gmail.com', 'active', 'light', 'rgba(6,14,47,0.82)', '#000000', 'online', NULL, NULL, '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12', '2023-12-14 11:31:18'),
-(6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '2023-12-14 17:52:45', NULL, '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20', '2023-12-14 12:22:45'),
-(9, 'rajesh', NULL, 'rajesh33@gmail.com', 'active', NULL, NULL, NULL, NULL, '2023-12-14 17:52:57', NULL, '$2y$10$Be.2i3687zBtcNYLU..tseimghoxuhd.Dh3CBSSP/UO99xAh4p6QS', NULL, '2023-10-02 02:33:28', '2023-12-14 12:22:57'),
-(10, 'Paresh', NULL, 'paresh@gmail.com', 'active', NULL, NULL, NULL, 'offline', NULL, NULL, '$2y$10$qyCCLpoiS5tvm5l3gWRuB.JjSYtDdBlSi1laoznGZnGoUEyEloBFq', NULL, '2023-10-02 02:41:23', '2023-12-13 05:12:13'),
-(11, 'dfgfdg', NULL, 'dushyant232@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$Ij0rvPffyAxly21470lDO.i7w/KiL7iVyEVC3tNf0G2aff41DqRm2', NULL, '2023-10-05 02:08:46', '2023-10-05 02:08:46'),
-(12, 'dfgdf', NULL, 'dfggf@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$ikxZ5by0jzPWNxobaKP7DuvI2YlGRdEWtYJ0k41d97PVjgvZtNXNy', NULL, '2023-10-05 02:12:47', '2023-10-09 03:33:00'),
-(13, 'sdfsd', NULL, 'sdfsd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$DPYfV4awoG8Gx.GDmtPyv.2G3ImM.zB7Q.rqo1WpZ/0Mf7sGHvSsO', NULL, '2023-10-05 02:13:56', '2023-10-06 05:53:16'),
-(14, 'dfgdfg', NULL, 'dfgfd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$EvOrOrhSmY1XK2KrVwkSCeAKUTxkZr9pi4sUDCRGjIunblPv.XP2m', NULL, '2023-10-05 02:14:42', '2023-10-05 02:14:42'),
-(15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29', '2023-10-18 00:31:28'),
-(16, 'Darshan', NULL, 'darshan@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$ratUbcl80AzsxtI/tMTF2OTSFcb4tmI2E2a.ig7JNrbVw7WZ8TiQS', NULL, '2023-10-05 05:30:13', '2023-10-09 03:32:54'),
-(17, 'Fuuf', NULL, 'dushyantyyhhh@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$Y0LmVFT1hiI.wgLQ.Of.kuO2RB6dfKr439uHv2g35B6kxWAvEPENW', NULL, '2023-10-05 06:26:35', '2023-10-05 06:26:35'),
-(18, 'Hello', NULL, 'hello34@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$XRBbrb/Bqdb2sgXMQmEX7Ow25XlIhADXZnOFrNsBxAosps6MTDuhq', NULL, '2023-10-18 00:13:22', '2023-10-18 00:13:22'),
-(19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57', '2023-11-01 04:11:57'),
-(20, 'Vishal', 'sNF4RGfNPvlNoLB0oRgDNNfNqmBGM3NC5VQsY6x3.jpg', 'vishal@gmail.com', 'active', NULL, NULL, NULL, 'online', '2023-12-14 17:52:29', NULL, '$2y$10$YfRRAPto6oTD2RIvdiriNe3UI5M2LNjOd98Di7tUvRqUjpQnDgt52', NULL, '2023-11-01 04:17:34', '2023-12-14 12:22:29'),
-(21, 'Prof. Marty Corwin', NULL, 'devin76@example.com', 'active', NULL, NULL, NULL, NULL, NULL, '2023-11-25 00:15:07', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gRkvJ6d1Ze', '2023-11-25 00:15:07', '2023-12-11 23:18:01'),
-(22, 'Laurianne McKenzie II', NULL, 'kihn.mylene@example.net', 'Block', 'light', '#312525', '#2a2a2a', NULL, NULL, '2023-11-25 00:21:36', '$2y$10$tj5ZpZdWdM/E.KATf4Q4deEAsG1nF5VuRpn9u6MwA41bhaAthff0m', 'bVvLTAbaz9PUfrdLyfzZeucikxngWwuz4EIrFt4UqPdbGG0x0WDZWiBK8KAT', '2023-11-25 00:21:36', '2023-12-11 23:17:55');
+INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`,
+                     `user_status`, `chatting_replay`, `email_verified_at`, `password`, `remember_token`, `created_at`,
+                     `updated_at`)
+VALUES (5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png', 'dushyant@gmail.com', 'active',
+        'light', 'rgba(6,14,47,0.82)', '#000000', 'online', '2023-12-25 17:01:35', NULL,
+        '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12',
+        '2023-12-25 11:31:35'),
+       (6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '2023-12-14 17:52:45', NULL,
+        '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20',
+        '2023-12-14 12:22:45'),
+       (11, 'dfgfdg', NULL, 'dushyant232@gmail.com', 'active', NULL, NULL, NULL, NULL, '2023-12-15 11:41:31', NULL,
+        '$2y$10$Ij0rvPffyAxly21470lDO.i7w/KiL7iVyEVC3tNf0G2aff41DqRm2', NULL, '2023-10-05 02:08:46',
+        '2023-12-15 06:11:31'),
+       (12, 'dfgdf', NULL, 'dfggf@gmail.com', 'Block', NULL, NULL, NULL, NULL, NULL, NULL,
+        '$2y$10$ikxZ5by0jzPWNxobaKP7DuvI2YlGRdEWtYJ0k41d97PVjgvZtNXNy', NULL, '2023-10-05 02:12:47',
+        '2023-10-09 03:33:00'),
+       (13, 'sdfsd', NULL, 'sdfsd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
+        '$2y$10$DPYfV4awoG8Gx.GDmtPyv.2G3ImM.zB7Q.rqo1WpZ/0Mf7sGHvSsO', NULL, '2023-10-05 02:13:56',
+        '2023-10-06 05:53:16'),
+       (14, 'dfgdfg', NULL, 'dfgfd@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
+        '$2y$10$EvOrOrhSmY1XK2KrVwkSCeAKUTxkZr9pi4sUDCRGjIunblPv.XP2m', NULL, '2023-10-05 02:14:42',
+        '2023-10-05 02:14:42'),
+       (15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
+        '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29',
+        '2023-10-18 00:31:28'),
+       (19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
+        '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57',
+        '2023-11-01 04:11:57'),
+       (20, 'Vishal', 'atMm8eZxpwY3oNhFwA5Yp0fy66Y7RT4vG5bmcvTy.webp', 'vishal@gmail.com', 'active', 'light', '#312525',
+        '#000000', 'online', '2023-12-25 17:01:29', NULL,
+        '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-11-01 04:17:34',
+        '2023-12-25 11:31:29'),
+       (23, 'Paresh', 'Qf6S5VmpO0nn9N838WXM6ZPxemDHSiUcxV47FTHr.webp', 'paresh@gmail.com', 'active', NULL, NULL, NULL,
+        'offline', '2023-12-22 17:32:53', NULL, '$2y$10$tJr8p.lfF0OD9h3aBNTj6u6CQ8RzSv6.WVL90Y1hLcun1rElVrePS', NULL,
+        '2023-12-15 07:45:09', '2023-12-22 12:02:53');
 
 -- --------------------------------------------------------
 
@@ -943,49 +963,48 @@ INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_colo
 -- Table structure for table `user_chats`
 --
 
-CREATE TABLE `user_chats` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `sender_id` bigint(20) UNSIGNED NOT NULL,
-  `receiver_id` bigint(20) UNSIGNED NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `document` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `read_at` datetime DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+CREATE TABLE `user_chats`
+(
+    `id`          bigint(20) UNSIGNED NOT NULL,
+    `sender_id`   bigint(20) UNSIGNED NOT NULL,
+    `receiver_id` bigint(20) UNSIGNED NOT NULL,
+    `message`     text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `document`    text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `time`        time                            DEFAULT NULL,
+    `date`        date                            DEFAULT NULL,
+    `read_at`     datetime                        DEFAULT NULL,
+    `created_at`  timestamp NULL DEFAULT NULL,
+    `updated_at`  timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_chats`
 --
 
-INSERT INTO `user_chats` (`id`, `sender_id`, `receiver_id`, `message`, `document`, `time`, `date`, `read_at`, `created_at`, `updated_at`) VALUES
-(1, 5, 5, 'Hello', '[\"VVxX5P1vyycmNeODADJero6iRUuW3POWM1w3Eb9Z.png\",\"ISfrWANkcA0uhnhjOwfL7d5yaS9dmyLcQzQvxFdY.png\",\"gYNg97Jj3mK3yML52KhTFrDS7FJFBwc8aaZSob8F.png\"]', '12:20 PM', '2023-12-12', NULL, '2023-12-12 06:50:22', '2023-12-12 06:50:22'),
-(2, 10, 5, 'fghfh', '[\"zNs3tjWhJrgmyNFQBoS6n5H0BD5BugK3rV3CTUZW.png\"]', '12:26 PM', '2023-12-12', NULL, '2023-12-12 06:56:36', '2023-12-12 06:56:36'),
-(3, 10, 5, 'fghgfhf', '[\"tOrfvpsPt8WDuPUNPnpaCrIb4rZVespxDGZCiFBg.png\",\"iMMK5sDHeBrf3702oqju3wxQGgEAVV6dFocV9DXM.png\",\"o4klvvHAMIk80txsSmf7keP9NflEPGbf6GJJReY2.png\",\"9sp4KbYXi98B0az4Mcp2RrxmQSQAHw8L0ElYAigG.webp\",\"pjrDDlvoChMkXsJAkgaqzH0U4IE09yvXj3Xzv3IS.mp4\"]', '12:26 PM', '2023-12-12', NULL, '2023-12-12 06:56:50', '2023-12-12 06:56:50'),
-(4, 5, 5, 'Hello', '[\"EXM842NZIdTwq0XCJorpTxW4Mf0YiMWsnp3P5SyM.png\",\"apE5eioiQpN8jm5aP3QAmmVEUBbPP8v3Kehqzj7N.png\",\"vIzJhUYn7tHOAihLwD1AZCnO6RZIt6fjbafUmiPh.mp4\",\"i0IZnLQQxoWsj5UqveItsWr4GqrzD1Yf1GGh7nNA.mp4\",\"kzP4AAY39b1cGTCGNooVGGC5t9qUUguhpw4fzXdh.mp4\",\"0SRC8aoK6dVt9IauT5xztwbyc7E1VfrhH09NFyfX.pdf\",\"cjwzVBo3A9YaiSUtDY5NJCQpMbRQ3SLTdKDzo4Z5.jpg\",\"oMyPRPAgVEEacoov0qH62CpwTIWhzSlRTiMyR04k.jpg\",\"H0vgriJXSDrqd7Wolfer7AS4oyEosl2C6hXz1mYT.png\",\"B44qcuLoXqPVU8TMsljgDLXXsjtt65v6MfKRSqY9.webp\"]', '12:28 PM', '2023-12-12', NULL, '2023-12-12 06:58:14', '2023-12-12 06:58:14'),
-(5, 5, 5, 'uuytyuty', NULL, '06:13 AM', '2023-12-13', NULL, '2023-12-13 00:43:22', '2023-12-13 00:43:22'),
-(6, 5, 10, 'rewtete', NULL, '06:27 AM', '2023-12-13', NULL, '2023-12-13 00:57:35', '2023-12-13 00:57:35'),
-(7, 5, 9, 'Hello', NULL, '06:43 AM', '2023-12-13', NULL, '2023-12-13 01:13:55', '2023-12-13 01:13:55'),
-(8, 5, 10, 'loooo', NULL, '07:08 AM', '2023-12-13', NULL, '2023-12-13 01:38:16', '2023-12-13 01:38:16'),
-(9, 10, 5, 'afrssd', NULL, '10:41 AM', '2023-12-13', NULL, '2023-12-13 05:11:34', '2023-12-13 05:11:34'),
-(10, 10, 5, 'i am paresh', NULL, '10:42 AM', '2023-12-13', NULL, '2023-12-13 05:12:04', '2023-12-13 05:12:04'),
-(11, 5, 10, 'ok', NULL, '10:42 AM', '2023-12-13', NULL, '2023-12-13 05:12:58', '2023-12-13 05:12:58'),
-(12, 5, 10, 'frw', '[\"GocsSYp3caHHCkHLy2r5QgJv6CWiPaoIsI7O4juS.png\"]', '10:43 AM', '2023-12-13', NULL, '2023-12-13 05:13:26', '2023-12-13 05:13:26'),
-(13, 5, 10, 'sfsdfssdf', '[\"UbG1g7No7TkYByEDWEFuTLQUqcuX5upfoR8BHGIt.zip\",\"A0mzLq7LXIixUjaqc2p7KXzNjJyAlRqFf7EAiKBv.jpg\",\"tEXQZDCW5YS6LwAiKbgDXtlsKfIq34njhnComuRJ.xlsx\"]', '11:33 AM', '2023-12-13', NULL, '2023-12-13 06:03:39', '2023-12-13 06:03:39'),
-(14, 5, 10, 'kjj', '[\"beUNvGjYRjTdymlRmiuqXxSrsIj06UlLAlzKNOYh.pdf\"]', '12:20 PM', '2023-12-13', NULL, '2023-12-13 06:50:34', '2023-12-13 06:50:34'),
-(15, 5, 10, 'sjhsdfghgdfngb\r\nlkjsdfkgljfdgklfd\r\noigdfpoguifdo', NULL, '12:41 PM', '2023-12-13', NULL, '2023-12-13 07:11:53', '2023-12-13 07:11:53'),
-(16, 5, 22, NULL, '[\"naVgqIYBekUhu0vr495hy9XYOtKQ5tjyscUstl2D.jpg\"]', '04:37 AM', '2023-12-14', NULL, '2023-12-13 23:07:26', '2023-12-13 23:07:26'),
-(17, 5, 22, 'dfgfdgd', NULL, '11:03 AM', '2023-12-14', NULL, '2023-12-14 05:33:06', '2023-12-14 05:33:06'),
-(18, 5, 22, 'xzas', '[\"L5np4t8YBMNTreoMgzTW8Y7qgyHKXSUTeCkHP2m1.webp\"]', '11:06 AM', '2023-12-14', NULL, '2023-12-14 05:36:29', '2023-12-14 05:36:29'),
-(19, 5, 13, 'asdasd', NULL, '12:05 PM', '2023-12-14', NULL, '2023-12-14 06:35:35', '2023-12-14 06:35:35'),
-(20, 5, 22, 'Hello', '[\"b1WumgYZdEP2yO1ZTgEGQcAz354lV9CsxoiY75z2.jpg\",\"cKNhToFy3fEqwLk4JgP6tA0zNSeDAB28QluHKoP2.mp4\",\"ZeRUmocFIh5ICs08SBptZNMEioteX3igoZUO227A.pdf\"]', '02:25 PM', '2023-12-14', NULL, '2023-12-14 08:56:00', '2023-12-14 08:56:00'),
-(21, 5, 21, 'sfsfsdf', '[\"9WTikPssk9PCx5poAJv0YWSgkY9SJ9NtFDCdUwKP.jpg\"]', '04:11 PM', '2023-12-14', NULL, '2023-12-14 10:41:06', '2023-12-14 10:41:06'),
-(22, 5, 18, 'Hello', NULL, '04:46 PM', '2023-12-14', NULL, '2023-12-14 11:16:54', '2023-12-14 11:16:54'),
-(23, 5, 20, 'sdfsdfdsf', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:29', '2023-12-14 12:22:29'),
-(24, 5, 6, 'sdfsfdsf', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:45', '2023-12-14 12:22:45'),
-(25, 5, 9, 'sdfdsfs', NULL, '05:52 PM', '2023-12-14', NULL, '2023-12-14 12:22:57', '2023-12-14 12:22:57');
+INSERT INTO `user_chats` (`id`, `sender_id`, `receiver_id`, `message`, `document`, `time`, `date`, `read_at`,
+                          `created_at`, `updated_at`)
+VALUES (1, 5, 20, 'fgd', NULL, '10:47:00', '2023-12-25', NULL, '2023-12-25 05:17:36', '2023-12-25 05:17:36'),
+       (2, 20, 5, 'gh', NULL, '10:47:00', '2023-12-25', NULL, '2023-12-25 05:17:54', '2023-12-25 05:17:54'),
+       (3, 20, 5, 'gjgh', NULL, '10:48:00', '2023-12-25', NULL, '2023-12-25 05:18:12', '2023-12-25 05:18:12'),
+       (4, 20, 5, 'fff', NULL, '10:50:00', '2023-12-25', NULL, '2023-12-25 05:20:48', '2023-12-25 05:20:48'),
+       (5, 20, 5, 'uyyt', NULL, '10:54:00', '2023-12-25', NULL, '2023-12-25 05:24:45', '2023-12-25 05:24:45'),
+       (6, 20, 5, 'okl', NULL, '10:55:00', '2023-12-25', NULL, '2023-12-25 05:25:26', '2023-12-25 05:25:26'),
+       (7, 5, 20, 'cvv', NULL, '10:55:00', '2023-12-25', NULL, '2023-12-25 05:25:34', '2023-12-25 05:25:34'),
+       (8, 20, 5, 'ju', NULL, '10:59:00', '2023-12-25', NULL, '2023-12-25 05:29:50', '2023-12-25 05:29:50'),
+       (9, 5, 20, 'gh', NULL, '11:00:00', '2023-12-25', NULL, '2023-12-25 05:30:14', '2023-12-25 05:30:14'),
+       (10, 20, 5, 'nbbm', NULL, '11:02:00', '2023-12-25', NULL, '2023-12-25 05:32:26', '2023-12-25 05:32:26'),
+       (11, 5, 20, NULL, '[\"4UDte0vsv0SFRTbRlE0oUMFSsr4oyl4GCZGMqryE.jpg\"]', '14:55:00', '2023-12-25', NULL,
+        '2023-12-25 09:25:47', '2023-12-25 09:25:47'),
+       (12, 20, 5, 'ok', NULL, '14:56:00', '2023-12-25', NULL, '2023-12-25 09:26:15', '2023-12-25 09:26:15'),
+       (13, 20, 5, 'popopo', NULL, '15:06:00', '2023-12-25', NULL, '2023-12-25 09:36:56', '2023-12-25 09:36:56'),
+       (14, 5, 20, 'ok', NULL, '15:07:00', '2023-12-25', NULL, '2023-12-25 09:37:20', '2023-12-25 09:37:20'),
+       (15, 5, 20, NULL,
+        '[\"IzV6itXeftJCHKMDUZUaHD9mxl532CAFUSxI9as2.jpg\",\"u2Qne2b59lWCCFIEyxKOYonkWD3iJFNCr51off6h.jpg\",\"oLOHafHoqDJnobVDjEEeUAz3J66gVf0GwdZvm1pj.jpg\",\"Zoy8HFbXU49bUx4FRR5El73O7Iblx9TTtVDUryoA.jpg\",\"5VdBemzj8Pu6ZsTcXlHxJN2ZhLKEWsvqUFRtgRDu.jpg\",\"lkG85X4LgtrYVEVb3fIPo71RGs2SeaEmNBUtHcUB.jpg\",\"yPEQGpklbp2hP4Y317X27avVe7em0ShrP6PUQQ11.jpg\",\"6FXdPaR1HvXBWbuJT3TqYrrDWhyH6LKh6pf4se10.jpg\",\"oEaMxynycO5qfJoQ7s5CuqGVSdSEbejvLOZ4TCIq.jpg\",\"SuP679rR8FdscmkahPhKHs1SZMfo0RZjgru0WQzG.jpg\",\"tSg1gov82109Mgvm5v7CqpidpqsWPPVCPSBigNy7.jpg\",\"WjV5c3IHh2RDQzsDZgPS3Ri8zonCSNAevGVTBExC.jpg\",\"2wDzyaqMfCIZ8tma7xdxllHFOot9ZxQSYWMYfhV7.jpg\",\"tE2p5njUlkktlnm2xhKr7YR6oB2PDpyDSB0fNPzQ.jpg\"]',
+        '16:13:00', '2023-12-25', NULL, '2023-12-25 10:43:14', '2023-12-25 10:43:14'),
+       (16, 5, 20, 'ok', NULL, '16:13:00', '2023-12-25', NULL, '2023-12-25 10:43:44', '2023-12-25 10:43:44'),
+       (17, 20, 5, 'ok', NULL, '16:13:00', '2023-12-25', NULL, '2023-12-25 10:43:57', '2023-12-25 10:43:57'),
+       (18, 5, 20, 'dgdg', NULL, '17:01:00', '2023-12-25', NULL, '2023-12-25 11:31:29', '2023-12-25 11:31:29'),
+       (19, 20, 5, 'dfg', NULL, '17:01:00', '2023-12-25', NULL, '2023-12-25 11:31:35', '2023-12-25 11:31:35');
 
 -- --------------------------------------------------------
 
@@ -993,9 +1012,10 @@ INSERT INTO `user_chats` (`id`, `sender_id`, `receiver_id`, `message`, `document
 -- Table structure for table `work_experiences`
 --
 
-CREATE TABLE `work_experiences` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `resume_id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE `work_experiences`
+(
+    `id`         bigint(20) UNSIGNED NOT NULL,
+    `resume_id`  bigint(20) UNSIGNED NOT NULL,
   `destination` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `company_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1338,25 +1358,25 @@ ALTER TABLE `resumes`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_chats`
 --
 ALTER TABLE `user_chats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `work_experiences`
 --
 ALTER TABLE `work_experiences`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
