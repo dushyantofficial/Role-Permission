@@ -9,13 +9,15 @@ class Payment extends Model
 {
     use HasFactory;
 
+    public static $rules = [
+        'user_id' => 'required',
+        'amount' => 'required',
+
+    ];
+    public static $customMessages = [
+        'user_id.required' => 'User name field is required.',
+    ];
     public $table = 'payments';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'user_id',
         'amount',
@@ -26,17 +28,7 @@ class Payment extends Model
 
 
     ];
-
-    public static $rules = [
-        'user_id' => 'required',
-        'amount' => 'required',
-
-    ];
-
-
-    public static $customMessages = [
-        'user_id.required' => 'User name field is required.',
-    ];
+    protected $dates = ['deleted_at'];
 
     public function user_name()
     {

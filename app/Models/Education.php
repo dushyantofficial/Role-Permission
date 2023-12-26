@@ -12,28 +12,6 @@ class Education extends Model
     use SoftDeletes;
 
 
-    public $table = 'education';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
-    public $fillable = [
-        'resume_id',
-        'degree_name',
-        'college_name',
-        'university_name',
-        'city_name',
-        'grade',
-        'start_date',
-        'end_date',
-        'description',
-        'check',
-        'status',
-
-    ];
-
     public static $rules = [
         'resume_id' => 'required',
         'degree_name' => 'required',
@@ -55,10 +33,25 @@ class Education extends Model
         'start_date' => 'required',
 
     ];
-
     public static $customMessages = [
         'resume_id.required' => 'Employee name is required.',
     ];
+    public $table = 'education';
+    public $fillable = [
+        'resume_id',
+        'degree_name',
+        'college_name',
+        'university_name',
+        'city_name',
+        'grade',
+        'start_date',
+        'end_date',
+        'description',
+        'check',
+        'status',
+
+    ];
+    protected $dates = ['deleted_at'];
 
     public function resume_name()
     {

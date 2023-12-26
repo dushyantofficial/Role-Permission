@@ -8,13 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentRefund extends Model
 {
     use HasFactory;
+
     public $table = 'payment_refunds';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'refund_id',
         'user_id',
@@ -31,8 +26,10 @@ class PaymentRefund extends Model
         'payment_date',
 
     ];
+    protected $dates = ['deleted_at'];
 
-    public function user_name(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user_name()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -45,13 +45,16 @@
         <li><a class="app-menu__item {{ Request::is('payment*') ? 'active' : '' }}" href="{{route('payment.index')}}"><i
                     class="fa fa-credit-card"></i>&nbsp;&nbsp;<span class="app-menu__label">Payment</span></a>
         </li>
-        <li><a class="app-menu__item {{ Request::is('history_payment*') ? 'active' : '' }}" href="{{route('payment-history')}}"><i
+        <li><a class="app-menu__item {{ Request::is('history_payment*') ? 'active' : '' }}"
+               href="{{route('payment-history')}}"><i
                     class="fa fa-history"></i>&nbsp;&nbsp;<span class="app-menu__label">Payment History</span></a>
         </li>
-        <li><a class="app-menu__item {{ Request::is('refund_payment_history*') ? 'active' : '' }}" href="{{route('refund-payment-history')}}"><i
+        <li><a class="app-menu__item {{ Request::is('refund_payment_history*') ? 'active' : '' }}"
+               href="{{route('refund-payment-history')}}"><i
                     class="fa fa-undo"></i>&nbsp;&nbsp;<span class="app-menu__label">Refund Payment History</span></a>
         </li>
-        <li><a class="app-menu__item {{ Request::is('backup_download*') ? 'active' : '' }}" href="{{route('backup-download')}}"><i
+        <li><a class="app-menu__item {{ Request::is('backup_download*') ? 'active' : '' }}"
+               href="{{route('backup-download')}}"><i
                     class="fa fa-hdd-o"></i>&nbsp;&nbsp;<span class="app-menu__label">Backup</span></a>
         </li>
 

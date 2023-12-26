@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use App\Products;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PermissionController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
 
@@ -19,8 +21,8 @@ class PermissionController extends Controller
     {
         $params = request()->all();
 //        $permissions = Permission::orderBy('id','DESC')->paginate(5);
-        $permissions = Permission::orderBy('id','DESC')->get();
-        return view('permission.index',compact('permissions'));
+        $permissions = Permission::orderBy('id', 'DESC')->get();
+        return view('permission.index', compact('permissions'));
 //            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -38,12 +40,12 @@ class PermissionController extends Controller
         \Spatie\Permission\Models\Permission::create($request->all());
 
         return redirect()->route('permission.index')
-            ->with('success','Permission created successfully');
+            ->with('success', 'Permission created successfully');
     }
 
     public function edit(Permission $permission)
     {
-        return view('permission.edit',compact('permission'));
+        return view('permission.edit', compact('permission'));
     }
 
 
@@ -56,14 +58,14 @@ class PermissionController extends Controller
         $permission->update($request->all());
 
         return redirect()->route('permission.index')
-            ->with('info','Permissions updated successfully');
+            ->with('info', 'Permissions updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Products  $product
-     * @return \Illuminate\Http\Response
+     * @param Products $product
+     * @return Response
      */
     public function destroy($id)
     {

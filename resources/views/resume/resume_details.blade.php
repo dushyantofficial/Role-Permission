@@ -56,9 +56,10 @@
                         <p data-aos="fade-left" data-aos-delay="100">{{$resumes->destination}}</p>
                         <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
 
-                            <button class="btn btn-light text-dark shadow-sm mt-1 me-1" id="pdfButton">Download CV</button>
-{{--                            <a class="btn btn-light text-dark shadow-sm mt-1 me-1" href="{{route('download-pdf')}}?id={{request('id')}}"--}}
-{{--                            >Download CV</a>--}}
+                            <button class="btn btn-light text-dark shadow-sm mt-1 me-1" id="pdfButton">Download CV
+                            </button>
+                            {{--                            <a class="btn btn-light text-dark shadow-sm mt-1 me-1" href="{{route('download-pdf')}}?id={{request('id')}}"--}}
+                            {{--                            >Download CV</a>--}}
                         </div>
                     </div>
                 </div>
@@ -108,8 +109,10 @@
                             <div class="col-md-6">
                                 <div class="mb-2"><span>{{$professional_skill->professional_skills}}</span>
                                     <div class="progress my-1">
-                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar" data-aos="zoom-in-right"
-                                             data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ $professional_skill['professional_per'] }}%"
+                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar"
+                                             data-aos="zoom-in-right"
+                                             data-aos-delay="100" data-aos-anchor=".skills-section"
+                                             style="width: {{ $professional_skill['professional_per'] }}%"
                                              aria-valuenow="{{ $professional_skill['professional_per'] }}"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>

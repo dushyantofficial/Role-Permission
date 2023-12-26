@@ -65,14 +65,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        .modal{
+
+        .modal {
             top: 54px !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
                 overflow-x: auto;
             }
+
             .modal {
                 width: 192% !important;
             }
@@ -90,7 +93,8 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_educations">
  + Add
                 </button></span>
@@ -181,7 +185,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -197,7 +202,8 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Employee Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="resume_id" id="">
                                                                     <option value="">---Select Employee Name---</option>
                                                                     @foreach($resumes as $resume)
@@ -211,7 +217,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Degree Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Degree Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="degree_name"
                                                                        value="{{$education->degree_name}}"
@@ -222,7 +229,8 @@
 
                                                         <div class="col-8">
                                                             <div class="form-group">
-                                                                <label class="control-label">College Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">College Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="college_name"
                                                                        value="{{$education->college_name}}"
@@ -233,7 +241,8 @@
 
                                                         <div class="col-4">
                                                             <div class="form-group">
-                                                                <label class="control-label">City Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">City Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="city_name"
                                                                        value="{{$education->city_name}}"
@@ -244,7 +253,9 @@
 
                                                         <div class="col-8">
                                                             <div class="form-group">
-                                                                <label class="control-label">University Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">University
+                                                                    Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="university_name"
                                                                        value="{{$education->university_name}}"
@@ -254,18 +265,22 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="form-group">
-                                                                <label class="control-label">Grade</label><span class="text-danger"><b>*</b></span>
-                                                                <select class="form-control text-center" name="grade" id="">
+                                                                <label class="control-label">Grade</label><span
+                                                                    class="text-danger"><b>*</b></span>
+                                                                <select class="form-control text-center" name="grade"
+                                                                        id="">
                                                                     <option value="">---Select Grade---</option>
                                                                     @foreach(config('constants.GRADE') as $key => $grade)
-                                                                        <option value="{{$grade}}" @if(isset($education)) {{$education->grade == $grade  ? 'selected' : ''}} @endif>{{$key}}</option>
+                                                                        <option
+                                                                            value="{{$grade}}" @if(isset($education)) {{$education->grade == $grade  ? 'selected' : ''}} @endif>{{$key}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Start Date</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="month"
                                                                        class="form-control date" id="start_date"
                                                                        value="{{$education->start_date}}" max=""
@@ -275,7 +290,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                                                <label class="control-label">End Date</label><span
+                                                                    class="text-danger check_box"><b>*</b></span>
                                                                 <input type="month"
                                                                        class="form-control date"
                                                                        id="end_date_{{$education->id}}"
@@ -293,16 +309,19 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label class="control-label">Description</label>
-                                                                <textarea class="form-control" name="description" id="" >{{$education->description}}</textarea>
+                                                                <textarea class="form-control" name="description"
+                                                                          id="">{{$education->description}}</textarea>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-bs-dismiss="modal">Close
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
                                                                 data-resume-id="{{ $education->id }}">Update
                                                         </button>
                                                     </div>
@@ -349,7 +368,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Employee Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="resume_id" id="">
                                             <option value="">---Select Employee Name---</option>
                                             @foreach($resumes as $resume)
@@ -362,7 +382,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Degree Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Degree Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="degree_name" value="{{old('degree_name')}}"
                                                min="1" name="degree_name" placeholder="Enter Degree Name...">
@@ -370,7 +391,8 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="control-label">College Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">College Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="college_name"
                                                value=""
@@ -392,7 +414,8 @@
 
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="control-label">University Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">University Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="university_name"
                                                value=""
@@ -402,7 +425,8 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="control-label">Grade</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Grade</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control text-center" name="grade" id="">
                                             <option value="">---Select Grade---</option>
                                             @foreach(config('constants.GRADE') as $key => $grade)
@@ -413,7 +437,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Start Date</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="month"
                                                class="form-control date" id="start_date" value="{{old('start_date')}}"
                                                max="" name="start_date">
@@ -422,13 +447,14 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                        <label class="control-label">End Date</label><span
+                                            class="text-danger check_box"><b>*</b></span>
                                         <input type="month"
                                                class="form-control date" id="end_date" value="{{old('end_date')}}"
                                                min="" name="end_date">
 
                                         <input type="checkbox"
-                                             class="check"  id="check" value="1"
+                                               class="check" id="check" value="1"
                                                name="check">
                                         <label class="control-label">Present</label>
                                     </div>
@@ -436,15 +462,18 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="control-label">Description</label>
-                                        <textarea class="form-control" name="description" id="" ></textarea>
+                                        <textarea class="form-control" name="description" id=""></textarea>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                        data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>
@@ -458,12 +487,12 @@
     </p>
 @endsection
 @push('page_scripts')
-{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"--}}
-{{--          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
-{{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
-{{--            crossorigin="anonymous"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
+    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"--}}
+    {{--          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">--}}
+    {{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"--}}
+    {{--            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"--}}
+    {{--            crossorigin="anonymous"></script>--}}
+    {{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
 
     <script>
         $(document).ready(function () {
@@ -726,19 +755,19 @@
         });
     </script>
 
-{{--  Check Box Click Required star hide/show  --}}
-<script>
-    $(document).ready(function() {
-        // Add an event listener to the checkbox
-        $('.check').change(function() {
-            if ($(this).is(':checked')) {
-                $('.check_box').hide(); // Hide the span when the checkbox is checked
-            } else {
-                $('.check_box').show(); // Show the span when the checkbox is unchecked
-            }
+    {{--  Check Box Click Required star hide/show  --}}
+    <script>
+        $(document).ready(function () {
+            // Add an event listener to the checkbox
+            $('.check').change(function () {
+                if ($(this).is(':checked')) {
+                    $('.check_box').hide(); // Hide the span when the checkbox is checked
+                } else {
+                    $('.check_box').show(); // Show the span when the checkbox is unchecked
+                }
+            });
         });
-    });
 
-</script>
+    </script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @endpush

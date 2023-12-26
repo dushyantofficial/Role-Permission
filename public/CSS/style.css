@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
 *,
 *::after,
 *::before {
@@ -342,6 +343,7 @@ textarea:focus {
     .form-row {
         flex-basis: 100%;
     }
+
     .campaign-info {
         padding: 0 0;
     }
@@ -377,69 +379,86 @@ label {
         flex-direction: column;
         align-items: center;
     }
+
     .checkbox-mobile {
         width: 100%;
     }
+
     .form-group input {
         width: 46%;
     }
+
     .placholder {
         width: 48%;
     }
+
     .uploadfile {
         width: 50% !important;
     }
+
     .backbutton {
         display: block;
         justify-content: center;
     }
+
     .submit-btn {
         padding-bottom: 0px;
     }
+
     .submit-btn button {
         width: 90%;
     }
+
     .submitback {
         display: flex;
     }
+
     /* Set width to 100% for each category container in mobile view */
     div[style*="width: 100%"] {
         width: 100%;
         padding: 10px 0;
     }
+
     /* Center align category labels in mobile view */
     .categorycheck {
         padding-left: 3rem;
         /* margin-top: 2rem; */
     }
+
     /* Adjust input and label styles in mobile view */
     .pcategory {
         display: flex;
         align-items: center;
         padding-left: 3rem;
     }
+
     .pcategory input[type="checkbox"] {
         flex: 1;
     }
+
     .pcategory label {
         flex: 12;
     }
+
     /* Adjust input box for "Other, please specify" in mobile view */
     .OtherInputclass {
         width: 50%;
         margin-left: 3rem;
         margin-top: 10px;
     }
+
     .OtherInputclass1 {
         width: 60%;
         margin-top: 10px;
     }
+
     /* Styles for "Type of Idea" and "Stage of Idea" sections in mobile view */
     .stage-idea,
     .type-idea {
         display: flex;
         flex-wrap: wrap;
     }
+
     .stage-idea input[type="checkbox"],
     .stage-idea label,
     .type-idea input[type="checkbox"],

@@ -67,7 +67,8 @@
                     <input type="text" name="value[]" placeholder="Enter your Value" class="form-control" required/>
                 </td>
                 <td>
-                   <br> <button type="button" name="add" id="add" class="btn btn-primary">Add More</button>
+                    <br>
+                    <button type="button" name="add" id="add" class="btn btn-primary">Add More</button>
                 </td>
             </tr>
 

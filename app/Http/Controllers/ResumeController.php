@@ -51,7 +51,8 @@ class ResumeController extends Controller
 
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         $rules = Resume::$rules;
         $rules['profile_pic'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048';
         $request->validate($rules);
@@ -98,13 +99,13 @@ class ResumeController extends Controller
     {
         $resumes = Resume::where('id', $request->id)->first();
         if (isset($resumes)) {
-        $educations = Education::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills','asc')->get();
-        $work_experiences = Work_Experience::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $projects = Project::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $courses = Course::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        return view('resume.preview', compact('resumes',
-            'educations', 'professional_skills', 'work_experiences', 'projects', 'courses'));
+            $educations = Education::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills', 'asc')->get();
+            $work_experiences = Work_Experience::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $projects = Project::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $courses = Course::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            return view('resume.preview', compact('resumes',
+                'educations', 'professional_skills', 'work_experiences', 'projects', 'courses'));
         } else {
             return redirect()->back();
         }
@@ -115,7 +116,7 @@ class ResumeController extends Controller
     {
         $resumes = Resume::where('id', $request->id)->first();
         $educations = Education::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills','asc')->get();
+        $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills', 'asc')->get();
         $work_experiences = Work_Experience::where('resume_id', $resumes->id)->where('status', 'active')->get();
         $projects = Project::where('resume_id', $resumes->id)->where('status', 'active')->get();
         $courses = Course::where('resume_id', $resumes->id)->where('status', 'active')->get();
@@ -132,17 +133,18 @@ class ResumeController extends Controller
         return $pdf->download("$resumes->name.pdf");
     }
 
-    public function resume_demo(Request $request){
+    public function resume_demo(Request $request)
+    {
 
         $resumes = Resume::where('id', $request->id)->first();
         if (isset($resumes)) {
-        $educations = Education::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills', 'asc')->get();
-        $work_experiences = Work_Experience::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $projects = Project::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        $courses = Course::where('resume_id', $resumes->id)->where('status', 'active')->get();
-        return view('resume_demo', compact('resumes',
-            'educations', 'professional_skills', 'work_experiences', 'projects', 'courses'));
+            $educations = Education::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $professional_skills = Professional_Skills::where('resume_id', $resumes->id)->where('status', 'active')->orderBy('professional_skills', 'asc')->get();
+            $work_experiences = Work_Experience::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $projects = Project::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            $courses = Course::where('resume_id', $resumes->id)->where('status', 'active')->get();
+            return view('resume_demo', compact('resumes',
+                'educations', 'professional_skills', 'work_experiences', 'projects', 'courses'));
         } else {
             return redirect()->back();
         }
@@ -164,11 +166,10 @@ class ResumeController extends Controller
         }
     }
 
-    public function resume_test(){
+    public function resume_test()
+    {
         return view('resume_test');
     }
-
-
 
 
 }

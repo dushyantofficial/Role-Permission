@@ -26,8 +26,12 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
     </style>
@@ -37,7 +41,8 @@
                 <h1><i class="fa fa-eye"></i>Show Backup Details</h1>
             </div>
             <div class="pull-right">
-                <a class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" href="{{ route('home') }}"> Back</a>
+                <a class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" href="{{ route('home') }}">
+                    Back</a>
             </div>
         </div>
         <div id="loader-overlay">

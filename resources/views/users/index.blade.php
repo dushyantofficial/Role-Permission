@@ -64,6 +64,7 @@
         .slider.round:before {
             border-radius: 50%;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -114,7 +115,7 @@
                                 <th>Roles</th>
                                 <th>User Chatting</th>
                                 @can('user-block')
-                                <th>Status</th>
+                                    <th>Status</th>
                                 @endcan
                                 <th width="280px">Action</th>
                             </tr>
@@ -146,14 +147,16 @@
                                             </label>
                                             {{--                                        <input data-id="{{$user->id}}" class="toggle-class statuss" type="checkbox"--}}
                                             {{--                                               onclick="on();"--}}
-{{--                                               data-onstyle="success" data-offstyle="danger" data-toggle="toggle"--}}
-{{--                                               data-on="Active"--}}
-{{--                                               data-off="Block" {{ $user->status=='active' ? 'checked' : '' }}>--}}
-                                    </td>
+                                            {{--                                               data-onstyle="success" data-offstyle="danger" data-toggle="toggle"--}}
+                                            {{--                                               data-on="Active"--}}
+                                            {{--                                               data-off="Block" {{ $user->status=='active' ? 'checked' : '' }}>--}}
+                                        </td>
                                     @endcan
                                     <td>
-                                        <a class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine" href="{{ route('users.show',$user->id) }}"><i class="fa fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine" href="{{ route('users.edit',$user->id) }}"> <i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine"
+                                           href="{{ route('users.show',$user->id) }}"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
+                                           href="{{ route('users.edit',$user->id) }}"> <i class="fa fa-edit"></i></a>
                                         <button
                                             class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine delete-user"
                                             data-delete-id="{{ $user->id }}">
@@ -164,9 +167,9 @@
                             </tbody>
                         </table>
 
-{{--                        <div class="page1 pull-right">--}}
-{{--                            {!! $data->appends(request()->all())->render('pagination::bootstrap-4') !!}--}}
-{{--                        </div>--}}
+                        {{--                        <div class="page1 pull-right">--}}
+                        {{--                            {!! $data->appends(request()->all())->render('pagination::bootstrap-4') !!}--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -189,9 +192,11 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input name="name" type="text" value="{{old('name')}}"
-                                               class="form-control @error('name') is-invalid @enderror" id="oldPasswordInput"
+                                               class="form-control @error('name') is-invalid @enderror"
+                                               id="oldPasswordInput"
                                                placeholder="Enter Full Name">
                                     </div>
                                 </div>
@@ -209,19 +214,24 @@
                                     <div class="form-group">
                                         <label class="control-label">Password</label>
                                         <input name="password" type="password" value="{{old('password')}}"
-                                               id="password"   class="form-control @error('password') is-invalid @enderror"
+                                               id="password"
+                                               class="form-control @error('password') is-invalid @enderror"
                                                placeholder="Enter User Password">
-                                        <input type="checkbox" id="remember" onclick="NewPassword()" name="remember" {{ old('remember') ? 'checked' : '' }}>&nbsp;&nbsp;
+                                        <input type="checkbox" id="remember" onclick="NewPassword()"
+                                               name="remember" {{ old('remember') ? 'checked' : '' }}>&nbsp;&nbsp;
                                         <span class="label-text"><b id="hide_show">Show Password</b></span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label class="control-label">Confirm Password</label>
-                                        <input name="confirm-password" type="password" value="{{old('confirm-password')}}"
-                                               id="confirm_password"   class="form-control @error('confirm-password') is-invalid @enderror"
+                                        <input name="confirm-password" type="password"
+                                               value="{{old('confirm-password')}}"
+                                               id="confirm_password"
+                                               class="form-control @error('confirm-password') is-invalid @enderror"
                                                placeholder="Enter User Password">
-                                        <input type="checkbox" id="confirm_remember" onclick="ConfirmPassword()" name="confirm_remember" {{ old('confirm_remember') ? 'checked' : '' }}>&nbsp;&nbsp;
+                                        <input type="checkbox" id="confirm_remember" onclick="ConfirmPassword()"
+                                               name="confirm_remember" {{ old('confirm_remember') ? 'checked' : '' }}>&nbsp;&nbsp;
                                         <span class="label-text123"><b id="show_hide">Show Password</b></span>
                                     </div>
                                 </div>
@@ -229,9 +239,11 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="control-label">Roles</label>
-                                        <select class="mul-select form-control @error('roles') is-invalid @enderror" name="roles[]" multiple="true">
+                                        <select class="mul-select form-control @error('roles') is-invalid @enderror"
+                                                name="roles[]" multiple="true">
                                             @foreach($roles as $role)
-                                                <option value="{{$role->id}}" {{ in_array($role->id, old('roles', [])) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                <option
+                                                    value="{{$role->id}}" {{ in_array($role->id, old('roles', [])) ? 'selected' : '' }}>{{ $role->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -255,52 +267,53 @@
 
 
 
-    <p class="text-center text-primary"><small>Developer Name :- <b style="color: red">Dushyant Chhatraliya</b></small></p>
+    <p class="text-center text-primary"><small>Developer Name :- <b style="color: red">Dushyant Chhatraliya</b></small>
+    </p>
 @endsection
 @push('page_scripts')
-{{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".mul-select").select2({
-            placeholder: "Select Roles",
-            tags: true,
-        });
-    })
-</script>
-<script>
-    function NewPassword() {
-        var x = document.getElementById("password");
-        var span = document.querySelector('.label-text');
-        var passwordText = document.getElementById("hide_show");
-        if (x.type === "password") {
-            x.type = "text";
-            span.classList.add('check_color_name')
-            passwordText.innerText = "Hide Password";
-        } else {
-            x.type = "password";
-            span.classList.remove('check_color_name')
-            passwordText.innerText = "Show Password";
+    {{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".mul-select").select2({
+                placeholder: "Select Roles",
+                tags: true,
+            });
+        })
+    </script>
+    <script>
+        function NewPassword() {
+            var x = document.getElementById("password");
+            var span = document.querySelector('.label-text');
+            var passwordText = document.getElementById("hide_show");
+            if (x.type === "password") {
+                x.type = "text";
+                span.classList.add('check_color_name')
+                passwordText.innerText = "Hide Password";
+            } else {
+                x.type = "password";
+                span.classList.remove('check_color_name')
+                passwordText.innerText = "Show Password";
+            }
         }
-    }
-</script>
-<script>
-    function ConfirmPassword() {
-        var x = document.getElementById("confirm_password");
-        var span = document.querySelector('.label-text123');
-        var passwordText = document.getElementById("show_hide");
-        if (x.type === "password") {
-            x.type = "text";
-            span.classList.add('color_name')
-            passwordText.innerText = "Hide Password";
-        } else {
-            x.type = "password";
-            span.classList.remove('color_name')
-            passwordText.innerText = "Show Password";
+    </script>
+    <script>
+        function ConfirmPassword() {
+            var x = document.getElementById("confirm_password");
+            var span = document.querySelector('.label-text123');
+            var passwordText = document.getElementById("show_hide");
+            if (x.type === "password") {
+                x.type = "text";
+                span.classList.add('color_name')
+                passwordText.innerText = "Hide Password";
+            } else {
+                x.type = "password";
+                span.classList.remove('color_name')
+                passwordText.innerText = "Show Password";
+            }
         }
-    }
-</script>
+    </script>
     <script>
         $('.statuss').change(function () {
             var status = $(this).prop('checked') == true ? 'active' : 'Block';
@@ -325,132 +338,132 @@
         })
     </script>
 
-{{--Backup Download With Ajax--}}
-<script>
-    $(document).ready(function () {
-        $('#submitBtn').click(function (e) {
-            e.preventDefault();
-            var formData = new FormData($('#add_form')[0]);
+    {{--Backup Download With Ajax--}}
+    <script>
+        $(document).ready(function () {
+            $('#submitBtn').click(function (e) {
+                e.preventDefault();
+                var formData = new FormData($('#add_form')[0]);
 
-            Swal.fire({
-                title: 'Are you sure?',
-                text: 'Do not refresh the page for 35 seconds!',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, backup download it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Disable the button to prevent multiple clicks
-                    $('#submitBtn').prop('disabled', true);
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'Do not refresh the page for 35 seconds!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, backup download it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Disable the button to prevent multiple clicks
+                        $('#submitBtn').prop('disabled', true);
 
-                    // Show the lazy loader
-                    $('#lazyLoader').show();
-                    $('#downloadTimer').show();
+                        // Show the lazy loader
+                        $('#lazyLoader').show();
+                        $('#downloadTimer').show();
 
-                    // Start the download timer
-                    var startTime = Date.now();
-                    var downloadTimerElement = $('#downloadTimer');
+                        // Start the download timer
+                        var startTime = Date.now();
+                        var downloadTimerElement = $('#downloadTimer');
 
-                    var downloadInterval = setInterval(function () {
-                        var currentTime = Date.now();
-                        var elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
-                        downloadTimerElement.text(elapsedTime.toFixed(1) + ' seconds');
-                    }, 100); // Update every 100 milliseconds
-                    $.ajax({
-                        type: 'GET',
-                        url: $('#backup_form').attr('action'),
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (data) {
-                            // Close the lazy loader after a successful AJAX response
-                            $('#lazyLoader').hide();
-                            $('#downloadTimer').hide();
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: 'Backup Download completed in ' + downloadTimerElement.text(),
-                            });
-                        },
-                        error: function (xhr) {
-                            // Close the lazy loader on error
-                            $('#lazyLoader').hide();
-                            $('#downloadTimer').hide();
-                            var errors = xhr.responseJSON.errors;
-                            var errorMessages = [];
+                        var downloadInterval = setInterval(function () {
+                            var currentTime = Date.now();
+                            var elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
+                            downloadTimerElement.text(elapsedTime.toFixed(1) + ' seconds');
+                        }, 100); // Update every 100 milliseconds
+                        $.ajax({
+                            type: 'GET',
+                            url: $('#backup_form').attr('action'),
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                // Close the lazy loader after a successful AJAX response
+                                $('#lazyLoader').hide();
+                                $('#downloadTimer').hide();
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: 'Backup Download completed in ' + downloadTimerElement.text(),
+                                });
+                            },
+                            error: function (xhr) {
+                                // Close the lazy loader on error
+                                $('#lazyLoader').hide();
+                                $('#downloadTimer').hide();
+                                var errors = xhr.responseJSON.errors;
+                                var errorMessages = [];
 
-                            for (var field in errors) {
-                                errorMessages.push(errors[field][0]);
-                            }
-
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error!',
-                                html: errorMessages.join('<br>') + '<br>',
-                            });
-                        },
-                        complete: function () {
-                            // Enable the button after the request is complete (success or error)
-                            $('#submitBtn').prop('disabled', false);
-
-                            // Stop the download timer
-                            clearInterval(downloadInterval);
-                        }
-                    });
-                }
-            });
-        });
-    });
-</script>
-
-
-{{--   Delete Record With Js --}}
-<script>
-    $(document).ready(function () {
-        // Add click event listener to the delete button
-        $(document).on('click', '.delete-user', function () {
-            var id = $(this).data('delete-id');
-            // Show a SweetAlert confirmation dialog
-            Swal.fire({
-                title: 'Are you sure?',
-                text: 'You won\'t be able to revert this!',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Send an AJAX request to delete the resource record
-                    $.ajax({
-                        type: 'DELETE',
-                        url: '{{ route('users.destroy', ['user' => 'id']) }}' + id,
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                        },
-                        success: function (response) {
-                            // Handle the success response (e.g., reload the page or remove the deleted item from the DOM)
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Delete!',
-                                text: 'Your record deleted successfully.',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload(); // Reload the page
+                                for (var field in errors) {
+                                    errorMessages.push(errors[field][0]);
                                 }
-                            });
-                        },
-                        error: function (error) {
-                            // Handle the error response (e.g., show an error message)
-                            Swal.fire('Error', 'An error occurred while deleting the record.', 'error');
-                        }
-                    });
-                }
+
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    html: errorMessages.join('<br>') + '<br>',
+                                });
+                            },
+                            complete: function () {
+                                // Enable the button after the request is complete (success or error)
+                                $('#submitBtn').prop('disabled', false);
+
+                                // Stop the download timer
+                                clearInterval(downloadInterval);
+                            }
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+
+
+    {{--   Delete Record With Js --}}
+    <script>
+        $(document).ready(function () {
+            // Add click event listener to the delete button
+            $(document).on('click', '.delete-user', function () {
+                var id = $(this).data('delete-id');
+                // Show a SweetAlert confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Send an AJAX request to delete the resource record
+                        $.ajax({
+                            type: 'DELETE',
+                            url: '{{ route('users.destroy', ['user' => 'id']) }}' + id,
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                            },
+                            success: function (response) {
+                                // Handle the success response (e.g., reload the page or remove the deleted item from the DOM)
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Delete!',
+                                    text: 'Your record deleted successfully.',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload(); // Reload the page
+                                    }
+                                });
+                            },
+                            error: function (error) {
+                                // Handle the error response (e.g., show an error message)
+                                Swal.fire('Error', 'An error occurred while deleting the record.', 'error');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @endpush

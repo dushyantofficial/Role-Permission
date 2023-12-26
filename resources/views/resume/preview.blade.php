@@ -43,8 +43,8 @@
                     <div class="col-lg-4 col-md-5">
                         <div class="avatar hover-effect bg-white shadow-sm p-1">
                             @if($resumes->profile_pic == null)
-                            <img
-                                src="{{asset('resume/images/avatar.jpg')}}" width="200" height="200"/>
+                                <img
+                                    src="{{asset('resume/images/avatar.jpg')}}" width="200" height="200"/>
                             @else
                                 <img
                                     src="{{asset('storage/images/'.$resumes->profile_pic)}}" width="200" height="200"/>
@@ -55,8 +55,9 @@
                         <h2 class="h1 mt-2" data-aos="fade-left" data-aos-delay="0">{{$resumes->name}}</h2>
                         <p data-aos="fade-left" data-aos-delay="100">{{$resumes->destination}}</p>
                         <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
-                            <a class="btn btn-light text-dark shadow-sm mt-1 me-1" href="{{route('download-pdf')}}?id={{request('id')}}"
-                                >Download CV</a></div>
+                            <a class="btn btn-light text-dark shadow-sm mt-1 me-1"
+                               href="{{route('download-pdf')}}?id={{request('id')}}"
+                            >Download CV</a></div>
                     </div>
                 </div>
             </div>
@@ -105,8 +106,10 @@
                             <div class="col-md-6">
                                 <div class="mb-2"><span>{{$professional_skill->professional_skills}}</span>
                                     <div class="progress my-1">
-                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar" data-aos="zoom-in-right"
-                                             data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ $professional_skill['professional_per'] }}%"
+                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar"
+                                             data-aos="zoom-in-right"
+                                             data-aos-delay="100" data-aos-anchor=".skills-section"
+                                             style="width: {{ $professional_skill['professional_per'] }}%"
                                              aria-valuenow="{{ $professional_skill['professional_per'] }}"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>

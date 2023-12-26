@@ -23,7 +23,7 @@ class RazorpayPaymentController extends Controller
 
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
 
-        if(count($input)  && !empty($input['razorpay_payment_id'])) {
+        if (count($input) && !empty($input['razorpay_payment_id'])) {
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
                 $input['transaction_id'] = $input['razorpay_payment_id'];
@@ -40,8 +40,8 @@ class RazorpayPaymentController extends Controller
                 PaymentHistory::create($response->toArray());
                 return redirect()->back()->with('success', "Payment of ₹$payment_details->amount is paid...");
             } catch (Exception $e) {
-                return  $e->getMessage();
-                Session::put('error',$e->getMessage());
+                return $e->getMessage();
+                Session::put('error', $e->getMessage());
                 return redirect()->back()->with('dander', "Payment of ₹$payment_details->amount is fail...");
             }
         }

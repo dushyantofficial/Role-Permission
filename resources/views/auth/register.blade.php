@@ -7,7 +7,8 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/main.css')}}">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Role Permission App</title>
 </head>
 <body>
@@ -115,7 +116,7 @@
                             <span class="text-danger" role="alert">
                                         {{ $message }}
                                     </span>
-                        @enderror
+                            @enderror
                         </center>
                     </div>
                     <div class="form-group">
@@ -146,7 +147,7 @@
 <script type="text/javascript" src="{{asset('admin/js/sweetalert.js')}}"></script>
 <script type="text/javascript">
     // Login Page Flipbox control
-    $('.login-content [data-toggle="flip"]').click(function() {
+    $('.login-content [data-toggle="flip"]').click(function () {
         $('.login-box').toggleClass('flipped');
         return false;
     });

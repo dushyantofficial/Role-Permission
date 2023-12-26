@@ -12,21 +12,6 @@ class Professional_Skills extends Model
     use SoftDeletes;
 
 
-    public $table = 'professional_skills';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
-    public $fillable = [
-        'resume_id',
-        'professional_skills',
-        'professional_per',
-        'color',
-        'status',
-    ];
-
     public static $rules = [
         'resume_id' => 'required',
         'professional_skills' => 'required',
@@ -41,10 +26,18 @@ class Professional_Skills extends Model
         'professional_per.min' => 'The percentage must be at least :min.',
         'professional_per.max' => 'The percentage must not exceed :max.',
     ];
+    public $table = 'professional_skills';
+    public $fillable = [
+        'resume_id',
+        'professional_skills',
+        'professional_per',
+        'color',
+        'status',
+    ];
+    protected $dates = ['deleted_at'];
 
-
-
-    public function resume_name(){
-        return $this->belongsTo(Resume::class,'resume_id');
+    public function resume_name()
+    {
+        return $this->belongsTo(Resume::class, 'resume_id');
     }
 }

@@ -65,14 +65,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        .modal{
+
+        .modal {
             top: 54px !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
                 overflow-x: auto;
             }
+
             .modal {
                 width: 192% !important;
             }
@@ -90,7 +93,8 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_work_experiences">
  + Add
                 </button></span>
@@ -173,7 +177,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -189,7 +194,8 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Employee Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="resume_id" id="">
                                                                     <option value="">---Select Employee Name---</option>
                                                                     @foreach($resumes as $resume)
@@ -202,7 +208,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Destination</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Destination</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="destination" id="">
                                                                     <option value="">---Select Destination---</option>
                                                                     @foreach(config('constants.DESTINATION') as $key => $destination)
@@ -215,7 +222,8 @@
 
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label class="control-label">Company Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Company Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="company_name"
                                                                        value="{{$work_experience->company_name}}"
@@ -226,7 +234,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Start Date</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="month"
                                                                        class="form-control date" id="start_date"
                                                                        value="{{$work_experience->start_date}}" max=""
@@ -236,7 +245,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                                                <label class="control-label">End Date</label><span
+                                                                    class="text-danger check_box"><b>*</b></span>
                                                                 <input type="month"
                                                                        class="form-control date"
                                                                        id="end_date_{{$work_experience->id}}"
@@ -254,15 +264,18 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label class="control-label">Description</label>
-                                                                <textarea class="form-control" name="description" id="" >{{$work_experience->description}}</textarea>
+                                                                <textarea class="form-control" name="description"
+                                                                          id="">{{$work_experience->description}}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-bs-dismiss="modal">Close
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
                                                                 data-resume-id="{{ $work_experience->id }}">Update
                                                         </button>
                                                     </div>
@@ -284,7 +297,7 @@
         <div class="modal fade" id="add_work_experiences" data-bs-backdrop="static" data-bs-keyboard="false"
              tabindex="-1"
              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg"  style="max-width: 50%;">
+            <div class="modal-dialog modal-lg" style="max-width: 50%;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Add Work Experiences</h5>
@@ -309,7 +322,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Employee Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="resume_id" id="">
                                             <option value="">---Select Employee Name---</option>
                                             @foreach($resumes as $resume)
@@ -321,7 +335,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Destination</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Destination</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="destination" id="">
                                             <option value="">---Select Destination---</option>
                                             @foreach(config('constants.DESTINATION') as $key => $destination)
@@ -333,7 +348,8 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="control-label">Company Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Company Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="company_name" value="{{old('company_name')}}"
                                                min="1" name="company_name" placeholder="Enter Company Name...">
@@ -342,7 +358,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Start Date</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="month"
                                                class="form-control date" id="start_date" value="{{old('start_date')}}"
                                                max="" name="start_date">
@@ -351,13 +368,14 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                        <label class="control-label">End Date</label><span
+                                            class="text-danger check_box"><b>*</b></span>
                                         <input type="month"
                                                class="form-control date" id="end_date" value="{{old('end_date')}}"
                                                min="" name="end_date">
 
                                         <input type="checkbox"
-                                             class="check"  id="check" value="1"
+                                               class="check" id="check" value="1"
                                                name="check">
                                         <label class="control-label">Present</label>
                                     </div>
@@ -365,15 +383,18 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="control-label">Description</label>
-                                        <textarea class="form-control" name="description" id="" ></textarea>
+                                        <textarea class="form-control" name="description" id=""></textarea>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                        data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>
@@ -651,11 +672,11 @@
         });
     </script>
 
-{{--  Check Box Click Required star hide/show  --}}
+    {{--  Check Box Click Required star hide/show  --}}
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Add an event listener to the checkbox
-            $('.check').change(function() {
+            $('.check').change(function () {
                 if ($(this).is(':checked')) {
                     $('.check_box').hide(); // Hide the span when the checkbox is checked
                 } else {

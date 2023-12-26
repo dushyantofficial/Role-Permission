@@ -79,7 +79,7 @@ class UserChatController extends Controller
             })
             ->latest('created_at')
             ->first();
-      //  $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
+        //  $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
 
         return response('success');
     }

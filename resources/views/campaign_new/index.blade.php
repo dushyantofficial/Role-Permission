@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <style>
@@ -190,7 +189,7 @@
     }
 </style>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Data Tables</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -206,7 +205,9 @@
     <div class="row mb-3">
         <div class="col-8" id="table_box_bootstrap"></div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end col-4">
-            <a href="{{route('campaign-tab')}}" ><button class="btn btn-primary me-md-2">Add New Question</button></a>
+            <a href="{{route('campaign-tab')}}">
+                <button class="btn btn-primary me-md-2">Add New Question</button>
+            </a>
         </div>
     </div>
     @include('Admin.flash-message')

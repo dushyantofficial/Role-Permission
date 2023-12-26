@@ -13,6 +13,7 @@
             cursor: pointer;
             display: none;
         }
+
         #profilePic:hover .camera-icon {
             display: block;
             object-fit: cover;
@@ -22,6 +23,7 @@
             height: 79%;
             margin: 17% 0%;
         }
+
         .user .profile .info {
             padding: 53px 59px;
             text-align: center;
@@ -46,18 +48,20 @@
             <div class="col-md-12">
                 <div class="profile">
                     <div class="info">
-                            <div class="avatar avatar-md mb-3 position-relative" id="profilePic">
-                                @if($user->profile_pic == '')
-                                    <img class="user-img" src="{{asset('admin/images/dummy_img.png')}}" alt="user" width="105px" height="100px">
-                                @else
-                                    <img class="user-img" src="{{asset('storage/images/'.$user->profile_pic)}}" width="105px" height="100px">
+                        <div class="avatar avatar-md mb-3 position-relative" id="profilePic">
+                            @if($user->profile_pic == '')
+                                <img class="user-img" src="{{asset('admin/images/dummy_img.png')}}" alt="user"
+                                     width="105px" height="100px">
+                            @else
+                                <img class="user-img" src="{{asset('storage/images/'.$user->profile_pic)}}"
+                                     width="105px" height="100px">
 
-                                @endif
-                                <div class="camera-icon" id="cameraIcon">
-                                    <i class="fa fa-pencil" style="margin: 35px !important;"></i>
-                                </div>
-                                <input type="file" name="profile_pic" id="profile-picture-input" style="display: none;">
+                            @endif
+                            <div class="camera-icon" id="cameraIcon">
+                                <i class="fa fa-pencil" style="margin: 35px !important;"></i>
                             </div>
+                            <input type="file" name="profile_pic" id="profile-picture-input" style="display: none;">
+                        </div>
 
                         <h4>{{$user->name}}</h4>
                         <p>{{$user->role}}</p>
@@ -122,7 +126,9 @@
                                 <br>
                                 <div class="row mb-10">
                                     <div class="col-md-12">
-                                        <button class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn" type="button"><i
+                                        <button
+                                            class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                            type="button"><i
                                                 class="fa fa-fw fa-lg fa-check-circle"></i>Update
                                         </button>
                                     </div>
@@ -223,9 +229,11 @@
                                         <label>Font Color</label>
 
                                         <div class="input-group mb-3">
-                                            <input class="colorpicker form-control @error('font_color') is-invalid @enderror"
-                                                   id="font_color" name="font_color" value="{{$user->theme_color}}" type="text"
-                                                   placeholder="">
+                                            <input
+                                                class="colorpicker form-control @error('font_color') is-invalid @enderror"
+                                                id="font_color" name="font_color" value="{{$user->theme_color}}"
+                                                type="text"
+                                                placeholder="">
                                             @error('font_color')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -236,9 +244,11 @@
                                     <div class="col-md-6">
                                         <label>Theme Color</label>
                                         <div class="input-group mb-3">
-                                            <input class="colorpicker form-control @error('background_color') is-invalid @enderror"
-                                                   id="background_color" name="background_color" value="{{$user->background_color}}" type="text"
-                                                   placeholder="">
+                                            <input
+                                                class="colorpicker form-control @error('background_color') is-invalid @enderror"
+                                                id="background_color" name="background_color"
+                                                value="{{$user->background_color}}" type="text"
+                                                placeholder="">
                                             @error('background_color')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -266,10 +276,10 @@
 @endsection
 @push('page_scripts')
 
-{{--  Color Picker  --}}
-<script>
-    $('.colorpicker').colorpicker();
-</script>
+    {{--  Color Picker  --}}
+    <script>
+        $('.colorpicker').colorpicker();
+    </script>
 
     @php
         $doc = request('document');
@@ -279,7 +289,7 @@
             var password = '<?php echo $doc; ?>';
             if (password == 'password') {
                 $('#password').trigger('click');
-            }else if (password == 'theme_color'){
+            } else if (password == 'theme_color') {
                 $('#theme_color').trigger('click');
             }
         });
@@ -287,7 +297,7 @@
     <script>
         let fileInputOpened = false;
 
-        document.getElementById('cameraIcon').addEventListener('click', function() {
+        document.getElementById('cameraIcon').addEventListener('click', function () {
             // Check if the file input has not been opened yet
             if (!fileInputOpened) {
                 // Trigger the file input click event
@@ -335,7 +345,7 @@
         });
     </script>
 
-{{--  Password Hide/Show --}}
+    {{--  Password Hide/Show --}}
     <script>
         function togglePasswordVisibility(inputId) {
             var passwordInput = document.getElementById(inputId);
@@ -384,7 +394,7 @@
         }
     </script>
 
-{{--  Profile details update api  --}}
+    {{--  Profile details update api  --}}
     <script>
         $(document).ready(function () {
             $('.update-btn').click(function (e) {
@@ -494,56 +504,56 @@
         });
     </script>
 
-{{--  Change Theme Color api  --}}
-<script>
-    $(document).ready(function () {
-        $('.update-theme-color').click(function (e) {
-            e.preventDefault();
-            // Get the CSRF token value from the meta tag
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    {{--  Change Theme Color api  --}}
+    <script>
+        $(document).ready(function () {
+            $('.update-theme-color').click(function (e) {
+                e.preventDefault();
+                // Get the CSRF token value from the meta tag
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-            // Add the CSRF token to the headers of the AJAX request
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            });
-
-            var formData = new FormData($('#theme_form')[0]);
-
-            $.ajax({
-                type: 'POST',
-                url: $('#theme_form').attr('action'),
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Update!',
-                        text: 'Theme Updated SuccessFully.',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            location.reload(); // Reload the page
-                        }
-                    });
-                },
-                error: function (xhr) {
-                    var errors = xhr.responseJSON.errors;
-                    var errorMessages = [];
-
-                    for (var field in errors) {
-                        errorMessages.push(errors[field][0]);
+                // Add the CSRF token to the headers of the AJAX request
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
                     }
+                });
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        html: errorMessages.join('<br>') + '<br>',
-                    });
-                }
+                var formData = new FormData($('#theme_form')[0]);
+
+                $.ajax({
+                    type: 'POST',
+                    url: $('#theme_form').attr('action'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Update!',
+                            text: 'Theme Updated SuccessFully.',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload(); // Reload the page
+                            }
+                        });
+                    },
+                    error: function (xhr) {
+                        var errors = xhr.responseJSON.errors;
+                        var errorMessages = [];
+
+                        for (var field in errors) {
+                            errorMessages.push(errors[field][0]);
+                        }
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            html: errorMessages.join('<br>') + '<br>',
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 @endpush

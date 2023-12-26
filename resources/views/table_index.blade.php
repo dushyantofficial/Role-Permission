@@ -1,7 +1,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="https://rawgit.com/FortAwesome/Font-Awesome/master/css/font-awesome.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
     /*
         Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
@@ -195,7 +196,9 @@
     <div class="row mb-3">
         <div class="col-8" id="table_box_bootstrap"></div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end col-4">
-            <a href="{{route('tab')}}" ><button class="btn btn-primary me-md-2">Add New Question</button></a>
+            <a href="{{route('tab')}}">
+                <button class="btn btn-primary me-md-2">Add New Question</button>
+            </a>
         </div>
     </div>
     <table>

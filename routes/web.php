@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return  redirect()->route('login');
+    return redirect()->route('login');
 //    return view('welcome');
 });
 //Auth::routes(['verify' => true]);
@@ -47,7 +47,7 @@ Route::get('verify_email', [App\Http\Controllers\HomeController::class, 'verify_
 //New Route Clear
 Route::get('register_page', [App\Http\Controllers\UserController::class, 'register_page'])->name('register-page');
 Route::get('index', [App\Http\Controllers\UserController::class, 'index_page'])->name('index-page');
-Route::get('/api/check-email', [App\Http\Controllers\API\EmailController::class,'checkEmail'])->name('check-email');
+Route::get('/api/check-email', [App\Http\Controllers\API\EmailController::class, 'checkEmail'])->name('check-email');
 Route::get('test_register_page', [App\Http\Controllers\UserController::class, 'test_register_page'])->name('test-register-page');
 
 //New Route

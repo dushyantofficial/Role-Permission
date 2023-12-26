@@ -31,7 +31,8 @@
 <body>
 <div class=" centered ">
     @include('Admin.flash-message')
-    <form action="{{route('campaign-idea-update',$campaign_news->id)}}" method="post" enctype="multipart/form-data" id="form_submit">
+    <form action="{{route('campaign-idea-update',$campaign_news->id)}}" method="post" enctype="multipart/form-data"
+          id="form_submit">
         @csrf
         <table align="center" bgcolor="" width="" cellpadding="5" cellspacing="0" border="0" id="dynamic_field">
             <tbody>

@@ -31,7 +31,7 @@ class CreatePaymentRefundsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-          //  $table->foreign('payment_id')->references('transaction_id')->on('payments')->onDelete('cascade');
+            //  $table->foreign('payment_id')->references('transaction_id')->on('payments')->onDelete('cascade');
         });
     }
 

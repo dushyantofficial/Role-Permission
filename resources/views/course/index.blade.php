@@ -65,14 +65,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        .modal{
+
+        .modal {
             top: 54px !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
                 overflow-x: auto;
             }
+
             .modal {
                 width: 192% !important;
             }
@@ -90,7 +93,8 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_course">
  + Add
                 </button></span>
@@ -172,7 +176,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -188,7 +193,8 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Employee Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="resume_id" id="">
                                                                     <option value="">---Select Employee Name---</option>
                                                                     @foreach($resumes as $resume)
@@ -201,7 +207,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Course Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Course Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="course_name"
                                                                        value="{{$course->course_name}}"
@@ -212,7 +219,9 @@
 
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label class="control-label">Institution Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Institution
+                                                                    Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="institution_name"
                                                                        value="{{$course->institution_name}}"
@@ -233,7 +242,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                                                <label class="control-label">End Date</label><span
+                                                                    class="text-danger check_box"><b>*</b></span>
                                                                 <input type="month"
                                                                        class="form-control date"
                                                                        id="end_date_{{$course->id}}"
@@ -251,15 +261,18 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label class="control-label">Description</label>
-                                                                <textarea class="form-control" name="description" id="" >{{$course->description}}</textarea>
+                                                                <textarea class="form-control" name="description"
+                                                                          id="">{{$course->description}}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-bs-dismiss="modal">Close
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
                                                                 data-resume-id="{{ $course->id }}">Update
                                                         </button>
                                                     </div>
@@ -306,8 +319,10 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
-                                        <select class="form-control  @error('resume_id') is-invalid @enderror" name="resume_id" id="">
+                                        <label class="control-label">Employee Name</label><span
+                                            class="text-danger"><b>*</b></span>
+                                        <select class="form-control  @error('resume_id') is-invalid @enderror"
+                                                name="resume_id" id="">
                                             <option value="">---Select Employee Name---</option>
                                             @foreach($resumes as $resume)
                                                 <option value="{{$resume->id}}">{{$resume->name}}</option>
@@ -321,9 +336,11 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Course Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Course Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
-                                               class="form-control  @error('course_name') is-invalid @enderror" id="course_name"
+                                               class="form-control  @error('course_name') is-invalid @enderror"
+                                               id="course_name"
                                                value=""
                                                name="course_name"
                                                placeholder="Enter Course Name...">
@@ -335,9 +352,11 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="control-label">Institution Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Institution Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
-                                               class="form-control  @error('institution_name') is-invalid @enderror" id="institution_name"
+                                               class="form-control  @error('institution_name') is-invalid @enderror"
+                                               id="institution_name"
                                                value=""
                                                name="institution_name"
                                                placeholder="Enter Institution Name...">
@@ -348,9 +367,11 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Start Date</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="month"
-                                               class="form-control date  @error('start_date') is-invalid @enderror" id="start_date" value="{{old('start_date')}}"
+                                               class="form-control date  @error('start_date') is-invalid @enderror"
+                                               id="start_date" value="{{old('start_date')}}"
                                                max="" name="start_date">
                                         @error('start_date')
                                         <span class="error invalid-feedback">{{ $message }}</span>
@@ -360,13 +381,15 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">End Date</label><span class="text-danger check_box"><b>*</b></span>
+                                        <label class="control-label">End Date</label><span
+                                            class="text-danger check_box"><b>*</b></span>
                                         <input type="month"
-                                               class="form-control date  @error('end_date') is-invalid @enderror" id="end_date" value="{{old('end_date')}}"
+                                               class="form-control date  @error('end_date') is-invalid @enderror"
+                                               id="end_date" value="{{old('end_date')}}"
                                                min="" name="end_date">
 
                                         <input type="checkbox"
-                                              class="check" id="check" value="1"
+                                               class="check" id="check" value="1"
                                                name="check">
                                         <label class="control-label">Present</label>
                                         @error('end_date')
@@ -378,14 +401,17 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="control-label">Description</label>
-                                        <textarea class="form-control" name="description" id="" ></textarea>
+                                        <textarea class="form-control" name="description" id=""></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                        data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>
@@ -660,9 +686,9 @@
 
     {{--  Check Box Click Required star hide/show  --}}
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Add an event listener to the checkbox
-            $('.check').change(function() {
+            $('.check').change(function () {
                 if ($(this).is(':checked')) {
                     $('.check_box').hide(); // Hide the span when the checkbox is checked
                 } else {

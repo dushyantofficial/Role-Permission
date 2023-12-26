@@ -3,23 +3,26 @@
 
 @section('content')
     @include('Admin.flash-message')
-<style>
-    .page1 {
-        margin-bottom: 30px;
-    }
-    .modal{
-        top: 54px !important;
-    }
-    @media (max-width: 575.98px) {
-        /* Add a class to the table container to make it responsive */
-        .responsive-table {
-            overflow-x: auto;
+    <style>
+        .page1 {
+            margin-bottom: 30px;
         }
+
         .modal {
-            width: 192% !important;
+            top: 54px !important;
         }
-    }
-</style>
+
+        @media (max-width: 575.98px) {
+            /* Add a class to the table container to make it responsive */
+            .responsive-table {
+                overflow-x: auto;
+            }
+
+            .modal {
+                width: 192% !important;
+            }
+        }
+    </style>
     <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
 
@@ -95,7 +98,8 @@
         ">
                                                                 All fields are mandatory(*)
                                                             </div>
-                                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
@@ -202,7 +206,8 @@
                                         class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                         data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>

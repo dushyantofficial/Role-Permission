@@ -5,12 +5,14 @@
 
 @section('content')
     <style>
-        .modal{
+        .modal {
             top: 54px !important;
         }
-        .model_fix_size{
+
+        .model_fix_size {
             max-width: 60% !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -20,7 +22,8 @@
             .modal {
                 width: 192% !important;
             }
-            .model_fix_size{
+
+            .model_fix_size {
                 max-width: 50% !important;
             }
         }
@@ -72,14 +75,20 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->detail }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-toggle="modal" data-target=".bd-example-modal-lg">Front-End-Look</button>
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <button type="button"
+                                                class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                                                data-toggle="modal" data-target=".bd-example-modal-lg">Front-End-Look
+                                        </button>
+                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg model_fix_size">
                                                 <div class="modal-content">
                                                     <!-- Modal content goes here -->
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="myLargeModalLabel">Front-End-Look</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <h5 class="modal-title" id="myLargeModalLabel">
+                                                            Front-End-Look</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -126,7 +135,8 @@
         ">
                                                                 All fields are mandatory(*)
                                                             </div>
-                                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
@@ -153,7 +163,8 @@
                                                                     </div>
                                                                     <div class="col-12">
                                                                         <div class="form-group">
-                                                                            <label class="control-label">Detail</label><span
+                                                                            <label
+                                                                                class="control-label">Detail</label><span
                                                                                 class="text-danger"><b>*</b></span>
                                                                             <textarea name="detail" type="text"
                                                                                       class="form-control @error('detail') is-invalid @enderror"
@@ -249,7 +260,9 @@
                                             class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                             data-bs-dismiss="modal">Close
                                     </button>
-                                    <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                    <button type="submit" id="submitBtn"
+                                            class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save
+                                        changes
                                     </button>
                                 </div>
                             </form>
@@ -278,7 +291,7 @@
             $("#sampleTable tbody").sortable({
                 helper: fixHelperModified,
                 update: function (event, ui) {
-                    var newOrder = $(this).sortable('toArray', { attribute: 'id' });
+                    var newOrder = $(this).sortable('toArray', {attribute: 'id'});
                     updateRowOrder(newOrder);
                 },
             }).disableSelection();
@@ -286,7 +299,7 @@
             function fixHelperModified(e, tr) {
                 var $originals = tr.children();
                 var $helper = tr.clone();
-                $helper.children().each(function(index) {
+                $helper.children().each(function (index) {
                     $(this).width($originals.eq(index).width());
                 });
                 return $helper;

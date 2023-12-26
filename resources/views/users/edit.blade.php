@@ -102,8 +102,11 @@
                     <br>
 
 
-                    <button type="button" id="editBtn" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine">Update</button>
-                    <a href="{{route('users.index')}}" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
+                    <button type="button" id="editBtn" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine">
+                        Update
+                    </button>
+                    <a href="{{route('users.index')}}"
+                       class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
                     {!! Form::close() !!}
                 </div>
 

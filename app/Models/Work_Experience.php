@@ -12,13 +12,25 @@ class Work_Experience extends Model
     use SoftDeletes;
 
 
+    public static $rules = [
+        'resume_id' => 'required',
+        'destination' => 'required',
+        'company_name' => 'required',
+        'start_date' => 'required',
+        'end_date' => 'required|After:start_date',
+
+    ];
+    public static $ruless = [
+        'resume_id' => 'required',
+        'destination' => 'required',
+        'company_name' => 'required',
+        'start_date' => 'required',
+
+    ];
+    public static $customMessages = [
+        'resume_id.required' => 'Employee name is required.',
+    ];
     public $table = 'work_experiences';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'resume_id',
         'destination',
@@ -31,27 +43,7 @@ class Work_Experience extends Model
 
 
     ];
-
-    public static $rules = [
-        'resume_id' => 'required',
-        'destination' => 'required',
-        'company_name' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required|After:start_date',
-
-    ];
-
-    public static $ruless = [
-        'resume_id' => 'required',
-        'destination' => 'required',
-        'company_name' => 'required',
-        'start_date' => 'required',
-
-    ];
-
-    public static $customMessages = [
-        'resume_id.required' => 'Employee name is required.',
-    ];
+    protected $dates = ['deleted_at'];
 
     public function resume_name()
     {

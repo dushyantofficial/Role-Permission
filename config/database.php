@@ -63,7 +63,7 @@ return [
             ]) : [],
             'dump' => [
                 'dump_binary_path' => 'C:/Xampp/mysql/bin',
-                'use_single_transaction' ,
+                'use_single_transaction',
                 'timeout' => 60 * 5,
             ]
         ],
@@ -128,7 +128,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

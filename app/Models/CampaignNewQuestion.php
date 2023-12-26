@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class CampaignNewQuestion extends Model
 {
     use HasFactory;
+
     public $table = 'campaign_new_question';
+    public $casts = [
+        'label_name' => 'array',
+        'input_value' => 'array'
+    ];
     protected $fillable = [
         'campaign_new_id',
         'label_name',
@@ -17,11 +22,6 @@ class CampaignNewQuestion extends Model
         'input_type',
         'input_value',
         'status'
-    ];
-
-    public $casts = [
-        'label_name' => 'array',
-        'input_value' => 'array'
     ];
 
     public function campaign_name()

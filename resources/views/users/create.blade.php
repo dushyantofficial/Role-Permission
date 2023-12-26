@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <style>
-        .check_color_name{
+        .check_color_name {
             color: red;
         }
-        .color_name{
+
+        .color_name {
             color: red;
         }
     </style>
@@ -144,7 +145,8 @@
                     <button type="submit" id="submitBtn"
                             class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Add
                     </button>
-                    <a href="{{route('users.index')}}" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
+                    <a href="{{route('users.index')}}"
+                       class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
                     </form>
                 </div>
 

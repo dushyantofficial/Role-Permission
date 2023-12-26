@@ -15,7 +15,8 @@
             margin-top: 7px;
             padding: 0 5px;
         }
-        .select2-container--open .select2-dropdown--below{
+
+        .select2-container--open .select2-dropdown--below {
             margin-top: -49px !important;
         }
     </style>
@@ -53,9 +54,11 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <strong>Permission:</strong><br>
-                                <select class="mul-select form-control @error('permission') is-invalid @enderror" name="permission[]" multiple="true">
+                                <select class="mul-select form-control @error('permission') is-invalid @enderror"
+                                        name="permission[]" multiple="true">
                                     @foreach($permission as $value)
-                                    <option value="{{$value->id}}" {{ in_array($value->id, old('permission', [])) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                        <option
+                                            value="{{$value->id}}" {{ in_array($value->id, old('permission', [])) ? 'selected' : '' }}>{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('permission')
@@ -66,8 +69,11 @@
 
                     </div>
                     <br>
-                    <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Add</button>
-                    <a href="{{route('roles.index')}}" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
+                    <button type="submit" id="submitBtn"
+                            class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Add
+                    </button>
+                    <a href="{{route('roles.index')}}"
+                       class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
                     </form>
                 </div>
 
@@ -85,7 +91,7 @@
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".mul-select").select2({
                 placeholder: "Select Permission",
                 tags: true,

@@ -3,27 +3,33 @@
 
 @section('content')
     <style>
-        .preview  iframe > body{
+        .preview iframe > body {
             user-select: none !important;
         }
-        .modal{
+
+        .modal {
             top: 54px !important;
         }
-        .model_fix_size{
+
+        .model_fix_size {
             max-width: 60% !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
                 overflow-x: auto;
             }
+
             .modal {
                 width: 192% !important;
             }
-            .course{
+
+            .course {
                 margin-bottom: 5px;
             }
-            .model_fix_size{
+
+            .model_fix_size {
                 max-width: 50% !important;
             }
         }
@@ -43,30 +49,38 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
                            <span class="pull-right float-left">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine course" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine course"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_professional_skills">
  + Add Skill
                 </button>
-                               <button type="button" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine course" data-bs-toggle="modal"
+                               <button type="button"
+                                       class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine course"
+                                       data-bs-toggle="modal"
                                        data-bs-target="#add_work_experiences">
  + Add Experience
                 </button>
-                               <button type="button" class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine course" data-bs-toggle="modal"
+                               <button type="button"
+                                       class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine course"
+                                       data-bs-toggle="modal"
                                        data-bs-target="#add_educations">
  + Add Education
                 </button>
-                               <button type="button" class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine" data-bs-toggle="modal"
-                                         data-bs-target="#add_project">
+                               <button type="button" class="btn btn-sm btn-shadow btn-outline-dark btn-hover-shine"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#add_project">
  + Add Project
                 </button>
                                </button>
-                               <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine" data-bs-toggle="modal"
+                               <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
+                                       data-bs-toggle="modal"
                                        data-bs-target="#add_course">
  + Add Course
                 </button>
                            </span>
                 <span class="pull-right float-right">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_resume">
  + Add
                 </button></span>
@@ -115,8 +129,9 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Preview Resume</h5>
-{{--                                                        <button class="btn-danger">Pdf Download</button>--}}
-                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                        {{--                                                        <button class="btn-danger">Pdf Download</button>--}}
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -131,7 +146,8 @@
                                     </td>
                                     <td>
                                         <a href="{{route('resume-details')}}?id={{$resume->id}}"
-                                           class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine" target="_blank">
+                                           class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine"
+                                           target="_blank">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <button type="button"
@@ -168,7 +184,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -183,7 +200,8 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="name"
                                                                        value="{{$resume->name}}" name="name"
@@ -193,7 +211,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">About Me</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">About Me</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <textarea class="form-control" name="about_me"
                                                                           id="about_me"
                                                                           placeholder="Enter About Me...">{{$resume->about_me}}</textarea>
@@ -202,27 +221,32 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Destination</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Destination</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="destination" id="">
                                                                     <option value="">---Select Destination---</option>
                                                                     @foreach(config('constants.DESTINATION') as $key => $destination)
-                                                                        <option value="{{$destination}}" @if(isset($resume)) {{$resume->destination == $destination  ? 'selected' : ''}} @endif>{{$key}}</option>
+                                                                        <option
+                                                                            value="{{$destination}}" @if(isset($resume)) {{$resume->destination == $destination  ? 'selected' : ''}} @endif>{{$key}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Date Of Birth</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Date Of Birth</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="date"
                                                                        class="form-control" id="dob"
-                                                                       value="{{$resume->dob}}" max="{{$before_year}}" name="dob">
+                                                                       value="{{$resume->dob}}" max="{{$before_year}}"
+                                                                       name="dob">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Email</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Email</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="email"
                                                                        value="{{$resume->email}}" name="email"
@@ -231,7 +255,8 @@
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Phone</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Phone</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="number"
                                                                        class="form-control" id="phone"
                                                                        value="{{$resume->phone}}" maxlength="10"
@@ -242,7 +267,8 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Address</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Address</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="text"
                                                                        class="form-control" id="address"
                                                                        value="{{$resume->address}}"
@@ -257,23 +283,27 @@
                                                                        value="{{old('profile_pic')}}"
                                                                        name="profile_pic"
                                                                        placeholder="Enter profile_pic...">
-                                                                <img src="{{asset('storage/images/'.$resume->profile_pic)}}" width="100px">
+                                                                <img
+                                                                    src="{{asset('storage/images/'.$resume->profile_pic)}}"
+                                                                    width="100px">
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-bs-dismiss="modal">Close
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
                                                                 data-resume-id="{{ $resume->id }}">Update
                                                         </button>
                                                     </div>
                                                 </form>
                                             </div>
+                                        </div>
                                     </div>
-                                </div>
 
                             @endforeach
                             </tbody>
@@ -312,7 +342,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="name" value="{{old('name')}}" name="name"
                                                placeholder="Enter Name...">
@@ -329,7 +360,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Destination</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Destination</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="destination" id="">
                                             <option value="">---Select Destination---</option>
                                             @foreach(config('constants.DESTINATION') as $key => $destination)
@@ -340,15 +372,18 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Date Of Birth</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Date Of Birth</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="date"
-                                               class="form-control" id="dob" max="{{ $before_year }}" value="{{old('dob')}}" name="dob">
+                                               class="form-control" id="dob" max="{{ $before_year }}"
+                                               value="{{old('dob')}}" name="dob">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Email</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Email</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="email" value="{{old('email')}}" name="email"
                                                placeholder="Enter Email...">
@@ -356,7 +391,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Phone</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Phone</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="number"
                                                class="form-control" id="phone" value="{{old('phone')}}" minlength="10"
                                                min="1" name="phone" placeholder="Enter Phone...">
@@ -365,7 +401,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Address</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Address</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="text"
                                                class="form-control" id="address" value="{{old('address')}}"
                                                name="address" placeholder="Enter Address...">
@@ -373,7 +410,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Profile Pic</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Profile Pic</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="file"
                                                class="form-control" id="profile_pic" value="{{old('profile_pic')}}"
                                                name="profile_pic" placeholder="Enter profile_pic...">
@@ -382,9 +420,12 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                        data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>
@@ -468,9 +509,11 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                    data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" id="add_skill_button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                            <button type="submit" id="add_skill_button"
+                                    class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                             </button>
                         </div>
                     </form>
@@ -521,7 +564,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Destination</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Destination</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <select class="form-control" name="destination" id="">
                                         <option value="">---Select Destination---</option>
                                         @foreach(config('constants.DESTINATION') as $key => $destination)
@@ -542,7 +586,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Start Date</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="month"
                                            class="form-control date" id="start_date" value="{{old('start_date')}}"
                                            max="" name="start_date">
@@ -566,14 +611,16 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="control-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" ></textarea>
+                                    <textarea class="form-control" name="description" id=""></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                    data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" id="work_experiences_btn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save
+                            <button type="submit" id="work_experiences_btn"
+                                    class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save
                                 changes
                             </button>
                         </div>
@@ -625,7 +672,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Degree Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Degree Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="degree_name" value="{{old('degree_name')}}"
                                            min="1" name="degree_name" placeholder="Enter Degree Name...">
@@ -644,7 +692,8 @@
 
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label class="control-label">City Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">City Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="city_name"
                                            value=""
@@ -655,7 +704,8 @@
 
                             <div class="col-8">
                                 <div class="form-group">
-                                    <label class="control-label">University Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">University Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="university_name"
                                            value=""
@@ -676,7 +726,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Start Date</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="month"
                                            class="form-control date" id="start_date" value="{{old('start_date')}}"
                                            max="" name="start_date">
@@ -700,15 +751,17 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="control-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" ></textarea>
+                                    <textarea class="form-control" name="description" id=""></textarea>
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                    data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" id="add_educations_btn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                            <button type="submit" id="add_educations_btn"
+                                    class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                             </button>
                         </div>
                     </form>
@@ -777,7 +830,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Technology</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Technology</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <select class="form-control" name="technology" id="">
                                         <option value="">---Select Technology---</option>
                                         @foreach(config('constants.TECHNOLOGY') as $key => $skill)
@@ -790,7 +844,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">City Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">City Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="city_name"
                                            value=""
@@ -801,7 +856,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Start Date</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="month"
                                            class="form-control date" id="start_date" value="{{old('start_date')}}"
                                            max="" name="start_date">
@@ -825,14 +881,16 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="control-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" ></textarea>
+                                    <textarea class="form-control" name="description" id=""></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                    data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" id="add_project_btn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                            <button type="submit" id="add_project_btn"
+                                    class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                             </button>
                         </div>
                     </form>
@@ -882,7 +940,8 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Course Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Course Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="course_name"
                                            value=""
@@ -893,7 +952,8 @@
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="control-label">Institution Name</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Institution Name</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="text"
                                            class="form-control" id="institution_name"
                                            value=""
@@ -903,7 +963,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="control-label">Start Date</label><span class="text-danger"><b>*</b></span>
+                                    <label class="control-label">Start Date</label><span
+                                        class="text-danger"><b>*</b></span>
                                     <input type="month"
                                            class="form-control date" id="start_date" value="{{old('start_date')}}"
                                            max="" name="start_date">
@@ -926,15 +987,17 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="control-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" ></textarea>
+                                    <textarea class="form-control" name="description" id=""></textarea>
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                            <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                    data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" id="add_course_btn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                            <button type="submit" id="add_course_btn"
+                                    class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                             </button>
                         </div>
                     </form>
@@ -1101,7 +1164,7 @@
             });
         });
     </script>
-{{--    <script type="text/javascript">$('#sampleTable').DataTable();</script>--}}
+    {{--    <script type="text/javascript">$('#sampleTable').DataTable();</script>--}}
 
     {{--  Add Professional_Skill Js  --}}
     <script>
@@ -1374,20 +1437,20 @@
 
     </script>
 
-{{--  Drag-Drop Colum  --}}
+    {{--  Drag-Drop Colum  --}}
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#sampleTable').DataTable({
                 "order": [], // Disable initial sorting
                 "columnDefs": [
-                    { "orderable": false, "targets": [0, 3] }, // Disable sorting on specific columns
+                    {"orderable": false, "targets": [0, 3]}, // Disable sorting on specific columns
                 ],
             });
 
             $("#sampleTable tbody").sortable({
                 helper: fixHelperModified,
-                update: function(event, ui) {
-                    var newOrder = $(this).sortable('toArray', { attribute: 'id' });
+                update: function (event, ui) {
+                    var newOrder = $(this).sortable('toArray', {attribute: 'id'});
                     updateRowOrder(newOrder);
                 },
             }).disableSelection();
@@ -1395,7 +1458,7 @@
             function fixHelperModified(e, tr) {
                 var $originals = tr.children();
                 var $helper = tr.clone();
-                $helper.children().each(function(index) {
+                $helper.children().each(function (index) {
                     $(this).width($originals.eq(index).width());
                 });
                 return $helper;
@@ -1410,8 +1473,8 @@
                     headers: {
                         'X-CSRF-TOKEN': csrfToken // Include the CSRF token in the headers
                     },
-                    data: { resume_id: newOrder },
-                    success: function(response) {
+                    data: {resume_id: newOrder},
+                    success: function (response) {
                         location.reload();
                     },
                     error: function (error) {
@@ -1425,9 +1488,9 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Add an event listener to the checkbox
-            $('.check').change(function() {
+            $('.check').change(function () {
                 if ($(this).is(':checked')) {
                     $('.check_box').hide(); // Hide the span when the checkbox is checked
                 } else {

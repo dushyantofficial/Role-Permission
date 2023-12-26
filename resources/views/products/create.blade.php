@@ -44,7 +44,7 @@
                                     <label class="control-label">Detail</label>
 
                                     <textarea name="detail" type="text"
-                                           class="form-control @error('detail') is-invalid @enderror"
+                                              class="form-control @error('detail') is-invalid @enderror"
                                               placeholder="Enter Detail">{{old('detail')}}</textarea>
                                     @error('detail')
                                     <span class="text-danger">{{ $message }}</span>
@@ -59,8 +59,10 @@
                         <br>
 
 
-                        <button type="submit" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Add</button>
-                        <a href="{{route('products.index')}}" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
+                        <button type="submit" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Add
+                        </button>
+                        <a href="{{route('products.index')}}"
+                           class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
                     </div>
                 </div>
             </div>

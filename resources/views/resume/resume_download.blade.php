@@ -51,28 +51,35 @@
         *, ::after, ::before {
             box-sizing: border-box;
         }
+
         @media (min-width: 992px)
             .px-lg-4 {
-                padding-right: 3rem!important;
-                padding-left: 3rem!important;
+                padding-right: 3rem !important;
+                padding-left: 3rem !important;
             }
+
             .pt-4 {
-                padding-top: 3rem!important;
+                padding-top: 3rem !important;
             }
+
             .px-3 {
-                padding-right: 2rem!important;
-                padding-left: 2rem!important;
+                padding-right: 2rem !important;
+                padding-left: 2rem !important;
             }
+
             .mt-1 {
-                margin-top: 0.5rem!important;
+                margin-top: 0.5rem !important;
             }
+
             *, ::after, ::before {
                 box-sizing: border-box;
             }
+
             user agent stylesheet
             div {
                 display: block;
             }
+
             body {
                 margin: 0;
                 font-family: var(--bs-font-sans-serif);
@@ -84,7 +91,8 @@
                 -webkit-text-size-adjust: 100%;
                 -webkit-tap-highlight-color: transparent;
             }
-</style>.
+</style>
+.
 <body id="top">
 <header class="d-print-none">
     <div class="container text-center text-lg-left">
@@ -159,8 +167,10 @@
                             <div class="col-md-6">
                                 <div class="mb-2"><span>{{$professional_skill->professional_skills}}</span>
                                     <div class="progress my-1">
-                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar" data-aos="zoom-in-right"
-                                             data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ $professional_skill['professional_per'] }}%"
+                                        <div class="progress-bar {{ $professional_skill['color'] }}" role="progressbar"
+                                             data-aos="zoom-in-right"
+                                             data-aos-delay="100" data-aos-anchor=".skills-section"
+                                             style="width: {{ $professional_skill['professional_per'] }}%"
                                              aria-valuenow="{{ $professional_skill['professional_per'] }}"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>

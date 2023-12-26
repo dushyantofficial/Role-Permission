@@ -65,14 +65,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        .modal{
+
+        .modal {
             top: 54px !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
                 overflow-x: auto;
             }
+
             .modal {
                 width: 192% !important;
             }
@@ -90,7 +93,8 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
-                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
+                        data-bs-toggle="modal"
                         data-bs-target="#add_professional_skills">
  + Add
                 </button></span>
@@ -107,8 +111,8 @@
                                 <th>Employee Name</th>
                                 <th>Skill</th>
                                 <th>Percentage</th>
-                                    <th>Status</th>
-{{--                                <th width="280px">Action</th>--}}
+                                <th>Status</th>
+                                {{--                                <th width="280px">Action</th>--}}
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -126,12 +130,12 @@
                                     <td>{{ $Professional_Skill->professional_skills }}</td>
                                     <td>{{ $Professional_Skill->professional_per }}%</td>
                                     <td>
-                                            <label class="switch">
-                                                <input type="checkbox" class="statuss"
-                                                       data-id="{{$Professional_Skill->id}}"
-                                                       id="statusToggle" {{ $Professional_Skill->status === 'active' ? 'checked' : '' }}>
-                                                <span class="slider round"></span>
-                                            </label>
+                                        <label class="switch">
+                                            <input type="checkbox" class="statuss"
+                                                   data-id="{{$Professional_Skill->id}}"
+                                                   id="statusToggle" {{ $Professional_Skill->status === 'active' ? 'checked' : '' }}>
+                                            <span class="slider round"></span>
+                                        </label>
                                     </td>
                                     <td>
                                         <button type="button"
@@ -165,13 +169,15 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <form id="edit_form_{{ $Professional_Skill->id }}"
-                                                      action="{{route('professional_skills.update',$Professional_Skill->id)}}" method="post"
+                                                      action="{{route('professional_skills.update',$Professional_Skill->id)}}"
+                                                      method="post"
                                                       enctype="multipart/form-data">
                                                     @csrf
                                                     @method('patch')
@@ -180,11 +186,13 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Employee Name</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="resume_id" id="">
                                                                     <option value="">---Select Employee Name---</option>
                                                                     @foreach($resumes as $resume)
-                                                                        <option value="{{$resume->id}}" @if(isset($Professional_Skill)) {{$Professional_Skill->resume_id == $resume->id  ? 'selected' : ''}} @endif>{{$resume->name}}</option>
+                                                                        <option
+                                                                            value="{{$resume->id}}" @if(isset($Professional_Skill)) {{$Professional_Skill->resume_id == $resume->id  ? 'selected' : ''}} @endif>{{$resume->name}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -192,48 +200,59 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Skill</label><span class="text-danger"><b>*</b></span>
-                                                                <select class="form-control" name="professional_skills" id="">
+                                                                <label class="control-label">Skill</label><span
+                                                                    class="text-danger"><b>*</b></span>
+                                                                <select class="form-control" name="professional_skills"
+                                                                        id="">
                                                                     <option value="">---Select Skill---</option>
                                                                     @foreach(config('constants.SKILL') as $key => $skill)
-                                                                        <option value="{{$skill}}" @if(isset($Professional_Skill)) {{$Professional_Skill->professional_skills == $skill  ? 'selected' : ''}} @endif>{{$key}}</option>
+                                                                        <option
+                                                                            value="{{$skill}}" @if(isset($Professional_Skill)) {{$Professional_Skill->professional_skills == $skill  ? 'selected' : ''}} @endif>{{$key}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Color</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Color</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <select class="form-control" name="color" id="">
                                                                     <option value="">---Select COLOR---</option>
                                                                     @foreach(config('constants.COLOR') as $key => $color)
-                                                                        <option value="{{$color}}" @if(isset($Professional_Skill)) {{$Professional_Skill->color == $color  ? 'selected' : ''}} @endif>{{$key}}</option>
+                                                                        <option
+                                                                            value="{{$color}}" @if(isset($Professional_Skill)) {{$Professional_Skill->color == $color  ? 'selected' : ''}} @endif>{{$key}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Percentage</label><span class="text-danger"><b>*</b></span>
+                                                                <label class="control-label">Percentage</label><span
+                                                                    class="text-danger"><b>*</b></span>
                                                                 <input type="number"
-                                                                       class="form-control" id="professional_per" value="{{$Professional_Skill->professional_per}}" minlength="10"
-                                                                       min="1" name="professional_per" placeholder="Enter Professional Per...">
+                                                                       class="form-control" id="professional_per"
+                                                                       value="{{$Professional_Skill->professional_per}}"
+                                                                       minlength="10"
+                                                                       min="1" name="professional_per"
+                                                                       placeholder="Enter Professional Per...">
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-bs-dismiss="modal">Close
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine update-btn"
                                                                 data-resume-id="{{ $Professional_Skill->id }}">Update
                                                         </button>
                                                     </div>
                                                 </form>
                                             </div>
+                                        </div>
                                     </div>
-                                </div>
 
                             @endforeach
                             </tbody>
@@ -245,7 +264,8 @@
         </div>
 
         <!-- Add Professional_Skill Modal -->
-        <div class="modal fade" id="add_professional_skills" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="add_professional_skills" data-bs-backdrop="static" data-bs-keyboard="false"
+             tabindex="-1"
              aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" style="max-width: 50%;">
                 <div class="modal-content">
@@ -272,7 +292,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Employee Name</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Employee Name</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="resume_id" id="">
                                             <option value="">---Select Employee Name---</option>
                                             @foreach($resumes as $resume)
@@ -284,7 +305,8 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Skill</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Skill</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="professional_skills" id="">
                                             <option value="">---Select Skill---</option>
                                             @foreach(config('constants.SKILL') as $key => $skill)
@@ -295,7 +317,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Color</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Color</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <select class="form-control" name="color" id="">
                                             <option value="">---Select COLOR---</option>
                                             @foreach(config('constants.COLOR') as $key => $color)
@@ -306,18 +329,23 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="control-label">Percentage</label><span class="text-danger"><b>*</b></span>
+                                        <label class="control-label">Percentage</label><span
+                                            class="text-danger"><b>*</b></span>
                                         <input type="number"
-                                               class="form-control" id="professional_per" value="{{old('professional_per')}}" minlength="10"
+                                               class="form-control" id="professional_per"
+                                               value="{{old('professional_per')}}" minlength="10"
                                                min="1" name="professional_per" placeholder="Enter Professional Per...">
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine" data-bs-dismiss="modal">Close
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
+                                        data-bs-dismiss="modal">Close
                                 </button>
-                                <button type="submit" id="submitBtn" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
+                                <button type="submit" id="submitBtn"
+                                        class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">Save changes
                                 </button>
                             </div>
                         </form>
@@ -344,16 +372,16 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                            $('#add_professional_skills').modal('hide'); // Close the modal
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: 'Your record was created successfully.',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload(); // Reload the page
-                                }
-                            });
+                        $('#add_professional_skills').modal('hide'); // Close the modal
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'Your record was created successfully.',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload(); // Reload the page
+                            }
+                        });
                     },
                     error: function (xhr) {
                         // Handle validation errors (e.g., display error messages)
@@ -405,18 +433,18 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                            // Close the modal for the specific record
-                            $('#edit_professional_skills' + resumeId).modal('hide');
+                        // Close the modal for the specific record
+                        $('#edit_professional_skills' + resumeId).modal('hide');
 
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Update!',
-                                text: 'Your record updated successfully.',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload(); // Reload the page
-                                }
-                            });
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Update!',
+                            text: 'Your record updated successfully.',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload(); // Reload the page
+                            }
+                        });
 
                     },
                     error: function (xhr) {

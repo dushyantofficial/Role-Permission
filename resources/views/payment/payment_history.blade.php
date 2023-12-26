@@ -192,30 +192,30 @@
                                     <td>{{ $payment->description }}</td>
                                     <td>
                                         @if($payment->wallet != null)
-                                        {{ $payment->wallet }}
+                                            {{ $payment->wallet }}
                                         @else
-                                        -
+                                            -
                                         @endif
                                     </td>
                                     <td>
                                         @if($payment->email != null)
-                                        {{ $payment->email }}
+                                            {{ $payment->email }}
                                         @else
-                                        -
+                                            -
                                         @endif
                                     </td>
                                     <td>{{ $payment->contact }}</td>
                                     <td>
-                                    @php
-                                                    $date = \Carbon\Carbon::createFromTimestamp($payment->payment_date);
-                                                    // Format the date as you want (e.g., 'Y-m-d H:i:s')
-                                                    $formattedDate = $date->format('Y-m-d H:i:s');
+                                        @php
+                                            $date = \Carbon\Carbon::createFromTimestamp($payment->payment_date);
+                                            // Format the date as you want (e.g., 'Y-m-d H:i:s')
+                                            $formattedDate = $date->format('Y-m-d H:i:s');
                                         @endphp
-                                @if($payment->payment_date != null)
-                                        {{ $formattedDate }}
-                                    @else
-                                        -
-                                    @endif
+                                        @if($payment->payment_date != null)
+                                            {{ $formattedDate }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                     <td>
                                         <button

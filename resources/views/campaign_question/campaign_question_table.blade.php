@@ -244,9 +244,11 @@
                 </td>
                 <td>{{$campaign_question->input_type}}</td>
                 <td>
-                    <a href="{{route('campaign-question-edit',$campaign_question->id)}}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    <a href="{{route('campaign-question-edit',$campaign_question->id)}}" class="btn btn-info"><i
+                            class="fas fa-edit"></i></a>
                     <a href="{{route('campaign-question-delete',$campaign_question->id)}}"
-                       onclick="return confirm('Are You Sure This record deleted?..')" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                       onclick="return confirm('Are You Sure This record deleted?..')" class="btn btn-danger"><i
+                            class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
         @endforeach

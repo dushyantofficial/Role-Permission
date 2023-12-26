@@ -135,7 +135,8 @@ class Campaign_IdeasController extends Controller
         return response(['success' => true]);
     }
 
-    public function campaign_idea_details(){
+    public function campaign_idea_details()
+    {
         $campaign_details = DB::table('campaign_new_question')
             ->where('campaign_new_id', \request('id'))
 //            ->where('type','=','idea_details')

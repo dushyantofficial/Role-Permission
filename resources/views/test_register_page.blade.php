@@ -536,38 +536,38 @@
                 <div id="uploadedFiles"></div>
                 <div id="image_validate" style="color: red;display: none">Combined file size exceeds 8 MB.</div>
                 <div style="color: red" id="errorContainer"></div>
-{{--                                <div id="fileList" style="text-align: center; padding-top: 20px; padding-bottom: 40px;">--}}
-{{--                                    <label for="fileInput" class="uploadfile" style="--}}
-{{--                                        text-align: center;--}}
-{{--                                        color: #015B96;--}}
-{{--                                        font-family: 'Open Sans';--}}
-{{--                                        font-size: 20px;--}}
-{{--                                        font-weight: 800;--}}
-{{--                                        line-height: 38.13px;--}}
-{{--                                        width: 20%;--}}
-{{--                                        border-radius: 8px;--}}
-{{--                                        background-color: #dde8f0;;--}}
-{{--                                        border: 1px solid #015B96;--}}
-{{--                                        padding: 8px 60px;--}}
-{{--                                        cursor: pointer;--}}
-{{--                                        display:flex;--}}
-{{--                                        justify-content: center;--}}
-{{--                                        align-items: center;--}}
-{{--                                        gap:8px--}}
-{{--                                      ">--}}
-{{--                                        Upload--}}
-{{--                                        <img class="icon-logo" src="{{asset('image/file_upload.png')}}" alt="Acwa Power"--}}
-{{--                                             style="align-items: center;"/>--}}
-{{--                                    </label>--}}
-{{--                                    <input type="file" id="fileInput" name="attachment[]" style="display: none;" multiple>--}}
-{{--                                    <div id="uploadedFiles"></div>--}}
-                                    <!-- Container for displaying uploaded files -->
-                                </div>
-                <div style="color:#015B96; font-weight: 600;">
-                    <input type="checkbox" id="consentCheckbox" onchange="hideConsentMessage()" required>
-                    <label for="consentCheckbox">Consent:</label>
-                </div>
-                <div style="font-family: 'Open Sans';
+            {{--                                <div id="fileList" style="text-align: center; padding-top: 20px; padding-bottom: 40px;">--}}
+            {{--                                    <label for="fileInput" class="uploadfile" style="--}}
+            {{--                                        text-align: center;--}}
+            {{--                                        color: #015B96;--}}
+            {{--                                        font-family: 'Open Sans';--}}
+            {{--                                        font-size: 20px;--}}
+            {{--                                        font-weight: 800;--}}
+            {{--                                        line-height: 38.13px;--}}
+            {{--                                        width: 20%;--}}
+            {{--                                        border-radius: 8px;--}}
+            {{--                                        background-color: #dde8f0;;--}}
+            {{--                                        border: 1px solid #015B96;--}}
+            {{--                                        padding: 8px 60px;--}}
+            {{--                                        cursor: pointer;--}}
+            {{--                                        display:flex;--}}
+            {{--                                        justify-content: center;--}}
+            {{--                                        align-items: center;--}}
+            {{--                                        gap:8px--}}
+            {{--                                      ">--}}
+            {{--                                        Upload--}}
+            {{--                                        <img class="icon-logo" src="{{asset('image/file_upload.png')}}" alt="Acwa Power"--}}
+            {{--                                             style="align-items: center;"/>--}}
+            {{--                                    </label>--}}
+            {{--                                    <input type="file" id="fileInput" name="attachment[]" style="display: none;" multiple>--}}
+            {{--                                    <div id="uploadedFiles"></div>--}}
+            <!-- Container for displaying uploaded files -->
+            </div>
+            <div style="color:#015B96; font-weight: 600;">
+                <input type="checkbox" id="consentCheckbox" onchange="hideConsentMessage()" required>
+                <label for="consentCheckbox">Consent:</label>
+            </div>
+            <div style="font-family: 'Open Sans';
                               font-size: 14px;
                               font-style: italic;
                               font-weight: 400;
@@ -576,34 +576,34 @@
                               padding-bottom: 20px;
                               ">
 
-                    By making a submission, you understand and agree that you are not claiming any patent, trademark,
-                    copyright, or other right in the submission. You represent that everything you submit is your own o
-                    riginal work, that you have all necessary rights to disclose
-                    it to us, and that you are not violating the rights of any third party. You agree to indemnify and
-                    hold us harmless from any claims, demands, damages, liabilities and costs (including legal fees)
-                    asserted by any third party relating
-                    in any way to your breach of a representation. If we enter into a development agreement and/or
-                    exclusivity arrangement, we will have a shared foreground Intellectual Property.
+                By making a submission, you understand and agree that you are not claiming any patent, trademark,
+                copyright, or other right in the submission. You represent that everything you submit is your own o
+                riginal work, that you have all necessary rights to disclose
+                it to us, and that you are not violating the rights of any third party. You agree to indemnify and
+                hold us harmless from any claims, demands, damages, liabilities and costs (including legal fees)
+                asserted by any third party relating
+                in any way to your breach of a representation. If we enter into a development agreement and/or
+                exclusivity arrangement, we will have a shared foreground Intellectual Property.
+            </div>
+            <div id="consentMessage" style="display: none; color: red; font-weight: 600; padding-bottom: 20px;">
+                Please check the consent to submit the form.
+            </div>
+            <div class="backbutton">
+                <div class="submit-btn submitback">
+                    <button type="button" onclick="goback1()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; ">
+                        Back
+                    </button>
                 </div>
-                <div id="consentMessage" style="display: none; color: red; font-weight: 600; padding-bottom: 20px;">
-                    Please check the consent to submit the form.
-                </div>
-                <div class="backbutton">
-                    <div class="submit-btn submitback">
-                        <button type="button" onclick="goback1()"
-                                style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; ">
-                            Back
-                        </button>
-                    </div>
-                    <div class="submit-btn" style="padding-bottom: 40px;">
-                        <button type="button" id="submit"
-                                onclick="submitForm()" style="border-radius: 8px; font-size: 22px;">
-                            Submit
-                        </button>
-                    </div>
+                <div class="submit-btn" style="padding-bottom: 40px;">
+                    <button type="button" id="submit"
+                            onclick="submitForm()" style="border-radius: 8px; font-size: 22px;">
+                        Submit
+                    </button>
                 </div>
             </div>
-        </form>
+    </div>
+    </form>
     </div>
 </section>
 
@@ -826,11 +826,11 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var emailInput = document.getElementById('sd_email');
         var emailValidationMessage = document.getElementById('emailValidationMessage');
 
-        emailInput.addEventListener('blur', function() {
+        emailInput.addEventListener('blur', function () {
             var email = emailInput.value;
 
             if (email === '') {
@@ -844,14 +844,14 @@
                     email: email
                 }
             })
-                .then(function(response) {
+                .then(function (response) {
                     if (response.data.unique) {
                         emailValidationMessage.innerHTML = '';
                     } else {
                         emailValidationMessage.innerHTML = '<span style="color: red;">Email is already taken.</span>';
                     }
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     emailValidationMessage.innerHTML = '<span style="color: red;">An error occurred.</span>';
                 });
         });

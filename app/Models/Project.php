@@ -8,31 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use HasFactory;    use SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
-
-    public $table = 'projects';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
-
-    public $fillable = [
-        'resume_id',
-        'project_name',
-        'technology',
-        'company_name',
-        'city_name',
-        'start_date',
-        'end_date',
-        'description',
-        'check',
-        'status',
-
-
-    ];
 
     public static $rules = [
         'resume_id' => 'required',
@@ -53,12 +31,28 @@ class Project extends Model
         'start_date' => 'required',
 
     ];
-
     public static $customMessages = [
         'resume_id.required' => 'Employee name is required.',
     ];
+    public $table = 'projects';
+    public $fillable = [
+        'resume_id',
+        'project_name',
+        'technology',
+        'company_name',
+        'city_name',
+        'start_date',
+        'end_date',
+        'description',
+        'check',
+        'status',
 
-    public function resume_name(){
-        return $this->belongsTo(Resume::class,'resume_id');
+
+    ];
+    protected $dates = ['deleted_at'];
+
+    public function resume_name()
+    {
+        return $this->belongsTo(Resume::class, 'resume_id');
     }
 }

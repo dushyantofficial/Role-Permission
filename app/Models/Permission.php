@@ -11,6 +11,6 @@ class Permission extends Model
 
     public $table = 'permissions';
     public $fillable = [
-      'name'
+        'name'
     ];
 }

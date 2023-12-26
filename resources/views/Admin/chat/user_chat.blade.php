@@ -603,7 +603,7 @@
                         $('#message').val('');
                         $('#document').val('');
                         $('#sendsubmitBtn').hide();
-                         loadChatData()
+                        loadChatData()
                     },
                     error: function (xhr) {
                         var errors = xhr.responseJSON.errors;
@@ -807,7 +807,7 @@
                             $('#chat').scrollTop($('#chat')[0].scrollHeight);
                         }
 
-                       // loadChatData();
+                        // loadChatData();
                         // Reload chat data every 5 seconds
                         // Note: You don't need to compare to true explicitly
                     }
@@ -817,6 +817,7 @@
                 }
             });
         }
+
         $(document).ready(function () {
             var userChatCount = @json($user_chat_count);
             loadChatData();

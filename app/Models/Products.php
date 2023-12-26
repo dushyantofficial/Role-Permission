@@ -11,6 +11,6 @@ class Products extends Model
 
     public $table = 'products';
     protected $fillable = [
-        'name', 'detail','sequence',
+        'name', 'detail', 'sequence',
     ];
 }

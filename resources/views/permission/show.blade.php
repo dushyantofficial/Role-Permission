@@ -17,14 +17,14 @@
                     <div class="form-group">
                         <strong style="color: red">Name:</strong>
                         {{ $product->name }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong style="color: red">Details:</strong>
-                {{ $product->detail }}
-            </div>
-        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong style="color: red">Details:</strong>
+                        {{ $product->detail }}
+                    </div>
+                </div>
             </div>
         </div>
     </main>

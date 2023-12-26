@@ -1,23 +1,24 @@
 @extends('layouts.app')
 @section('content')
-<style>
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        background-color: #31c3af;
-        border: 1px solid #ced4da;
-        border-radius: 2px;
-        cursor: default;
-        float: left;
-        margin-right: 9px;
-        margin-top: 7px;
-        padding: 0 5px;
-    }
-    .select2-container--open .select2-dropdown--below{
-        margin-top: -49px !important;
-    }
-</style>
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            background-color: #31c3af;
+            border: 1px solid #ced4da;
+            border-radius: 2px;
+            cursor: default;
+            float: left;
+            margin-right: 9px;
+            margin-top: 7px;
+            padding: 0 5px;
+        }
+
+        .select2-container--open .select2-dropdown--below {
+            margin-top: -49px !important;
+        }
+    </style>
     <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
             <div>
@@ -49,9 +50,11 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <strong>Permission:</strong>
-                                <select class="mul-select form-control @error('permission') is-invalid @enderror" name="permission[]" multiple="true">
+                                <select class="mul-select form-control @error('permission') is-invalid @enderror"
+                                        name="permission[]" multiple="true">
                                     @foreach($permission as $value)
-                                        <option value="{{$value->id}}" {{ in_array($value->id, $rolePermissions) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                        <option
+                                            value="{{$value->id}}" {{ in_array($value->id, $rolePermissions) ? 'selected' : '' }}>{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('permission')
@@ -62,8 +65,11 @@
 
                     </div>
                     <br>
-                    <button type="submit" id="editBtn" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine">Update</button>
-                    <a href="{{route('roles.index')}}" class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
+                    <button type="submit" id="editBtn" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine">
+                        Update
+                    </button>
+                    <a href="{{route('roles.index')}}"
+                       class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine">Back</a>
                     {!! Form::close() !!}
                 </div>
 
@@ -81,7 +87,7 @@
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".mul-select").select2({
                 placeholder: "Select Permission",
                 tags: true,

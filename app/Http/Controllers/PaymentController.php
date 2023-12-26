@@ -97,9 +97,10 @@ class PaymentController extends Controller
 
     }
 
-    public function online_pay(Request $request){
-       $payment_details = $request->all();
-        return view('payment.razorpayView',compact('payment_details'));
+    public function online_pay(Request $request)
+    {
+        $payment_details = $request->all();
+        return view('payment.razorpayView', compact('payment_details'));
     }
 
     public function refundPayment(Request $request)
@@ -249,7 +250,7 @@ class PaymentController extends Controller
             ->orderBy('created_at', 'desc')->get();
         $pdf = Pdf::loadView('payment.payment_pdf', ['payments' => $payments]);
         return $pdf->download("payment.pdf");
-      //  $users = User::where('status', 'active')->get();
+        //  $users = User::where('status', 'active')->get();
         //return view('payment.index', compact('users', 'payments'));
     }
 
@@ -323,12 +324,12 @@ class PaymentController extends Controller
     public function toggleTheme(Request $request)
     {
         $user = \Illuminate\Support\Facades\Auth::user();
-        if ($user->theme_color == 'light'){
+        if ($user->theme_color == 'light') {
             $input['theme_color'] = 'dark';
-        }else{
+        } else {
             $input['theme_color'] = 'light';
         }
-        if ($input['theme_color'] == 'dark' && $user->font_color == null && $user->background_color == null){
+        if ($input['theme_color'] == 'dark' && $user->font_color == null && $user->background_color == null) {
             $input['background_color'] = '#312525';
             $input['font_color'] = '#2a2a2a';
         }
@@ -336,10 +337,11 @@ class PaymentController extends Controller
         return response()->json(['theme' => $input]);
     }
 
-    public function change_theme(Request $request){
+    public function change_theme(Request $request)
+    {
         $request->validate([
-           'background_color' => 'required',
-           'font_color' => 'required'
+            'background_color' => 'required',
+            'font_color' => 'required'
         ]);
         $user = Auth::user();
         $input = $request->all();

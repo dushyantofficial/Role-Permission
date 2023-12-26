@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CampaignSubIdeaDetails extends Model
 {
     use HasFactory;
+
     public $table = 'campaign_sub_idea_details';
     protected $fillable = [
         'campaign_idea_details_id',

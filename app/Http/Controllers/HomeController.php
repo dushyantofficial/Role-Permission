@@ -32,7 +32,8 @@ class HomeController extends Controller
         return redirect()->route('login')->with('danger', 'User Block Contact Admin....');
     }
 
-    public function mail(){
+    public function mail()
+    {
 
         $sub = "Test";
         $body = "Test";
@@ -47,7 +48,8 @@ class HomeController extends Controller
         dd('Mail Send');
     }
 
-    public function verify_email(){
+    public function verify_email()
+    {
         return view('verify_email');
     }
 

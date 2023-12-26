@@ -25,7 +25,8 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;&nbsp;
- <a class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" href="{{ route('roles.create') }}" style="float: right">
+ <a class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine" href="{{ route('roles.create') }}"
+    style="float: right">
                 + Create New Role
             </a>
                 <!-- Modal -->

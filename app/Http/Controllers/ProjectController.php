@@ -58,10 +58,10 @@ class ProjectController extends Controller
 
     }
 
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request, $id)
     {
         $id = preg_replace('/[^0-9]/', '', $id);
-        $projects = Project::where('id',$id)->first();
+        $projects = Project::where('id', $id)->first();
         $projects->delete();
         return response()->json(['message' => 'Project deleted successfully']);
     }

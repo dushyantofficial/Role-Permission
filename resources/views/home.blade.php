@@ -77,7 +77,7 @@
             <div class="col-md-6">
                 <div class="tile">
                     <h3 class="tile-title">User Status Active/Block</h3>
-                        <div class="" id="barchart_material"></div>
+                    <div class="" id="barchart_material"></div>
                 </div>
             </div>
             <div class="col-md-6">

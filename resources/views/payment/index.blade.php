@@ -69,9 +69,11 @@
         .modal {
             top: 54px !important;
         }
-        .razorpay-payment-button{
+
+        .razorpay-payment-button {
             margin-top: 15px !important;
         }
+
         @media (max-width: 575.98px) {
             /* Add a class to the table container to make it responsive */
             .responsive-table {
@@ -238,14 +240,16 @@
                                                         data-prefill.email="{{$payment->user_name->email}}"
                                                         data-theme.color="#ff7529">
                                                 </script>
-                                                 </form>
+                                            </form>
                                         @else
                                             <input type="button" data-amount="{{$payment->amount}}"
                                                    value="Payment is paid"
                                                    class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine payment">
                                             <button
-                                               style="margin-top: 5px" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
-                                                data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">Payment Refund
+                                                style="margin-top: 5px"
+                                                class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine refund-payment"
+                                                data-payment-id="{{ $payment->id }}" data-amount="{{$payment->amount}}">
+                                                Payment Refund
                                             </button>
                                         @endif
                                     </td>
@@ -284,7 +288,8 @@
         ">
                                                     All fields are mandatory(*)
                                                 </div>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -432,11 +437,11 @@
 @endsection
 @push('page_scripts')
     <script>
-            var paymentButtons = document.querySelectorAll('.razorpay-payment-button');
+        var paymentButtons = document.querySelectorAll('.razorpay-payment-button');
 
-            paymentButtons.forEach(function (paymentButton) {
-                paymentButton.classList.add('btn', 'btn-sm', 'btn-shadow', 'btn-outline-primary', 'btn-hover-shine');
-            });
+        paymentButtons.forEach(function (paymentButton) {
+            paymentButton.classList.add('btn', 'btn-sm', 'btn-shadow', 'btn-outline-primary', 'btn-hover-shine');
+        });
     </script>
     <script>
         $(document).ready(function (e) {
@@ -666,7 +671,7 @@
         });
     </script>
 
-{{--  Date Picker  --}}
+    {{--  Date Picker  --}}
     <script type="text/javascript">
 
         $(function () {
@@ -717,7 +722,7 @@
         });
     </script>
 
-{{--  Excel Download  --}}
+    {{--  Excel Download  --}}
     @php
         $user = request()->user_id;
         if (isset($user)){

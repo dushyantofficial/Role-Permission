@@ -10,12 +10,6 @@ class PaymentHistory extends Model
     use HasFactory;
 
     public $table = 'payment_histories';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'user_id',
         'payment_id',
@@ -49,9 +43,9 @@ class PaymentHistory extends Model
         'payment_date',
 
     ];
-
+    protected $dates = ['deleted_at'];
     protected $casts = [
-      'notes' => 'array'
+        'notes' => 'array'
     ];
 
     public function user_name()

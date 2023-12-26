@@ -8,13 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    public static $rules = [
+        'resume_id' => 'required',
+        'course_name' => 'required',
+        'institution_name' => 'required',
+        'start_date' => 'required',
+        'end_date' => 'required|After:start_date',
+
+    ];
+    public static $ruless = [
+        'resume_id' => 'required',
+        'course_name' => 'required',
+        'institution_name' => 'required',
+        'start_date' => 'required',
+
+    ];
+    public static $customMessages = [
+        'resume_id.required' => 'Employee name is required.',
+    ];
     public $table = 'courses';
-
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'resume_id',
         'course_name',
@@ -27,27 +40,7 @@ class Course extends Model
 
 
     ];
-
-    public static $rules = [
-        'resume_id' => 'required',
-        'course_name' => 'required',
-        'institution_name' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required|After:start_date',
-
-    ];
-
-    public static $ruless = [
-        'resume_id' => 'required',
-        'course_name' => 'required',
-        'institution_name' => 'required',
-        'start_date' => 'required',
-
-    ];
-
-    public static $customMessages = [
-        'resume_id.required' => 'Employee name is required.',
-    ];
+    protected $dates = ['deleted_at'];
 
     public function resume_name()
     {

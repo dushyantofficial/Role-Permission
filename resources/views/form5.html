@@ -1,30 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+    <meta content="" name="description"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
     <title>Acwa Power</title>
-    <link rel="shortcut icon" href="public/favicon.ico" type="image/svg" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <link href="public/favicon.ico" rel="shortcut icon" type="image/svg"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/css/intlTelInput.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css">
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/css/intlTelInput.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
+    <link href="style.css" rel="stylesheet"/>
 
     <style>
-        .select_input{
+        .select_input {
             background-color: #dde8f0;
             width: 58%;
             padding: 8px;
@@ -36,13 +35,13 @@
 </head>
 
 <body>
-<form method="post" id="frm" enctype="multipart/form-data">
+<form enctype="multipart/form-data" id="frm" method="post">
     <!-- Submitter Form  Start -->
     <section class="logo" style="
         padding-top: 30px;
         padding-bottom: 30px;     ">
         <a href="index.html" style="display: flex; justify-content: center; width: 22%;"><img
-                class="logo-img formlogo" src="public/ACWA_Power_logo.png" alt="Acwa Power" /></a>
+            alt="Acwa Power" class="logo-img formlogo" src="public/ACWA_Power_logo.png"/></a>
 
     </section>
     <section class="sectiontitle">
@@ -71,22 +70,25 @@
             <div class="form-section">
 
 
-                <input class="" type="text" id="c_id" name="c_id" maxlength="110" value=""
-                       oninput="validateInput(this)" style="display: none" />
-                <input class="" type="text" id="c_code" name="c_code" maxlength="110" value=""
-                       oninput="validateInput(this)" style="display: none" />
+                <input class="" id="c_id" maxlength="110" name="c_id" oninput="validateInput(this)"
+                       style="display: none"
+                       type="text" value=""/>
+                <input class="" id="c_code" maxlength="110" name="c_code" oninput="validateInput(this)"
+                       style="display: none"
+                       type="text" value=""/>
 
                 <div class="form-group">
                     <div class="form-row">
-                        <label for="name" class="placholder">Name <span style="color:red">*</span></label>
-                        <input class="required-field" type="text" id="name" name="name" maxlength="110"
-                               oninput="validateInput(this)" />
+                        <label class="placholder" for="name">Name <span style="color:red">*</span></label>
+                        <input class="required-field" id="name" maxlength="110" name="name"
+                               oninput="validateInput(this)"
+                               type="text"/>
                     </div>
                     <div class="form-row">
                         <label class="placholder" for="contact">Contact Number <span
-                                style="color:red">*</span></label>
-                        <input class="required-field " type="tel" id="phone" name="phone"
-                               oninput="validateNumeric(event)" style="width:100%; height:100%; border:none; " />
+                            style="color:red">*</span></label>
+                        <input class="required-field " id="phone" name="phone" oninput="validateNumeric(event)"
+                               style="width:100%; height:100%; border:none; " type="tel"/>
                         <!-- <input type="tel" id="phone" name="phone" style="width:79%; height:100%; margin-left: 4.4rem;"> -->
 
                     </div>
@@ -94,29 +96,32 @@
                 <div class="form-group">
                     <div class="form-row">
                         <label class="placholder" for="email">Email <span style="color:red">*</span></label>
-                        <input class="required-field " type="email" id="email" name="email" />
-                        <div id="emailError" class="error-message" style="display: none;">Invalid email address
+                        <input class="required-field " id="email" name="email" type="email"/>
+                        <div class="error-message" id="emailError" style="display: none;">Invalid email address
                         </div>
 
                     </div>
                     <span class="error" id="emailError"></span>
                     <div class="form-row">
                         <label class="placholder" for="occupation">Company /University <span
-                                style="color:red">*</span></label>
-                        <input class="required-field " type="text" id="occupation" name="occupation" maxlength="110"
-                               oninput="validateInput(this)" />
+                            style="color:red">*</span></label>
+                        <input class="required-field " id="occupation" maxlength="110" name="occupation"
+                               oninput="validateInput(this)"
+                               type="text"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <label class="placholder" for="country">Occupation <span style="color:red">*</span></label>
-                        <input class="required-field " type="text" id="country" name="country" maxlength="110"
-                               oninput="validateInput(this)" />
+                        <input class="required-field " id="country" maxlength="110" name="country"
+                               oninput="validateInput(this)"
+                               type="text"/>
                     </div>
                     <div class="form-row">
                         <label class="placholder" for="university">Country <span style="color:red">*</span></label>
-                        <input class="required-field " type="text" id="university" name="university" maxlength="110"
-                               oninput="validateInput(this)" />
+                        <input class="required-field " id="university" maxlength="110" name="university"
+                               oninput="validateInput(this)"
+                               type="text"/>
                     </div>
                 </div>
 
@@ -149,8 +154,8 @@ padding-bottom: 15px;
             </div>
             <div class="form-group" id="idea_details_select">
             </div>
-            <div class="media" style="display: flex; justify-content: space-evenly; gap:10%; flex-wrap: wrap;"
-                 id="idea_details_radio">
+            <div class="media" id="idea_details_radio"
+                 style="display: flex; justify-content: space-evenly; gap:10%; flex-wrap: wrap;">
                 <!--                <div class="checkbox-mobile">-->
                 <!--                    <div class="categorycheck">Category*</div>-->
                 <!--                    <div class="pcategory">-->
@@ -163,17 +168,20 @@ padding-bottom: 15px;
 
             <div class="backbutton" style="padding-inline: 30px;">
                 <div class="submit-btn">
-                    <button type="button" onclick="goback2()"
-                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+                    <button onclick="goback2()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px"
+                            type="button">
 
                         Back
                     </button>
                 </div>
                 <div class="submit-btn">
-                    <button type="button" onclick="proceedToIdeaDetails()"
-                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
-                        Proceed to Evaluation Criteria Description <img class="icon-logo" src="public/icon.png"
-                                                                        alt="Acwa Power" style="align-items: center;" />
+                    <button onclick="proceedToIdeaDetails()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px"
+                            type="button">
+                        Proceed to Evaluation Criteria Description <img alt="Acwa Power" class="icon-logo"
+                                                                        src="public/icon.png"
+                                                                        style="align-items: center;"/>
                     </button>
                 </div>
             </div>
@@ -220,17 +228,20 @@ padding-bottom: 15px;
             <!--            </div>-->
             <div class="backbutton" style="padding-inline: 30px;">
                 <div class="submit-btn">
-                    <button type="button" onclick="goback()"
-                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
+                    <button onclick="goback()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px"
+                            type="button">
 
                         Back
                     </button>
                 </div>
                 <div class="submit-btn">
-                    <button type="button" id="nextButton" onclick="proceedToEvaluationDetails()"
-                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px">
-                        Proceed to Additional Evaluation Criteria <img class="icon-logo" src="public/icon.png"
-                                                                       alt="Acwa Power" style="align-items: center;" />
+                    <button id="nextButton" onclick="proceedToEvaluationDetails()"
+                            style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; gap:5px"
+                            type="button">
+                        Proceed to Additional Evaluation Criteria <img alt="Acwa Power" class="icon-logo"
+                                                                       src="public/icon.png"
+                                                                       style="align-items: center;"/>
                     </button>
                 </div>
             </div>
@@ -291,7 +302,7 @@ padding-bottom: 15px;
                 </div>
                 <div id="fileList" style="text-align: center; padding-top: 20px; padding-bottom: 40px;">
                     <ul id="uploadedFiles" style="list-style: none;"></ul>
-                    <label for="fileInput1" class="uploadfile" style="
+                    <label class="uploadfile" for="fileInput1" style="
                                                   text-align: center;
                                                color: #015B96;
                                                    font-family: 'Open Sans';
@@ -311,12 +322,12 @@ padding-bottom: 15px;
                         Upload
                         <i class="fas fa-file-upload"></i>
                     </label>
-                    <input type="file" id="fileInput1" name="attachment[]" style="display: none;" multiple>
+                    <input id="fileInput1" multiple name="attachment[]" style="display: none;" type="file">
 
                 </div>
                 <!-- <input type="file" id="fileInput1" name="attachment[]" multiple required> -->
                 <div style="color:#015B96; font-weight: 600;">
-                    <input type="checkbox" id="consentCheckbox" onchange="hideConsentMessage()">
+                    <input id="consentCheckbox" onchange="hideConsentMessage()" type="checkbox">
                     <label for="consentCheckbox">Consent:</label>
                 </div>
                 <div style="font-family: 'Open Sans';
@@ -345,14 +356,15 @@ padding-bottom: 15px;
                 </div>
                 <div class="backbutton">
                     <div class="submit-btn submitback">
-                        <button type="button" onclick="goback1()"
-                                style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; ">
+                        <button onclick="goback1()"
+                                style="border-radius: 8px; font-size: 22px; display:flex; justify-content: center; align-items: center; "
+                                type="button">
                             Back
                         </button>
                     </div>
                     <div class="submit-btn" style="padding-bottom: 40px;">
-                        <button type="submit" onclick="return submitForm()"
-                                style="border-radius: 8px; font-size: 22px;">
+                        <button onclick="return submitForm()" style="border-radius: 8px; font-size: 22px;"
+                                type="submit">
                             Submit
                         </button>
                     </div>
@@ -416,7 +428,7 @@ padding-bottom: 15px;
     });
 </script>
 <!--  Email Validation Start -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js" type="text/javascript"></script>
 <script>
     const emailInput = document.getElementById("email");
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -603,6 +615,7 @@ padding-bottom: 15px;
         element.style.height = "1px";
         element.style.height = (25 + element.scrollHeight) + "px";
     }
+
     const maxWords = 500;
 
     function updateWordCount(textarea) {
@@ -729,6 +742,7 @@ padding-bottom: 15px;
             inputElement.value = inputValue.slice(0, maxChars);
         }
     }
+
     function words50limit(inputElement) {
         const validPattern = /^[A-Za-z0-9\s\-]+$/;
         const maxWords = 50; // Set your maximum word limit here
@@ -756,6 +770,7 @@ padding-bottom: 15px;
             inputElement.value = words.slice(0, maxWords).join(' ');
         }
     }
+
     function words500limit(inputElement) {
         const validPattern = /^[A-Za-z0-9\s\-]+$/;
         const maxWords = 500; // Set your maximum word limit here
@@ -783,6 +798,7 @@ padding-bottom: 15px;
             inputElement.value = words.slice(0, maxWords).join(' ');
         }
     }
+
     // function proceedToIdeaDetails() {
     //     var requiredFields = document.querySelectorAll('.required-field');
     //     const emailInput = document.getElementById("email");
@@ -840,9 +856,9 @@ padding-bottom: 15px;
         const radiocount = document.querySelectorAll('.categorycheck');
 
         var isValid = true;
-        console.log ("radiocount length" ,radiocount.length);
-        console.log ("groups", groups.length);
-        console.log ("checkbox", checkbox.length);
+        console.log("radiocount length", radiocount.length);
+        console.log("groups", groups.length);
+        console.log("checkbox", checkbox.length);
         for (var i = 0; i < requiredFields.length; i++) {
             if (requiredFields[i].value === '') {
                 isValid = false;
@@ -871,7 +887,7 @@ padding-bottom: 15px;
             checkboxcount = 1;
         }
         const totalcount = checkboxcount + groups.length;
-        console.log ("totalcount",totalcount);
+        console.log("totalcount", totalcount);
         if (radiocount.length !== totalcount) {
             isValid = false;
             displayErrorPopup("Please make a selection in all radio/checkbox button groups.");
@@ -884,6 +900,7 @@ padding-bottom: 15px;
             window.scrollTo(0, 0);
         }
     }
+
     function displayErrorPopup(message) {
         Swal.fire({
             icon: 'error',
@@ -965,7 +982,7 @@ padding-bottom: 15px;
         var evaluation_criteria = document.getElementById('evaluation-criteria');
         $.ajax({
             url: 'https://acwanet-api.ntb.one/api/campaign_idea_details1',
-            data: { id: id }, // Pass the extracted id parameter to the API
+            data: {id: id}, // Pass the extracted id parameter to the API
             dataType: 'json',
             method: 'GET',
             success: function (response) {
@@ -976,7 +993,7 @@ padding-bottom: 15px;
                 answers.forEach(function (answer) {
                     var asterisk = answer.mandatory == 1 ? '<span style="color:red">*</span>' : '';
                     if (answer.type == 'idea_details') {
-                        if (answer.input_type == 'text' || answer.input_type == 'date' || answer.input_type == 'number' ) {
+                        if (answer.input_type == 'text' || answer.input_type == 'date' || answer.input_type == 'number') {
                             console.log("answertype", answer);
                             if (asterisk !== '') {
                                 if (answer.label_name[0] !== '') {
@@ -1016,9 +1033,7 @@ padding-bottom: 15px;
                                 }
                             }
                             idea_details_text.innerHTML += idea_details_textContent;
-                        }
-
-                        else if (answer.input_type == 'radio' || answer.input_type == 'checkbox') {
+                        } else if (answer.input_type == 'radio' || answer.input_type == 'checkbox') {
                             var jsonString = answer.input_value;
                             var decodedArray = JSON.parse(jsonString);
                             // console.log("decodedarray",decodedArray);
@@ -1071,40 +1086,39 @@ padding-bottom: 15px;
                             }
                             idea_details_radio.innerHTML += idea_details_radioContent;
 
-                        }
-
-                        else if (answer.input_type == 'dropdown') {
+                        } else if (answer.input_type == 'dropdown') {
                             var jsonString = answer.input_value;
                             var decodedArray = JSON.parse(jsonString);
                             // console.log("decodedarray",decodedArray);
                             var questionNameDisplayed = false;
                             var idea_details_radioContent = '';
-                            if (asterisk !== ''){
-                            var answerContent = `
+                            if (asterisk !== '') {
+                                var answerContent = `
                             <div class="form-row" id="${answer.label_name}">
                     <label class="placholder">${answer.question}:${asterisk} </label>
                             <select class="required-field select_input" id="qs_${answer.id}" name="qs_${answer.id}" placeholder="Enter your text here" >
     <option value="">Select</option>
     `;
-                            decodedArray.forEach((value, index) => {
-                                answerContent += `<option>`+value+`</option>`;
-                            });
-                            answerContent += ` </select>
+                                decodedArray.forEach((value, index) => {
+                                    answerContent += `<option>` + value + `</option>`;
+                                });
+                                answerContent += ` </select>
                         </div>
-                `; } else {
-                    var answerContent = `
+                `;
+                            } else {
+                                var answerContent = `
                             <div class="form-row" id="${answer.label_name}">
                     <label class="placholder">${answer.question}:${asterisk} </label>
                             <select class="select_input" id="qs_${answer.id}" name="qs_${answer.id}" placeholder="Enter your text here" >
     <option value="">Select</option>
     `;
-                            decodedArray.forEach((value, index) => {
-                                answerContent += `<option>`+value+`</option>`;
-                            });
-                            answerContent += ` </select>
+                                decodedArray.forEach((value, index) => {
+                                    answerContent += `<option>` + value + `</option>`;
+                                });
+                                answerContent += ` </select>
                         </div>
                 `;
-                }
+                            }
                             idea_details_select.innerHTML += answerContent;
                         }
                     } else if (answer.type == 'criteria_description' || answer.type == 'evaluation_criteria') {
@@ -1134,7 +1148,7 @@ padding-bottom: 15px;
 </div>
                 `;
                             }
-                        }else {
+                        } else {
                             if (answer.type == 'criteria_description') {
                                 answerContent = `
                     <div id="${answer.label_name}">
@@ -1224,8 +1238,6 @@ padding-bottom: 15px;
             }
         });
     });
-
-
 
 
 </script>

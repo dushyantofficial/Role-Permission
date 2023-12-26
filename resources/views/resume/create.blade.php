@@ -36,7 +36,8 @@
 
 @endsection
 @push('page_scripts')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="screen">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet"
+          media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
@@ -60,12 +61,13 @@
             nationalMode: false,
             numberType: "MOBILE",
             //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-            preferredCountries: ['in','us', 'gb', 'ch', 'ca', 'do','sa', 'ae', 'qa','om','bh','kw','ma'],
+            preferredCountries: ['in', 'us', 'gb', 'ch', 'ca', 'do', 'sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
             preventInvalidNumbers: true,
             separateDialCode: true,
             initialCountry: "auto",
-            geoIpLookup: function(callback) {
-                $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () {
+                }, "jsonp").always(function (resp) {
                     var countryCode = (resp && resp.country) ? resp.country : "";
                     callback(countryCode);
                 });
@@ -73,14 +75,14 @@
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
         });
 
-        var reset = function() {
+        var reset = function () {
             telInput.removeClass("error");
             errorMsg.addClass("hide");
             validMsg.addClass("hide");
         };
 
         // on blur: validate
-        telInput.blur(function() {
+        telInput.blur(function () {
             reset();
             if ($.trim(telInput.val())) {
                 if (telInput.intlTelInput("isValidNumber")) {
@@ -94,7 +96,6 @@
 
         // on keyup / change flag: reset
         telInput.on("keyup change", reset);
-
 
 
     </script>
