@@ -97,6 +97,7 @@
         <div class="row">
             <div class="col-lg-12 float-right mb-5">
             <span class="pull-right float-right">&nbsp;
+                <a href="{{url('config_clear')}}" class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">Config Clear</a>
                 <button type="button" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine"
                         data-bs-toggle="modal"
                         data-bs-target="#add_payment">

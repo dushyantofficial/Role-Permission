@@ -51,6 +51,7 @@
     @endif
     @endif
 </style>
+
 <body class="app sidebar-mini {{ user_theme_get() }}">
 <!-- Navbar-->
 @include('layouts.header')
@@ -152,19 +153,31 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable({{ Js::from(userRole()) }});
+        console.log(data);
 
         var options = {
             chart: {
                 title: 'User Roles Distribution',
             },
             legend: {position: 'top'},
+            hAxis: {
+                slantedText: true,
+                slantedTextAngle: 45, // Adjust the angle as needed
+                allowContainerBoundaryTextCutoff: true,
+            },
+            explorer: {
+                axis: 'horizontal',
+                keepInBounds: true,
+                maxZoomIn: 4.0,
+            },
         };
 
         var chart = new google.charts.Bar(document.getElementById('userRole'));
-
+        console.log(chart)
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 </script>
+
 
 <script type="text/javascript">
     if (document.location.hostname == 'pratikborsadiya.in') {

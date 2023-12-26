@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('Admin.flash-message')
     <main class="app-content {{user_theme_get()}}">
         <div class="app-title">

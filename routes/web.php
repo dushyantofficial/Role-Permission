@@ -1,5 +1,17 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfessionalSkillsController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkExperienceController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +33,19 @@ Route::get('/', function () {
 
 Route::get('clear_cache', function () {
 
-    \Artisan::call('optimize:clear');
+    Artisan::call('optimize:clear');
     return redirect()->back()->with("success", "Cache is cleared");
 
 
 });
+
+Route::get('config_clear', function () {
+
+    Artisan::call('config:clear');
+    return redirect()->back()->with("success", "Config is cleared");
+
+});
+
 
 //Route::get('qr-code-g', function () {
 //
@@ -36,7 +56,7 @@ Route::get('clear_cache', function () {
 //    return view('qrCode');
 //});
 
-\Illuminate\Support\Facades\Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('test-mail', [App\Http\Controllers\HomeController::class, 'mail'])->name('test-mail');
@@ -88,18 +108,18 @@ Route::get('campaign_question_delete/{id}', [App\Http\Controllers\UserController
 
 Route::group(['middleware' => ['auth']], function () {
     //Resource Route
-    Route::resource('roles', \App\Http\Controllers\RoleController::class);
-    Route::resource('users', \App\Http\Controllers\UserController::class);
-    Route::resource('products', \App\Http\Controllers\ProductController::class);
-    Route::resource('permission', \App\Http\Controllers\PermissionController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('permission', PermissionController::class);
 
-    Route::resource('resumes', \App\Http\Controllers\ResumeController::class);
-    Route::resource('professional_skills', \App\Http\Controllers\ProfessionalSkillsController::class);
-    Route::resource('work_experiences', \App\Http\Controllers\WorkExperienceController::class);
-    Route::resource('educations', \App\Http\Controllers\EducationController::class);
-    Route::resource('projects', \App\Http\Controllers\ProjectController::class);
-    Route::resource('course', \App\Http\Controllers\CourseController::class);
-    Route::resource('payment', \App\Http\Controllers\PaymentController::class);
+    Route::resource('resumes', ResumeController::class);
+    Route::resource('professional_skills', ProfessionalSkillsController::class);
+    Route::resource('work_experiences', WorkExperienceController::class);
+    Route::resource('educations', EducationController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('course', CourseController::class);
+    Route::resource('payment', PaymentController::class);
 
     //Profile Update Code
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
