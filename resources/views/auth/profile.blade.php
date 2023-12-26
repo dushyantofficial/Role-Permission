@@ -41,7 +41,7 @@
 
     <main class="app-content {{user_theme_get()}}">
         @php
-            $user = \Illuminate\Support\Facades\Auth::user();
+            use Illuminate\Support\Facades\Auth;$user = Auth::user()
         @endphp
         @include('Admin.flash-message')
         <div class="row user">
@@ -63,7 +63,13 @@
                             <input type="file" name="profile_pic" id="profile-picture-input" style="display: none;">
                         </div>
 
-                        <h4>{{$user->name}}</h4>
+                        <h4>
+                            @php
+                                $wordsArray = explode(' ', $user->name);
+$newLineSeparatedString = implode("<br>", $wordsArray)
+                            @endphp
+                            {!! $newLineSeparatedString !!}
+                        </h4>
                         <p>{{$user->role}}</p>
                     </div>
                     <div class="cover-image"></div>
@@ -282,7 +288,7 @@
     </script>
 
     @php
-        $doc = request('document');
+        $doc = request('document')
     @endphp
     <script>
         $(document).ready(function () {
@@ -310,6 +316,23 @@
     <script>
         $(document).ready(function () {
             $('#profile-picture-input').on('change', function () {
+                // Validate file type
+                const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/gif'];
+                const selectedFileType = this.files[0].type;
+
+                if (allowedFileTypes.indexOf(selectedFileType) === -1) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid File Type',
+                        text: 'Please select a valid image file (png, jpg, jpeg, webp, gif).',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload(); // Reload the page
+                        }
+                    });
+                    return;
+                }
+
                 const formData = new FormData();
                 formData.append('profile_pic', this.files[0]);
                 $.ajax({

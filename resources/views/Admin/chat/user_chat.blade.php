@@ -383,24 +383,24 @@
                         <h2>Chat with {{$receiver_record->name}}</h2>
                         <h3>already {{$user_chats->count()}} messages</h3>
                     </div>
-                    <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
-                            data-bs-target="#show_profile" style="float: inline-end;">View Profile
-                    </button>
+                        <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
+                                data-bs-target="#show_profile" style="float: inline-end;">View Profile
+                        </button>
                 </header>
                 <ul id="chat">
-                    <li class="me" id="me">
-                    </li>
-                    <li class="you" id="you">
-                    </li>
+
                 </ul>
+                <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine"
+                        style="position: absolute;bottom: 38px;left: 38%;" onclick="checkAndLoadChatData()"><i
+                        class="fa fa-refresh" aria-hidden="true"></i></button>
                 <footer>
                     <form id="add_data" action="{{ route('user-chat-send') }}" enctype="multipart/form-data">
                         @csrf
                         <textarea name="message" id="message" placeholder="Type your message"></textarea>
-                        <div class="form-group" style="width: 251px;">
+                        <div class="form-group" style="width: 251px;margin-left: 6%;">
                             <div class="custom-file">
                                 <input type="file" name="document[]" class="custom-file-input" multiple id="document"
-                                       style="width: 500px;cursor: pointer;">
+                                       style="cursor: pointer;">
                                 <label class="custom-file-label" for="customFile">Upload Document</label>
                             </div>
                         </div>
@@ -822,19 +822,29 @@
             var userChatCount = @json($user_chat_count);
             loadChatData();
             console.log(userChatCount)
-            if (userChatCount == 1) {
-                setInterval(function () {
-                    // Clear the content of the #chat element
-                    $('#chat').empty();
-
-                    // Load chat data only if userChatCount is 1
-                    if (userChatCount == 1) {
-                        loadChatData();
-                    }
-                }, 5000);
-            }
+            // if (userChatCount == 1) {
+            //     setInterval(function () {
+            //         // Clear the content of the #chat element
+            //         $('#chat').empty();
+            //
+            //         // Load chat data only if userChatCount is 1
+            //         if (userChatCount == 1) {
+            //             loadChatData();
+            //         }
+            //     }, 5000);
+            // }
         });
 
+    </script>
+
+    <script>
+        function checkAndLoadChatData() {
+            // Check if the chat area is empty
+            $("#chat").empty();
+            loadChatData();
+        }
+
+        // Rest of your existing JavaScript code, including the loadChatData() function
     </script>
 
 @endpush
