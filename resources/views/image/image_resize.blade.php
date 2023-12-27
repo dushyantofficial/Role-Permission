@@ -125,9 +125,14 @@
                                                              alt="user-avatar" class="img-fluid rounded">
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-shadow btn-outline-secondary btn-hover-shine"
                                                                 data-dismiss="modal">Close
                                                         </button>
+                                                        <a href="{{asset('storage/resize_images/'.$image->image)}}"
+                                                           download="image.jpg"
+                                                           class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine">
+                                                            Download</a>
                                                     </div>
                                                 </div>
                                             </div>
