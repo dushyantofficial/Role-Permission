@@ -25,6 +25,7 @@
 - composer require spatie/laravel-backup (project & sql zip generate)
 - composer require mews/captcha (math captcha)
 - composer require razorpay/razorpay (Razorpay Payment Gateway Integration)
+- composer require intervention/image (Image Resize Command)
 
 - **Install Xampp Path Set** (path :- **role-permissions-blog\config\database.php**) // Project & Sql zip donwload
 - 'dump' => [
