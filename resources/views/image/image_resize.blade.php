@@ -121,8 +121,11 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- Add your modal content here -->
-                                                        <img src="{{ asset('storage/resize_images/'.$image->image) }}"
-                                                             alt="user-avatar" class="img-fluid rounded">
+                                                        <center>
+                                                            <img
+                                                                src="{{ asset('storage/resize_images/'.$image->image) }}"
+                                                                alt="user-avatar" class="img-fluid rounded">
+                                                        </center>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button"
@@ -309,23 +312,25 @@
                 e.preventDefault();
 
                 // Validate file type
+                const imageExist = $('#image_default').prop('files')[0];
                 const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
-                const selectedFileType = $('#image_default').prop('files')[0].type;
+                if (imageExist) {
+                    const selectedFileType = $('#image_default').prop('files')[0].type;
 
-                if (allowedFileTypes.indexOf(selectedFileType) === -1) {
-                    showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
-                    return;
+                    if (allowedFileTypes.indexOf(selectedFileType) === -1) {
+                        showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
+                        return;
+                    }
+
+                    // Validate file size (in bytes)
+                    const maxSize = 5 * 1024 * 1024; // 5 MB
+                    const selectedFileSize = $('#image_default').prop('files')[0].size;
+
+                    if (selectedFileSize > maxSize) {
+                        showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
+                        return;
+                    }
                 }
-
-                // Validate file size (in bytes)
-                const maxSize = 5 * 1024 * 1024; // 5 MB
-                const selectedFileSize = $('#image_default').prop('files')[0].size;
-
-                if (selectedFileSize > maxSize) {
-                    showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
-                    return;
-                }
-
                 var formData = new FormData($('#default_image_form')[0]);
 
                 $.ajax({
@@ -389,23 +394,25 @@
                 e.preventDefault();
 
                 // Validate file type
+                const imageExist = $('#image_resize').prop('files')[0];
                 const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
-                const selectedFileType = $('#image_resize').prop('files')[0].type;
+                if (imageExist) {
+                    const selectedFileType = $('#image_resize').prop('files')[0].type;
 
-                if (allowedFileTypes.indexOf(selectedFileType) === -1) {
-                    showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
-                    return;
+                    if (allowedFileTypes.indexOf(selectedFileType) === -1) {
+                        showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
+                        return;
+                    }
+
+                    // Validate file size (in bytes)
+                    const maxSize = 5 * 1024 * 1024; // 5 MB
+                    const selectedFileSize = $('#image_resize').prop('files')[0].size;
+
+                    if (selectedFileSize > maxSize) {
+                        showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
+                        return;
+                    }
                 }
-
-                // Validate file size (in bytes)
-                const maxSize = 5 * 1024 * 1024; // 5 MB
-                const selectedFileSize = $('#image_resize').prop('files')[0].size;
-
-                if (selectedFileSize > maxSize) {
-                    showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
-                    return;
-                }
-
                 var formData = new FormData($('#resize_image_form')[0]); // Use the form ID 'add_form'
 
                 $.ajax({
