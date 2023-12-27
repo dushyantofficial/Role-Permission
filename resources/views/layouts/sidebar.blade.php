@@ -1,6 +1,6 @@
 <!-- Sidebar menu-->
 @php
-    $user = \Illuminate\Support\Facades\Auth::user();
+    use Illuminate\Support\Facades\Auth;$user = Auth::user()
 @endphp
 <aside class="app-sidebar {{$user->theme_color}}">
     <ul class="app-menu">
@@ -41,6 +41,10 @@
         </li>
         <li><a class="app-menu__item {{ Request::is('course*') ? 'active' : '' }}" href="{{route('course.index')}}"><i
                     class="fa fa-star"></i>&nbsp;&nbsp;<span class="app-menu__label">Course</span></a>
+        </li>
+        <li><a class="app-menu__item {{ Request::is('image-resize*') ? 'active' : '' }}"
+               href="{{route('image-resize')}}"><i
+                    class="fa fa-image"></i>&nbsp;&nbsp;<span class="app-menu__label">Image Resize</span></a>
         </li>
         <li><a class="app-menu__item {{ Request::is('payment*') ? 'active' : '' }}" href="{{route('payment.index')}}"><i
                     class="fa fa-credit-card"></i>&nbsp;&nbsp;<span class="app-menu__label">Payment</span></a>

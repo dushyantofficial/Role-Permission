@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2023 at 12:32 PM
+-- Generation Time: Dec 27, 2023 at 08:38 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -340,9 +340,9 @@ CREATE TABLE `education`
 INSERT INTO `education` (`id`, `resume_id`, `degree_name`, `college_name`, `university_name`, `grade`, `start_date`,
                          `end_date`, `city_name`, `description`, `check`, `status`, `created_at`, `updated_at`,
                          `deleted_at`)
-VALUES (1, 3, 'Hello', 'BCA', 'GTU', 'a', '2023-02', 'Present', 'Deesa',
+VALUES (1, 3, 'Hello', 'BCA', 'GTU', 'c', '2023-02', 'Present', 'Deesa',
         'Leverage agile frameworks to provide a robust synopsis for high level overviews.\r\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\r\n                                overall value proposition.',
-        1, 'active', '2023-09-18 01:48:43', '2023-09-29 05:44:06', NULL),
+        1, 'active', '2023-09-18 01:48:43', '2023-12-26 09:20:50', NULL),
        (2, 2, 'fgfh', 'fghg', 'fgh', '', '2023-02', '2023-09', 'fgh', NULL, 0, 'active', '2023-09-18 01:48:47',
         '2023-09-23 10:01:36', '2023-09-23 10:01:36'),
        (3, 2, 'fgfh', 'fghg', 'fgh', '', '2023-02', '2023-06', 'fgh', NULL, 0, 'De-Active', '2023-09-18 01:48:57',
@@ -352,7 +352,7 @@ VALUES (1, 3, 'Hello', 'BCA', 'GTU', 'a', '2023-02', 'Present', 'Deesa',
         1, 'active', '2023-09-18 05:46:49', '2023-09-29 05:44:10', NULL),
        (5, 3, 'Hello', 'ewrwe', 'GTU', 'b', '2023-01', 'Present', 'werrwe',
         'Leverage agile frameworks to provide a robust synopsis for high level overviews.\n                                Iterative approaches to corporate strategy foster collaborative thinking to further the\n                                overall value proposition.',
-        1, 'De-Active', '2023-09-23 23:51:11', '2023-12-01 06:43:00', NULL),
+        1, 'active', '2023-09-23 23:51:11', '2023-12-26 09:21:00', NULL),
        (6, 4, 'ert', 'rtgre', 'ert', 'b', '2023-02', 'Present', 'ertt', 'erttr', 1, 'active', '2023-09-27 04:12:47',
         '2023-09-27 04:12:47', NULL);
 
@@ -372,6 +372,36 @@ CREATE TABLE `failed_jobs`
     `exception`  longtext COLLATE utf8mb4_unicode_ci     NOT NULL,
     `failed_at`  timestamp                               NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image_resizes`
+--
+
+CREATE TABLE `image_resizes`
+(
+    `id`                    bigint(20) UNSIGNED NOT NULL,
+    `image`                 varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `image_type`            text COLLATE utf8mb4_unicode_ci         NOT NULL,
+    `image_original_width`  varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `image_original__width` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `image_width`           varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `image_height`          varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `created_at`            timestamp NULL DEFAULT NULL,
+    `updated_at`            timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `image_resizes`
+--
+
+INSERT INTO `image_resizes` (`id`, `image`, `image_type`, `image_original_width`, `image_original__width`,
+                             `image_width`, `image_height`, `created_at`, `updated_at`)
+VALUES (3, '2nRZxWh4NJPWpUHFQKQTHgZAMdoOa3OCfgRf19tZ.jpg', 'default_image', NULL, NULL, NULL, NULL,
+        '2023-12-27 07:03:54', '2023-12-27 07:03:54'),
+       (4, 'Screenshot_20231225_152122.jpg', 'resize_image', NULL, NULL, '500', '500', '2023-12-27 07:04:10',
+        '2023-12-27 07:04:10');
 
 -- --------------------------------------------------------
 
@@ -408,7 +438,8 @@ VALUES (1, '2014_10_12_000000_create_users_table', 1),
        (16, '2023_10_30_054200_create_payments_table', 10),
        (17, '2023_10_31_105030_create_payment_histories_table', 11),
        (18, '2023_11_01_104119_create_payment_refunds_table', 12),
-       (19, '2023_12_12_065029_create_user_chats_table', 13);
+       (19, '2023_12_12_065029_create_user_chats_table', 13),
+       (20, '2023_12_27_113148_create_image_resizes_table', 14);
 
 -- --------------------------------------------------------
 
@@ -450,7 +481,10 @@ VALUES (1, 'App\\Models\\User', 19),
        (2, 'App\\Models\\User', 15),
        (2, 'App\\Models\\User', 20),
        (2, 'App\\Models\\User', 23),
-       (3, 'App\\Models\\User', 5);
+       (3, 'App\\Models\\User', 5),
+       (4, 'App\\Models\\User', 24),
+       (5, 'App\\Models\\User', 25),
+       (9, 'App\\Models\\User', 26);
 
 -- --------------------------------------------------------
 
@@ -502,15 +536,15 @@ VALUES (7, 15, 150, 'pay_MvUwgs4qHHjAzy', 'captured', 'paid', '1698904672', '202
         '2023-11-02 00:28:07', NULL),
        (10, 15, 1520, 'pay_MvUcWbmv2rGn5G', 'captured', 'paid', '1698903526', '2023-10-31 23:07:27',
         '2023-11-02 00:08:56', NULL),
-       (12, 14, 15, 'pay_Mv5eD9hoReJIPR', 'captured', 'refunded', '1698815582', '2023-10-31 23:42:49',
-        '2023-11-01 23:46:43', NULL),
+       (12, 14, 15, 'pay_NGvairUe0m1uYk', 'captured', 'paid', '1703583650', '2023-10-31 23:42:49',
+        '2023-12-26 09:41:00', NULL),
        (14, 5, 150, 'pay_Mv6IzESSiTnlhX', 'captured', 'refunded', '1698817898', '2023-11-01 00:21:15',
         '2023-11-02 00:04:49', NULL),
        (15, 6, 142, 'pay_Mv7IIQkSSppbhm', 'captured', 'refunded', '1698821380', '2023-11-01 01:18:58',
         '2023-11-02 00:56:17', NULL),
-       (16, 6, 1000, 'pay_MvA8fu9BmZb8n9', 'captured', 'refunded', '1698831399', '2023-11-01 04:05:50',
-        '2023-11-01 06:03:56', NULL),
-       (19, 20, 150, NULL, NULL, 'pending', NULL, '2023-11-02 01:15:41', '2023-11-02 01:15:41', NULL);
+       (16, 5, 1000, 'pay_MvA8fu9BmZb8n9', 'captured', 'refunded', '1698831399', '2023-11-01 04:05:50',
+        '2023-12-26 09:24:43', NULL),
+       (20, 5, 6000, NULL, NULL, 'pending', NULL, '2023-12-26 09:25:46', '2023-12-26 09:25:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -589,7 +623,10 @@ VALUES (5, 15, 10, 1520, 'pay_Mv5A9kHM0Gcbjp', 'payment', 'INR', 'captured', NUL
         NULL, NULL, NULL, '1698903526', '2023-11-02 00:08:56', '2023-11-02 00:08:56', NULL),
        (21, 15, 7, 150, 'pay_MvUwgs4qHHjAzy', 'payment', 'INR', 'captured', NULL, NULL, '0', 'wallet', '0', NULL, '1',
         'Rozerpay', NULL, NULL, 'mobikwik', NULL, 'hello33@gmail.com', '+919410259922', '[]', '354', '54', NULL, NULL,
-        NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL);
+        NULL, NULL, NULL, '1698904672', '2023-11-02 00:28:07', '2023-11-02 00:28:07', NULL),
+       (23, 14, 12, 15, 'pay_NGvairUe0m1uYk', 'payment', 'INR', 'captured', NULL, NULL, '0', 'paylater', '0', NULL, '1',
+        'Rozerpay', NULL, NULL, 'amazonpay', NULL, 'dfgfd@gmail.com', '+919409552901', '[]', '36', '6', NULL, NULL,
+        NULL, NULL, NULL, '1703583650', '2023-12-26 09:41:00', '2023-12-26 09:41:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -1098,10 +1135,10 @@ CREATE TABLE `users`
 INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_color`, `background_color`, `font_color`,
                      `user_status`, `chatting_replay`, `email_verified_at`, `password`, `remember_token`, `created_at`,
                      `updated_at`)
-VALUES (5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png', 'dushyant@gmail.com', 'active',
-        'light', 'rgba(6,14,47,0.82)', '#000000', 'online', '2023-12-25 17:01:35', NULL,
+VALUES (5, 'Dushyant', 'zABWQww3hPcFBg3eVngeVK5fWXNIyYyB3AE6L2W1.png', 'dushyant@gmail.com', 'active', 'light',
+        'rgba(6,14,47,0.82)', '#000000', 'online', '2023-12-26 17:12:56', NULL,
         '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12',
-        '2023-12-25 11:31:35'),
+        '2023-12-26 12:29:33'),
        (6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '2023-12-14 17:52:45', NULL,
         '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20',
         '2023-12-14 12:22:45'),
@@ -1120,16 +1157,25 @@ VALUES (5, 'Dushyant Chhatraliya', 'UPd93oqVZe0mTIS1OO23cuLcdMKg4LKTHct8Kdnc.png
        (15, 'Hello23', NULL, 'Hello33@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
         '$2y$10$GLwmteawS51yVRWSVqaUEejyY4zIwirB3t3JAVPdLeNYZEbCxdWLu', NULL, '2023-10-05 02:17:29',
         '2023-10-18 00:31:28'),
-       (19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, NULL, NULL,
+       (19, 'D', NULL, 'dushyant12@gmail.com', 'active', NULL, NULL, NULL, NULL, '2023-12-26 16:00:42', NULL,
         '$2y$10$uPHmagcrORHIkXdIfkaoG.qh6cGW3BNygzsrDtkqqhALudFxJg3b.', NULL, '2023-11-01 04:11:57',
-        '2023-11-01 04:11:57'),
-       (20, 'Vishal', 'atMm8eZxpwY3oNhFwA5Yp0fy66Y7RT4vG5bmcvTy.webp', 'vishal@gmail.com', 'active', 'light', '#312525',
-        '#000000', 'online', '2023-12-25 17:01:29', NULL,
+        '2023-12-26 10:30:42'),
+       (20, 'Vishal', 't52OKLXbOdoYDVjk1NWkZlfAQtwvOrslRb5064ci.png', 'vishal@gmail.com', 'active', 'light', '#312525',
+        '#000000', 'online', '2023-12-26 17:11:50', NULL,
         '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-11-01 04:17:34',
-        '2023-12-25 11:31:29'),
+        '2023-12-26 12:30:43'),
        (23, 'Paresh', 'Qf6S5VmpO0nn9N838WXM6ZPxemDHSiUcxV47FTHr.webp', 'paresh@gmail.com', 'active', NULL, NULL, NULL,
         'offline', '2023-12-22 17:32:53', NULL, '$2y$10$tJr8p.lfF0OD9h3aBNTj6u6CQ8RzSv6.WVL90Y1hLcun1rElVrePS', NULL,
-        '2023-12-15 07:45:09', '2023-12-22 12:02:53');
+        '2023-12-15 07:45:09', '2023-12-22 12:02:53'),
+       (24, 'Praful Rajput', NULL, 'praful@gmail.com', 'active', NULL, NULL, NULL, 'offline', NULL, NULL,
+        '$2y$10$MZtKrRLC5KHc6rTbcRf.Seblg6pLfYAU5e63d1lhVu3tVLxKVVeZy', NULL, '2023-12-26 06:31:59',
+        '2023-12-26 06:31:59'),
+       (25, 'Prakash Parmar', NULL, 'prakash@gmail.com', 'active', 'light', '#e21717', '#000000', 'offline', NULL, NULL,
+        '$2y$10$q8vgtJWrQ34xWJ/Qs1ETJuaX0OQJNw0J4MLJ7wrW9QMi01h17tk3K', NULL, '2023-12-26 06:33:52',
+        '2023-12-26 09:54:22'),
+       (26, 'test', NULL, 'test@gmail.com', 'active', NULL, NULL, NULL, 'offline', NULL, NULL,
+        '$2y$10$wQ5pJIM2x0SYSJ7pz/41QuacJ5zYiAjIxGaeAAPLO7Yl1iuw8r6ai', NULL, '2023-12-26 06:49:55',
+        '2023-12-26 06:49:55');
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1224,45 @@ VALUES (1, 5, 20, 'fgd', NULL, '10:47:00', '2023-12-25', NULL, '2023-12-25 05:17
        (16, 5, 20, 'ok', NULL, '16:13:00', '2023-12-25', NULL, '2023-12-25 10:43:44', '2023-12-25 10:43:44'),
        (17, 20, 5, 'ok', NULL, '16:13:00', '2023-12-25', NULL, '2023-12-25 10:43:57', '2023-12-25 10:43:57'),
        (18, 5, 20, 'dgdg', NULL, '17:01:00', '2023-12-25', NULL, '2023-12-25 11:31:29', '2023-12-25 11:31:29'),
-       (19, 20, 5, 'dfg', NULL, '17:01:00', '2023-12-25', NULL, '2023-12-25 11:31:35', '2023-12-25 11:31:35');
+       (19, 20, 5, 'dfg', NULL, '17:01:00', '2023-12-25', NULL, '2023-12-25 11:31:35', '2023-12-25 11:31:35'),
+       (20, 5, 20, NULL, '[\"gnCdsdTMkDZxUkZYsNwrZdhSumcDkMy4TlseKaZr.zip\"]', '17:06:00', '2023-12-25', NULL,
+        '2023-12-25 11:36:22', '2023-12-25 11:36:22'),
+       (21, 5, 20, 'fdgfgfdgfd', NULL, '17:16:00', '2023-12-25', NULL, '2023-12-25 11:46:02', '2023-12-25 11:46:02'),
+       (22, 5, 20, 'dfgdf', NULL, '17:16:00', '2023-12-25', NULL, '2023-12-25 11:46:05', '2023-12-25 11:46:05'),
+       (23, 5, 20, 'dfgfd', NULL, '17:16:00', '2023-12-25', NULL, '2023-12-25 11:46:07', '2023-12-25 11:46:07'),
+       (24, 5, 20, 'dfgfd', NULL, '17:16:00', '2023-12-25', NULL, '2023-12-25 11:46:09', '2023-12-25 11:46:09'),
+       (25, 20, 5, 'fdg', NULL, '17:16:00', '2023-12-25', NULL, '2023-12-25 11:46:15', '2023-12-25 11:46:15'),
+       (26, 20, 5, NULL,
+        '[\"uZ1PvglM1TLn7hCFThCEMp29EhYMiLw3HYi7T1Wt.docx\",\"4d3wYa9r4lKCwEmCjrGYWntr6KtPkUWSAXBAGSya.mp4\",\"dwo1pfIuMDjqK61PVBTRPcDPdsD1jFXKhyzlHMsT.webp\"]',
+        '17:17:00', '2023-12-25', NULL, '2023-12-25 11:47:00', '2023-12-25 11:47:00'),
+       (27, 20, 5, 'gh', NULL, '17:18:00', '2023-12-25', NULL, '2023-12-25 11:48:46', '2023-12-25 11:48:46'),
+       (28, 5, 20, 'fg', NULL, '17:18:00', '2023-12-25', NULL, '2023-12-25 11:48:57', '2023-12-25 11:48:57'),
+       (29, 20, 5, 'dszdfsf', NULL, '17:19:00', '2023-12-25', NULL, '2023-12-25 11:49:23', '2023-12-25 11:49:23'),
+       (30, 20, 5, 'oko', NULL, '10:42:00', '2023-12-26', NULL, '2023-12-26 05:12:13', '2023-12-26 05:12:13'),
+       (31, 5, 20, 'pplpl', NULL, '10:42:00', '2023-12-26', NULL, '2023-12-26 05:12:35', '2023-12-26 05:12:35'),
+       (32, 25, 20, 'hello', NULL, '14:46:00', '2023-12-26', NULL, '2023-12-26 09:16:33', '2023-12-26 09:16:33'),
+       (33, 25, 20, 'Hello', NULL, '14:46:00', '2023-12-26', NULL, '2023-12-26 09:16:54', '2023-12-26 09:16:54'),
+       (34, 5, 19, NULL,
+        '[\"gFpdr1OK0L9LWQRWA6CtKqn6AVqczfIg791ukwCD.jpg\",\"EhOXV4yz4Vh1XKhbmoAyYvn80wLWbT9DBBoo3j40.pdf\",\"wUp1ytyBoickWzRGmBS5JCr4CEWDJ4CcfojWkf6o.xlsx\",\"x6qxST8utdZiJgFwSCcfPzsqAu6HOARflsY4WN51.jpg\"]',
+        '15:57:00', '2023-12-26', NULL, '2023-12-26 10:27:17', '2023-12-26 10:27:17'),
+       (35, 5, 19, 'ok se', NULL, '15:57:00', '2023-12-26', NULL, '2023-12-26 10:27:53', '2023-12-26 10:27:53'),
+       (36, 5, 19, 'dd', NULL, '15:58:00', '2023-12-26', NULL, '2023-12-26 10:28:13', '2023-12-26 10:28:13'),
+       (37, 5, 19, 'sdsd', NULL, '15:58:00', '2023-12-26', NULL, '2023-12-26 10:28:39', '2023-12-26 10:28:39'),
+       (38, 5, 19, 'xc', NULL, '15:58:00', '2023-12-26', NULL, '2023-12-26 10:28:47', '2023-12-26 10:28:47'),
+       (39, 5, 19, NULL,
+        '[\"ySsmU7CAjcY5dupD7CBLYN6smHXku1IyoK6oIP4N.jpg\",\"0UTXOaAukM1IfBZhiQlknKnJkpqwl4EGSSUdctYe.jpg\",\"TgwXe4kVwe0Z9Zy8UqJb2xvg8lWeQetl7079eInw.jpg\",\"QhA7QmYwUduYaVgGtGhWCasIMFSi0dM2jJX8BgvA.png\"]',
+        '16:00:00', '2023-12-26', NULL, '2023-12-26 10:30:42', '2023-12-26 10:30:42'),
+       (40, 5, 20, 'sdfds', NULL, '16:21:00', '2023-12-26', NULL, '2023-12-26 10:51:54', '2023-12-26 10:51:54'),
+       (41, 20, 5, 'dfgfd', NULL, '16:26:00', '2023-12-26', NULL, '2023-12-26 10:56:12', '2023-12-26 10:56:12'),
+       (42, 5, 20, 'kljl', NULL, '16:26:00', '2023-12-26', NULL, '2023-12-26 10:56:37', '2023-12-26 10:56:37'),
+       (43, 20, 5, 'done', NULL, '16:27:00', '2023-12-26', NULL, '2023-12-26 10:57:25', '2023-12-26 10:57:25'),
+       (44, 5, 20, 'fdsfg', NULL, '17:10:00', '2023-12-26', NULL, '2023-12-26 11:40:52', '2023-12-26 11:40:52'),
+       (45, 5, 20, NULL, '[\"I16aelhW1ahO0mL2u90ndQt2KcUkNIjppjXTvvd9.jpg\"]', '17:11:00', '2023-12-26', NULL,
+        '2023-12-26 11:41:00', '2023-12-26 11:41:00'),
+       (46, 5, 20, 'dfgd', NULL, '17:11:00', '2023-12-26', NULL, '2023-12-26 11:41:50', '2023-12-26 11:41:50'),
+       (47, 20, 5, 'ffdsg', NULL, '17:12:00', '2023-12-26', NULL, '2023-12-26 11:42:07', '2023-12-26 11:42:07'),
+       (48, 20, 5, 'fghfg', NULL, '17:12:00', '2023-12-26', NULL, '2023-12-26 11:42:15', '2023-12-26 11:42:15'),
+       (49, 20, 5, 'ok', NULL, '17:12:00', '2023-12-26', NULL, '2023-12-26 11:42:56', '2023-12-26 11:42:56');
 
 -- --------------------------------------------------------
 
@@ -1272,6 +1356,12 @@ ALTER TABLE `education`
 ALTER TABLE `failed_jobs`
     ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `image_resizes`
+--
+ALTER TABLE `image_resizes`
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -1463,22 +1553,28 @@ ALTER TABLE `failed_jobs`
     MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `image_resizes`
+--
+ALTER TABLE `image_resizes`
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-    MODIFY `id` int (10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+    MODIFY `id` int (10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `payment_histories`
 --
 ALTER TABLE `payment_histories`
-    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `payment_refunds`
@@ -1544,13 +1640,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user_chats`
 --
 ALTER TABLE `user_chats`
-    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `work_experiences`

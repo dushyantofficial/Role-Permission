@@ -173,6 +173,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/users-chat-demo', [App\Http\Controllers\UserChatController::class, 'user_chat_demo'])->name('user-chat-demo');
 
+    Route::get('/image-resize', [App\Http\Controllers\UserChatController::class, 'image_resize'])->name('image-resize');
+    Route::post('/image-resize-store', [App\Http\Controllers\UserChatController::class, 'image_resize_store'])->name('image-resize-store');
+    Route::get('/image-resize-delete/{id}', [App\Http\Controllers\UserChatController::class, 'image_resize_delete'])->name('image-resize-delete');
+
 });
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha'])->name('reload-captcha');
 

@@ -709,7 +709,7 @@
                     </center>
                     <!-- Download Button -->
                     <div class="mt-2 text-center">
-                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-primary">
+                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">
                             Download
                         </a>
                     </div>
@@ -784,7 +784,7 @@
                     </center>
                     <!-- Download Button -->
                     <div class="mt-2 text-center">
-                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-primary">
+                        <a href="storage/admin/document/${document}" download="image.jpg" class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">
                             Download
                         </a>
                     </div>

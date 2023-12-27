@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ImageResize;
 use App\Models\User;
 use App\Models\UserChat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class UserChatController extends Controller
 {
@@ -113,4 +115,44 @@ class UserChatController extends Controller
             return back();
         }
     }
+
+    public function image_resize()
+    {
+        $images = ImageResize::orderBy('id', 'desc')->get();
+        return view('image.image_resize', compact('images'));
+    }
+
+    public function image_resize_store(Request $request)
+    {
+        $input = $request->all();
+        if ($request->image_type == 'default_image') {
+            $request->validate(ImageResize::$rules);
+            if ($request->hasFile("image")) {
+                $img = $request->file("image");
+                $img->store('public/resize_images');
+                $input['image'] = $img->hashName();
+            }
+            ImageResize::create($input);
+        } else {
+            $request->validate(ImageResize::$ruless);
+            if ($request->hasFile("image")) {
+                $img = $request->file("image");
+                $filename = $img->getClientOriginalName();
+                $image_resize = Image::make($img->getRealPath());
+                $image_resize->resize($request->image_width, $request->image_height);
+                $image_resize->save(public_path('storage/resize_images/' . $filename));
+                $input['image'] = $filename;
+            }
+            ImageResize::create($input);
+        }
+        return back();
+    }
+
+    public function image_resize_delete(Request $request, $id)
+    {
+        $imageResize = ImageResize::find($id);
+        $imageResize->delete();
+        return response()->json(['message' => 'Image deleted successfully']);
+    }
+
 }
