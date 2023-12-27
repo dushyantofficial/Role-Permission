@@ -18,9 +18,11 @@ class CreateImageResizesTable extends Migration
             $table->string('image');
             $table->text('image_type');
             $table->string('image_original_width')->nullable();
-            $table->string('image_original__width')->nullable();
+            $table->string('image_original_height')->nullable();
             $table->string('image_width')->nullable();
             $table->string('image_height')->nullable();
+            $table->string('image_size')->nullable();
+            $table->string('compress_image_size')->nullable();
             $table->timestamps();
         });
     }

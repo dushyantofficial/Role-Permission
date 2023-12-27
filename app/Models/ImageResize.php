@@ -15,15 +15,17 @@ class ImageResize extends Model
     public static $ruless = [
         'image' => 'required',
         'image_width' => 'required',
-        'image_height' => 'required'
+        'image_height' => 'required',
     ];
     public $table = "image_resizes";
     public $fillable = [
         'image',
         'image_type',
         'image_original_width',
-        'image_original__width',
+        'image_original_height',
         'image_width',
         'image_height',
+        'image_size',
+        'compress_image_size',
     ];
 }

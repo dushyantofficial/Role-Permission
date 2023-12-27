@@ -8,6 +8,7 @@ use App\Models\UserChat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class UserChatController extends Controller
@@ -129,20 +130,41 @@ class UserChatController extends Controller
             $request->validate(ImageResize::$rules);
             if ($request->hasFile("image")) {
                 $img = $request->file("image");
+                // Get the original width and height
+                $originalWidth = Image::make($img)->getWidth();
+                $originalHeight = Image::make($img)->getHeight();
+                $imageSize = $img->getSize();
+                $sizeInKb = $imageSize / 1024;
                 $img->store('public/resize_images');
                 $input['image'] = $img->hashName();
             }
+            $input['image_original_width'] = $originalWidth;
+            $input['image_original_height'] = $originalHeight;
+            $input['image_size'] = number_format($sizeInKb, 2);
             ImageResize::create($input);
         } else {
             $request->validate(ImageResize::$ruless);
             if ($request->hasFile("image")) {
                 $img = $request->file("image");
+                // Get the original width and height
+                $originalWidth = Image::make($img)->getWidth();
+                $originalHeight = Image::make($img)->getHeight();
+                $imageSize = $img->getSize();
+                $sizeInKb = $imageSize / 1024;
                 $filename = $img->getClientOriginalName();
                 $image_resize = Image::make($img->getRealPath());
                 $image_resize->resize($request->image_width, $request->image_height);
                 $image_resize->save(public_path('storage/resize_images/' . $filename));
+
+                // Get the compressed image size
+                $compressedSize = Storage::size('public/resize_images/' . $filename); // in bytes
+                $compressedSizeInKb = $compressedSize / 1024; // in kilobytes
                 $input['image'] = $filename;
             }
+            $input['image_original_width'] = $originalWidth;
+            $input['image_original_height'] = $originalHeight;
+            $input['image_size'] = number_format($sizeInKb, 2);
+            $input['compress_image_size'] = number_format($compressedSizeInKb, 2);
             ImageResize::create($input);
         }
         return back();

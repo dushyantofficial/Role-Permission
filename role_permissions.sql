@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2023 at 08:38 AM
+-- Generation Time: Dec 27, 2023 at 11:33 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -385,9 +385,11 @@ CREATE TABLE `image_resizes`
     `image`                 varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `image_type`            text COLLATE utf8mb4_unicode_ci         NOT NULL,
     `image_original_width`  varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-    `image_original__width` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `image_original_height` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_width`           varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `image_height`          varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `image_size`            varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `compress_image_size`   varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `created_at`            timestamp NULL DEFAULT NULL,
     `updated_at`            timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -396,12 +398,35 @@ CREATE TABLE `image_resizes`
 -- Dumping data for table `image_resizes`
 --
 
-INSERT INTO `image_resizes` (`id`, `image`, `image_type`, `image_original_width`, `image_original__width`,
-                             `image_width`, `image_height`, `created_at`, `updated_at`)
-VALUES (3, '2nRZxWh4NJPWpUHFQKQTHgZAMdoOa3OCfgRf19tZ.jpg', 'default_image', NULL, NULL, NULL, NULL,
+INSERT INTO `image_resizes` (`id`, `image`, `image_type`, `image_original_width`, `image_original_height`,
+                             `image_width`, `image_height`, `image_size`, `compress_image_size`, `created_at`,
+                             `updated_at`)
+VALUES (3, '2nRZxWh4NJPWpUHFQKQTHgZAMdoOa3OCfgRf19tZ.jpg', 'default_image', NULL, NULL, NULL, NULL, NULL, NULL,
         '2023-12-27 07:03:54', '2023-12-27 07:03:54'),
-       (4, 'Screenshot_20231225_152122.jpg', 'resize_image', NULL, NULL, '500', '500', '2023-12-27 07:04:10',
-        '2023-12-27 07:04:10');
+       (4, 'Screenshot_20231225_152122.jpg', 'resize_image', NULL, NULL, '500', '500', NULL, NULL,
+        '2023-12-27 07:04:10', '2023-12-27 07:04:10'),
+       (5, 'image (3).jpg', 'resize_image', NULL, NULL, '50', '50', NULL, NULL, '2023-12-27 07:42:25',
+        '2023-12-27 07:42:25'),
+       (6, 'lx1VM23S9klSmoP3dFIgJy6HXUCLyKHS4GSymLtn.png', 'default_image', '1923', '1096', NULL, NULL, NULL, NULL,
+        '2023-12-27 09:15:59', '2023-12-27 09:15:59'),
+       (7, 'image (2).jpg', 'resize_image', '1923', '1096', '1050', '950', NULL, NULL, '2023-12-27 09:19:02',
+        '2023-12-27 09:19:02'),
+       (8, 'XH9m0JVLlAYvQJf2RwSCH01u8KrDDVr9usceNSCW.jpg', 'default_image', '500', '500', NULL, NULL, NULL, NULL,
+        '2023-12-27 09:24:03', '2023-12-27 09:24:03'),
+       (9, 'zCnEjOeo5hccirMLHKO0Jx6pZ5yhADsfVaVi607D.jpg', 'default_image', '500', '500', NULL, NULL, '43.060546875',
+        NULL, '2023-12-27 09:27:30', '2023-12-27 09:27:30'),
+       (10, 'image (3).jpg', 'resize_image', '500', '500', '150', '150', '43.060546875', NULL, '2023-12-27 09:33:53',
+        '2023-12-27 09:33:53'),
+       (11, 'image (2).jpg', 'resize_image', '1923', '1096', '650', '562', '738.4462890625', '41.7099609375',
+        '2023-12-27 09:44:18', '2023-12-27 09:44:18'),
+       (12, 'gwb7BAFE0sqrJ02x4dmS13v96OA9sQMkTThnCSbJ.webp', 'default_image', '736', '1104', NULL, NULL, '88.58', NULL,
+        '2023-12-27 10:01:18', '2023-12-27 10:01:18'),
+       (13, 'w4467LCqbhUepMTqBnThVqOduUuE2xPuZVnE6jii.webp', 'resize_image', '736', '1104', '500', '450', '88.58',
+        '42.25', '2023-12-27 10:01:50', '2023-12-27 10:01:50'),
+       (14, 'mlFcRw1RoGTkparJzixHxZnGB7usBxOodKPRqG2X.jpg', 'default_image', '720', '1600', NULL, NULL, '73.01', NULL,
+        '2023-12-27 10:24:56', '2023-12-27 10:24:56'),
+       (15, 'image (5).jpg', 'resize_image', '500', '450', '1852', '1750', '42.25', '422.51', '2023-12-27 10:31:05',
+        '2023-12-27 10:31:05');
 
 -- --------------------------------------------------------
 
@@ -1138,7 +1163,7 @@ INSERT INTO `users` (`id`, `name`, `profile_pic`, `email`, `status`, `theme_colo
 VALUES (5, 'Dushyant', 'zABWQww3hPcFBg3eVngeVK5fWXNIyYyB3AE6L2W1.png', 'dushyant@gmail.com', 'active', 'light',
         'rgba(6,14,47,0.82)', '#000000', 'online', '2023-12-26 17:12:56', NULL,
         '$2y$10$yGzI8Ybqo9OsXgMfsZa.AOK1no3qjvye0SYO94jBXo26cuqwAZdwG', NULL, '2023-07-10 23:35:12',
-        '2023-12-26 12:29:33'),
+        '2023-12-27 10:32:42'),
        (6, 'Rajesh', NULL, 'rajesh@gmail.com', 'Block', NULL, NULL, NULL, NULL, '2023-12-14 17:52:45', NULL,
         '$2y$10$V63VHj67egub4BwSS.TD.uAmAygJA5K0DALC1aqqDDCpsS.3ON86y', NULL, '2023-07-13 02:30:20',
         '2023-12-14 12:22:45'),
@@ -1556,7 +1581,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `image_resizes`
 --
 ALTER TABLE `image_resizes`
-    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`

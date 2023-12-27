@@ -16,14 +16,14 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-2">
                             <label class="control-label">Default Image:</label>
                             <div class="input-group mb-3">
                                 <input type="radio" data-bs-toggle="modal"
                                        name="image_button" data-bs-target="#default_image">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-2">
                             <label class="control-label">Resize Image:</label>
                             <div class="input-group mb-3">
                                 <input type="radio" data-bs-toggle="modal"
@@ -39,76 +39,107 @@
                                 <th>No</th>
                                 <th>Image</th>
                                 <th>Image Type</th>
-                                <th>Image Width</th>
-                                <th>Image Height</th>
-                                <th>Preview Image</th>
-                                <th>Download</th>
+                                <th style="width: 112.719px;">Image Original Width/Height</th>
+                                <th style="width: 105.438px">Image Width/Height</th>
+                                <th style="width: 82.1719px">Original Image Size</th>
+                                <th style="width: 83.3906px;">Compress Image Size</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
+                            <tbody>
                             @foreach($images as $image)
-                                <tbody>
-                                <td>{{$loop->iteration}}</td>
-                                <td><img src="{{asset('storage/resize_images/'.$image->image)}}" width="50px"
-                                         height="50px" alt=""></td>
-                                <td>{{$image->image_type}}</td>
-                                <td>
-                                    @if($image->image_width != null)
-                                        {{$image->image_width}}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($image->image_height != null)
-                                        {{$image->image_height}}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
-                                       data-toggle="modal" data-target="#imageModal_{{$image->id}}">
-                                        Image Preview</a>
-
-                                    <!-- Modal Structure -->
-                                    <div class="modal" id="imageModal_{{$image->id}}" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Image Preview</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <!-- Add your modal content here -->
-                                                    <img src="{{ asset('storage/resize_images/'.$image->image) }}"
-                                                         alt="user-avatar" class="img-fluid rounded">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td><img src="{{asset('storage/resize_images/'.$image->image)}}" width="50px"
+                                             height="50px" alt=""></td>
+                                    <td>
+                                        @if($image->image_type == 'default_image')
+                                            <label class="badge badge-success">Default Image</label>
+                                        @else
+                                            <label class="badge badge-danger">Resize Image</label>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($image->image_original_width != null)
+                                            {{$image->image_original_width}}
+                                        @else
+                                            -
+                                        @endif
+                                        /
+                                        @if($image->image_original_height != null)
+                                            {{$image->image_original_height}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($image->image_width != null)
+                                            {{$image->image_width}}
+                                        @else
+                                            -
+                                        @endif
+                                        /
+                                        @if($image->image_height != null)
+                                            {{$image->image_height}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($image->image_size != null)
+                                            {{number_format($image->image_size,2)}}KB
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($image->compress_image_size != null)
+                                            {{number_format($image->compress_image_size,2)}}KB
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-shadow btn-outline-info btn-hover-shine"
+                                           data-toggle="modal" data-target="#imageModal_{{$image->id}}">
+                                            <i class="fa fa-image"></i></a>
+                                        <a href="{{asset('storage/resize_images/'.$image->image)}}" download="image.jpg"
+                                           class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">
+                                            <i class="fa fa-download"></i></a>
+                                        </a>
+                                        <!-- Modal Structure -->
+                                        <div class="modal" id="imageModal_{{$image->id}}" tabindex="-1" role="dialog"
+                                             data-bs-backdrop="static" data-bs-keyboard="false">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Image Preview</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Add your modal content here -->
+                                                        <img src="{{ asset('storage/resize_images/'.$image->image) }}"
+                                                             alt="user-avatar" class="img-fluid rounded">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td><a href="{{asset('storage/resize_images/'.$image->image)}}" download="image.jpg"
-                                       class="btn btn-sm btn-shadow btn-outline-primary btn-hover-shine">
-                                        Download Image
-                                    </a>
-                                </td>
-                                <td>
-                                    <button
-                                        class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine delete-image"
-                                        data-delete-id="{{ $image->id }}">
-                                        <i class="fa fa-trash" aria-hidden="true"></i></button>
-                                </td>
-                                </tbody>
+                                        <button
+                                            class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine delete-image"
+                                            data-delete-id="{{ $image->id }}">
+                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -152,7 +183,8 @@
                                             <input class="form-control  @error('image') is-invalid @enderror"
                                                    type="file"
                                                    name="image"
-                                                   value="{{old('image')}}" placeholder="Enter Full Name" autofocus>
+                                                   id="image_default" value="{{old('image')}}"
+                                                   placeholder="Enter Full Name" autofocus>
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fa fa-image"></span></div>
                                             </div>
@@ -210,7 +242,7 @@
                                         <div class="input-group mb-3">
                                             <input class="form-control  @error('image') is-invalid @enderror"
                                                    type="file"
-                                                   name="image"
+                                                   id="image_resize" name="image"
                                                    value="{{old('image')}}" placeholder="Enter Full Name" autofocus>
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fa fa-image"></span></div>
@@ -268,30 +300,41 @@
     {{--  Default Image   --}}
     <script>
         $(document).ready(function () {
-            $('#defaultsubmitBtn').click(function (e) { // Change 'submitBtn' to the actual ID of your button
+            $('#defaultsubmitBtn').click(function (e) {
                 e.preventDefault();
-                var formData = new FormData($('#default_image_form')[0]); // Use the form ID 'add_form'
+
+                // Validate file type
+                const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+                const selectedFileType = $('#image_default').prop('files')[0].type;
+
+                if (allowedFileTypes.indexOf(selectedFileType) === -1) {
+                    showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
+                    return;
+                }
+
+                // Validate file size (in bytes)
+                const maxSize = 5 * 1024 * 1024; // 5 MB
+                const selectedFileSize = $('#image_default').prop('files')[0].size;
+
+                if (selectedFileSize > maxSize) {
+                    showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
+                    return;
+                }
+
+                var formData = new FormData($('#default_image_form')[0]);
 
                 $.ajax({
                     type: 'POST',
-                    url: $('#default_image_form').attr('action'), // Use the form's action attribute
+                    url: $('#default_image_form').attr('action'),
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'Default image successfully.',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload(); // Reload the page
-                            }
-                        });
-
+                        $('#default_image').modal('hide');
+                        showSuccess('Success!', 'Default image successfully.');
                     },
                     error: function (xhr) {
-                        // Handle validation errors (e.g., display error messages)
+                        // Handle validation errors
                         var errors = xhr.responseJSON.errors;
                         var errorMessages = [];
 
@@ -299,16 +342,39 @@
                             errorMessages.push(errors[field][0]);
                         }
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                        showError('Error!', errorMessages.join('<br>') + '<br>');
                     }
                 });
             });
-        });
 
+            function showError(title, message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: title,
+                    html: message,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Optionally, you can add additional logic after the user clicks "OK"
+                    }
+                });
+            }
+
+            function showSuccess(title, message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: title,
+                    text: message,
+                    confirmButtonColor: '#28a745',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // Reload the page
+                    }
+                });
+            }
+        });
     </script>
 
     {{-- Resize Image--}}
@@ -316,6 +382,25 @@
         $(document).ready(function () {
             $('#resizesubmitBtn').click(function (e) { // Change 'submitBtn' to the actual ID of your button
                 e.preventDefault();
+
+                // Validate file type
+                const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+                const selectedFileType = $('#image_resize').prop('files')[0].type;
+
+                if (allowedFileTypes.indexOf(selectedFileType) === -1) {
+                    showError('Invalid File Type', 'Please select a valid image file (png, jpg, jpeg, webp).');
+                    return;
+                }
+
+                // Validate file size (in bytes)
+                const maxSize = 5 * 1024 * 1024; // 5 MB
+                const selectedFileSize = $('#image_resize').prop('files')[0].size;
+
+                if (selectedFileSize > maxSize) {
+                    showError('File Size Exceeded', 'Please select an image file smaller than 5 MB.');
+                    return;
+                }
+
                 var formData = new FormData($('#resize_image_form')[0]); // Use the form ID 'add_form'
 
                 $.ajax({
@@ -325,19 +410,11 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'Image resize successfully.',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload(); // Reload the page
-                            }
-                        });
-
+                        $('#resize_image').modal('hide');
+                        showSuccess('Success!', 'Image resize successfully.');
                     },
                     error: function (xhr) {
-                        // Handle validation errors (e.g., display error messages)
+                        // Handle validation errors
                         var errors = xhr.responseJSON.errors;
                         var errorMessages = [];
 
@@ -345,14 +422,38 @@
                             errorMessages.push(errors[field][0]);
                         }
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                        showError('Error!', errorMessages.join('<br>') + '<br>');
                     }
                 });
             });
+
+            function showError(title, message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: title,
+                    html: message,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Optionally, you can add additional logic after the user clicks "OK"
+                    }
+                });
+            }
+
+            function showSuccess(title, message) {
+                Swal.fire({
+                    icon: 'success',
+                    title: title,
+                    text: message,
+                    confirmButtonColor: '#28a745',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // Reload the page
+                    }
+                });
+            }
         });
 
     </script>
