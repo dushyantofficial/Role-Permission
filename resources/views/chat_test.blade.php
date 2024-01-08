@@ -297,42 +297,6 @@
             background: #0d1214;
             border-left-color: #009688;
         }
-
-        #container {
-            transition: transform 0.5s;
-            transform-origin: top left;
-        }
-
-        .rotate-90 {
-            transform: rotate(90deg);
-        }
-
-        .rotate-0 {
-            transform: rotate(0deg);
-        }
-
-        #scrollToTop {
-            display: none;
-            width: 35px;
-            height: 35px;
-            position: fixed;
-            bottom: 190px;
-            right: 25px;
-            background-color: rgba(1, 110, 193, .7);
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        &
-        :hover {
-            background-color: rgba(75, 115, 170, 1);
-        }
-
-        }
     </style>
     <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
@@ -419,8 +383,6 @@
                         <h2>Chat with {{$receiver_record->name}}</h2>
                         <h3>already {{$user_chats->count()}} messages</h3>
                     </div>
-                    {{--                        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine rotate-button" onclick="rotateContent()"><i--}}
-                    {{--                                class="fa fa-retweet" aria-hidden="true"></i></button>--}}
                     <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
                             data-bs-target="#show_profile" style="float: inline-end;">View Profile
                     </button>
@@ -428,12 +390,6 @@
                 <ul id="chat">
 
                 </ul>
-                <div id="scrollToTop">
-                    <svg fill="#ffffff" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                    </svg>
-                </div>
                 <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine"
                         style="position: absolute;bottom: 38px;left: 38%;" onclick="checkAndLoadChatData()"><i
                         class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -890,96 +846,5 @@
 
         // Rest of your existing JavaScript code, including the loadChatData() function
     </script>
-
-
-
-    <script>
-        jQuery(document).ready(function () {
-
-//fixed scroll header
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 1) {
-                    $('#chat').addClass('sticky');
-                } else {
-                    $('#chat').removeClass('sticky');
-                }
-            });
-
-//fixed table head
-            var tableFixed = function () {
-                var doc = $(document),
-                    fixed = false,
-                    anchor = $('.anchor'),
-                    content = $('.heading');
-
-                var onScroll = function () {
-                    var docTop = doc.scrollTop() + 50,
-                        anchorTop = anchor.offset().top;
-
-                    if (docTop > anchorTop) {
-                        if (!fixed) {
-                            anchor.height(content.outerHeight());
-                            content.addClass('fixed');
-                            fixed = true;
-                        }
-                    } else {
-                        if (fixed) {
-                            anchor.height(0);
-                            content.removeClass('fixed');
-                            fixed = false;
-                        }
-                    }
-                };
-                $(window).on('scroll', onScroll);
-            };
-            var demo = new tableFixed($('#chat'));
-
-//button top
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 100) {
-                    $('#scrollToTop').fadeIn();
-                } else {
-                    $('#scrollToTop').fadeOut();
-                }
-            });
-
-            $('#scrollToTop').click(function () {
-                $('#chat').animate({scrollTop: 0}, 800);
-                return false;
-            });
-
-//scroll to element
-            $('.button_a').click(function () {
-                $('#chat').animate({
-                        scrollTop: $('#chat').position().top
-                    }, 300
-                );
-            });
-
-
-        });
-    </script>
-
-    {{--  Screen Rotet   --}}
-    {{--    <script>--}}
-    {{--        function rotateContent() {--}}
-    {{--            const container = document.getElementById('container');--}}
-    {{--            const currentRotation = container.style.transform || 'rotate(0deg)';--}}
-    {{--            const newRotation = currentRotation === 'rotate(90deg)' ? 'rotate(0deg)' : 'rotate(90deg)';--}}
-
-    {{--            localStorage.setItem('contentRotation', newRotation);--}}
-    {{--            container.style.transform = newRotation;--}}
-    {{--        }--}}
-
-    {{--        function setInitialRotation() {--}}
-    {{--            const container = document.getElementById('container');--}}
-    {{--            const savedRotation = localStorage.getItem('contentRotation');--}}
-    {{--            if (savedRotation) {--}}
-    {{--                container.style.transform = savedRotation;--}}
-    {{--            }--}}
-    {{--        }--}}
-
-    {{--        window.onload = setInitialRotation;--}}
-    {{--    </script>--}}
 
 @endpush

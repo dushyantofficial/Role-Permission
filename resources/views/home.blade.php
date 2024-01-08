@@ -131,4 +131,6 @@
             </div>
         </div>
     </main>
+    {{--  Horizone Ignore Command  --}}
+    {{--    composer require laravel/horizon --ignore-platform-reqs--}}
 @endsection
