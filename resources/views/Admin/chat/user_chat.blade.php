@@ -297,12 +297,10 @@
             background: #0d1214;
             border-left-color: #009688;
         }
-
         #container {
             transition: transform 0.5s;
             transform-origin: top left;
         }
-
         .rotate-90 {
             transform: rotate(90deg);
         }
@@ -312,24 +310,21 @@
         }
 
         #scrollToTop {
-            display: none;
             width: 35px;
             height: 35px;
             position: fixed;
             bottom: 190px;
             right: 25px;
-            background-color: rgba(1, 110, 193, .7);
+            background-color: #009688;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 10;
-            transition: 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
 
         &
         :hover {
-            background-color: rgba(75, 115, 170, 1);
+            background-color: #009688;
         }
 
         }
@@ -899,9 +894,9 @@
 //fixed scroll header
             $(window).scroll(function () {
                 if ($(this).scrollTop() > 1) {
-                    $('#chat').addClass('sticky');
+                    $('header').addClass('sticky');
                 } else {
-                    $('#chat').removeClass('sticky');
+                    $('header').removeClass('sticky');
                 }
             });
 
