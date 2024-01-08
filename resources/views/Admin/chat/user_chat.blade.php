@@ -301,6 +301,7 @@
             transition: transform 0.5s;
             transform-origin: top left;
         }
+
         .rotate-90 {
             transform: rotate(90deg);
         }
@@ -310,6 +311,7 @@
         }
 
         #scrollToTop {
+            display: none;
             width: 35px;
             height: 35px;
             position: fixed;
@@ -318,6 +320,8 @@
             background-color: #009688;
             border-radius: 50%;
             cursor: pointer;
+            z-index: 10;
+            transition: 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
