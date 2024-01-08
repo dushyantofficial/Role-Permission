@@ -401,7 +401,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="div1">
+            <div class="div1" id="div1">
                 <header>
                     @if($receiver_record->profile_pic != null)
                         <a href="{{asset('storage/images/'.$receiver_record->profile_pic)}}"
