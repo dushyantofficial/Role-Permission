@@ -325,13 +325,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-        &
-        :hover {
-            background-color: #009688;
         }
 
-        }
+        /*#scrollToTop :hover {*/
+        /*    background-color: #009688;*/
+        /*}*/
     </style>
     <main class="app-content {{user_theme_get()}}">
         <div class="app-title">
