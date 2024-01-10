@@ -47,6 +47,7 @@ class CourseController extends Controller
             $request->validate(Course::$ruless, Course::$customMessages);
             $input['end_date'] = 'Present';
         } else {
+            $input['check'] = 0;
             $request->validate(Course::$rules, Course::$customMessages);
         }
         $courses->update($input);

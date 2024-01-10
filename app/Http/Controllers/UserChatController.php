@@ -177,4 +177,37 @@ class UserChatController extends Controller
         return response()->json(['message' => 'Image deleted successfully']);
     }
 
+
+    public function users_chat_test(Request $request)
+    {
+
+        $userId = 5;
+        $receiver_record = User::find($userId);
+        if (isset($receiver_record)) {
+            $user_chats = UserChat::where(function ($query) use ($userId) {
+                $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                    ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+            })->orderBy('created_at')->get();
+
+            $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
+            $currentDatetime = now();
+            $user_chat_count = UserChat::where('date', '>=', now()->toDateString())
+                ->where(function ($query) {
+                    $query->whereTime('time', '>=', now()->toTimeString())
+                        ->orWhere(function ($query) {
+                            $query->whereRaw('TIME(DATE_ADD(time, INTERVAL 55 SECOND)) >= ?', [now()->toTimeString()]);
+                        });
+                })
+                ->latest('created_at')
+                ->count();
+            if ($request->ajax()) {
+                return response()->json(['user_chats' => $user_chats, 'all_users' => $all_users,
+                    'receiver_record' => $receiver_record, 'user_chat_count' => $user_chat_count]);
+            }
+            return view('chat_test', compact('all_users', 'receiver_record', 'user_chats', 'user_chat_count'));
+        } else {
+            return back();
+        }
+    }
+
 }

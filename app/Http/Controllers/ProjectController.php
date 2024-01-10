@@ -47,6 +47,7 @@ class ProjectController extends Controller
             $request->validate(Project::$ruless, Project::$customMessages);
             $input['end_date'] = 'Present';
         } else {
+            $input['check'] = 0;
             $request->validate(Project::$rules, Project::$customMessages);
         }
         $projects->update($input);

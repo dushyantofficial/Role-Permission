@@ -47,6 +47,7 @@ class EducationController extends Controller
             $request->validate(Education::$ruless, Education::$customMessages);
             $input['end_date'] = 'Present';
         } else {
+            $input['check'] = 0;
             $request->validate(Education::$rules, Education::$customMessages);
         }
         $educations->update($input);

@@ -47,6 +47,7 @@ class WorkExperienceController extends Controller
             $request->validate(Work_Experience::$ruless, Work_Experience::$customMessages);
             $input['end_date'] = 'Present';
         } else {
+            $input['check'] = 0;
             $request->validate(Work_Experience::$rules, Work_Experience::$customMessages);
         }
         $Work_Experience->update($input);
