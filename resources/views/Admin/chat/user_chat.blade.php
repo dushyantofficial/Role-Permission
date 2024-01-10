@@ -314,7 +314,7 @@
             display: none;
             width: 35px;
             height: 35px;
-            position: fixed;
+            position: absolute;
             bottom: 190px;
             right: 25px;
             background-color: #009688;
