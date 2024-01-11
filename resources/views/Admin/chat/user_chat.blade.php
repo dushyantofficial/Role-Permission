@@ -142,7 +142,7 @@
 
         .div1 header div {
             margin-left: 10px;
-            margin-right: 145px;
+            margin-right: 60px;
         }
 
         .div1 header h2 {
@@ -418,6 +418,25 @@
                     </div>
                     {{--                        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine rotate-button" onclick="rotateContent()"><i--}}
                     {{--                                class="fa fa-retweet" aria-hidden="true"></i></button>--}}
+
+                    <div>
+                        <form action="{{ route('user-chat') }}" id="filter_date" class="d-flex">
+                            @csrf
+                            <input id="reportrange" name="date" value=""
+                                   class="pull-left form-control daterange"
+                                   placeholder="Select Date">
+                            <div class="d-flex">
+                                <button type="button"
+                                        class="btn btn-sm btn-shadow btn-outline-success btn-hover-shine rotate-button"
+                                        id="datefiltersubmitBtn">
+                                    <i
+                                        class="fa fa-filter" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine rotate-button"
+                            id="reloadButton" style="margin-left: -15%;padding: 7px"><i
+                            class="fa fa-refresh fa-spin" aria-hidden="true"></i></button>
                     <button class="btn btn-sm btn-shadow btn-outline-danger btn-hover-shine" data-bs-toggle="modal"
                             data-bs-target="#show_profile" style="float: inline-end;">View Profile
                     </button>
@@ -675,10 +694,29 @@
         function loadChatData() {
             var userId = {{ $receiver_record->id }}; // Assuming you can get the user ID from your view
             var authId = {{\Illuminate\Support\Facades\Auth::user()->id}};
+
+            // Get the selected date range value
+            var dateValue = $("#reportrange").val();
+            if (dateValue != '') {
+                // Get the current form action
+                var formAction = $('#filter_date').attr('action');
+                // Add the "date" parameter to the form action
+                formAction += '?id={{ request('id') }}&date=' + encodeURIComponent(dateValue);
+
+                // Update the form action
+                $('#filter_date').attr('action', formAction);
+            } else {
+                var formAction = $('#filter_date').attr('action');
+                formAction += '?id=' + encodeURIComponent(userId);
+
+                // Update the form action
+                $('#filter_date').attr('action', formAction);
+            }
             $.ajax({
-                url: '{{ route("user-chat") }}?id=' + userId,
+                url: formAction,
                 method: 'GET',
                 success: function (data) {
+                    console.log(data.user_chats)
                     // Handle the received data
                     if (data.error) {
                         console.error('Error: ' + data.error);
@@ -862,32 +900,47 @@
         $(document).ready(function () {
             var userChatCount = @json($user_chat_count);
             loadChatData();
-            console.log(userChatCount)
-            // if (userChatCount == 1) {
-            //     setInterval(function () {
-            //         // Clear the content of the #chat element
-            //         $('#chat').empty();
-            //
-            //         // Load chat data only if userChatCount is 1
-            //         if (userChatCount == 1) {
-            //             loadChatData();
-            //         }
-            //     }, 5000);
-            // }
         });
 
     </script>
 
+    {{--    <script>--}}
+    {{--        function checkAndLoadChatData() {--}}
+    {{--            // Check if the chat area is empty--}}
+    {{--            $("#chat").empty();--}}
+    {{--            var dateValue = $("#reportrange").val('');--}}
+    {{--            loadChatData();--}}
+    {{--        }--}}
+    {{--        // Rest of your existing JavaScript code, including the loadChatData() function--}}
+    {{--    </script>--}}
+
     <script>
         function checkAndLoadChatData() {
-            // Check if the chat area is empty
+            // Reset the date value in the datepicker
+            $("#reportrange").datepicker('setDate', null);
+
+            // Clear the chat area
             $("#chat").empty();
+
+            // Call the function to load all data
             loadChatData();
         }
 
-        // Rest of your existing JavaScript code, including the loadChatData() function
-    </script>
+        $(document).ready(function () {
+            // Initialize your datepicker, assuming it's using Bootstrap Datepicker
+            $('#reportrange').datepicker({
+                // Datepicker configuration options...
+            });
 
+            $('#reloadButton').click(function (e) {
+                e.preventDefault();
+                // Call the function to check and load chat data
+                checkAndLoadChatData();
+            });
+
+            // Rest of your existing JavaScript code, including the loadChatData() function
+        });
+    </script>
 
 
     <script>
@@ -957,26 +1010,104 @@
         });
     </script>
 
-    {{--  Screen Rotet   --}}
-    {{--    <script>--}}
-    {{--        function rotateContent() {--}}
-    {{--            const container = document.getElementById('container');--}}
-    {{--            const currentRotation = container.style.transform || 'rotate(0deg)';--}}
-    {{--            const newRotation = currentRotation === 'rotate(90deg)' ? 'rotate(0deg)' : 'rotate(90deg)';--}}
+    {{--  Date Picker  --}}
+    <script type="text/javascript">
 
-    {{--            localStorage.setItem('contentRotation', newRotation);--}}
-    {{--            container.style.transform = newRotation;--}}
-    {{--        }--}}
+        $(function () {
+            var start_date = $("#start_date").val();
+            var end_date = $("#end_date").val();
 
-    {{--        function setInitialRotation() {--}}
-    {{--            const container = document.getElementById('container');--}}
-    {{--            const savedRotation = localStorage.getItem('contentRotation');--}}
-    {{--            if (savedRotation) {--}}
-    {{--                container.style.transform = savedRotation;--}}
-    {{--            }--}}
-    {{--        }--}}
+            if (start_date && end_date) {
+                // Split the date range into start and end dates
+                var start = start_date;
+                var end = end_date;
 
-    {{--        window.onload = setInitialRotation;--}}
-    {{--    </script>--}}
+                function cb(start, end) {
+                    var formattedStart = start.format('MMMM D, YYYY');
+                    var formattedEnd = end.format('MMMM D, YYYY');
+                    var formattedDateRange = formattedStart + ' - ' + formattedEnd;
+
+                    $('#reportrange span').html(formattedDateRange);
+                    $('.filter').trigger('change');
+                }
+
+            } else {
+                var start = moment().subtract(29, 'days');
+                var end = moment();
+
+                function cb(start, end) {
+                    // alert('call');
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                    $('.filter').trigger('change');
+                }
+            }
+
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            // cb(start, end);
+
+        });
+    </script>
+
+    {{--  Date filter with ajax  --}}
+    <script>
+        $(document).ready(function () {
+            $('#datefiltersubmitBtn').click(function (e) {
+                e.preventDefault();
+                // Get the selected date range value
+                // Get the selected date range value
+                var dateValue = $("#reportrange").val();
+
+                // Get the current form action
+                var formAction = $('#filter_date').attr('action');
+
+                // Add the "date" parameter to the form action
+                formAction += '?id={{ request('id') }}&date=' + encodeURIComponent(dateValue);
+
+                // Update the form action
+                $('#filter_date').attr('action', formAction);
+
+                // Create FormData
+                var formData = new FormData($('#filter_date')[0]);
+                $.ajax({
+                    type: 'GET',
+                    url: $('#filter_date').attr('action'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#chat").empty();
+                        loadChatData();
+                    },
+                    error: function (xhr) {
+                        var errors = xhr.responseJSON.errors;
+                        var errorMessages = [];
+
+                        for (var field in errors) {
+                            errorMessages.push(errors[field][0]);
+                        }
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            html: errorMessages.join('<br>') + '<br>',
+                        });
+                    },
+                });
+            });
+        });
+    </script>
 
 @endpush

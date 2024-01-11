@@ -16,14 +16,25 @@ class UserChatController extends Controller
 
     public function user_chat(Request $request)
     {
+        //  dd($request);
+        $dateRange = $request->query('date');
         $userId = $request->id;
         $receiver_record = User::find($userId);
         if (isset($receiver_record)) {
-            $user_chats = UserChat::where(function ($query) use ($userId) {
-                $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
-                    ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
-            })->orderBy('created_at')->get();
-
+            if (isset($dateRange)) {
+                $dateParts = explode(' - ', $dateRange);
+                $startDate = Carbon::parse($dateParts[0])->startOfDay();
+                $endDate = Carbon::parse($dateParts[1])->endOfDay();
+                $user_chats = UserChat::where(function ($query) use ($userId) {
+                    $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                        ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+                })->whereBetween('created_at', [$startDate, $endDate])->orderBy('created_at')->get();
+            } else {
+                $user_chats = UserChat::where(function ($query) use ($userId) {
+                    $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
+                        ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
+                })->orderBy('created_at')->get();
+            }
             $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
             $currentDatetime = now();
             $user_chat_count = UserChat::where('date', '>=', now()->toDateString())
@@ -64,26 +75,6 @@ class UserChatController extends Controller
         UserChat::create($input);
         $usersupdate['chatting_replay'] = Carbon::now();
         $user_update->update($usersupdate);
-
-        $userId = $request->receiver_id;
-        $receiver_record = User::find($userId);
-        $user_chats = UserChat::where(function ($query) use ($userId) {
-            $query->where('sender_id', Auth::id())->where('receiver_id', $userId)
-                ->orWhere('sender_id', $userId)->where('receiver_id', Auth::id());
-        })->orderBy('created_at')->get();
-
-        $all_users = User::where('id', '!=', $userId)->where('id', '!=', Auth::id())->orderBy('chatting_replay', 'desc')->get();
-        $user_chat_count = UserChat::where('date', '>=', now()->toDateString())
-            ->where(function ($query) {
-                $query->whereTime('time', '>=', now()->toTimeString())
-                    ->orWhere(function ($query) {
-                        $query->whereRaw('TIME(DATE_ADD(time, INTERVAL 10 SECOND)) >= ?', [now()->toTimeString()]);
-                    });
-            })
-            ->latest('created_at')
-            ->first();
-        //  $renderedContent = view("admin.chat.user_chat_render", ['user_chats' => $user_chats, 'all_users' => $all_users, 'receiver_record' => $receiver_record])->render();
-
         return response('success');
     }
 
