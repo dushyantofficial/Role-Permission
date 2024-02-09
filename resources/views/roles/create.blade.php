@@ -90,6 +90,7 @@
 @endsection
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $(".mul-select").select2({
@@ -129,19 +130,24 @@
 
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });

@@ -106,7 +106,7 @@
                             @foreach ($resumes as $key => $resume)
                                 @php
                                     $current_year = date('Y',strtotime('-1 year'));
-                                    $before_year = date('Y-m-d', strtotime("$current_year-12-31"));
+                                    $before_year = date('Y-m-d', strtotime("$current_year-12-31"))
                                 @endphp
                                 <tr id="{{$resume->id}}">
                                     <td>{{ $loop->iteration }}</td>
@@ -1036,19 +1036,24 @@
                         });
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1099,18 +1104,24 @@
                         });
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
+                        // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>',
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1192,19 +1203,24 @@
                         });
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1239,19 +1255,24 @@
 
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1323,19 +1344,24 @@
 
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1370,19 +1396,24 @@
 
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
@@ -1417,19 +1448,24 @@
 
                     },
                     error: function (xhr) {
+                        // Remove all existing error messages and classes before displaying new ones
+                        $('.invalid-feedback').remove();
+                        $('.is-invalid').removeClass('is-invalid');
+
                         // Handle validation errors (e.g., display error messages)
                         var errors = xhr.responseJSON.errors;
-                        var errorMessages = [];
 
                         for (var field in errors) {
-                            errorMessages.push(errors[field][0]);
-                        }
+                            var errorMessages = errors[field]; // Array of error messages
+                            var inputField = $('[name="' + field + '"]');
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            html: errorMessages.join('<br>') + '<br>', // Join error messages with <br> tags
-                        });
+                            // Add Bootstrap's is-invalid class and append the first error message after input field
+                            if (errorMessages.length > 0) {
+                                inputField.addClass('is-invalid');
+                                var errorMessage = errorMessages[0]; // Take only the first error message
+                                inputField.after('<div class="invalid-feedback">' + errorMessage + '</div>');
+                            }
+                        }
                     }
                 });
             });
