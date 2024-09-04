@@ -9,8 +9,8 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 60px;
-            height: 34px;
+            width: 46px;
+            height: 21px;
         }
 
         .switch input {
@@ -34,8 +34,8 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px;
-            width: 26px;
+            height: 13px;
+            width: 14px;
             left: 4px;
             bottom: 4px;
             background-color: white;
@@ -55,6 +55,8 @@
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
             transform: translateX(26px);
+            width: 13px;
+            height: 14px;
         }
 
         /* Rounded sliders */
@@ -64,10 +66,6 @@
 
         .slider.round:before {
             border-radius: 50%;
-        }
-
-        .modal {
-            top: 54px !important;
         }
 
         @media (max-width: 575.98px) {

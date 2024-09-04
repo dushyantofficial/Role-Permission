@@ -48,10 +48,6 @@
                 class="fa fa-refresh" aria-hidden="true"></i></button>
         <button class="btn btn-sm btn-shadow btn-outline-light btn-hover-shine zoom-button" id="zoomIn"><i
                 class="fa fa-search-plus" aria-hidden="true"></i></button>
-
-        {{--        <li><a href="#" id="btn-decrease">A-</a></li>--}}
-        {{--        <li><a href="#" id="btn-orig">A</a></li>--}}
-        {{--        <li><a href="#" id="btn-increase">A+</a></li>--}}
     </form>
     &nbsp;
     <ul class="app-nav">
@@ -268,4 +264,5 @@
         });
 
     </script>
+
 @endpush

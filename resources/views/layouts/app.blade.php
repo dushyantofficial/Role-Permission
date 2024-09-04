@@ -52,7 +52,7 @@
     @endif
 </style>
 
-<body class="app sidebar-mini {{ user_theme_get() }}">
+<body class="app sidebar-mini {{ user_theme_get() }}" style="top: -225px !important;">
 <!-- Navbar-->
 @include('layouts.header')
 <!-- Sidebar menu-->
@@ -84,7 +84,7 @@
 @php
 
     $labels = user_bar_chart()->keys();
-        $data = user_bar_chart()->values()
+        $data = user_bar_chart()->values();
 @endphp
 <!-- Google analytics script-->
 <script type="text/javascript">
@@ -153,7 +153,6 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable({{ Js::from(userRole()) }});
-        console.log(data);
 
         var options = {
             chart: {
@@ -173,7 +172,6 @@
         };
 
         var chart = new google.charts.Bar(document.getElementById('userRole'));
-        console.log(chart)
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 </script>
@@ -196,6 +194,8 @@
         ga('send', 'pageview');
     }
 </script>
+
+
 @include('layouts.datatables_js')
 {{--<script type="text/javascript" src="{{asset('admin/js/plugins/jquery.dataTables.min.js')}}"></script>--}}
 {{--<script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>--}}

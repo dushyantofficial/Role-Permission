@@ -416,9 +416,6 @@
                         <h2>Chat with {{$receiver_record->name}}</h2>
                         <h3>already {{$user_chats->count()}} messages</h3>
                     </div>
-                    {{--                        <button class="btn btn-sm btn-shadow btn-outline-warning btn-hover-shine rotate-button" onclick="rotateContent()"><i--}}
-                    {{--                                class="fa fa-retweet" aria-hidden="true"></i></button>--}}
-
                     <div>
                         <form action="{{ route('user-chat') }}" id="filter_date" class="d-flex">
                             @csrf
@@ -904,15 +901,6 @@
 
     </script>
 
-    {{--    <script>--}}
-    {{--        function checkAndLoadChatData() {--}}
-    {{--            // Check if the chat area is empty--}}
-    {{--            $("#chat").empty();--}}
-    {{--            var dateValue = $("#reportrange").val('');--}}
-    {{--            loadChatData();--}}
-    {{--        }--}}
-    {{--        // Rest of your existing JavaScript code, including the loadChatData() function--}}
-    {{--    </script>--}}
 
     <script>
         function checkAndLoadChatData() {
@@ -1014,38 +1002,21 @@
     <script type="text/javascript">
 
         $(function () {
-            var start_date = $("#start_date").val();
-            var end_date = $("#end_date").val();
+            var start_date = null;
+            var end_date = null;
 
-            if (start_date && end_date) {
-                // Split the date range into start and end dates
-                var start = start_date;
-                var end = end_date;
-
-                function cb(start, end) {
-                    var formattedStart = start.format('MMMM D, YYYY');
-                    var formattedEnd = end.format('MMMM D, YYYY');
-                    var formattedDateRange = formattedStart + ' - ' + formattedEnd;
-
-                    $('#reportrange span').html(formattedDateRange);
-                    $('.filter').trigger('change');
-                }
-
-            } else {
-                var start = moment().subtract(29, 'days');
-                var end = moment();
-
-                function cb(start, end) {
-                    // alert('call');
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                    $('.filter').trigger('change');
-                }
+            function cb(start, end) {
+                start_date = start.format('DD-MM-YYYY');
+                end_date = end.format('DD-MM-YYYY');
+                var formattedDateRange = start_date + ' - ' + end_date;
+                $('#reportrange span').html(formattedDateRange);
+                $('.filter').trigger('change');
             }
 
-
             $('#reportrange').daterangepicker({
-                startDate: start,
-                endDate: end,
+                startDate: moment(),
+                endDate: moment(),
+                autoUpdateInput: false,
                 ranges: {
                     'Today': [moment(), moment()],
                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -1053,13 +1024,33 @@
                     'Last 30 Days': [moment().subtract(29, 'days'), moment()],
                     'This Month': [moment().startOf('month'), moment().endOf('month')],
                     'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale: {
+                    format: 'DD-MM-YYYY',
+                    cancelLabel: 'Clear'
                 }
             }, cb);
 
-            // cb(start, end);
+            $('#reportrange').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+            });
 
+            $('#reportrange').on('cancel.daterangepicker', function () {
+                $(this).val('');
+                start_date = null;
+                end_date = null;
+            });
+
+            // Trigger date range selection if start_date and end_date are provided
+            if (start_date && end_date) {
+                $('#reportrange').data('daterangepicker').setStartDate(moment(start_date, 'DD-MM-YYYY'));
+                $('#reportrange').data('daterangepicker').setEndDate(moment(end_date, 'DD-MM-YYYY'));
+                cb(moment(start_date, 'DD-MM-YYYY'), moment(end_date, 'DD-MM-YYYY'));
+            }
         });
+
     </script>
+
 
     {{--  Date filter with ajax  --}}
     <script>

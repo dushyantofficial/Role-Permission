@@ -196,7 +196,6 @@
                                                     @csrf
                                                     @method('patch')
 
-
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">

@@ -141,7 +141,8 @@
                                             <input type="checkbox" class="statuss"
                                                    data-id="{{$project->id}}"
                                                    id="statusToggle" {{ $project->status === 'active' ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
+                                            <span class="slider round">
+                                            </span>
                                         </label>
                                     </td>
                                     <td>

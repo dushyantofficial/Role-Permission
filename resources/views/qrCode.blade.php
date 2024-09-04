@@ -6,9 +6,9 @@
 <body>
 
 <div class="visible-print text-center">
-    <h1>Laravel 8 - QR Code Generator Example</h1>
+    <center><h1>QR Code Generator Example</h1>
 
-    {!! QrCode::size(250)->generate('192.168.1.11/role-permissions-blog/public/login'); !!}
+        {!! QrCode::size(80)->generate('192.168.1.11/role-permissions-blog/public/login'); !!}</center>
 
 </div>
 

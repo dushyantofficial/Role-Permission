@@ -24,7 +24,6 @@ function user_bar_chart()
         \Illuminate\Support\Facades\DB::raw("MONTHNAME(created_at) as month_name"),
         \Illuminate\Support\Facades\DB::raw("MONTH(created_at) as month_number")
     )
-        ->whereYear('created_at', date('Y'))
         ->groupBy(\Illuminate\Support\Facades\DB::raw("MONTH(created_at)"), 'month_name')
         ->pluck('count', 'month_name');
     return $users;
